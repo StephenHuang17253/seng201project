@@ -13,6 +13,10 @@ public class Athlete implements Purchasable{
 	 */	
 	private String name;
 	/**
+	 * The Athelete's position on the team.
+	 */		
+	private String position;
+	/**
 	 * The Athelete's health stat.
 	 */		
 	private int health;
@@ -46,12 +50,15 @@ public class Athlete implements Purchasable{
 	/**
 	 * Constructor for Athlete
 	 */		
-	public Athlete(String name, int health, int stamina, int offence, int defence) {
+	public Athlete(String name, String position, int health, int stamina, int offence, int defence) {
 		this.name = name;
+		this.position = position;
 		this.health = health;
 		this.stamina = stamina;
 		this.offence = offence;
 		this.defence = defence;
+		
+
 	}
 
 
@@ -78,6 +85,21 @@ public class Athlete implements Purchasable{
 	public void setName(String name) {
 		this.name = name;
 	}
+	/**
+	 * Simple getter for Athlete's position.
+	 */		
+	public String getPosition() {
+		return position;
+	}
+
+	/**
+	 * Simple setter for Athlete's name.
+	 */	
+	public void setPosition(String position) {
+		this.position = position;
+	}
+
+
 	/**
 	 * Simple getter for Athlete's health.
 	 */		
@@ -134,6 +156,11 @@ public class Athlete implements Purchasable{
 				+ "\nOffence: " + offence + "/10" + "\nDefence: " + defence + "/10";
 				
 	}
+	
+	public String getSummary() {
+		return name + ", " + position + " | " + health + " health" + " | " + stamina + " stamina" + " | " + offence + " offence" + " | " + defence + " defence";
+	}
+	
 	/**
 	 * Simple getter for Athlete's contract price.
 	 */		

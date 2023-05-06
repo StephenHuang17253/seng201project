@@ -1,18 +1,23 @@
 package main;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class GameEnvironment {
     private int week;
     private String teamName;
     private String difficulty;
     private int numOfWeeks;
-
+    private int money;
+    private ArrayList<Athlete> athletes;
+    
     public GameEnvironment() {
         week = 1;
+        money = 10000;
+        athletes = new ArrayList<Athlete>();
     }
 
-    public void setUpGame() {
+	public void setUpGame() {
     	// Game Setup
     	
 		Scanner userInput = new Scanner(System.in);
@@ -20,8 +25,9 @@ public class GameEnvironment {
 		String teamNameQues = "";
 		System.out.println("\nTeam name must be between 3 - 15 characters.");
 		System.out.print("Enter your team name: ");
-		teamNameQues = userInput.nextLine();
+		
 		while (teamNameQues.length() < 3 || teamNameQues.length() > 15) {
+			teamNameQues = userInput.nextLine();
 			if (teamNameQues.length() < 3) {
 				System.out.println("Your team name is too short. Please enter another name.");
 				System.out.print("Enter your team name: ");
@@ -68,65 +74,96 @@ public class GameEnvironment {
 			}
 		}
 		
-		System.out.println("\nWelcome " + teamName + " to the 2023 Season of the League Championship Series.\n");
+		System.out.println("\nWelcome " + teamName + " to the 2023 Season of Kick Heroes!\n");
 		System.out.println("Chosen season length: " + numOfWeeks + " weeks long");
 		System.out.println("Chosen difficulty: " + difficulty);
 		 	
-        // Once the game is ready, we can start!
+
+		// Athlete setup
+		Athlete steve = new Athlete("Steve", "Defender", 10, 10, 10, 10);
+		Athlete dave = new Athlete("Dave", "Midfielder", 10, 10, 10, 10);
+		Athlete jasmine = new JasmineOng();
+		athletes.add(steve);
+		athletes.add(dave);
+		athletes.add(jasmine);
+		
+        // Once the game is ready, we can start!		
         startGame();
+        System.out.println("The season has begun.");
 
     }
     
     public void startGame() {
-        System.out.println("The season has begun.");
-
 
         // Main game loop
         while (true) {
         	System.out.println("------------------------------------------------------------------");        	
             System.out.println("Week " + week);
+            System.out.println("Current Balance: $" + getMoney());
             System.out.println("\nWhat would you like to do?");
-            System.out.println("1. Season overview (money, current week, weeks remaining)");
-            System.out.println("2. Manage club");
-            System.out.println("3. Go to Stadium");
-            System.out.println("4. Visit market");
-            System.out.println("5. Take a bye (skip to week)");
-            System.out.println("6. Quit\n");
+            System.out.println("1. Go to Club");
+            System.out.println("2. Go to Stadium");
+            System.out.println("3. Visit Market");
+            System.out.println("4. Take a bye (skip to week)");
+            System.out.println("5. Quit\n");
 
-            int choice = getUserInput(1, 6);
+            int choice = getUserInput(1, 5);
 
             switch (choice) {
-            	case 1:
-            		viewOverview();
-            		break;
+                case 1:
+                    goClub();
+                    return;
                 case 2:
-                    viewTeam();
-                    break;
-                case 3:
                     goStadium();
                     break;
-                case 4:
-                    visitMarket();
+                case 3:
+                	visitMarket();
                     break;
-                case 5:
+                case 4:
                     takeBye();
                     break;
-                case 6:
+                case 5:
                     System.out.println("Thanks for playing!");
                     return;
+            
             }
         }
     }
     
 
-    public void viewOverview() {
-		// TODO Auto-generated method stub
-		System.out.println("viewOverview() has not been implemented.");
-	}
+    
+    public void addAthletes(Athlete athlete) {
+    	athletes.add(athlete);
+    	
+    }
 
-    private void viewTeam() {
+    public void goClub() {
         // TODO: Auto-generated method stub
-    	System.out.println("viewTeam() has not been implemented.");
+    	System.out.println("\nTeam Name: " + teamName);
+    	System.out.println("Team Roster: ");
+    	for (Athlete athlete: athletes) {
+    		//System.out.println(" - " + athlete.getName() + ", " + athlete.getPosition());
+    		System.out.println(" - " + athlete.getSummary());
+    	}
+    	
+    	while (true) {
+	     	System.out.println("\nWhat would you like to do here?");
+	    	System.out.println("1. View inventory");
+	    	System.out.println("2. Return");
+	    	
+	    	int choice = getUserInput(1, 2);
+	    	
+	    	if (choice == 1) {
+	    		System.out.println("Inventory is empty.");
+	    	}
+	    	
+	    	if (choice == 2) {
+	    		startGame();
+	    		break;
+	    	}
+    	}
+
+    	
     }    
     
 	public void takeBye() {
@@ -156,6 +193,14 @@ public class GameEnvironment {
 		    choice = mainInput.nextInt();
 		} while (choice < minChoice || choice > maxChoice);
 		return choice;
+	}
+   
+    public int getMoney() {
+		return money;
+	}
+
+	public void setMoney(int money) {
+		this.money = money;
 	}
     
 
