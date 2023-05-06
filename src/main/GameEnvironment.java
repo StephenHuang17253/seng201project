@@ -14,13 +14,30 @@ public class GameEnvironment {
 
     public void setUpGame() {
     	// Game Setup
-
+    	
 		Scanner userInput = new Scanner(System.in);
 		System.out.println("Welcome to the game!");
-		
+		String teamNameQues = "";
 		System.out.println("\nTeam name must be between 3 - 15 characters.");
 		System.out.print("Enter your team name: ");
-		teamName = userInput.nextLine();
+		teamNameQues = userInput.nextLine();
+		while (teamNameQues.length() < 3 || teamNameQues.length() > 15) {
+			if (teamNameQues.length() < 3) {
+				System.out.println("Your team name is too short. Please enter another name.");
+				System.out.print("Enter your team name: ");
+				teamNameQues = userInput.nextLine();
+			}
+			
+			if (teamNameQues.length() > 15) {
+				System.out.println("Your team name is too long. Please enter another name.");
+				System.out.print("Enter your team name: ");
+				teamNameQues = userInput.nextLine();
+			}
+			
+			if (teamNameQues.length() >= 3 & teamNameQues.length() <= 15) {
+				teamName = teamNameQues;
+			}
+		}
 
 		System.out.println("\nEnter an integer between 5 and 15: ");
 		System.out.print("Enter season length: ");		
