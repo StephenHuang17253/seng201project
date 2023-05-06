@@ -9,6 +9,7 @@ import javax.swing.JTextField;
 import javax.swing.JSlider;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
+import javax.swing.JToggleButton;
 
 public class SetupScreen {
 
@@ -79,16 +80,8 @@ public class SetupScreen {
 		lblNewLabel_3.setBounds(46, 217, 169, 14);
 		frame.getContentPane().add(lblNewLabel_3);
 		
-		JButton btnNewButton = new JButton("Normal");
-		btnNewButton.setBounds(250, 213, 89, 23);
-		frame.getContentPane().add(btnNewButton);
-		
-		JButton btnNewButton_1 = new JButton("Hard");
-		btnNewButton_1.setBounds(375, 213, 89, 23);
-		frame.getContentPane().add(btnNewButton_1);
-		
 		JButton btnNewButton_2 = new JButton("Finish setup");
-		btnNewButton_2.setBounds(250, 350, 89, 23);
+		btnNewButton_2.setBounds(250, 350, 121, 23);
 		frame.getContentPane().add(btnNewButton_2);
 		
 		JLabel lblNewLabel_4 = new JLabel("Pick starting athletes");
@@ -100,7 +93,15 @@ public class SetupScreen {
 		frame.getContentPane().add(btnNewButton_3);
 		
 		JLabel lblNewLabel_5 = new JLabel("(Between 3 to 15 characters)");
-		lblNewLabel_5.setBounds(403, 107, 147, 14);
+		lblNewLabel_5.setBounds(364, 107, 204, 14);
 		frame.getContentPane().add(lblNewLabel_5);
+		
+		JToggleButton tglbtnNewToggleButton = new JToggleButton("Normal");
+		tglbtnNewToggleButton.setBounds(250, 213, 121, 23);
+		frame.getContentPane().add(tglbtnNewToggleButton);
+		
+		JToggleButton tglbtnNewToggleButton_1 = new JToggleButton("Hard");
+		tglbtnNewToggleButton_1.setBounds(403, 213, 121, 23);
+		frame.getContentPane().add(tglbtnNewToggleButton_1);
 	}
 }
