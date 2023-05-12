@@ -65,14 +65,14 @@ public class SetupScreen {
 		frmSetupScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmSetupScreen.getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("KickHeroes");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 18));
-		lblNewLabel.setBounds(46, 21, 159, 29);
-		frmSetupScreen.getContentPane().add(lblNewLabel);
+		JLabel titleLabel = new JLabel("KickHeroes");
+		titleLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 18));
+		titleLabel.setBounds(46, 21, 159, 29);
+		frmSetupScreen.getContentPane().add(titleLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("What is your team name?");
-		lblNewLabel_1.setBounds(46, 90, 159, 14);
-		frmSetupScreen.getContentPane().add(lblNewLabel_1);
+		JLabel lblTeamName = new JLabel("What is your team name?");
+		lblTeamName.setBounds(46, 90, 159, 14);
+		frmSetupScreen.getContentPane().add(lblTeamName);
 		
 		teamName = new JTextField();
 		teamName.setToolTipText("");
@@ -80,9 +80,9 @@ public class SetupScreen {
 		frmSetupScreen.getContentPane().add(teamName);
 		teamName.setColumns(10);
 		
-		JLabel lblNewLabel_2 = new JLabel("Choose season length (weeks)");
-		lblNewLabel_2.setBounds(46, 146, 169, 14);
-		frmSetupScreen.getContentPane().add(lblNewLabel_2);
+		JLabel lblSeasonLength = new JLabel("Choose season length (weeks)");
+		lblSeasonLength.setBounds(46, 146, 188, 14);
+		frmSetupScreen.getContentPane().add(lblSeasonLength);
 		
 		JSlider slider = new JSlider();
 		slider.setPaintLabels(true);
@@ -93,37 +93,38 @@ public class SetupScreen {
 		slider.setBounds(244, 136, 306, 37);
 		frmSetupScreen.getContentPane().add(slider);
 		
-		JLabel lblNewLabel_3 = new JLabel("Choose difficulty");
-		lblNewLabel_3.setBounds(46, 217, 169, 14);
-		frmSetupScreen.getContentPane().add(lblNewLabel_3);
+		JLabel lblDifficulty = new JLabel("Choose difficulty");
+		lblDifficulty.setBounds(46, 217, 169, 14);
+		frmSetupScreen.getContentPane().add(lblDifficulty);
 		
-		JButton btnNewButton_2 = new JButton("Finish setup");
-		btnNewButton_2.addActionListener(new ActionListener() {
+		JButton finishSetup = new JButton("Finish setup");
+		finishSetup.setFont(new Font("Tahoma", Font.BOLD, 12));
+		finishSetup.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				finishedWindow();
 			}
 		});
-		btnNewButton_2.setBounds(250, 350, 121, 23);
-		frmSetupScreen.getContentPane().add(btnNewButton_2);
+		finishSetup.setBounds(250, 330, 134, 43);
+		frmSetupScreen.getContentPane().add(finishSetup);
 		
-		JLabel lblNewLabel_4 = new JLabel("Pick starting athletes");
-		lblNewLabel_4.setBounds(46, 271, 159, 14);
-		frmSetupScreen.getContentPane().add(lblNewLabel_4);
+		JLabel lblStartingAthletes = new JLabel("Pick starting athletes");
+		lblStartingAthletes.setBounds(46, 271, 159, 14);
+		frmSetupScreen.getContentPane().add(lblStartingAthletes);
 		
-		JButton btnNewButton_3 = new JButton("Pick");
-		btnNewButton_3.setBounds(250, 267, 89, 23);
-		frmSetupScreen.getContentPane().add(btnNewButton_3);
+		JButton startingAthletes = new JButton("Pick");
+		startingAthletes.setBounds(250, 267, 89, 23);
+		frmSetupScreen.getContentPane().add(startingAthletes);
 		
-		JLabel lblNewLabel_5 = new JLabel("(Between 3 to 15 characters)");
-		lblNewLabel_5.setBounds(364, 107, 204, 14);
-		frmSetupScreen.getContentPane().add(lblNewLabel_5);
+		JLabel lblNameLength = new JLabel("(Between 3 to 15 characters)");
+		lblNameLength.setBounds(364, 107, 204, 14);
+		frmSetupScreen.getContentPane().add(lblNameLength);
 		
-		JToggleButton tglbtnNewToggleButton = new JToggleButton("Normal");
-		tglbtnNewToggleButton.setBounds(250, 213, 121, 23);
-		frmSetupScreen.getContentPane().add(tglbtnNewToggleButton);
+		JToggleButton tglbtnNormal = new JToggleButton("Normal");
+		tglbtnNormal.setBounds(250, 213, 121, 23);
+		frmSetupScreen.getContentPane().add(tglbtnNormal);
 		
-		JToggleButton tglbtnNewToggleButton_1 = new JToggleButton("Hard");
-		tglbtnNewToggleButton_1.setBounds(403, 213, 121, 23);
-		frmSetupScreen.getContentPane().add(tglbtnNewToggleButton_1);
+		JToggleButton tglbtnHard = new JToggleButton("Hard");
+		tglbtnHard.setBounds(403, 213, 121, 23);
+		frmSetupScreen.getContentPane().add(tglbtnHard);
 	}
 }

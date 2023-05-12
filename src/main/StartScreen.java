@@ -17,6 +17,7 @@ public class StartScreen {
 
 	private JFrame frmKickheroes;
 	private static GameManager manager;
+	private JLabel lblWelcome;
 
 	/**
 	 * Launch the application.
@@ -63,32 +64,24 @@ public class StartScreen {
 		frmKickheroes.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmKickheroes.getContentPane().setLayout(null);
 		
-		JLabel label = new JLabel("");
-		label.setBounds(37, 16, 0, 0);
-		frmKickheroes.getContentPane().add(label);
+		lblWelcome = new JLabel("Welcome to KickHeroes ");
+		lblWelcome.setBounds(141, 132, 829, 164);
+		lblWelcome.setFont(new Font("Rockwell Extra Bold", Font.PLAIN, 52));
+		frmKickheroes.getContentPane().add(lblWelcome);
 		
-		JLabel label_1 = new JLabel("");
-		label_1.setBounds(42, 16, 0, 0);
-		frmKickheroes.getContentPane().add(label_1);
+		JLabel lblStart = new JLabel("Press \"Start\" to play!");
+		lblStart.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblStart.setBounds(401, 281, 233, 49);
+		frmKickheroes.getContentPane().add(lblStart);
 		
-		JLabel lblNewLabel = new JLabel("Welcome to KickHeroes ");
-		lblNewLabel.setBounds(141, 132, 829, 164);
-		lblNewLabel.setFont(new Font("Rockwell Extra Bold", Font.PLAIN, 52));
-		frmKickheroes.getContentPane().add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("Press \"Start\" to play!");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel_1.setBounds(401, 281, 233, 49);
-		frmKickheroes.getContentPane().add(lblNewLabel_1);
-		
-		JButton btnNewButton = new JButton("Start");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnStart = new JButton("Start");
+		btnStart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				finishedWindow();
 			}
 		});
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 28));
-		btnNewButton.setBounds(347, 356, 287, 106);
-		frmKickheroes.getContentPane().add(btnNewButton);
+		btnStart.setFont(new Font("Tahoma", Font.PLAIN, 28));
+		btnStart.setBounds(347, 356, 287, 106);
+		frmKickheroes.getContentPane().add(btnStart);
 	}
 }
