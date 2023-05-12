@@ -10,10 +10,13 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.GridLayout;
 import javax.swing.BoxLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class userInterface {
+public class StartScreen {
 
 	private JFrame frame;
+	private static GameManager manager;
 
 	/**
 	 * Launch the application.
@@ -22,7 +25,7 @@ public class userInterface {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					userInterface window = new userInterface();
+					StartScreen window = new StartScreen(manager);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,10 +37,22 @@ public class userInterface {
 	/**
 	 * Create the application.
 	 */
-	public userInterface() {
+	public StartScreen(GameManager incomingManager) {
+		manager = incomingManager;
 		initialize();
+		frame.setVisible(true);
 	}
 
+	public void closeWindow() {
+		frame.dispose();
+	}
+	
+	public void finishedWindow() {
+		manager.closeStartScreen(this);
+	}
+	
+	
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -66,6 +81,11 @@ public class userInterface {
 		frame.getContentPane().add(lblNewLabel_1);
 		
 		JButton btnNewButton = new JButton("Start");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				finishedWindow();
+			}
+		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 28));
 		btnNewButton.setBounds(347, 356, 287, 106);
 		frame.getContentPane().add(btnNewButton);

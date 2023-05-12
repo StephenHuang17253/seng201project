@@ -10,11 +10,15 @@ import javax.swing.JSlider;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JToggleButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class SetupScreen {
 
 	private JFrame frame;
-	private JTextField textField;
+	// The input field for the team name
+	private JTextField teamName;
+	private static GameManager manager;
 
 	/**
 	 * Launch the application.
@@ -23,7 +27,7 @@ public class SetupScreen {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					SetupScreen window = new SetupScreen();
+					SetupScreen window = new SetupScreen(manager);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -35,10 +39,22 @@ public class SetupScreen {
 	/**
 	 * Create the application.
 	 */
-	public SetupScreen() {
+	public SetupScreen(GameManager incomingManager) {
+		manager = incomingManager;
 		initialize();
+		frame.setVisible(true);
 	}
 
+	public void closeWindow() {
+		frame.dispose();
+	}
+		
+	public void finishedWindow() {
+		manager.closeSetUpScreen(this);
+	}
+	
+	
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -57,11 +73,11 @@ public class SetupScreen {
 		lblNewLabel_1.setBounds(46, 90, 159, 14);
 		frame.getContentPane().add(lblNewLabel_1);
 		
-		textField = new JTextField();
-		textField.setToolTipText("");
-		textField.setBounds(250, 87, 300, 20);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+		teamName = new JTextField();
+		teamName.setToolTipText("");
+		teamName.setBounds(250, 87, 300, 20);
+		frame.getContentPane().add(teamName);
+		teamName.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("Choose season length (weeks)");
 		lblNewLabel_2.setBounds(46, 146, 169, 14);
@@ -81,6 +97,11 @@ public class SetupScreen {
 		frame.getContentPane().add(lblNewLabel_3);
 		
 		JButton btnNewButton_2 = new JButton("Finish setup");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				finishedWindow();
+			}
+		});
 		btnNewButton_2.setBounds(250, 350, 121, 23);
 		frame.getContentPane().add(btnNewButton_2);
 		
