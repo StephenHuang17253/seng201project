@@ -152,8 +152,8 @@ public class Athlete implements Purchasable{
 	 * Athlete's toString, handles printing Athletes.
 	 */	
 	public String toString() {
-		return "Athlete Stats" + "\nName: " + name + "\nHealth: " + health + "/100" + "\nStamina: " + stamina + "/10"
-				+ "\nOffence: " + offence + "/10" + "\nDefence: " + defence + "/10";
+		return name + ", " + position + ", " + health + ", " + stamina + ", "
+				 + offence + ", " + defence;
 				
 	}
 	

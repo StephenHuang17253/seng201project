@@ -1,7 +1,6 @@
 package main;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -9,9 +8,15 @@ import javax.swing.JTextField;
 import javax.swing.JSlider;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
-import javax.swing.JToggleButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import javax.swing.JList;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
+import javax.swing.ListSelectionModel;
 
 public class SetupScreen {
 
@@ -19,6 +24,8 @@ public class SetupScreen {
 	// The input field for the team name
 	private JTextField teamName;
 	private static GameManager manager;
+	// ArrayList to contain Athletes
+	private ArrayList<Athlete> athletes = new ArrayList<>();
 
 	/**
 	 * Launch the application.
@@ -41,6 +48,11 @@ public class SetupScreen {
 	 */
 	public SetupScreen(GameManager incomingManager) {
 		manager = incomingManager;
+		athletes.add(new Athlete("Ross Bacani", "Striker", 10, 10, 5, 10));
+		athletes.add(new Athlete("Raoul Bacani", "Defender", 10, 5, 10, 10));
+		athletes.add(new Athlete("Jasmine Ong", "Keeper", 10, 1, 10, 10));
+		athletes.add(new Athlete("Yousif Abdellatif", "Midfielder", 10, 7, 7, 10));
+		athletes.add(new Athlete("Robert Dalziel", "Midfielder", 10, 7, 7, 10));	
 		initialize();
 		frmSetupScreen.setVisible(true);
 	}
@@ -61,13 +73,13 @@ public class SetupScreen {
 	private void initialize() {
 		frmSetupScreen = new JFrame();
 		frmSetupScreen.setTitle("Game Setup");
-		frmSetupScreen.setBounds(100, 100, 632, 437);
+		frmSetupScreen.setBounds(100, 100, 632, 521);
 		frmSetupScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmSetupScreen.getContentPane().setLayout(null);
 		
 		JLabel titleLabel = new JLabel("KickHeroes");
-		titleLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 18));
 		titleLabel.setBounds(46, 21, 159, 29);
+		titleLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 18));
 		frmSetupScreen.getContentPane().add(titleLabel);
 		
 		JLabel lblTeamName = new JLabel("What is your team name?");
@@ -75,8 +87,8 @@ public class SetupScreen {
 		frmSetupScreen.getContentPane().add(lblTeamName);
 		
 		teamName = new JTextField();
-		teamName.setToolTipText("");
 		teamName.setBounds(250, 87, 300, 20);
+		teamName.setToolTipText("");
 		frmSetupScreen.getContentPane().add(teamName);
 		teamName.setColumns(10);
 		
@@ -85,46 +97,58 @@ public class SetupScreen {
 		frmSetupScreen.getContentPane().add(lblSeasonLength);
 		
 		JSlider slider = new JSlider();
+		slider.setBounds(244, 136, 306, 37);
 		slider.setPaintLabels(true);
 		slider.setPaintTicks(true);
 		slider.setMajorTickSpacing(1);
 		slider.setMinimum(5);
 		slider.setMaximum(15);
-		slider.setBounds(244, 136, 306, 37);
 		frmSetupScreen.getContentPane().add(slider);
 		
 		JLabel lblDifficulty = new JLabel("Choose difficulty");
-		lblDifficulty.setBounds(46, 217, 169, 14);
+		lblDifficulty.setBounds(46, 196, 169, 14);
 		frmSetupScreen.getContentPane().add(lblDifficulty);
 		
 		JButton finishSetup = new JButton("Finish setup");
+		finishSetup.setBounds(250, 428, 134, 43);
 		finishSetup.setFont(new Font("Tahoma", Font.BOLD, 12));
 		finishSetup.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				finishedWindow();
 			}
 		});
-		finishSetup.setBounds(250, 330, 134, 43);
 		frmSetupScreen.getContentPane().add(finishSetup);
 		
 		JLabel lblStartingAthletes = new JLabel("Pick starting athletes");
-		lblStartingAthletes.setBounds(46, 271, 159, 14);
+		lblStartingAthletes.setBounds(46, 262, 159, 14);
 		frmSetupScreen.getContentPane().add(lblStartingAthletes);
-		
-		JButton startingAthletes = new JButton("Pick");
-		startingAthletes.setBounds(250, 267, 89, 23);
-		frmSetupScreen.getContentPane().add(startingAthletes);
 		
 		JLabel lblNameLength = new JLabel("(Between 3 to 15 characters)");
 		lblNameLength.setBounds(364, 107, 204, 14);
 		frmSetupScreen.getContentPane().add(lblNameLength);
 		
-		JToggleButton tglbtnNormal = new JToggleButton("Normal");
-		tglbtnNormal.setBounds(250, 213, 121, 23);
-		frmSetupScreen.getContentPane().add(tglbtnNormal);
+		// Create a ListModel to store the athletes in the JList
+		DefaultListModel<Athlete> athleteListModel = new DefaultListModel<Athlete>();
+		// Add the existing athletes to the ListModel
+		athleteListModel.addAll(athletes);
 		
-		JToggleButton tglbtnHard = new JToggleButton("Hard");
-		tglbtnHard.setBounds(403, 213, 121, 23);
-		frmSetupScreen.getContentPane().add(tglbtnHard);
+		// Create the JList
+		JList<Athlete> athleteList = new JList<Athlete>(athleteListModel);
+		athleteList.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+		athleteList.setToolTipText("Name, Position, Health, Offence, Defence, Stamina");
+		athleteList.setBounds(250, 260, 300, 157);
+		athleteList.setBorder(new LineBorder(new Color(0, 0, 0)));
+		frmSetupScreen.getContentPane().add(athleteList);
+		athleteList.getSelectedValue();		
+		
+		JComboBox<Object> difficultyChoice = new JComboBox<Object>();
+		difficultyChoice.setBounds(250, 192, 159, 22);
+		difficultyChoice.setModel(new DefaultComboBoxModel<Object>(new String[] {"Normal", "Hard"}));
+		frmSetupScreen.getContentPane().add(difficultyChoice);
+		
+		JLabel lblListLabel = new JLabel("Hover over athlete for tooltip");
+		lblListLabel.setBounds(383, 235, 204, 14);
+		frmSetupScreen.getContentPane().add(lblListLabel);
+
 	}
 }

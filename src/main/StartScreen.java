@@ -15,7 +15,7 @@ import java.awt.event.ActionEvent;
 
 public class StartScreen {
 
-	private JFrame frmKickheroes;
+	private JFrame frmStartScreen;
 	private static GameManager manager;
 	private JLabel lblWelcome;
 
@@ -27,7 +27,7 @@ public class StartScreen {
 			public void run() {
 				try {
 					StartScreen window = new StartScreen(manager);
-					window.frmKickheroes.setVisible(true);
+					window.frmStartScreen.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -41,11 +41,11 @@ public class StartScreen {
 	public StartScreen(GameManager incomingManager) {
 		manager = incomingManager;
 		initialize();
-		frmKickheroes.setVisible(true);
+		frmStartScreen.setVisible(true);
 	}
 
 	public void closeWindow() {
-		frmKickheroes.dispose();
+		frmStartScreen.dispose();
 	}
 	
 	public void finishedWindow() {
@@ -58,21 +58,21 @@ public class StartScreen {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmKickheroes = new JFrame();
-		frmKickheroes.setTitle("KickHeroes");
-		frmKickheroes.setBounds(100, 100, 1018, 604);
-		frmKickheroes.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmKickheroes.getContentPane().setLayout(null);
+		frmStartScreen = new JFrame();
+		frmStartScreen.setTitle("KickHeroes");
+		frmStartScreen.setBounds(100, 100, 1018, 604);
+		frmStartScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmStartScreen.getContentPane().setLayout(null);
 		
 		lblWelcome = new JLabel("Welcome to KickHeroes ");
 		lblWelcome.setBounds(141, 132, 829, 164);
 		lblWelcome.setFont(new Font("Rockwell Extra Bold", Font.PLAIN, 52));
-		frmKickheroes.getContentPane().add(lblWelcome);
+		frmStartScreen.getContentPane().add(lblWelcome);
 		
 		JLabel lblStart = new JLabel("Press \"Start\" to play!");
 		lblStart.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblStart.setBounds(401, 281, 233, 49);
-		frmKickheroes.getContentPane().add(lblStart);
+		frmStartScreen.getContentPane().add(lblStart);
 		
 		JButton btnStart = new JButton("Start");
 		btnStart.addActionListener(new ActionListener() {
@@ -82,6 +82,6 @@ public class StartScreen {
 		});
 		btnStart.setFont(new Font("Tahoma", Font.PLAIN, 28));
 		btnStart.setBounds(347, 356, 287, 106);
-		frmKickheroes.getContentPane().add(btnStart);
+		frmStartScreen.getContentPane().add(btnStart);
 	}
 }
