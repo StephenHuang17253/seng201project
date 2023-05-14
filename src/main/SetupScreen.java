@@ -17,6 +17,8 @@ import javax.swing.DefaultListModel;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
+import javax.swing.JTextPane;
 
 public class SetupScreen {
 
@@ -134,7 +136,6 @@ public class SetupScreen {
 		
 		// Create the JList
 		JList<Athlete> athleteList = new JList<Athlete>(athleteListModel);
-		athleteList.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		athleteList.setToolTipText("Name, Position, Health, Offence, Defence, Stamina");
 		athleteList.setBounds(250, 260, 300, 157);
 		athleteList.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -149,6 +150,11 @@ public class SetupScreen {
 		JLabel lblListLabel = new JLabel("Hover over athlete for tooltip");
 		lblListLabel.setBounds(383, 235, 204, 14);
 		frmSetupScreen.getContentPane().add(lblListLabel);
+		
+		JTextPane txtpnHoldDownCtrl = new JTextPane();
+		txtpnHoldDownCtrl.setText("Hold down CTRL while clicking to select multiple athletes");
+		txtpnHoldDownCtrl.setBounds(46, 307, 159, 37);
+		frmSetupScreen.getContentPane().add(txtpnHoldDownCtrl);
 
 	}
 }
