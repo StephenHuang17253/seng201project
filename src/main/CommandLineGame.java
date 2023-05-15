@@ -80,8 +80,8 @@ public class CommandLineGame {
 		 	
 
 		// Athlete setup
-		Athlete steve = new Athlete("Steve", "Defender", 10, 10, 10, 10);
-		Athlete dave = new Athlete("Dave", "Midfielder", 10, 10, 10, 10);
+		Athlete steve = new Athlete("Steve", "Defender", 10, 10, 10, 10, 200000);
+		Athlete dave = new Athlete("Dave", "Midfielder", 10, 10, 10, 10, 200000);
 		Athlete jasmine = new JasmineOng();
 		athletes.add(steve);
 		athletes.add(dave);

@@ -50,13 +50,14 @@ public class Athlete implements Purchasable{
 	/**
 	 * Constructor for Athlete
 	 */		
-	public Athlete(String name, String position, int health, int stamina, int offence, int defence) {
+	public Athlete(String name, String position, int health, int stamina, int offence, int defence, int contractPrice) {
 		this.name = name;
 		this.position = position;
 		this.health = health;
 		this.stamina = stamina;
 		this.offence = offence;
 		this.defence = defence;
+		this.contractPrice = contractPrice;
 		
 
 	}
@@ -153,7 +154,7 @@ public class Athlete implements Purchasable{
 	 */	
 	public String toString() {
 		return name + ", " + position + ", " + health + ", " + stamina + ", "
-				 + offence + ", " + defence;
+				 + offence + ", " + defence + ", $" + contractPrice + "k";
 				
 	}
 	
