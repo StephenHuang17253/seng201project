@@ -226,7 +226,7 @@ public class SetupScreen {
 		JButton priceCheckbutton = new JButton("Check selected team price");
 		priceCheckbutton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				calcTeamCost(athleteList.getSelectedValuesList(), teamPriceLabel, difficultyChoice.getSelectedItem().toString());
+				getTeamCost(athleteList.getSelectedValuesList(), teamPriceLabel, difficultyChoice.getSelectedItem().toString());
 			}
 		});
 		priceCheckbutton.setBounds(461, 562, 188, 23);
