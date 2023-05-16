@@ -9,7 +9,9 @@ import javax.swing.JSlider;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
 import javax.swing.DefaultComboBoxModel;
@@ -36,6 +38,13 @@ public class SetupScreen {
 	private ArrayList<Athlete> startAthletes = new ArrayList<>();
 	private JLabel nameWarningLabel;
 	private JLabel listWarningLabel;
+	// Cost of currently selected athletes
+	private int teamCost;
+	/**
+	 *  Starting money, determined by difficulty 
+	 *  and what's left after buying starting athletes
+	 */
+	private int startingMoney;
 
 	
 	/**
@@ -142,8 +151,9 @@ public class SetupScreen {
 		startingAthletesLabel.setBounds(46, 322, 159, 14);
 		frmSetupScreen.getContentPane().add(startingAthletesLabel);
 		
-		JLabel nameLengthLabel = new JLabel("(Between 3 to 15 characters)");
-		nameLengthLabel.setBounds(364, 107, 204, 14);
+		JLabel nameLengthLabel = new JLabel("(Name must beetween 3 to 15 characters)");
+		nameLengthLabel.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		nameLengthLabel.setBounds(520, 111, 225, 14);
 		frmSetupScreen.getContentPane().add(nameLengthLabel);
 		
 		// Create a ListModel to store the athletes in the JList
@@ -185,29 +195,44 @@ public class SetupScreen {
 		nameWarningLabel = new JLabel("");
 		nameWarningLabel.setForeground(Color.RED);
 		nameWarningLabel.setFont(new Font("Tahoma", Font.BOLD, 10));
-		nameWarningLabel.setBounds(217, 63, 399, 20);
+		nameWarningLabel.setBounds(250, 61, 399, 20);
 		frmSetupScreen.getContentPane().add(nameWarningLabel);
 		
 		listWarningLabel = new JLabel("");
 		listWarningLabel.setForeground(Color.RED);
 		listWarningLabel.setFont(new Font("Tahoma", Font.BOLD, 10));
 		listWarningLabel.setBounds(461, 522, 204, 14);
-		frmSetupScreen.getContentPane().add(listWarningLabel);		
+		frmSetupScreen.getContentPane().add(listWarningLabel);
+		
+		JLabel listHeaderLabel = new JLabel("Name, Rating, Health, Stamina, Offence, Defence, Price");
+		listHeaderLabel.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		listHeaderLabel.setBounds(270, 280, 346, 14);
+		frmSetupScreen.getContentPane().add(listHeaderLabel);
+		
+		JLabel teamPriceLabel = new JLabel("Team price: ");
+		teamPriceLabel.setBounds(461, 547, 244, 14);
+		frmSetupScreen.getContentPane().add(teamPriceLabel);		
 		
 		JButton finishSetup = new JButton("Finish setup");
 		finishSetup.setBounds(310, 522, 134, 43);
 		finishSetup.setFont(new Font("Tahoma", Font.BOLD, 12));
 		finishSetup.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				manager.setUpGame(teamNameField.getText(), difficultySlider.getValue(), difficultyChoice.getSelectedItem().toString(), athleteList.getSelectedValuesList());
+				manager.setUpGame(teamNameField.getText(), difficultySlider.getValue(), difficultyChoice.getSelectedItem().toString(), athleteList.getSelectedValuesList(), teamCost);
 			}
 		});
 		frmSetupScreen.getContentPane().add(finishSetup);
 		
-		JLabel listHeaderLabel = new JLabel("Name, Rating, Health, Stamina, Offence, Defence, Price");
-		listHeaderLabel.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		listHeaderLabel.setBounds(270, 280, 346, 14);
-		frmSetupScreen.getContentPane().add(listHeaderLabel);
+		JButton priceCheckbutton = new JButton("Check selected team price");
+		priceCheckbutton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				calcTeamCost(athleteList.getSelectedValuesList(), teamPriceLabel, difficultyChoice.getSelectedItem().toString());
+			}
+		});
+		priceCheckbutton.setBounds(461, 562, 188, 23);
+		frmSetupScreen.getContentPane().add(priceCheckbutton);
+		
+
 
 		
 		
@@ -219,8 +244,35 @@ public class SetupScreen {
 
 	
 	public void setListWarningLabel(String warningText) {
-
 			listWarningLabel.setText(warningText);
 		}
 
+	public void calcTeamCost(List<Athlete> list, JLabel teamPriceLabel, String difficulty) {
+		System.out.println(list);
+		teamCost = 0;
+		for (Athlete athlete: list) {
+			teamCost += athlete.getContractPrice();
+		}
+		
+		if (difficulty == "Normal") {
+			// Normal difficulty starts with 5 million.
+			this.startingMoney = 7000000;
+		} else {
+			// Hard diffuclty starts with only 2 million.
+			this.startingMoney = 3500000;
+		}			
+		
+		DecimalFormat formatter = new DecimalFormat("#,###");
+		String costString = formatter.format(teamCost);
+		String budgetString = formatter.format(startingMoney);
+		teamPriceLabel.setText("Team Price: " + costString + " / " + budgetString);
+		
+		
+		if (teamCost < startingMoney) {
+			
+		} else {
+			setListWarningLabel("Your team is too expensive!");
+		}
+	}
+	
 }

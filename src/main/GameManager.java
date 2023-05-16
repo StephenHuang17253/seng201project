@@ -77,21 +77,28 @@ public class GameManager {
 		launchMainScreen();
 	}
 	
-	public void setUpGame(String name, int numWeeks, String difficulty, List<Athlete> startAthletes) {
+	public void setUpGame(String name, int numWeeks, String difficulty, List<Athlete> startAthletes, int teamCost) {
 		
 		this.week = 1;
 		this.totalWeeks = numWeeks;
 		this.difficulty = difficulty;
 		boolean validName = false;
 		boolean validTeam = false;
+		boolean validMoney = false;
 		
 		if (difficulty == "Normal") {
 			// Normal difficulty starts with 5 million.
-			this.money = 5000000;
+			this.money = 7000000;
 		} else {
 			// Hard diffuclty starts with only 2 million.
-			this.money = 2000000;
+			this.money = 3500000;
 		}		
+		
+		if (teamCost < money) {
+			validMoney = true;
+		} else {
+			setupWindow.setListWarningLabel("Your team is too expensive!");
+		}
 		
 		if ((name.length() < 3 || name.length() > 15 || !noSpecialChar(name))) {
 			setupWindow.setNameWarningLabel("Invalid name, please check the length and remove any special characters.");
@@ -111,8 +118,9 @@ public class GameManager {
 			validTeam = true;
 		}
 		
-		if ((validTeam && validName )) {
+		if ((validTeam && validName && validMoney)) {
 			teamName = name;
+			money -= teamCost;
 			this.teamRoster.addAll(startAthletes);
 			closeSetUpScreen(setupWindow);
 		}
