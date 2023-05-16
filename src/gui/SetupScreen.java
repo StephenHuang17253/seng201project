@@ -34,7 +34,8 @@ public class SetupScreen {
 	private GameManager manager;
 	// ArrayList to contain Athletes
 	private ArrayList<Athlete> startAthletes = new ArrayList<>();
-	private JLabel warningLabel;
+	private JLabel nameWarningLabel;
+	private JLabel listWarningLabel;
 
 	
 	/**
@@ -165,10 +166,6 @@ public class SetupScreen {
 		difficultyChoice.setModel(new DefaultComboBoxModel<Object>(new String[] {"Normal", "Hard"}));
 		frmSetupScreen.getContentPane().add(difficultyChoice);
 		
-		JLabel listLabel = new JLabel("Placeholder\r\n");
-		listLabel.setBounds(461, 522, 204, 14);
-		frmSetupScreen.getContentPane().add(listLabel);
-		
 		JTextPane listExplanation = new JTextPane();
 		listExplanation.setBackground(new Color(240, 240, 240));
 		listExplanation.setEditable(false);
@@ -185,11 +182,17 @@ public class SetupScreen {
 		difficultyExplanation.setBounds(46, 223, 221, 73);
 		frmSetupScreen.getContentPane().add(difficultyExplanation);
 		
-		warningLabel = new JLabel("");
-		warningLabel.setForeground(Color.RED);
-		warningLabel.setFont(new Font("Tahoma", Font.BOLD, 10));
-		warningLabel.setBounds(217, 63, 399, 20);
-		frmSetupScreen.getContentPane().add(warningLabel);
+		nameWarningLabel = new JLabel("");
+		nameWarningLabel.setForeground(Color.RED);
+		nameWarningLabel.setFont(new Font("Tahoma", Font.BOLD, 10));
+		nameWarningLabel.setBounds(217, 63, 399, 20);
+		frmSetupScreen.getContentPane().add(nameWarningLabel);
+		
+		listWarningLabel = new JLabel("");
+		listWarningLabel.setForeground(Color.RED);
+		listWarningLabel.setFont(new Font("Tahoma", Font.BOLD, 10));
+		listWarningLabel.setBounds(461, 522, 204, 14);
+		frmSetupScreen.getContentPane().add(listWarningLabel);		
 		
 		JButton finishSetup = new JButton("Finish setup");
 		finishSetup.setBounds(310, 522, 134, 43);
@@ -210,9 +213,14 @@ public class SetupScreen {
 		
 	}
 	
-	public void setWarningLabel(String warningText) {
-		if (warningText != "") {
-			warningLabel.setText(warningText);
+	public void setNameWarningLabel(String warningText) {
+			nameWarningLabel.setText(warningText);
 		}
-	}
+
+	
+	public void setListWarningLabel(String warningText) {
+
+			listWarningLabel.setText(warningText);
+		}
+
 }

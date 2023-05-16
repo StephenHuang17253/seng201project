@@ -77,12 +77,13 @@ public class GameManager {
 		launchMainScreen();
 	}
 	
-	public void setUpGame(String name, int numWeeks, String difficulty, List<Athlete> athletes) {
+	public void setUpGame(String name, int numWeeks, String difficulty, List<Athlete> startAthletes) {
 		
 		this.week = 1;
 		this.totalWeeks = numWeeks;
 		this.difficulty = difficulty;
-		this.teamRoster = (ArrayList<Athlete>) athletes;
+		boolean validName = false;
+		boolean validTeam = false;
 		
 		if (difficulty == "Normal") {
 			// Normal difficulty starts with 5 million.
@@ -93,21 +94,34 @@ public class GameManager {
 		}		
 		
 		if ((name.length() < 3 || name.length() > 15 || !noSpecialChar(name))) {
-			setupWindow.setWarningLabel("Invalid name, please check the length and remove any special characters.");
+			setupWindow.setNameWarningLabel("Invalid name, please check the length and remove any special characters.");
 		} else {
-			setupWindow.setWarningLabel("");
-			this.teamName = name;
+			setupWindow.setNameWarningLabel("");
+			validName = true;
 			
 			// Just to check if selecting athletes works.
-			for(int i = 0; i < teamRoster.size(); i++) {   
-			    System.out.print(("\n" + teamRoster.get(i)));
-			} 			
-			
+			//for(int i = 0; i < teamRoster.size(); i++) {   
+			    //System.out.print(("\n" + teamRoster.get(i)));
+			} 	
+		
+		if (startAthletes.size() < 5) {
+			setupWindow.setListWarningLabel("Please select at least 5 athletes!");
+		} else {
+			setupWindow.setListWarningLabel("");
+			validTeam = true;
+		}
+		
+		if ((validTeam && validName )) {
+			teamName = name;
+			this.teamRoster.addAll(startAthletes);
 			closeSetUpScreen(setupWindow);
 		}
 		
+	}		
+			
+			
 
-	}
+	
 	
 	public boolean noSpecialChar(String teamName)
 	{
