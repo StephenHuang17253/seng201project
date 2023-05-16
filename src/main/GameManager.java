@@ -11,7 +11,7 @@ import gui.StartScreen;
 
 /**
  * Game Manager class.
- * This class contains and keeps track of the game.
+ * Contains and keeps track of the game.
  * @author Stephen Huang and Jasmine Ong
  */
 public class GameManager {
@@ -36,52 +36,71 @@ public class GameManager {
      * The player's money.
      */
     private int money;
-	private String name;
+    /**
+     * The window for setting up the game.
+     */
 	private SetupScreen setupWindow;
+	/**
+	 * The player's team of athletes.
+	 */
 	private ArrayList<Athlete> teamRoster = new ArrayList<>();
 
 	 
-	
-	public String getName() {
-		return name;
-	}
-	
-	public void setName(String newName) {
-		name = newName;
-	}
-
+	/**
+	 * Method to launch the start screen.
+	 */
 	public void launchStartScreen() {
 		StartScreen startWindow = new StartScreen(this);
 	}
-	
+	/**
+	 * Method to close the start screen and open the setup.
+	 * @param startWindow the start frame
+	 */
 	public void closeStartScreen(StartScreen startWindow) {
 		startWindow.closeWindow();
 		launchSetupScreen();
 	}
-
+	/**
+	 * Method to launch the main game screen.
+	 */
 	public void launchMainScreen() {
 		MainScreen mainWindow = new MainScreen(this);
 	}
-	
+	/**
+	 * Method to close the main game screen when it's not needed.
+	 * @param mainWindow the main screen
+	 */
 	public void closeMainScreen(MainScreen mainWindow) {
 		mainWindow.closeWindow();
 	}		
-	
+	/**
+	 * Method to launch the setup screen.
+	 */
 	public void launchSetupScreen() {
 		setupWindow = new SetupScreen(this);
 	}
-	
-
+	/**
+	 * Method to clsoe the setup screen when ready.
+	 * @param setupWindow the setup screen
+	 */
 	public void closeSetUpScreen(SetupScreen setupWindow) {
 		setupWindow.closeWindow();
 		launchMainScreen();
 	}
 	
-	public void setUpGame(String name, int numWeeks, String difficulty, List<Athlete> startAthletes, int teamCost) {
-		
+	/**
+	 * Method to set up the game.
+	 * Gets the team name, number of weeks, difficulty, starting athletes, and money.
+	 * @param name the team name chosen by the player.
+	 * @param numWeeks the length of the season in weeks.
+	 * @param difficultyChoice the player's chosen difficulty.
+	 * @param startAthletes the starting roster of athletes.
+	 * @param teamCost the cost of that roster, this param is deducted from starting money.
+	 */
+	public void setUpGame(String name, int numWeeks, String difficultyChoice, List<Athlete> startAthletes, int teamCost) {
 		this.week = 1;
 		this.totalWeeks = numWeeks;
-		this.difficulty = difficulty;
+		this.difficulty = difficultyChoice;
 		boolean validName = false;
 		boolean validTeam = false;
 		boolean validMoney = false;
@@ -127,32 +146,53 @@ public class GameManager {
 		
 	}		
 			
-			
-
 	
 	
+	/**
+	 * Method that can be used to check for (lack of) special characters. 
+	 * If team name matches regex [a-zA-Z], then it will not have special characters.
+	 * @param teamName
+	 * @return boolean for match
+	 */
 	public boolean noSpecialChar(String teamName)
 	{
 	    return teamName.matches("[a-zA-Z ]+");
 	}	
-	
+	/**
+	 * Simple getter for the team name.
+	 * @return String for name of team
+	 */
 	public String getTeamName() {
 		return teamName;
 	}
-	
+	/**
+	 * Method returns the player's money in a more suitable format as a string.
+	 * @return String for money format
+	 */
 	public String getMoneyString() {
 		DecimalFormat formatter = new DecimalFormat("#,###"); 
 		return formatter.format(money);
 	}
-	
+	/**
+	 * Simple getter for the current week.
+	 * @return int for the current week number.
+	 */
 	public int getWeek() {
 		return week;
 	}
-	
+	/**
+	 * Simple getter for the total number of weeks.
+	 * @return int for the total number of weeks.
+	 */
 	public int getTotalWeeks() {
 		return totalWeeks;
 	}
 	
+	/**
+	 * Main game method.
+	 * Begins by game by instantiating GameManager and calling launchStartScreen();  
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		GameManager manager = new GameManager();
 		manager.launchStartScreen();
