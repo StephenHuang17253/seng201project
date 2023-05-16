@@ -1,5 +1,6 @@
 package main;
 
+import java.text.DecimalFormat;
 
 /**
  * The Athlete class
@@ -16,6 +17,18 @@ public class Athlete implements Purchasable{
 	 * The Athelete's position on the team.
 	 */		
 	private String position;
+	/**
+	 * The Athlete's rating.
+	 * Used to allow players to quickly gauge an athlete's offence/defence stats.
+	 * S tier = 9-10 stats
+	 * A tier = 7-8 stats
+	 * B tier = 5-6 stats
+	 * C tier = 3-4 stats
+	 * D tier = 1-2 stats
+	 * The ranges were determined like this to allow disparity within tiers.
+	 * And to make athletes more unique.
+	 */
+	private String rating;
 	/**
 	 * The Athelete's health stat.
 	 */		
@@ -50,9 +63,9 @@ public class Athlete implements Purchasable{
 	/**
 	 * Constructor for Athlete
 	 */		
-	public Athlete(String name, String position, int health, int stamina, int offence, int defence, int contractPrice) {
+	public Athlete(String name, String rating, int health, int stamina, int offence, int defence, int contractPrice) {
 		this.name = name;
-		this.position = position;
+		this.rating = rating;
 		this.health = health;
 		this.stamina = stamina;
 		this.offence = offence;
@@ -148,20 +161,25 @@ public class Athlete implements Purchasable{
 	 */	
 	public void setDefence(int defence) {
 		this.defence = defence;
-	}
+	} 
 	/**
 	 * Athlete's toString, handles printing Athletes.
 	 */	
 	public String toString() {
-		return name + ", " + position + ", " + health + ", " + stamina + ", "
-				 + offence + ", " + defence + ", $" + contractPrice + "k";
-				
+		DecimalFormat formatter = new DecimalFormat("#,###");
+		String priceString = formatter.format(contractPrice);
+		
+		return name + ", Tier: " + rating + ", Health: " + health + ", Stamina: " + stamina
+				+ ", Offence: " + offence + ", Defence: " + defence + ", Contract: $" + priceString;
+		
+		//return name + ", " + rating + ", " + health + "-hp, " + stamina + "-stam, "
+				 //+ offence + "-off, " + defence + "-def, $" + priceString;	
 	}
 	
-	public String getSummary() {
-		return name + ", " + position + " | " + health + " health" + " | " + stamina + " stamina" + " | " + offence + " offence" + " | " + defence + " defence";
+	public String getShortString() {
+		return name + ", " + rating + ", $" + contractPrice;
 	}
-	
+	 
 	/**
 	 * Simple getter for Athlete's contract price.
 	 */		
@@ -200,9 +218,6 @@ public class Athlete implements Purchasable{
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		JasmineOng jasmine = new JasmineOng();
-		System.out.println(jasmine);
 	}
 
 

@@ -3,12 +3,35 @@ package main;
 import java.util.Scanner;
 import java.util.ArrayList;
 
+/** 
+ * Game Environment class.
+ * Now redundant I think, will delete later. (Replaced by GameManager)
+ * @author Stephen Huang and Jasmine Ong
+ */
 public class GameEnvironment {
+	/**
+	 * The current week number.
+	 */
     private int week;
-    private String teamName;
-    private String difficulty;
+    /**
+     * The total number of weeks.
+     */
     private int numOfWeeks;
+    /**
+     * The team name.
+     */
+    private String teamName;
+    /**
+     * The game difficulty.
+     */
+    private String difficulty;
+    /**
+     * The player's money.
+     */
     private int money;
+    /**
+     * The player's athletes.
+     */
     private ArrayList<Athlete> athletes;
     
     public GameEnvironment() {
@@ -17,18 +40,16 @@ public class GameEnvironment {
         athletes = new ArrayList<Athlete>();
     }
 
-	public void setUpGame() {
+	public void setUpGame(String teamName, int numOfWeeks, String difficulty, int money) {
     	// Game Setup
     	
+		this.numOfWeeks = numOfWeeks;
+		
+
 		 	
 
 		// Athlete setup
-		Athlete steve = new Athlete("Steve", "Defender", 10, 10, 10, 10, 100);
-		Athlete dave = new Athlete("Dave", "Midfielder", 10, 10, 10, 10, 100);
-		Athlete jasmine = new JasmineOng();
-		athletes.add(steve);
-		athletes.add(dave);
-		athletes.add(jasmine);
+
 		
         // Once the game is ready, we can start!		
 
@@ -39,7 +60,7 @@ public class GameEnvironment {
 		//
     }
     
-
+ 
     
     public void addAthletes(Athlete athlete) {
     	athletes.add(athlete);
@@ -80,7 +101,6 @@ public class GameEnvironment {
 
 	public static void main(String[] args) {
 		GameEnvironment game = new GameEnvironment();
-		game.setUpGame();
 		
 	}
 }

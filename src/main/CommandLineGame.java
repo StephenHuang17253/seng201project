@@ -80,12 +80,8 @@ public class CommandLineGame {
 		 	
 
 		// Athlete setup
-		Athlete steve = new Athlete("Steve", "Defender", 10, 10, 10, 10, 200000);
-		Athlete dave = new Athlete("Dave", "Midfielder", 10, 10, 10, 10, 200000);
-		Athlete jasmine = new JasmineOng();
-		athletes.add(steve);
-		athletes.add(dave);
-		athletes.add(jasmine);
+		athletes.add(new Athlete("Ross Bacani", "S", 100, 9, 9, 9, 1750000));
+		athletes.add(new Athlete("Raoul Bacani", "S", 100, 9, 9, 9, 1750000));
 		
         // Once the game is ready, we can start!		
         startGame();
@@ -125,7 +121,7 @@ public class CommandLineGame {
                 case 5:
                     System.out.println("Thanks for playing!");
                     return;
-            
+             
             }
         }
     }
@@ -143,7 +139,7 @@ public class CommandLineGame {
     	System.out.println("Team Roster: ");
     	for (Athlete athlete: athletes) {
     		//System.out.println(" - " + athlete.getName() + ", " + athlete.getPosition());
-    		System.out.println(" - " + athlete.getSummary());
+    		System.out.println(" - " + athlete.toString());
     	}
     	
     	while (true) {

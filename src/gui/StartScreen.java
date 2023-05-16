@@ -1,9 +1,12 @@
-package main;
+package gui;
 
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
+import main.GameManager;
+
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -16,34 +19,20 @@ import java.awt.event.ActionEvent;
 public class StartScreen {
 
 	private JFrame frmStartScreen;
-	private static GameManager manager;
+	private GameManager manager;
 	private JLabel lblWelcome;
 
+	
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					StartScreen window = new StartScreen(manager);
-					window.frmStartScreen.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
+	 * Takes an incoming manager and makes it the manager of the screen.
+	 * @param incomingManager The manager for this screen
 	 */
 	public StartScreen(GameManager incomingManager) {
 		manager = incomingManager;
 		initialize();
 		frmStartScreen.setVisible(true);
 	}
-
+	
 	public void closeWindow() {
 		frmStartScreen.dispose();
 	}
@@ -51,8 +40,29 @@ public class StartScreen {
 	public void finishedWindow() {
 		manager.closeStartScreen(this);
 	}
+		
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					StartScreen window = new StartScreen();
+					window.frmStartScreen.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 	
-	
+	/**
+	 * Create the application
+	 */
+	public StartScreen() {
+		initialize();
+	}
 	
 	/**
 	 * Initialize the contents of the frame.

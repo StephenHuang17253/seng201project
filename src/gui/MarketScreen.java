@@ -1,4 +1,4 @@
-package main;
+package gui;
 
 import java.awt.EventQueue;
 
@@ -32,7 +32,7 @@ public class MarketScreen {
 		});
 	}
 
-	/**
+	/** 
 	 * Create the application.
 	 */
 	public MarketScreen() {
