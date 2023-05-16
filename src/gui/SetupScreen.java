@@ -151,7 +151,7 @@ public class SetupScreen {
 		startingAthletesLabel.setBounds(46, 322, 159, 14);
 		frmSetupScreen.getContentPane().add(startingAthletesLabel);
 		
-		JLabel nameLengthLabel = new JLabel("(Name must beetween 3 to 15 characters)");
+		JLabel nameLengthLabel = new JLabel("(Name must between 3 to 15 characters)");
 		nameLengthLabel.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		nameLengthLabel.setBounds(520, 111, 225, 14);
 		frmSetupScreen.getContentPane().add(nameLengthLabel);
@@ -247,7 +247,7 @@ public class SetupScreen {
 			listWarningLabel.setText(warningText);
 		}
 
-	public void calcTeamCost(List<Athlete> list, JLabel teamPriceLabel, String difficulty) {
+	public void getTeamCost(List<Athlete> list, JLabel teamPriceLabel, String difficulty) {
 		System.out.println(list);
 		teamCost = 0;
 		for (Athlete athlete: list) {
@@ -269,7 +269,7 @@ public class SetupScreen {
 		
 		
 		if (teamCost < startingMoney) {
-			
+			setListWarningLabel("");
 		} else {
 			setListWarningLabel("Your team is too expensive!");
 		}
