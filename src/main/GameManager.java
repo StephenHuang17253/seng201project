@@ -7,6 +7,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import gui.ClubScreen;
 import gui.MainScreen;
 import gui.StartScreen;
 
@@ -78,7 +79,17 @@ public class GameManager {
 			launchStadiumScreen();
 		}
 		
+		if (next == "Club") {
+			launchClubScreen();
+		}
 		
+		if (next == "Market") {
+			//TODO
+		}
+		
+		if (next == "Quit") {
+			//TODO
+		}
 	}		
 	/**
 	 * Method to launch the setup screen.
@@ -101,6 +112,15 @@ public class GameManager {
 	
 	public void closeStadiumScreen(StadiumScreen stadiumWindow) {
 		stadiumWindow.closeWindow();
+		launchMainScreen();
+	}
+	
+	public void launchClubScreen() {
+		ClubScreen clubWindow = new ClubScreen(this);
+	}
+	
+	public void closeClubScreen(ClubScreen clubWindow) {
+		clubWindow.closeWindow();
 		launchMainScreen();
 	}
 	

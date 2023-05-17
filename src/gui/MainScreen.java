@@ -107,6 +107,11 @@ public class MainScreen {
 		
 		JButton btnClub = new JButton("Go to the club");
 		btnClub.setBounds(97, 16, 400, 75);
+		btnClub.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				finishedWindow("Club");
+			}
+		});
 		buttonPanel.add(btnClub);
 		
 		JButton btnStadium = new JButton("Go to the stadium");
@@ -128,6 +133,11 @@ public class MainScreen {
 		
 		JButton btnQuit = new JButton("Quit");
 		btnQuit.setBounds(97, 344, 400, 75);
+		btnQuit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				finishedWindow("Quit");
+			}
+		});
 		buttonPanel.add(btnQuit);  
 		
 

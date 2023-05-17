@@ -62,7 +62,7 @@ public class Match {
 	
 	public String toString() {
 		
-		return " " + matchName + "  |  Match Reward: $" + getPrizeString(prizeMoney) + " and " + pointGain + " points.";
+		return " Play against " + matchName + "  |  Reward: $" + getPrizeString(prizeMoney) + " & " + pointGain + " points.";
 		
 	}
 	
