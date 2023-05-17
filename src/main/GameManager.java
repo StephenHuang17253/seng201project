@@ -95,7 +95,7 @@ public class GameManager {
 	 * @param numWeeks the length of the season in weeks.
 	 * @param difficultyChoice the player's chosen difficulty.
 	 * @param startAthletes the starting roster of athletes.
-	 * @param teamCost the cost of that roster, this param is deducted from starting money.
+	 * @param teamCost the cost of that roster, this value is deducted from starting money.
 	 */
 	public void setUpGame(String name, int numWeeks, String difficultyChoice, List<Athlete> startAthletes, int teamCost) {
 		this.week = 1;
@@ -106,17 +106,18 @@ public class GameManager {
 		boolean validMoney = false;
 		
 		if (difficulty == "Normal") {
-			// Normal difficulty starts with 5 million.
+			// Normal difficulty starts with 7.0 million.
 			this.money = 7000000;
 		} else {
-			// Hard diffuclty starts with only 2 million.
+			// Hard diffuclty starts with only 3.5 million.
 			this.money = 3500000;
 		}		
 		
 		if (teamCost < money) {
+			setupWindow.setListCostWarningLabel("");
 			validMoney = true;
 		} else {
-			setupWindow.setListWarningLabel("Your team is too expensive!");
+			setupWindow.setListCostWarningLabel("Your team is too expensive!");
 		}
 		
 		if ((name.length() < 3 || name.length() > 15 || !noSpecialChar(name))) {
@@ -125,7 +126,7 @@ public class GameManager {
 			setupWindow.setNameWarningLabel("");
 			validName = true;
 			
-			// Just to check if selecting athletes works.
+			// Check if selecting athletes works.
 			//for(int i = 0; i < teamRoster.size(); i++) {   
 			    //System.out.print(("\n" + teamRoster.get(i)));
 			} 	

@@ -3,18 +3,15 @@ package gui;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JProgressBar;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
 import main.GameManager;
 
-import javax.swing.JComboBox;
 import javax.swing.JButton;
-import javax.swing.JTextArea;
-import java.awt.Color;
-import javax.swing.JTextPane;
+import javax.swing.JPanel;
+import javax.swing.border.TitledBorder;
 
 public class MainScreen {
 
@@ -66,20 +63,20 @@ public class MainScreen {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 611, 520);
+		frame.setBounds(100, 100, 611, 648);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel titleLabel = new JLabel("KickHeroes");
 		titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		titleLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 18));
-		titleLabel.setBounds(197, 30, 200, 14);
+		titleLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 24));
+		titleLabel.setBounds(197, 24, 200, 35);
 		frame.getContentPane().add(titleLabel);
 		
 		JLabel teamLabel = new JLabel(manager.getTeamName() + " Sports Club");
-		teamLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		teamLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
 		teamLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		teamLabel.setBounds(175, 83, 244, 14);
+		teamLabel.setBounds(175, 83, 244, 22);
 		frame.getContentPane().add(teamLabel);
 		
 		JLabel moneyLabel = new JLabel("Money: $" + manager.getMoneyString());
@@ -100,25 +97,31 @@ public class MainScreen {
 		weekLabel.setBounds(270, 132, 113, 14);
 		frame.getContentPane().add(weekLabel);
 		
+		JPanel buttonPanel = new JPanel();
+		buttonPanel.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		buttonPanel.setBounds(0, 168, 595, 441);
+		frame.getContentPane().add(buttonPanel);
+		buttonPanel.setLayout(null);
+		
 		JButton btnClub = new JButton("Go to the club");
-		btnClub.setBounds(227, 180, 140, 23);
-		frame.getContentPane().add(btnClub);
+		btnClub.setBounds(97, 16, 400, 75);
+		buttonPanel.add(btnClub);
 		
 		JButton btnStadium = new JButton("Go to the stadium");
-		btnStadium.setBounds(227, 240, 140, 23);
-		frame.getContentPane().add(btnStadium);
+		btnStadium.setBounds(97, 98, 400, 75);
+		buttonPanel.add(btnStadium);
 		
 		JButton btnMarket = new JButton("Visit the market");
-		btnMarket.setBounds(227, 300, 140, 23);
-		frame.getContentPane().add(btnMarket);
+		btnMarket.setBounds(97, 180, 400, 75);
+		buttonPanel.add(btnMarket);
 		
 		JButton btnBye = new JButton("Take a bye ");
-		btnBye.setBounds(227, 360, 140, 23);
-		frame.getContentPane().add(btnBye);
+		btnBye.setBounds(97, 262, 400, 75);
+		buttonPanel.add(btnBye);
 		
 		JButton btnQuit = new JButton("Quit");
-		btnQuit.setBounds(227, 420, 140, 23);
-		frame.getContentPane().add(btnQuit);
+		btnQuit.setBounds(97, 344, 400, 75);
+		buttonPanel.add(btnQuit);
 		
 
 	}
