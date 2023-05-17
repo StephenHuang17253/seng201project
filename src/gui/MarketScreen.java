@@ -14,7 +14,8 @@ import java.awt.FlowLayout;
 
 public class MarketScreen {
 
-	private JFrame frmTheMarket;
+	private JFrame frmMarketScreen;
+	
 
 	/**
 	 * Launch the application.
@@ -24,7 +25,7 @@ public class MarketScreen {
 			public void run() {
 				try {
 					MarketScreen window = new MarketScreen();
-					window.frmTheMarket.setVisible(true);
+					window.frmMarketScreen.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -43,15 +44,15 @@ public class MarketScreen {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmTheMarket = new JFrame();
-		frmTheMarket.setTitle("Market");
-		frmTheMarket.setBounds(100, 100, 450, 300);
-		frmTheMarket.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmTheMarket.getContentPane().setLayout(null);
+		frmMarketScreen = new JFrame();
+		frmMarketScreen.setTitle("Market");
+		frmMarketScreen.setBounds(100, 100, 450, 300);
+		frmMarketScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmMarketScreen.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("The Market");
 		lblNewLabel.setBounds(155, 11, 103, 24);
 		lblNewLabel.setFont(new Font("Segoe UI Black", Font.BOLD, 17));
-		frmTheMarket.getContentPane().add(lblNewLabel);
+		frmMarketScreen.getContentPane().add(lblNewLabel);
 	}
 }

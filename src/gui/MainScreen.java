@@ -12,10 +12,12 @@ import main.GameManager;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MainScreen {
 
-	private JFrame frame;
+	private JFrame frmMainScreen;
 	private GameManager manager;
 
 	/**
@@ -24,15 +26,15 @@ public class MainScreen {
 	public MainScreen(GameManager incomingManager) {
 		manager = incomingManager;
 		initialize();
-		frame.setVisible(true);
+		frmMainScreen.setVisible(true);
 	}	
 	
 	public void closeWindow() {
-		frame.dispose();
+		frmMainScreen.dispose();
 	}
 	
-	public void finishedWindow() {
-		manager.closeMainScreen(this);
+	public void finishedWindow(String next) {
+		manager.closeMainScreen(this, next);
 	}
 	
 	/**
@@ -43,7 +45,7 @@ public class MainScreen {
 			public void run() {
 				try {
 					MainScreen window = new MainScreen();
-					window.frame.setVisible(true);
+					window.frmMainScreen.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -62,45 +64,45 @@ public class MainScreen {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 611, 648);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmMainScreen = new JFrame();
+		frmMainScreen.setBounds(100, 100, 611, 648);
+		frmMainScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmMainScreen.getContentPane().setLayout(null);
 		
 		JLabel titleLabel = new JLabel("KickHeroes");
 		titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		titleLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 24));
 		titleLabel.setBounds(197, 24, 200, 35);
-		frame.getContentPane().add(titleLabel);
+		frmMainScreen.getContentPane().add(titleLabel);
 		
 		JLabel teamLabel = new JLabel(manager.getTeamName() + " Sports Club");
 		teamLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
 		teamLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		teamLabel.setBounds(175, 83, 244, 22);
-		frame.getContentPane().add(teamLabel);
+		frmMainScreen.getContentPane().add(teamLabel);
 		
 		JLabel moneyLabel = new JLabel("Money: $" + manager.getMoneyString());
 		moneyLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		moneyLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
 		moneyLabel.setBounds(35, 132, 200, 14);
-		frame.getContentPane().add(moneyLabel);
+		frmMainScreen.getContentPane().add(moneyLabel);
 		
 		JLabel weeksLeftLabel = new JLabel("Total weeks: " + manager.getTotalWeeks());
 		weeksLeftLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		weeksLeftLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
 		weeksLeftLabel.setBounds(418, 132, 140, 14);
-		frame.getContentPane().add(weeksLeftLabel);
+		frmMainScreen.getContentPane().add(weeksLeftLabel);
 		
 		JLabel weekLabel = new JLabel("Week: " + manager.getWeek());
 		weekLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		weekLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
 		weekLabel.setBounds(270, 132, 113, 14);
-		frame.getContentPane().add(weekLabel);
+		frmMainScreen.getContentPane().add(weekLabel);
 		
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		buttonPanel.setBounds(0, 168, 595, 441);
-		frame.getContentPane().add(buttonPanel);
+		frmMainScreen.getContentPane().add(buttonPanel);
 		buttonPanel.setLayout(null);
 		
 		JButton btnClub = new JButton("Go to the club");
@@ -108,6 +110,11 @@ public class MainScreen {
 		buttonPanel.add(btnClub);
 		
 		JButton btnStadium = new JButton("Go to the stadium");
+		btnStadium.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				finishedWindow("Stadium");
+			}
+		});
 		btnStadium.setBounds(97, 98, 400, 75);
 		buttonPanel.add(btnStadium);
 		
@@ -121,7 +128,7 @@ public class MainScreen {
 		
 		JButton btnQuit = new JButton("Quit");
 		btnQuit.setBounds(97, 344, 400, 75);
-		buttonPanel.add(btnQuit);
+		buttonPanel.add(btnQuit);  
 		
 
 	}

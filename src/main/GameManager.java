@@ -1,6 +1,7 @@
 package main;
 
 import gui.SetupScreen;
+import gui.StadiumScreen;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -70,8 +71,14 @@ public class GameManager {
 	 * Method to close the main game screen when it's not needed.
 	 * @param mainWindow the main screen
 	 */
-	public void closeMainScreen(MainScreen mainWindow) {
+	public void closeMainScreen(MainScreen mainWindow, String next) {
 		mainWindow.closeWindow();
+		
+		if (next == "Stadium") {
+			launchStadiumScreen();
+		}
+		
+		
 	}		
 	/**
 	 * Method to launch the setup screen.
@@ -87,6 +94,16 @@ public class GameManager {
 		setupWindow.closeWindow();
 		launchMainScreen();
 	}
+	
+	public void launchStadiumScreen() {
+		StadiumScreen stadiumWindow = new StadiumScreen(this);
+	}
+	
+	public void closeStadiumScreen(StadiumScreen stadiumWindow) {
+		stadiumWindow.closeWindow();
+		launchMainScreen();
+	}
+	
 	
 	/**
 	 * Method to set up the game.
@@ -173,6 +190,13 @@ public class GameManager {
 	public String getMoneyString() {
 		DecimalFormat formatter = new DecimalFormat("#,###"); 
 		return formatter.format(money);
+	}
+	/**
+	 * Same as above but instead of the team money, it takes an amount as a parameter.
+	 */
+	public String getMoneyFormat(int amount) {
+		DecimalFormat formatter = new DecimalFormat("#,###"); 
+		return formatter.format(amount);		
 	}
 	/**
 	 * Simple getter for the current week.

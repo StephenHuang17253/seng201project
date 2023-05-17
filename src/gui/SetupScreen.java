@@ -45,7 +45,7 @@ public class SetupScreen {
 	 */
 	private int startingMoney;
 
-	
+	 
 	/**
 	 * Takes an incoming manager and makes it the manager of the screen.
 	 * @param incomingManager The manager for this screen

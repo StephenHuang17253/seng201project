@@ -40,7 +40,7 @@ public class StartScreen {
 	public void finishedWindow() {
 		manager.closeStartScreen(this);
 	}
-		
+		 
 	/**
 	 * Launch the application.
 	 */
