@@ -86,7 +86,7 @@ public class MainScreen {
 		moneyLabel.setBounds(35, 132, 200, 14);
 		frmMainScreen.getContentPane().add(moneyLabel);
 		
-		JLabel weekLabel = new JLabel("Week: 0");
+		JLabel weekLabel = new JLabel("Week: " + manager.getWeek());
 		weekLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		weekLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
 		weekLabel.setBounds(270, 132, 113, 14);
