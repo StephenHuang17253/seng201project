@@ -217,8 +217,17 @@ public class Athlete implements Purchasable{
 		this.description = description;
 	}
 
+	@Override
+	public void purchase(int contractPrice) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
 	public static void main(String[] args) {
 	}
+
+
 
 
 }

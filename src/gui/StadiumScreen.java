@@ -124,16 +124,16 @@ public class StadiumScreen {
 		frmStadium.getContentPane().add(titlePanel);
 		
 		JPanel buttonPanel = new JPanel();
-		buttonPanel.setBounds(0, 286, 684, 189);
+		buttonPanel.setBounds(0, 297, 684, 178);
 		frmStadium.getContentPane().add(buttonPanel);
 		buttonPanel.setLayout(null);
 		
 		JButton playButton = new JButton("Play selected match");
-		playButton.setBounds(142, 35, 400, 60);
+		playButton.setBounds(142, 33, 400, 60);
 		buttonPanel.add(playButton);
 		
 		JButton backButton = new JButton("Go back");
-		backButton.setBounds(142, 106, 400, 60);
+		backButton.setBounds(142, 104, 400, 60);
 		buttonPanel.add(backButton);
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

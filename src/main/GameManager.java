@@ -223,6 +223,7 @@ public class GameManager {
 	}
 	/**
 	 * Same as above but instead of the team money, it takes an amount as a parameter.
+	 * Allowing other classes to use it if they have a manager.
 	 */
 	public String getMoneyFormat(int amount) {
 		DecimalFormat formatter = new DecimalFormat("#,###"); 

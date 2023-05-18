@@ -1,9 +1,12 @@
 package main;
 
+import java.text.DecimalFormat;
+
 public class Item implements Purchasable {
 
     private int contractPrice;
     private int sellbackPrice;
+    private String itemName;
     private String description;
     // Need to add stat boosts next
 
@@ -11,10 +14,12 @@ public class Item implements Purchasable {
 
     }
 
-	public void purchase(int contractPrice, int sellbackPrice, String description) {
-		this.setContractPrice(contractPrice);
-		this.setSellbackPrice(sellbackPrice);
-		this.setDescription(description);
+	public void purchase(String name, String description, int buyPrice, int sellPrice) {
+		
+		itemName = name;
+		this.description = description;
+		contractPrice = buyPrice;
+		sellbackPrice = sellPrice;
 		
 	}	
 	/**
@@ -54,6 +59,17 @@ public class Item implements Purchasable {
 		this.description = description;
 	}
 
+	public String toString() {
+		DecimalFormat formatter = new DecimalFormat("#,###");
+		String contractString = formatter.format(contractPrice);
+		
+		return itemName + ", Price: $" + contractString + ", Description: " + description;
+	}
 
+	@Override
+	public void purchase(int contractPrice) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

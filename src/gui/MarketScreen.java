@@ -6,16 +6,18 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+import main.Athlete;
 import main.GameManager;
 
 import java.awt.Font;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import javax.swing.SpringLayout;
 import javax.swing.JPanel;
-import java.awt.FlowLayout;
+import javax.swing.ListSelectionModel;
+
+
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
@@ -25,9 +27,15 @@ public class MarketScreen {
 
 	private JFrame frmMarketScreen;
 	private GameManager manager;
+	private ArrayList<Athlete> athletes = new ArrayList<>();
 
 	public MarketScreen(GameManager incomingManager) {
 		manager = incomingManager;
+		athletes.add(new Athlete("Shinsuke Kita", "S", 10, 10, 10, 10, 2000000));
+		athletes.add(new Athlete("Ren Omimi", "A", 10, 8, 8, 8, 850000));
+		athletes.add(new Athlete("Rintaro Suna", "A", 10, 7, 7, 7, 700000));
+		athletes.add(new Athlete("Atsumu Miya", "B", 10, 6, 5, 5, 300000));
+		athletes.add(new Athlete("Hitoshi Ginjima", "C", 10, 4, 4, 4, 250000));
 		initialize();
 		frmMarketScreen.setVisible(true);
 	}	
@@ -95,7 +103,14 @@ public class MarketScreen {
 		frmMarketScreen.getContentPane().add(athletePanel);
 		athletePanel.setLayout(null);
 		
-		JList athleteList = new JList();
+		// Create a ListModel to store the athletes in the JList
+		DefaultListModel<Athlete> athleteListModel = new DefaultListModel<Athlete>();
+		// Add the existing athletes to the ListModel
+		athleteListModel.addAll(athletes);
+		
+		JList<Athlete> athleteList = new JList<Athlete>(athleteListModel);
+		athleteList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		athleteList.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		athleteList.setBorder(new LineBorder(new Color(186, 207, 248)));
 		athleteList.setBounds(219, 11, 457, 140);
 		athletePanel.add(athleteList);
