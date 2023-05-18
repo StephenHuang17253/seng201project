@@ -81,22 +81,22 @@ public class MainScreen {
 		frmMainScreen.getContentPane().add(teamLabel);
 		
 		JLabel moneyLabel = new JLabel("Money: $" + manager.getMoneyString());
-		moneyLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		moneyLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		moneyLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
 		moneyLabel.setBounds(35, 132, 200, 14);
 		frmMainScreen.getContentPane().add(moneyLabel);
 		
-		JLabel weeksLeftLabel = new JLabel("Total weeks: " + manager.getTotalWeeks());
-		weeksLeftLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		weeksLeftLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
-		weeksLeftLabel.setBounds(418, 132, 140, 14);
-		frmMainScreen.getContentPane().add(weeksLeftLabel);
-		
-		JLabel weekLabel = new JLabel("Week: " + manager.getWeek());
+		JLabel weekLabel = new JLabel("Week: 0");
 		weekLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		weekLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
 		weekLabel.setBounds(270, 132, 113, 14);
 		frmMainScreen.getContentPane().add(weekLabel);
+		
+		JLabel weeksLeftLabel = new JLabel("Total weeks: " + manager.getTotalWeeks());
+		weeksLeftLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		weeksLeftLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		weeksLeftLabel.setBounds(418, 132, 140, 14);
+		frmMainScreen.getContentPane().add(weeksLeftLabel);
 		
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -104,50 +104,50 @@ public class MainScreen {
 		frmMainScreen.getContentPane().add(buttonPanel);
 		buttonPanel.setLayout(null);
 		
-		JButton btnClub = new JButton("Go to the club");
-		btnClub.setBounds(97, 16, 400, 75);
-		btnClub.addActionListener(new ActionListener() {
+		JButton clubButton = new JButton("Go to the club");
+		clubButton.setBounds(97, 16, 400, 75);
+		clubButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				finishedWindow("Club");
 			}
 		});
-		buttonPanel.add(btnClub);
+		buttonPanel.add(clubButton);
 		
-		JButton btnStadium = new JButton("Go to the stadium");
-		btnStadium.addActionListener(new ActionListener() {
+		JButton stadiumButton = new JButton("Go to the stadium");
+		stadiumButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				finishedWindow("Stadium");
 			}
 		});
-		btnStadium.setBounds(97, 98, 400, 75);
-		buttonPanel.add(btnStadium);
+		stadiumButton.setBounds(97, 98, 400, 75);
+		buttonPanel.add(stadiumButton);
 		
-		JButton btnMarket = new JButton("Visit the market");
-		btnMarket.addActionListener(new ActionListener() {
+		JButton marketButton = new JButton("Visit the market");
+		marketButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				finishedWindow("Market");
 			}
 		});
-		btnMarket.setBounds(97, 180, 400, 75);
-		buttonPanel.add(btnMarket);
+		marketButton.setBounds(97, 180, 400, 75);
+		buttonPanel.add(marketButton);
 		
-		JButton btnBye = new JButton("Take a bye ");
-		btnBye.addActionListener(new ActionListener() {
+		JButton byeButton = new JButton("Take a bye ");
+		byeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//TODO 
 			}
 		});
-		btnBye.setBounds(97, 262, 400, 75);
-		buttonPanel.add(btnBye);
+		byeButton.setBounds(97, 262, 400, 75);
+		buttonPanel.add(byeButton);
 		
-		JButton btnQuit = new JButton("Quit");
-		btnQuit.setBounds(97, 344, 400, 75);
-		btnQuit.addActionListener(new ActionListener() {
+		JButton quitButton = new JButton("Quit");
+		quitButton.setBounds(97, 344, 400, 75);
+		quitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				finishedWindow("Quit");
 			}
 		});
-		buttonPanel.add(btnQuit);  
+		buttonPanel.add(quitButton);  
 		
 
 	}
