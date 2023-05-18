@@ -21,21 +21,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ListSelectionModel;
 import javax.swing.JPanel;
-import javax.swing.border.MatteBorder;
 import javax.swing.border.TitledBorder;
 
 public class StadiumScreen {
 
 	private JFrame frmStadium;
-	private GameManager manager;
-	private JLabel stadiumLabel;
-	private JLabel listLabel;
-	private JButton backButton;
-	private JButton playButton;
+	private GameManager manager; 
 	private JTextArea explanationText;
 	private ArrayList<Match> matches = new ArrayList<>();
-	private JPanel panel;
-	private JPanel panel_1;
 
 	 
 	public StadiumScreen(GameManager incomingManager) {
@@ -47,6 +40,21 @@ public class StadiumScreen {
 		matches.add(new Match("Karasuno Sports Club", 4000000, 10));
 		initialize();
 		frmStadium.setVisible(true);
+	}
+
+	public void closeWindow() {
+		frmStadium.dispose();
+	}
+	
+	public void finishedWindow() {
+		manager.closeStadiumScreen(this);
+	}
+	
+	/**
+	 * Create the application.
+	 */
+	public StadiumScreen() {
+		initialize();
 	}
 	
 	/**
@@ -63,22 +71,7 @@ public class StadiumScreen {
 				}
 			}
 		});
-	}
-
-	/**
-	 * Create the application.
-	 */
-	public StadiumScreen() {
-		initialize();
-	}
-
-	public void closeWindow() {
-		frmStadium.dispose();
-	}
-	
-	public void finishedWindow() {
-		manager.closeStadiumScreen(this);
-	}
+	}	
 	
 	/**
 	 * Initialize the contents of the frame.
@@ -90,7 +83,7 @@ public class StadiumScreen {
 		frmStadium.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmStadium.getContentPane().setLayout(null);
 		
-		stadiumLabel = new JLabel("The Stadium");
+		JLabel stadiumLabel = new JLabel("The Stadium");
 		stadiumLabel.setBounds(239, 40, 206, 30);
 		stadiumLabel.setFont(new Font("Tahoma", Font.BOLD, 28));
 		stadiumLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -108,7 +101,7 @@ public class StadiumScreen {
 		matchList.setBorder(UIManager.getBorder("List.focusCellHighlightBorder"));
 		frmStadium.getContentPane().add(matchList);
 		
-		listLabel = new JLabel("Available matches");
+		JLabel listLabel = new JLabel("Available matches");
 		listLabel.setLabelFor(matchList);
 		listLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
 		listLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -125,23 +118,23 @@ public class StadiumScreen {
 		explanationText.setBounds(10, 160, 133, 125);
 		frmStadium.getContentPane().add(explanationText);
 		
-		panel = new JPanel();
-		panel.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel.setBounds(0, 0, 684, 99);
-		frmStadium.getContentPane().add(panel);
+		JPanel titlePanel = new JPanel();
+		titlePanel.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		titlePanel.setBounds(0, 0, 684, 99);
+		frmStadium.getContentPane().add(titlePanel);
 		
-		panel_1 = new JPanel();
-		panel_1.setBounds(0, 286, 684, 189);
-		frmStadium.getContentPane().add(panel_1);
-		panel_1.setLayout(null);
+		JPanel buttonPanel = new JPanel();
+		buttonPanel.setBounds(0, 286, 684, 189);
+		frmStadium.getContentPane().add(buttonPanel);
+		buttonPanel.setLayout(null);
 		
-		playButton = new JButton("Play selected match");
+		JButton playButton = new JButton("Play selected match");
 		playButton.setBounds(142, 35, 400, 60);
-		panel_1.add(playButton);
+		buttonPanel.add(playButton);
 		
-		backButton = new JButton("Go back");
+		JButton backButton = new JButton("Go back");
 		backButton.setBounds(142, 106, 400, 60);
-		panel_1.add(backButton);
+		buttonPanel.add(backButton);
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				finishedWindow();

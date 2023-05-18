@@ -24,6 +24,21 @@ public class ClubScreen {
 		frmClubScreen.setVisible(true);
 	}
 	
+	public void closeWindow() {
+		frmClubScreen.dispose();
+	}
+	
+	public void finishedWindow() {
+		manager.closeClubScreen(this);
+	}
+	
+	/**
+	 * Create the application.
+	 */
+	public ClubScreen() {
+		initialize();
+	}	
+	
 	/**
 	 * Launch the application.
 	 */
@@ -38,29 +53,14 @@ public class ClubScreen {
 				}
 			}
 		});
-	}
-
-	/**
-	 * Create the application.
-	 */
-	public ClubScreen() {
-		initialize();
-	}
-
-	public void closeWindow() {
-		frmClubScreen.dispose();
-	}
-	
-	public void finishedWindow() {
-		manager.closeClubScreen(this);
-	}
+	}	
 	
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
 		frmClubScreen = new JFrame();
-		frmClubScreen.setBounds(100, 100, 684, 443);
+		frmClubScreen.setBounds(100, 100, 684, 588);
 		frmClubScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmClubScreen.getContentPane().setLayout(null);
 		
@@ -70,13 +70,13 @@ public class ClubScreen {
 		teamLabel.setBounds(136, 37, 396, 29);
 		frmClubScreen.getContentPane().add(teamLabel);		
 		
-		JButton backButton = new JButton("Go back");
+		JButton backButton =  new JButton("Go back");
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				finishedWindow();
 			}
 		});
-		backButton.setBounds(159, 318, 350, 50);
+		backButton.setBounds(159, 438, 350, 50);
 		frmClubScreen.getContentPane().add(backButton);
 		
 	}

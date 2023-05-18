@@ -9,6 +9,7 @@ import java.util.List;
 
 import gui.ClubScreen;
 import gui.MainScreen;
+import gui.MarketScreen;
 import gui.StartScreen;
 
 /**
@@ -84,7 +85,7 @@ public class GameManager {
 		}
 		
 		if (next == "Market") {
-			//TODO
+			launchMarketScreen();
 		}
 		
 		if (next == "Quit") {
@@ -121,6 +122,15 @@ public class GameManager {
 	
 	public void closeClubScreen(ClubScreen clubWindow) {
 		clubWindow.closeWindow();
+		launchMainScreen();
+	}
+	
+	public void launchMarketScreen() {
+		MarketScreen marketWindow = new MarketScreen(this);
+	}
+	
+	public void closeMarketScreen(MarketScreen marketWindow) {
+		marketWindow.closeWindow();
 		launchMainScreen();
 	}
 	

@@ -66,12 +66,6 @@ public class SetupScreen {
 		frmSetupScreen.setVisible(true);
 	}
 	
-	/**
-	 * Create the application.
-	 */	
-	public SetupScreen() {
-		initialize();
-	}
 	
 	public void closeWindow() {
 		frmSetupScreen.dispose();
@@ -81,6 +75,12 @@ public class SetupScreen {
 		manager.closeSetUpScreen(this);
 	}
 		
+	/**
+	 * Create the application.
+	 */	
+	public SetupScreen() {
+		initialize();
+	}	
 	
 	/**
 	 * Launch the application.

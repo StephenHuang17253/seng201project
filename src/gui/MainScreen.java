@@ -20,9 +20,7 @@ public class MainScreen {
 	private JFrame frmMainScreen;
 	private GameManager manager;
 
-	/**
-	 * Create the application.
-	 */
+
 	public MainScreen(GameManager incomingManager) {
 		manager = incomingManager;
 		initialize();
@@ -36,6 +34,13 @@ public class MainScreen {
 	public void finishedWindow(String next) {
 		manager.closeMainScreen(this, next);
 	}
+	
+	/**
+	 * Create the application.
+	 */	
+	public MainScreen() {
+		initialize();
+	}	
 	
 	/**
 	 * Launch the application.
@@ -53,12 +58,6 @@ public class MainScreen {
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */	
-	public MainScreen() {
-		initialize();
-	}
 
 	/**
 	 * Initialize the contents of the frame.
@@ -124,10 +123,20 @@ public class MainScreen {
 		buttonPanel.add(btnStadium);
 		
 		JButton btnMarket = new JButton("Visit the market");
+		btnMarket.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				finishedWindow("Market");
+			}
+		});
 		btnMarket.setBounds(97, 180, 400, 75);
 		buttonPanel.add(btnMarket);
 		
 		JButton btnBye = new JButton("Take a bye ");
+		btnBye.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//TODO 
+			}
+		});
 		btnBye.setBounds(97, 262, 400, 75);
 		buttonPanel.add(btnBye);
 		
