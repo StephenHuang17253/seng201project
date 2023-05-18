@@ -10,18 +10,14 @@ public class Item implements Purchasable {
     private String description;
     // Need to add stat boosts next
 
-    public Item() {
-
-    }
-
-	public void purchase(String name, String description, int buyPrice, int sellPrice) {
-		
+    public Item(String name, int buyPrice, String description) {
 		itemName = name;
 		this.description = description;
 		contractPrice = buyPrice;
-		sellbackPrice = sellPrice;
-		
-	}	
+		sellbackPrice = buyPrice / 2;
+
+    }
+
 	/**
 	 * Simple getter for Item's contract price.
 	 */		

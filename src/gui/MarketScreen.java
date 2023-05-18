@@ -8,6 +8,7 @@ import javax.swing.SwingConstants;
 
 import main.Athlete;
 import main.GameManager;
+import main.Item;
 
 import java.awt.Font;
 import javax.swing.JPanel;
@@ -28,6 +29,8 @@ public class MarketScreen {
 	private JFrame frmMarketScreen;
 	private GameManager manager;
 	private ArrayList<Athlete> athletes = new ArrayList<>();
+	private ArrayList<Item> items = new ArrayList<>();
+	
 
 	public MarketScreen(GameManager incomingManager) {
 		manager = incomingManager;
@@ -36,6 +39,11 @@ public class MarketScreen {
 		athletes.add(new Athlete("Rintaro Suna", "A", 10, 7, 7, 7, 700000));
 		athletes.add(new Athlete("Atsumu Miya", "B", 10, 6, 5, 5, 300000));
 		athletes.add(new Athlete("Hitoshi Ginjima", "C", 10, 4, 4, 4, 250000));
+		items.add(new Item("Trainer", 100000, "Improve an athlete's stamina sat."));
+		items.add(new Item("Nutritionist", 100000, "Improve an athlete's health stat."));
+		items.add(new Item("Offensive Coach", 100000, "Improve an athlete's offence stat."));
+		items.add(new Item("Defensive Coach", 100000, "Improve an athlete's defence stat."));
+		
 		initialize();
 		frmMarketScreen.setVisible(true);
 	}	
@@ -119,6 +127,7 @@ public class MarketScreen {
 		athletesForSaleLabel.setFont(new Font("Tempus Sans ITC", Font.PLAIN, 17));
 		athletesForSaleLabel.setBounds(20, 11, 124, 23);
 		athletePanel.add(athletesForSaleLabel);
+		athleteList.getSelectedValue();
 		
 		JButton athletePurchaseButton = new JButton("Purchase");
 		athletePurchaseButton.addActionListener(new ActionListener() {
@@ -171,9 +180,16 @@ public class MarketScreen {
 		itemBoughtText.setBounds(20, 125, 74, 14);
 		itemPanel.add(itemBoughtText);
 		
-		JList itemList = new JList();
+		// Create a ListModel to store the items in the JList
+		DefaultListModel<Item> itemListModel = new DefaultListModel<Item>();
+		// Add the existing items to the ListModel
+		itemListModel.addAll(items);
+		
+		JList<Item> itemList = new JList<Item>(itemListModel);
+		itemList.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		itemList.setBorder(new LineBorder(new Color(186, 207, 248)));
 		itemList.setBounds(219, 11, 457, 140);
 		itemPanel.add(itemList);
+		itemList.getSelectedValue();
 	}
 }
