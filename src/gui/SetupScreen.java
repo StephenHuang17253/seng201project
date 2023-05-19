@@ -211,7 +211,7 @@ public class SetupScreen {
 		listWarningLabel = new JLabel("");
 		listWarningLabel.setForeground(Color.RED);
 		listWarningLabel.setFont(new Font("Tahoma", Font.BOLD, 10));
-		listWarningLabel.setBounds(524, 280, 204, 14);
+		listWarningLabel.setBounds(46, 438, 188, 14);
 		frmSetupScreen.getContentPane().add(listWarningLabel);
 		
 		JLabel listHeaderLabel = new JLabel("Name, Rating, Health, Stamina, Offence, Defence, Price");
