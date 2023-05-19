@@ -27,14 +27,15 @@ public class ClubScreen {
 
 	private JFrame frmClubScreen;
 	private GameManager manager;
-	private ArrayList<Athlete> activeRoster = new ArrayList<Athlete>();
+	private ArrayList<Athlete> activeRoster;
 	private ArrayList<Athlete> reserveRoster;
 	//DefaultListModel<Athlete> reserveRosterModel = new DefaultListModel<Athlete>();
 	//private JList<Athlete> reserveRosterList = new JList<Athlete>();
 
-	public ClubScreen(GameManager incomingManager, ArrayList<Athlete> incomingRoster) {
+	public ClubScreen(GameManager incomingManager, ArrayList<Athlete> starting, ArrayList<Athlete> reserves) {
 		manager = incomingManager;
-		reserveRoster = incomingRoster;
+		activeRoster = starting;
+		reserveRoster = reserves;
 		initialize();
 		frmClubScreen.setVisible(true);
 	}
@@ -96,7 +97,7 @@ public class ClubScreen {
 		// Create a ListModel to store the active athletes in the JList
 		DefaultListModel<Athlete> activeRosterModel = new DefaultListModel<Athlete>();
 		// Add athletes to the ListModel
-		// activeRosterModel.addAll(activeRoster)
+		activeRosterModel.addAll(activeRoster);
 		
 		// Create a ListModel to store the reserve athletes in the JList
 		DefaultListModel<Athlete> reserveRosterModel = new DefaultListModel<Athlete>();
@@ -123,7 +124,7 @@ public class ClubScreen {
 		JButton activeRosterChangeButton = new JButton("Demote");
 		activeRosterChangeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				moveAthlete(activeRoster, activeRosterList.getSelectedValue(), reserveRoster);
+				manager.demoteAthlete(activeRosterList.getSelectedValue());
 				reserveRosterModel.addElement(activeRosterList.getSelectedValue());
 				reserveRosterList.setModel(reserveRosterModel);				
 				activeRosterModel.removeElement(activeRosterList.getSelectedValue());
@@ -190,7 +191,7 @@ public class ClubScreen {
 		reserveRosterChangeButton.setFont(new Font("Tahoma", Font.BOLD, 11));
 		reserveRosterChangeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				moveAthlete(reserveRoster, activeRosterList.getSelectedValue(), activeRoster);
+				manager.promoteAthlete(reserveRosterList.getSelectedValue());
 				activeRosterModel.addElement(reserveRosterList.getSelectedValue());
 				activeRosterList.setModel(activeRosterModel);				
 				reserveRosterModel.removeElement(reserveRosterList.getSelectedValue());
@@ -220,9 +221,5 @@ public class ClubScreen {
 		
 	}
 	
-	public void moveAthlete(ArrayList<Athlete> source, Athlete item, ArrayList<Athlete> destination) {
-	    destination.add(item);
-	    source.remove(item);
-	}
 
 }

@@ -6,7 +6,7 @@ import gui.StadiumScreen;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
-
+import main.Athlete;
 import gui.ClubScreen;
 import gui.MainScreen;
 import gui.MarketScreen;
@@ -47,6 +47,7 @@ public class GameManager {
 	 * The player's team of athletes.
 	 */
 	private ArrayList<Athlete> mainRoster = new ArrayList<>();
+	private ArrayList<Athlete> reserveRoster = new ArrayList<>();
 
 	 
 	/**
@@ -117,7 +118,7 @@ public class GameManager {
 	}
 	
 	public void launchClubScreen() {
-		ClubScreen clubWindow = new ClubScreen(this, mainRoster);
+		ClubScreen clubWindow = new ClubScreen(this, mainRoster, reserveRoster);
 	}
 	
 	public void closeClubScreen(ClubScreen clubWindow) {
@@ -188,7 +189,7 @@ public class GameManager {
 		if ((validTeam && validName && validMoney)) {
 			teamName = name;
 			money -= teamCost;
-			this.mainRoster.addAll(startAthletes);
+			this.reserveRoster.addAll(startAthletes);
 			closeSetUpScreen(setupWindow);
 		}
 		
@@ -244,6 +245,20 @@ public class GameManager {
 		return totalWeeks;
 	}
 	
+	public void promoteAthlete(Athlete athlete) {
+		System.out.println(athlete.getName() + " has been moved to reserves");
+	    mainRoster.add(athlete);
+	    reserveRoster.remove(athlete);
+	    
+	}	
+	
+	public void demoteAthlete(Athlete athlete) {
+		System.out.println(athlete.getName() + " has been moved to main roster");
+	    reserveRoster.add(athlete);
+	    mainRoster.remove(athlete);
+	 
+	}
+	
 	/**
 	 * Main game method.
 	 * Begins by game by instantiating GameManager and calling launchStartScreen();  
@@ -253,11 +268,7 @@ public class GameManager {
 		GameManager manager = new GameManager();
 		manager.launchStartScreen();
 	}
-	public void moveAthlete(ArrayList<Athlete> source, Athlete selectedValue, ArrayList<Athlete> destination) {
-	    destination.add(selectedValue);
-	    source.remove(selectedValue);
-		
-	}
+	
 
 
 }
