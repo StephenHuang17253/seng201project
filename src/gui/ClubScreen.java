@@ -177,7 +177,7 @@ public class ClubScreen {
 		
 		JTextArea reserveExplanationTextArea = new JTextArea();
 		reserveExplanationTextArea.setWrapStyleWord(true);
-		reserveExplanationTextArea.setText("Contains the players on your team that haven't been selected to play in your next match.\r\n\r\nIt is recommened to have reserves incase your starting lineup gets injured or if some athletes quit.\r\n\r\nPress the promote button to move selected player to your starting lineup.\r\n");
+		reserveExplanationTextArea.setText("Contains up to 15 players that haven't been selected to play in your next match.\r\n\r\nIt is recommened to have reserves incase your starting lineup gets injured or if someone leavees.\r\n\r\nPress the promote button to move selected player to your starting lineup.\r\n");
 		reserveExplanationTextArea.setLineWrap(true);
 		reserveExplanationTextArea.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		reserveExplanationTextArea.setEditable(false);
