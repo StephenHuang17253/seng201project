@@ -123,14 +123,23 @@ public class ClubScreen {
 		activeRosterLabel.setBounds(10, 11, 217, 23);
 		activeRosterPanel.add(activeRosterLabel);
 		
+		JLabel activeRosterChangedLabel = new JLabel("");
+		activeRosterChangedLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		activeRosterChangedLabel.setBounds(10, 131, 217, 14);
+		activeRosterPanel.add(activeRosterChangedLabel);
+		activeRosterChangedLabel.setForeground(new Color(255, 66, 66));
+		activeRosterChangedLabel.setFont(new Font("Tahoma", Font.BOLD, 11));		
 		JButton activeRosterChangeButton = new JButton("Demote");
+		
 		activeRosterChangeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				manager.demoteAthlete(activeRosterList.getSelectedValue());
-				reserveRosterModel.addElement(activeRosterList.getSelectedValue());
+				Athlete targetAthlete = activeRosterList.getSelectedValue();
+				manager.demoteAthlete(targetAthlete);
+				reserveRosterModel.addElement(targetAthlete);
 				reserveRosterList.setModel(reserveRosterModel);				
-				activeRosterModel.removeElement(activeRosterList.getSelectedValue());
+				activeRosterModel.removeElement(targetAthlete);
 				activeRosterList.setModel(activeRosterModel);
+				activeRosterChangedLabel.setText(targetAthlete.getName() + " benched");
 
 			}
 		});
@@ -152,12 +161,7 @@ public class ClubScreen {
 		activeExplanationTextArea.setBounds(10, 33, 217, 101);
 		activeRosterPanel.add(activeExplanationTextArea);
 		
-		JLabel activeRosterChangedLabel = new JLabel("Athelete moved!");
-		activeRosterChangedLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		activeRosterChangedLabel.setBounds(10, 131, 217, 14);
-		activeRosterPanel.add(activeRosterChangedLabel);
-		activeRosterChangedLabel.setForeground(new Color(255, 66, 66));
-		activeRosterChangedLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+
 		
 		JButton backButton = new JButton("Go back");
 		backButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -189,7 +193,7 @@ public class ClubScreen {
 		reserveRosterLabel.setBounds(10, 11, 217, 23);
 		reserveRosterPanel.add(reserveRosterLabel);
 		
-		JLabel reserveRosterChangeLabel = new JLabel("Athelete moved!");
+		JLabel reserveRosterChangeLabel = new JLabel("");
 		reserveRosterChangeLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		reserveRosterChangeLabel.setForeground(new Color(255, 66, 66));
 		reserveRosterChangeLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -205,11 +209,13 @@ public class ClubScreen {
 					JOptionPane.showMessageDialog(fullRosterWarning, "Can't promote player - main roster already has 6.", 
 							"Main roster full", JOptionPane.WARNING_MESSAGE);
 				} else {
-				manager.promoteAthlete(reserveRosterList.getSelectedValue()); 
-				activeRosterModel.addElement(reserveRosterList.getSelectedValue());
+				Athlete targetAthlete = reserveRosterList.getSelectedValue();	
+				manager.promoteAthlete(targetAthlete); 
+				activeRosterModel.addElement(targetAthlete);
 				activeRosterList.setModel(activeRosterModel);				
-				reserveRosterModel.removeElement(reserveRosterList.getSelectedValue());
-				reserveRosterList.setModel(reserveRosterModel);					
+				reserveRosterModel.removeElement(targetAthlete);
+				reserveRosterList.setModel(reserveRosterModel);	
+				reserveRosterChangeLabel.setText(targetAthlete.getName() + " promoted");
 				}
 			}
 		});
