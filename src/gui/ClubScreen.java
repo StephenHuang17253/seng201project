@@ -79,13 +79,13 @@ public class ClubScreen {
 		frmClubScreen.getContentPane().setLayout(null);
 		
 		JLabel teamLabel = new JLabel(manager.getTeamName() + " Sports Club");
-		teamLabel.setBounds(248, 21, 285, 29);
-		teamLabel.setFont(new Font("Tahoma", Font.BOLD, 24));
+		teamLabel.setBounds(181, 21, 417, 43);
+		teamLabel.setFont(new Font("Tahoma", Font.BOLD, 35));
 		teamLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		frmClubScreen.getContentPane().add(teamLabel);
 		
 		JPanel activeRosterPanel = new JPanel();
-		activeRosterPanel.setBounds(47, 69, 686, 162);
+		activeRosterPanel.setBounds(47, 95, 686, 162);
 		activeRosterPanel.setLayout(null);
 		activeRosterPanel.setBorder(new LineBorder(new Color(255, 66, 66), 1, true));
 		frmClubScreen.getContentPane().add(activeRosterPanel);
@@ -130,18 +130,19 @@ public class ClubScreen {
 		activeRosterPanel.add(activeExplanationTextArea);
 		
 		JButton backButton = new JButton("Go back");
+		backButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				finishedWindow();
 			}
 		});
-		backButton.setBounds(286, 520, 208, 54);
+		backButton.setBounds(286, 535, 208, 54);
 		frmClubScreen.getContentPane().add(backButton);
 		
 		JPanel reserveRosterPanel = new JPanel();
 		reserveRosterPanel.setLayout(null);
 		reserveRosterPanel.setBorder(new LineBorder(new Color(255, 66, 66), 1, true));
-		reserveRosterPanel.setBounds(47, 253, 686, 256);
+		reserveRosterPanel.setBounds(47, 268, 686, 256);
 		frmClubScreen.getContentPane().add(reserveRosterPanel);
 		
 		// Create a ListModel to store the athletes in the JList

@@ -100,11 +100,12 @@ public class MarketScreen {
 		
 		JLabel marketLabel = new JLabel("The Market");
 		marketLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		marketLabel.setBounds(302, 11, 199, 52);
-		marketLabel.setFont(new Font("Century", Font.PLAIN, 26));
+		marketLabel.setBounds(302, 23, 199, 52);
+		marketLabel.setFont(new Font("Tahoma", Font.BOLD, 35));
 		frmMarketScreen.getContentPane().add(marketLabel);
 		
 		JButton backButton = new JButton("Go back");
+		backButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				finishedWindow();
@@ -115,7 +116,7 @@ public class MarketScreen {
 		
 		JPanel athletePanel = new JPanel();
 		athletePanel.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
-		athletePanel.setBounds(42, 74, 720, 162);
+		athletePanel.setBounds(42, 86, 720, 162);
 		frmMarketScreen.getContentPane().add(athletePanel);
 		athletePanel.setLayout(null);
 		
@@ -161,7 +162,7 @@ public class MarketScreen {
 		
 		JPanel itemPanel = new JPanel();
 		itemPanel.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
-		itemPanel.setBounds(42, 262, 720, 162);
+		itemPanel.setBounds(42, 259, 720, 162);
 		frmMarketScreen.getContentPane().add(itemPanel);
 		itemPanel.setLayout(null);
 		
