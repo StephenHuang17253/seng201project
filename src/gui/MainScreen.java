@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
@@ -14,7 +16,8 @@ import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.Color; 
+import java.awt.Color;
+import java.awt.Component; 
 
 public class MainScreen {
 
@@ -152,7 +155,12 @@ public class MainScreen {
 		quitButton.setBounds(97, 344, 400, 75);
 		quitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				finishedWindow("Quit");
+				Component quitFrame = null;
+				int n = JOptionPane.showConfirmDialog(quitFrame, 
+						"Are you sure?", "Are you sure?", JOptionPane.YES_NO_OPTION);
+				if (n == 0) {
+					finishedWindow("Quit");
+				}
 			}
 		});
 		buttonPanel.add(quitButton);  
