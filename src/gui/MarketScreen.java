@@ -22,6 +22,12 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
+
+import items.DefensiveCoach;
+import items.Nutritionist;
+import items.OffensiveCoach;
+import items.Trainer;
+
 import javax.swing.JList;
 
 public class MarketScreen {
@@ -34,15 +40,17 @@ public class MarketScreen {
 
 	public MarketScreen(GameManager incomingManager) {
 		manager = incomingManager;
+		
 		athletes.add(new Athlete("Shinsuke Kita", "S", 10, 10, 10, 10, 2000000));
 		athletes.add(new Athlete("Ren Omimi", "A", 10, 8, 8, 8, 850000));
 		athletes.add(new Athlete("Rintaro Suna", "A", 10, 7, 7, 7, 700000));
 		athletes.add(new Athlete("Atsumu Miya", "B", 10, 6, 5, 5, 300000));
 		athletes.add(new Athlete("Hitoshi Ginjima", "C", 10, 4, 4, 4, 250000));
-		items.add(new Item("Trainer", 100000, "Improve an athlete's stamina sat."));
-		items.add(new Item("Nutritionist", 100000, "Improve an athlete's health stat."));
-		items.add(new Item("Offensive Coach", 100000, "Improve an athlete's offence stat."));
-		items.add(new Item("Defensive Coach", 100000, "Improve an athlete's defence stat."));
+		
+		items.add(new Trainer());
+		items.add(new Nutritionist());
+		items.add(new OffensiveCoach());
+		items.add(new DefensiveCoach());
 		
 		initialize();
 		frmMarketScreen.setVisible(true);
@@ -153,7 +161,7 @@ public class MarketScreen {
 		
 		JPanel itemPanel = new JPanel();
 		itemPanel.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
-		itemPanel.setBounds(44, 262, 715, 162);
+		itemPanel.setBounds(42, 262, 720, 162);
 		frmMarketScreen.getContentPane().add(itemPanel);
 		itemPanel.setLayout(null);
 		
@@ -188,7 +196,7 @@ public class MarketScreen {
 		JList<Item> itemList = new JList<Item>(itemListModel);
 		itemList.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		itemList.setBorder(new LineBorder(new Color(186, 207, 248)));
-		itemList.setBounds(219, 11, 486, 140);
+		itemList.setBounds(219, 11, 491, 140);
 		itemPanel.add(itemList);
 		itemList.getSelectedValue();
 	}
