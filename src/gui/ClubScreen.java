@@ -167,7 +167,13 @@ public class ClubScreen {
 		backButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				finishedWindow();
+				if (reserveRoster.size() > 5) {
+					Component fullReservesWarning = null;
+					JOptionPane.showMessageDialog(fullReservesWarning, "You have too many players in reserves, add some to your starting lineup", 
+							"Reserves full", JOptionPane.WARNING_MESSAGE);					
+				} else {
+					finishedWindow();	
+				}
 			}
 		});
 		backButton.setBounds(359, 578, 270, 60);
