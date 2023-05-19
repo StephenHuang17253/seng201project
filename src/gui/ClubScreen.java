@@ -113,11 +113,11 @@ public class ClubScreen {
 		activeRosterChangeButton.setBounds(120, 121, 89, 23);
 		activeRosterPanel.add(activeRosterChangeButton);
 		
-		JLabel activeRosterChangedText = new JLabel("Athelete moved!");
-		activeRosterChangedText.setForeground(new Color(255, 66, 66));
-		activeRosterChangedText.setFont(new Font("Tahoma", Font.BOLD, 11));
-		activeRosterChangedText.setBounds(10, 125, 110, 14);
-		activeRosterPanel.add(activeRosterChangedText);
+		JLabel activeRosterChangedLabel = new JLabel("Athelete moved!");
+		activeRosterChangedLabel.setForeground(new Color(255, 66, 66));
+		activeRosterChangedLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		activeRosterChangedLabel.setBounds(10, 125, 110, 14);
+		activeRosterPanel.add(activeRosterChangedLabel);
 		
 		JTextArea activeExplanationTextArea = new JTextArea();
 		activeExplanationTextArea.setWrapStyleWord(true);
@@ -156,10 +156,10 @@ public class ClubScreen {
 		reserveRosterList.setBounds(219, 11, 457, 140);
 		reserveRosterPanel.add(reserveRosterList);
 		
-		JLabel reserveRosterText = new JLabel("Reserve Roster");
-		reserveRosterText.setFont(new Font("Tempus Sans ITC", Font.PLAIN, 17));
-		reserveRosterText.setBounds(20, 11, 124, 23);
-		reserveRosterPanel.add(reserveRosterText);
+		JLabel reserveRosterLabel = new JLabel("Reserve Roster");
+		reserveRosterLabel.setFont(new Font("Tempus Sans ITC", Font.PLAIN, 17));
+		reserveRosterLabel.setBounds(20, 11, 124, 23);
+		reserveRosterPanel.add(reserveRosterLabel);
 		
 		JButton reserveRosterChangeButton = new JButton("Promote");
 		reserveRosterChangeButton.addActionListener(new ActionListener() {
