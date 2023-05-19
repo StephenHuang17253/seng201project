@@ -74,14 +74,14 @@ public class StartScreen {
 		frmStartScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmStartScreen.getContentPane().setLayout(null);
 		
-		lblWelcome = new JLabel("Welcome to KickHeroes ");
-		lblWelcome.setBounds(141, 132, 829, 164);
-		lblWelcome.setFont(new Font("Rockwell Extra Bold", Font.PLAIN, 52));
+		lblWelcome = new JLabel(" Welcome to KickHeroes ");
+		lblWelcome.setBounds(104, 144, 794, 65);
+		lblWelcome.setFont(new Font("Rockwell Extra Bold", Font.PLAIN, 54));
 		frmStartScreen.getContentPane().add(lblWelcome);
 		
-		JLabel lblStart = new JLabel("Press \"Start\" to play!");
-		lblStart.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblStart.setBounds(401, 281, 233, 49);
+		JLabel lblStart = new JLabel("  Press \"Start\" to play!");
+		lblStart.setFont(new Font("Tahoma", Font.ITALIC, 26));
+		lblStart.setBounds(362, 220, 278, 32);
 		frmStartScreen.getContentPane().add(lblStart);
 		
 		JButton btnStart = new JButton("Start");
@@ -90,8 +90,8 @@ public class StartScreen {
 				finishedWindow();
 			}
 		});
-		btnStart.setFont(new Font("Tahoma", Font.PLAIN, 28));
-		btnStart.setBounds(347, 356, 287, 106);
+		btnStart.setFont(new Font("Tahoma", Font.BOLD, 34));
+		btnStart.setBounds(337, 342, 328, 133);
 		frmStartScreen.getContentPane().add(btnStart);
 	}
 }
