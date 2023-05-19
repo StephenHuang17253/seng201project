@@ -84,8 +84,8 @@ public class StadiumScreen {
 		frmStadium.getContentPane().setLayout(null);
 		
 		JLabel stadiumLabel = new JLabel("The Stadium");
-		stadiumLabel.setBounds(239, 40, 206, 30);
-		stadiumLabel.setFont(new Font("Tahoma", Font.BOLD, 28));
+		stadiumLabel.setBounds(213, 40, 257, 46);
+		stadiumLabel.setFont(new Font("Tahoma", Font.BOLD, 35));
 		stadiumLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		frmStadium.getContentPane().add(stadiumLabel);
 		
@@ -103,19 +103,19 @@ public class StadiumScreen {
 		
 		JLabel listLabel = new JLabel("Available matches");
 		listLabel.setLabelFor(matchList);
-		listLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		listLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
 		listLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		listLabel.setBounds(278, 114, 123, 14);
+		listLabel.setBounds(278, 114, 122, 17);
 		frmStadium.getContentPane().add(listLabel);
 		
 		explanationText = new JTextArea();
-		explanationText.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		explanationText.setFont(new Font("Tahoma", Font.ITALIC, 12));
 		explanationText.setEditable(false);
 		explanationText.setWrapStyleWord(true);
 		explanationText.setLineWrap(true);
 		explanationText.setText("You can select a match to play.\r\n\r\nVictory is rewarded with money and season points.\r\n");
 		explanationText.setBackground(new Color(240, 240, 240));
-		explanationText.setBounds(10, 160, 133, 125);
+		explanationText.setBounds(19, 160, 113, 125);
 		frmStadium.getContentPane().add(explanationText);
 		
 		JPanel titlePanel = new JPanel();
@@ -124,16 +124,18 @@ public class StadiumScreen {
 		frmStadium.getContentPane().add(titlePanel);
 		
 		JPanel buttonPanel = new JPanel();
-		buttonPanel.setBounds(0, 297, 684, 178);
+		buttonPanel.setBounds(0, 317, 684, 158);
 		frmStadium.getContentPane().add(buttonPanel);
 		buttonPanel.setLayout(null);
 		
 		JButton playButton = new JButton("Play selected match");
-		playButton.setBounds(142, 33, 400, 60);
+		playButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		playButton.setBounds(142, 16, 400, 60);
 		buttonPanel.add(playButton);
 		
 		JButton backButton = new JButton("Go back");
-		backButton.setBounds(142, 104, 400, 60);
+		backButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		backButton.setBounds(142, 87, 400, 60);
 		buttonPanel.add(backButton);
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
