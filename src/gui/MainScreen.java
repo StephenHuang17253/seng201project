@@ -65,6 +65,7 @@ public class MainScreen {
 	 */
 	private void initialize() {
 		frmMainScreen = new JFrame();
+		frmMainScreen.setTitle("Main Menu");
 		frmMainScreen.setBounds(100, 100, 611, 648);
 		frmMainScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMainScreen.getContentPane().setLayout(null);
@@ -82,9 +83,10 @@ public class MainScreen {
 		frmMainScreen.getContentPane().add(teamLabel);
 		
 		JLabel moneyLabel = new JLabel("Money: $" + manager.getMoneyString());
+		moneyLabel.setVerticalAlignment(SwingConstants.TOP);
 		moneyLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		moneyLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
-		moneyLabel.setBounds(35, 132, 200, 14);
+		moneyLabel.setBounds(35, 132, 200, 22);
 		frmMainScreen.getContentPane().add(moneyLabel);
 		
 		JLabel weekLabel = new JLabel("Week: " + manager.getWeek());
