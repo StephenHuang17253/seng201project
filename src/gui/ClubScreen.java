@@ -170,7 +170,13 @@ public class ClubScreen {
 				if (reserveRoster.size() > 5) {
 					Component fullReservesWarning = null;
 					JOptionPane.showMessageDialog(fullReservesWarning, "You have too many players in reserves, add some to your starting lineup", 
-							"Reserves full", JOptionPane.WARNING_MESSAGE);					
+							"Reserves full", JOptionPane.WARNING_MESSAGE);
+					
+				} else if (manager.getMainRoster().size() < 6) {
+					Component fullRosterWarning = null;
+					JOptionPane.showMessageDialog(fullRosterWarning, "Your main roster does not have enough players to compete. "
+							+ "\nPromote some reserves.", 
+							"Main roster full", JOptionPane.WARNING_MESSAGE);
 				} else {
 					finishedWindow();	
 				}
