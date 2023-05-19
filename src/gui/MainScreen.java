@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class MainScreen {
 
@@ -70,8 +71,8 @@ public class MainScreen {
 		
 		JLabel titleLabel = new JLabel("KickHeroes");
 		titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		titleLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 24));
-		titleLabel.setBounds(197, 24, 200, 35);
+		titleLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 40));
+		titleLabel.setBounds(169, 24, 256, 49);
 		frmMainScreen.getContentPane().add(titleLabel);
 		
 		JLabel teamLabel = new JLabel(manager.getTeamName() + " Sports Club");
@@ -82,19 +83,19 @@ public class MainScreen {
 		
 		JLabel moneyLabel = new JLabel("Money: $" + manager.getMoneyString());
 		moneyLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		moneyLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		moneyLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
 		moneyLabel.setBounds(35, 132, 200, 14);
 		frmMainScreen.getContentPane().add(moneyLabel);
 		
 		JLabel weekLabel = new JLabel("Week: " + manager.getWeek());
 		weekLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		weekLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		weekLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
 		weekLabel.setBounds(270, 132, 113, 14);
 		frmMainScreen.getContentPane().add(weekLabel);
 		
 		JLabel weeksLeftLabel = new JLabel("Total weeks: " + manager.getTotalWeeks());
 		weeksLeftLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		weeksLeftLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		weeksLeftLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
 		weeksLeftLabel.setBounds(418, 132, 140, 14);
 		frmMainScreen.getContentPane().add(weeksLeftLabel);
 		
@@ -105,6 +106,7 @@ public class MainScreen {
 		buttonPanel.setLayout(null);
 		
 		JButton clubButton = new JButton("Go to the club");
+		clubButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		clubButton.setBounds(97, 16, 400, 75);
 		clubButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -114,6 +116,7 @@ public class MainScreen {
 		buttonPanel.add(clubButton);
 		
 		JButton stadiumButton = new JButton("Go to the stadium");
+		stadiumButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		stadiumButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				finishedWindow("Stadium");
@@ -123,6 +126,7 @@ public class MainScreen {
 		buttonPanel.add(stadiumButton);
 		
 		JButton marketButton = new JButton("Visit the market");
+		marketButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		marketButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				finishedWindow("Market");
@@ -132,6 +136,7 @@ public class MainScreen {
 		buttonPanel.add(marketButton);
 		
 		JButton byeButton = new JButton("Take a bye ");
+		byeButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		byeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//TODO 
@@ -141,6 +146,7 @@ public class MainScreen {
 		buttonPanel.add(byeButton);
 		
 		JButton quitButton = new JButton("Quit");
+		quitButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		quitButton.setBounds(97, 344, 400, 75);
 		quitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
