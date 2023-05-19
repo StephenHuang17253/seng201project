@@ -179,11 +179,6 @@ public class MarketScreen {
 		itemsForSaleLabel.setBounds(10, 27, 194, 20);
 		itemPanel.add(itemsForSaleLabel);
 		
-		JButton itemPurchaseButton = new JButton("Purchase");
-		itemPurchaseButton.setFont(new Font("Tahoma", Font.BOLD, 11));
-		itemPurchaseButton.setBounds(60, 124, 94, 28);
-		itemPanel.add(itemPurchaseButton);
-		
 		JLabel itemExplainationText1 = new JLabel("Please select your purchase on the");
 		itemExplainationText1.setHorizontalAlignment(SwingConstants.CENTER);
 		itemExplainationText1.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -214,5 +209,17 @@ public class MarketScreen {
 		itemList.setBounds(214, 11, 620, 162);
 		itemPanel.add(itemList);
 		itemList.getSelectedValue();
+		
+		JButton itemPurchaseButton = new JButton("Purchase");
+		itemPurchaseButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				manager.purchaseItem(itemList.getSelectedValue());
+				itemListModel.removeElement(itemList.getSelectedValue());
+				itemList.setModel(itemListModel);
+			}
+		});
+		itemPurchaseButton.setFont(new Font("Tahoma", Font.BOLD, 11));
+		itemPurchaseButton.setBounds(60, 124, 94, 28);
+		itemPanel.add(itemPurchaseButton);	
 	}
 }

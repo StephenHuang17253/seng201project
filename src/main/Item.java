@@ -17,7 +17,14 @@ public class Item implements Purchasable {
 		sellbackPrice = buyPrice / 2;
 
     }
-
+    
+    /**
+     * Simple getter for an Item's name.
+     */
+	public String getName() {
+		return itemName;
+	}
+    
 	/**
 	 * Simple getter for Item's contract price.
 	 */		
@@ -62,10 +69,5 @@ public class Item implements Purchasable {
 		return itemName + ", Price: $" + contractString + ", Description: " + description;
 	}
 
-	@Override
-	public void purchase(int contractPrice) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

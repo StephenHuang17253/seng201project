@@ -2,12 +2,12 @@ package main;
 
 public interface Purchasable {
 
-	public void purchase(int contractPrice);
+	String getName();
+	
+	int getContractPrice();
+	
+	String toString();
 	
 	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
 
 }

@@ -44,10 +44,15 @@ public class GameManager {
      */
 	private SetupScreen setupWindow;
 	/**
-	 * The player's team of athletes.
+	 * The player's main roster (starting lineup) of athletes.
 	 */
 	private ArrayList<Athlete> mainRoster = new ArrayList<>();
+	/**
+	 * The player's reserve athletes.
+	 */
 	private ArrayList<Athlete> reserveRoster = new ArrayList<>();
+	private ArrayList<Item> inventory = new ArrayList<>();
+	
 
 	 
 	/**
@@ -266,6 +271,13 @@ public class GameManager {
 	    reserveRoster.add(athlete);
 	    mainRoster.remove(athlete);
 	 
+	}
+	
+	public void purchaseItem(Item item) {
+		money -= item.getContractPrice();
+		inventory.add(item);
+		System.out.println(item.getName() + " was added to club inventory.");
+		
 	}
 	
 	/**
