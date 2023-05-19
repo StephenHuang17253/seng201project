@@ -83,12 +83,6 @@ public class StadiumScreen {
 		frmStadium.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmStadium.getContentPane().setLayout(null);
 		
-		JLabel stadiumLabel = new JLabel("The Stadium");
-		stadiumLabel.setBounds(213, 40, 257, 46);
-		stadiumLabel.setFont(new Font("Tahoma", Font.BOLD, 35));
-		stadiumLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		frmStadium.getContentPane().add(stadiumLabel);
-		
 		// Create a ListModel to store the matches in the Jlist
 		DefaultListModel<Match> matchListModel = new DefaultListModel<Match>();
 		// Add the existing matches to the ListModel
@@ -96,16 +90,16 @@ public class StadiumScreen {
 		
 		JList<Match> matchList = new JList<Match>(matchListModel);
 		matchList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		matchList.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		matchList.setBounds(142, 147, 400, 138);
+		matchList.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		matchList.setBounds(142, 142, 508, 158);
 		matchList.setBorder(UIManager.getBorder("List.focusCellHighlightBorder"));
 		frmStadium.getContentPane().add(matchList);
 		
 		JLabel listLabel = new JLabel("Available matches");
 		listLabel.setLabelFor(matchList);
-		listLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+		listLabel.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 16));
 		listLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		listLabel.setBounds(278, 114, 122, 17);
+		listLabel.setBounds(142, 114, 113, 19);
 		frmStadium.getContentPane().add(listLabel);
 		
 		explanationText = new JTextArea();
@@ -122,6 +116,13 @@ public class StadiumScreen {
 		titlePanel.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		titlePanel.setBounds(0, 0, 684, 99);
 		frmStadium.getContentPane().add(titlePanel);
+		titlePanel.setLayout(null);
+		
+		JLabel stadiumLabel = new JLabel("The Stadium");
+		stadiumLabel.setBounds(232, 24, 220, 43);
+		titlePanel.add(stadiumLabel);
+		stadiumLabel.setFont(new Font("Tahoma", Font.BOLD, 35));
+		stadiumLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setBounds(0, 317, 684, 158);
@@ -130,12 +131,12 @@ public class StadiumScreen {
 		
 		JButton playButton = new JButton("Play selected match");
 		playButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		playButton.setBounds(142, 16, 400, 60);
+		playButton.setBounds(207, 0, 270, 60);
 		buttonPanel.add(playButton);
 		
 		JButton backButton = new JButton("Go back");
 		backButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		backButton.setBounds(142, 87, 400, 60);
+		backButton.setBounds(207, 71, 270, 60);
 		buttonPanel.add(backButton);
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
