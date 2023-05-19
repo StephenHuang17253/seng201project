@@ -119,15 +119,15 @@ public class ClubScreen {
 		activeRosterChangedText.setBounds(10, 125, 110, 14);
 		activeRosterPanel.add(activeRosterChangedText);
 		
-		JTextArea txtrPressTheDemote = new JTextArea();
-		txtrPressTheDemote.setWrapStyleWord(true);
-		txtrPressTheDemote.setText("You need 5 players on your active roster to compete in matches.\r\n\r\nPress the demote button to move a player into your reserves.\r\n\r\n(Maximum of 5 players in active roster.");
-		txtrPressTheDemote.setLineWrap(true);
-		txtrPressTheDemote.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		txtrPressTheDemote.setEditable(false);
-		txtrPressTheDemote.setBackground(SystemColor.menu);
-		txtrPressTheDemote.setBounds(10, 45, 199, 78);
-		activeRosterPanel.add(txtrPressTheDemote);
+		JTextArea activeExplanationTextArea = new JTextArea();
+		activeExplanationTextArea.setWrapStyleWord(true);
+		activeExplanationTextArea.setText("You need 5 players on your active roster to compete in matches.\r\n\r\nPress the demote button to move a player into your reserves.\r\n\r\n(Maximum of 5 players in active roster.");
+		activeExplanationTextArea.setLineWrap(true);
+		activeExplanationTextArea.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		activeExplanationTextArea.setEditable(false);
+		activeExplanationTextArea.setBackground(SystemColor.menu);
+		activeExplanationTextArea.setBounds(10, 45, 199, 78);
+		activeRosterPanel.add(activeExplanationTextArea);
 		
 		JButton backButton = new JButton("Go back");
 		backButton.addActionListener(new ActionListener() {
