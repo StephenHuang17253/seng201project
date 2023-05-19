@@ -179,8 +179,8 @@ public class GameManager {
 			    //System.out.print(("\n" + teamRoster.get(i)));
 			} 	
 		
-		if (startAthletes.size() < 5) {
-			setupWindow.setListWarningLabel("Please select at least 5 athletes!");
+		if (startAthletes.size() < 6) {
+			setupWindow.setListWarningLabel("Please select at least 6 athletes!");
 		} else {
 			setupWindow.setListWarningLabel("");
 			validTeam = true;
@@ -245,15 +245,24 @@ public class GameManager {
 		return totalWeeks;
 	}
 	
+	public ArrayList<Athlete> getMainRoster() {
+		return mainRoster;
+		
+	}
+	
+	public ArrayList<Athlete> getReserveRoster() {
+		return reserveRoster;
+	}
+	
 	public void promoteAthlete(Athlete athlete) {
-		System.out.println(athlete.getName() + " has been moved to reserves");
+		System.out.println(athlete.getName() + " has been moved to main roster");
 	    mainRoster.add(athlete);
 	    reserveRoster.remove(athlete);
 	    
 	}	
 	
 	public void demoteAthlete(Athlete athlete) {
-		System.out.println(athlete.getName() + " has been moved to main roster");
+		System.out.println(athlete.getName() + " has been moved to reserves");
 	    reserveRoster.add(athlete);
 	    mainRoster.remove(athlete);
 	 

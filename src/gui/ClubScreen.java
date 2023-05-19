@@ -17,8 +17,10 @@ import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
+import java.awt.Component;
+
 import javax.swing.JList;
-import javax.swing.ListModel;
+import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.JTextArea;
 import java.awt.SystemColor;
@@ -142,7 +144,7 @@ public class ClubScreen {
 		
 		JTextArea activeExplanationTextArea = new JTextArea();
 		activeExplanationTextArea.setWrapStyleWord(true);
-		activeExplanationTextArea.setText("The active roster can have 5 athletes. A full active roster is required to compete in matches.\r\n\r\nPress the demote button to move selected player into your reserves.\r\n");
+		activeExplanationTextArea.setText("The active roster can have 6 athletes. A full active roster is required to compete in matches.\r\n\r\nPress the demote button to move selected player into your reserves.\r\n");
 		activeExplanationTextArea.setLineWrap(true);
 		activeExplanationTextArea.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		activeExplanationTextArea.setEditable(false);
@@ -187,31 +189,38 @@ public class ClubScreen {
 		reserveRosterLabel.setBounds(10, 11, 217, 23);
 		reserveRosterPanel.add(reserveRosterLabel);
 		
-		JButton reserveRosterChangeButton = new JButton("Promote");
-		reserveRosterChangeButton.setFont(new Font("Tahoma", Font.BOLD, 11));
-		reserveRosterChangeButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				manager.promoteAthlete(reserveRosterList.getSelectedValue());
-				activeRosterModel.addElement(reserveRosterList.getSelectedValue());
-				activeRosterList.setModel(activeRosterModel);				
-				reserveRosterModel.removeElement(reserveRosterList.getSelectedValue());
-				reserveRosterList.setModel(reserveRosterModel);
-
-			}
-		});
-		reserveRosterChangeButton.setBounds(70, 210, 94, 28);
-		reserveRosterPanel.add(reserveRosterChangeButton);
-		
 		JLabel reserveRosterChangeLabel = new JLabel("Athelete moved!");
 		reserveRosterChangeLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		reserveRosterChangeLabel.setForeground(new Color(255, 66, 66));
 		reserveRosterChangeLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
 		reserveRosterChangeLabel.setBounds(10, 196, 217, 14);
-		reserveRosterPanel.add(reserveRosterChangeLabel);
+		reserveRosterPanel.add(reserveRosterChangeLabel);		
+		
+		JButton reserveRosterChangeButton = new JButton("Promote");
+		reserveRosterChangeButton.setFont(new Font("Tahoma", Font.BOLD, 11));
+		reserveRosterChangeButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (manager.getMainRoster().size() >= 6) {
+					Component fullRosterWarning = null;
+					JOptionPane.showMessageDialog(fullRosterWarning, "Can't promote player - main roster already has 6.", 
+							"Main roster full", JOptionPane.WARNING_MESSAGE);
+				} else {
+				manager.promoteAthlete(reserveRosterList.getSelectedValue()); 
+				activeRosterModel.addElement(reserveRosterList.getSelectedValue());
+				activeRosterList.setModel(activeRosterModel);				
+				reserveRosterModel.removeElement(reserveRosterList.getSelectedValue());
+				reserveRosterList.setModel(reserveRosterModel);					
+				}
+			}
+		});
+		reserveRosterChangeButton.setBounds(70, 210, 94, 28);
+		reserveRosterPanel.add(reserveRosterChangeButton);
+		
+
 		
 		JTextArea reserveExplanationTextArea = new JTextArea();
 		reserveExplanationTextArea.setWrapStyleWord(true);
-		reserveExplanationTextArea.setText("Contains up to 15 players that haven't been selected to play in your next match.\r\n\r\nIt is recommened to have reserves incase your starting lineup gets injured or if someone leavees.\r\n\r\nPress the promote button to move selected player to your starting lineup.\r\n");
+		reserveExplanationTextArea.setText("Contains up to 5 players that haven't been selected to play in your next match.\r\n\r\nIt is recommened to have reserves incase your starting lineup gets injured or if someone leavees.\r\n\r\nPress the promote button to move selected player to your starting lineup.\r\n");
 		reserveExplanationTextArea.setLineWrap(true);
 		reserveExplanationTextArea.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		reserveExplanationTextArea.setEditable(false);
