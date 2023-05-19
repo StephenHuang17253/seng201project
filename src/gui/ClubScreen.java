@@ -20,6 +20,8 @@ import java.awt.Color;
 import javax.swing.JList;
 import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
+import javax.swing.JTextArea;
+import java.awt.SystemColor;
 
 public class ClubScreen {
 
@@ -71,6 +73,7 @@ public class ClubScreen {
 	 */
 	private void initialize() {
 		frmClubScreen = new JFrame();
+		frmClubScreen.setTitle("Club Screen");
 		frmClubScreen.setBounds(100, 100, 796, 560);
 		frmClubScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmClubScreen.getContentPane().setLayout(null);
@@ -110,19 +113,21 @@ public class ClubScreen {
 		activeRosterChangeButton.setBounds(120, 121, 89, 23);
 		activeRosterPanel.add(activeRosterChangeButton);
 		
-		JLabel activeRosterChangeExplanationText1 = new JLabel(".....");
-		activeRosterChangeExplanationText1.setBounds(10, 61, 211, 14);
-		activeRosterPanel.add(activeRosterChangeExplanationText1);
-		
-		JLabel activeRosterChangeExplanationText2 = new JLabel(".....");
-		activeRosterChangeExplanationText2.setBounds(11, 81, 198, 14);
-		activeRosterPanel.add(activeRosterChangeExplanationText2);
-		
 		JLabel activeRosterChangedText = new JLabel("Athelete moved!");
 		activeRosterChangedText.setForeground(new Color(255, 66, 66));
 		activeRosterChangedText.setFont(new Font("Tahoma", Font.BOLD, 11));
 		activeRosterChangedText.setBounds(10, 125, 110, 14);
 		activeRosterPanel.add(activeRosterChangedText);
+		
+		JTextArea txtrPressTheDemote = new JTextArea();
+		txtrPressTheDemote.setWrapStyleWord(true);
+		txtrPressTheDemote.setText("You need 5 players on your active roster to compete in matches.\r\n\r\nPress the demote button to move a player into your reserves.\r\n\r\n(Maximum of 5 players in active roster.");
+		txtrPressTheDemote.setLineWrap(true);
+		txtrPressTheDemote.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		txtrPressTheDemote.setEditable(false);
+		txtrPressTheDemote.setBackground(SystemColor.menu);
+		txtrPressTheDemote.setBounds(10, 45, 199, 78);
+		activeRosterPanel.add(txtrPressTheDemote);
 		
 		JButton backButton = new JButton("Go back");
 		backButton.addActionListener(new ActionListener() {
@@ -164,19 +169,21 @@ public class ClubScreen {
 		reserveRosterChangeButton.setBounds(120, 121, 89, 23);
 		reserveRosterPanel.add(reserveRosterChangeButton);
 		
-		JLabel reserveRosterChangeExplanationText1 = new JLabel("...");
-		reserveRosterChangeExplanationText1.setBounds(11, 61, 211, 14);
-		reserveRosterPanel.add(reserveRosterChangeExplanationText1);
-		
-		JLabel reserveRosterChangeExplanationText2 = new JLabel("...");
-		reserveRosterChangeExplanationText2.setBounds(11, 81, 198, 14);
-		reserveRosterPanel.add(reserveRosterChangeExplanationText2);
-		
 		JLabel reserveRosterChangeLabel = new JLabel("Athelete moved");
 		reserveRosterChangeLabel.setForeground(new Color(255, 66, 66));
 		reserveRosterChangeLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
 		reserveRosterChangeLabel.setBounds(10, 125, 110, 14);
 		reserveRosterPanel.add(reserveRosterChangeLabel);
+		
+		JTextArea reserveExplanationTextArea = new JTextArea();
+		reserveExplanationTextArea.setWrapStyleWord(true);
+		reserveExplanationTextArea.setText("Press the promote button to move a player to your starting lineup.\r\n");
+		reserveExplanationTextArea.setLineWrap(true);
+		reserveExplanationTextArea.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		reserveExplanationTextArea.setEditable(false);
+		reserveExplanationTextArea.setBackground(SystemColor.menu);
+		reserveExplanationTextArea.setBounds(10, 64, 199, 46);
+		reserveRosterPanel.add(reserveExplanationTextArea);
 		
 	}
 
