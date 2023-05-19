@@ -27,8 +27,10 @@ public class ClubScreen {
 
 	private JFrame frmClubScreen;
 	private GameManager manager;
-	private ArrayList<Athlete> activeRoster;
+	private ArrayList<Athlete> activeRoster = new ArrayList<Athlete>();
 	private ArrayList<Athlete> reserveRoster;
+	//DefaultListModel<Athlete> reserveRosterModel = new DefaultListModel<Athlete>();
+	//private JList<Athlete> reserveRosterList = new JList<Athlete>();
 
 	public ClubScreen(GameManager incomingManager, ArrayList<Athlete> incomingRoster) {
 		manager = incomingManager;
@@ -95,7 +97,14 @@ public class ClubScreen {
 		// Add athletes to the ListModel
 		// activeRosterModel.addAll(activeRoster)
 		
-		// Create the JList
+		// Create a ListModel to store the reserve athletes in the JList
+		DefaultListModel<Athlete> reserveRosterModel = new DefaultListModel<Athlete>();
+		reserveRosterModel.addAll(reserveRoster);
+		
+		// Create the JList for reserve roster
+		// Needed to be declared early to allow demote button to work.
+		JList<Athlete> reserveRosterList = new JList<Athlete>(reserveRosterModel);
+		// Create the JList for active roster 
 		JList<Athlete> activeRosterList = new JList<Athlete>(activeRosterModel);
 		activeRosterList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		activeRosterList.setFont(new Font("Tahoma", Font.PLAIN, 11));
@@ -110,6 +119,16 @@ public class ClubScreen {
 		activeRosterPanel.add(activeRosterLabel);
 		
 		JButton activeRosterChangeButton = new JButton("Demote");
+		activeRosterChangeButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				moveAthlete(activeRoster, activeRosterList.getSelectedValue(), reserveRoster);
+				reserveRosterModel.addElement(activeRosterList.getSelectedValue());
+				reserveRosterList.setModel(reserveRosterModel);				
+				activeRosterModel.removeElement(activeRosterList.getSelectedValue());
+				activeRosterList.setModel(activeRosterModel);
+
+			}
+		});
 		activeRosterChangeButton.setBounds(120, 128, 89, 23);
 		activeRosterPanel.add(activeRosterChangeButton);
 		
@@ -145,17 +164,13 @@ public class ClubScreen {
 		reserveRosterPanel.setBounds(47, 268, 686, 256);
 		frmClubScreen.getContentPane().add(reserveRosterPanel);
 		
-		// Create a ListModel to store the athletes in the JList
-		DefaultListModel<Athlete> reserveRosterModel = new DefaultListModel<Athlete>();
-		reserveRosterModel.addAll(reserveRoster);
-		
-		// Create the JList
-		JList<Athlete> reserveRosterList = new JList<Athlete>(reserveRosterModel);
+
 		reserveRosterList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		reserveRosterList.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		reserveRosterList.setBorder(new LineBorder(new Color(255, 151, 151)));
 		reserveRosterList.setBounds(219, 11, 457, 234);
 		reserveRosterPanel.add(reserveRosterList);
+		reserveRosterList.getSelectedValue();
 		
 		JLabel reserveRosterLabel = new JLabel("Reserve Roster");
 		reserveRosterLabel.setFont(new Font("Tempus Sans ITC", Font.PLAIN, 17));
@@ -165,6 +180,12 @@ public class ClubScreen {
 		JButton reserveRosterChangeButton = new JButton("Promote");
 		reserveRosterChangeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				moveAthlete(reserveRoster, activeRosterList.getSelectedValue(), activeRoster);
+				activeRosterModel.addElement(reserveRosterList.getSelectedValue());
+				activeRosterList.setModel(activeRosterModel);				
+				reserveRosterModel.removeElement(reserveRosterList.getSelectedValue());
+				reserveRosterList.setModel(reserveRosterModel);
+
 			}
 		});
 		reserveRosterChangeButton.setBounds(120, 210, 89, 23);
@@ -186,6 +207,11 @@ public class ClubScreen {
 		reserveExplanationTextArea.setBounds(10, 45, 199, 154);
 		reserveRosterPanel.add(reserveExplanationTextArea);
 		
+	}
+	
+	public void moveAthlete(ArrayList<Athlete> source, Athlete item, ArrayList<Athlete> destination) {
+	    destination.add(item);
+	    source.remove(item);
 	}
 
 }

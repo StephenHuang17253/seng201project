@@ -46,7 +46,7 @@ public class GameManager {
 	/**
 	 * The player's team of athletes.
 	 */
-	private ArrayList<Athlete> teamRoster = new ArrayList<>();
+	private ArrayList<Athlete> mainRoster = new ArrayList<>();
 
 	 
 	/**
@@ -117,7 +117,7 @@ public class GameManager {
 	}
 	
 	public void launchClubScreen() {
-		ClubScreen clubWindow = new ClubScreen(this, teamRoster);
+		ClubScreen clubWindow = new ClubScreen(this, mainRoster);
 	}
 	
 	public void closeClubScreen(ClubScreen clubWindow) {
@@ -146,7 +146,7 @@ public class GameManager {
 	 */
 	public void setUpGame(String name, int numWeeks, String difficultyChoice, List<Athlete> startAthletes, int teamCost) {
 		this.week = 1;
-		this.totalWeeks = numWeeks;
+		this.totalWeeks = numWeeks; 
 		this.difficulty = difficultyChoice;
 		boolean validName = false;
 		boolean validTeam = false;
@@ -188,7 +188,7 @@ public class GameManager {
 		if ((validTeam && validName && validMoney)) {
 			teamName = name;
 			money -= teamCost;
-			this.teamRoster.addAll(startAthletes);
+			this.mainRoster.addAll(startAthletes);
 			closeSetUpScreen(setupWindow);
 		}
 		
@@ -252,6 +252,11 @@ public class GameManager {
 	public static void main(String[] args) {
 		GameManager manager = new GameManager();
 		manager.launchStartScreen();
+	}
+	public void moveAthlete(ArrayList<Athlete> source, Athlete selectedValue, ArrayList<Athlete> destination) {
+	    destination.add(selectedValue);
+	    source.remove(selectedValue);
+		
 	}
 
 
