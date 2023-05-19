@@ -175,7 +175,7 @@ public class SetupScreen {
 		JComboBox<Object> difficultyChoice = new JComboBox<Object>();
 		difficultyChoice.setToolTipText("Difficulty determines your starting money and athletes.");
 		difficultyChoice.setBounds(250, 192, 478, 22);
-		difficultyChoice.setModel(new DefaultComboBoxModel(new String[] {"Normal: start with $7.0M", "Hard: start with $3.5M"}));
+		difficultyChoice.setModel(new DefaultComboBoxModel<Object>(new String[] {"Normal: start with $7.0M", "Hard: start with $3.5M"}));
 		frmSetupScreen.getContentPane().add(difficultyChoice);
 		
 		JTextPane listExplanation = new JTextPane();
@@ -283,11 +283,11 @@ public class SetupScreen {
 			teamCost += athlete.getContractPrice();
 		}
 		
-		if (difficulty == "Normal") {
-			// Normal difficulty starts with 5 million.
+		if (difficulty == "Normal: start with $7.0M") {
+			// Normal difficulty starts with 7 million.
 			this.startingMoney = 7000000;
 		} else {
-			// Hard diffuclty starts with only 2 million.
+			// Hard difficulty starts with only 3.5 million.
 			this.startingMoney = 3500000;
 		}			
 		

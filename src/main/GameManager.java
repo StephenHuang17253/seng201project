@@ -152,11 +152,11 @@ public class GameManager {
 		boolean validTeam = false;
 		boolean validMoney = false;
 		
-		if (difficulty == "Normal") {
+		if (difficulty == "Normal: start with $7.0M") {
 			// Normal difficulty starts with 7.0 million.
 			this.money = 7000000;
 		} else {
-			// Hard diffuclty starts with only 3.5 million.
+			// Hard difficulty starts with only 3.5 million.
 			this.money = 3500000;
 		}		
 		
