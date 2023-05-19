@@ -94,13 +94,13 @@ public class MarketScreen {
 	private void initialize() {
 		frmMarketScreen = new JFrame();
 		frmMarketScreen.setTitle("Market");
-		frmMarketScreen.setBounds(100, 100, 820, 560);
+		frmMarketScreen.setBounds(100, 100, 931, 628);
 		frmMarketScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMarketScreen.getContentPane().setLayout(null);
 		
 		JLabel marketLabel = new JLabel("The Market");
 		marketLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		marketLabel.setBounds(302, 23, 199, 52);
+		marketLabel.setBounds(358, 25, 199, 52);
 		marketLabel.setFont(new Font("Tahoma", Font.BOLD, 35));
 		frmMarketScreen.getContentPane().add(marketLabel);
 		
@@ -111,12 +111,12 @@ public class MarketScreen {
 				finishedWindow();
 			}
 		});
-		backButton.setBounds(298, 447, 208, 54);
+		backButton.setBounds(322, 504, 270, 60);
 		frmMarketScreen.getContentPane().add(backButton);
 		
 		JPanel athletePanel = new JPanel();
 		athletePanel.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
-		athletePanel.setBounds(42, 86, 720, 162);
+		athletePanel.setBounds(35, 101, 844, 184);
 		frmMarketScreen.getContentPane().add(athletePanel);
 		athletePanel.setLayout(null);
 		
@@ -127,66 +127,80 @@ public class MarketScreen {
 		
 		JList<Athlete> athleteList = new JList<Athlete>(athleteListModel);
 		athleteList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		athleteList.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		athleteList.setBorder(new LineBorder(new Color(186, 207, 248)));
-		athleteList.setBounds(219, 11, 491, 140);
+		athleteList.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		athleteList.setBorder(new LineBorder(new Color(186, 207, 248), 2));
+		athleteList.setBounds(214, 11, 620, 162);
 		athletePanel.add(athleteList);
 		
 		JLabel athletesForSaleLabel = new JLabel("Athletes For Sale!");
-		athletesForSaleLabel.setFont(new Font("Tempus Sans ITC", Font.PLAIN, 17));
-		athletesForSaleLabel.setBounds(20, 11, 124, 23);
+		athletesForSaleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		athletesForSaleLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
+		athletesForSaleLabel.setBounds(10, 27, 194, 20);
 		athletePanel.add(athletesForSaleLabel);
 		athleteList.getSelectedValue();
 		
 		JButton athletePurchaseButton = new JButton("Purchase");
+		athletePurchaseButton.setFont(new Font("Tahoma", Font.BOLD, 11));
 		athletePurchaseButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		athletePurchaseButton.setBounds(111, 121, 89, 23);
+		athletePurchaseButton.setBounds(60, 124, 94, 28);
 		athletePanel.add(athletePurchaseButton);
 		
 		JLabel athleteExplainationText1 = new JLabel("Please select your purchase on the");
-		athleteExplainationText1.setBounds(10, 61, 211, 14);
+		athleteExplainationText1.setHorizontalAlignment(SwingConstants.CENTER);
+		athleteExplainationText1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		athleteExplainationText1.setBounds(10, 58, 194, 14);
 		athletePanel.add(athleteExplainationText1);
 		
 		JLabel athleteExplainationText2 = new JLabel("right and click the button below");
-		athleteExplainationText2.setBounds(11, 81, 198, 14);
+		athleteExplainationText2.setHorizontalAlignment(SwingConstants.CENTER);
+		athleteExplainationText2.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		athleteExplainationText2.setBounds(10, 75, 194, 14);
 		athletePanel.add(athleteExplainationText2);
 		
 		JLabel athleteBoughtText = new JLabel("Athlete Bought!");
+		athleteBoughtText.setHorizontalAlignment(SwingConstants.CENTER);
+		athleteBoughtText.setBounds(10, 111, 194, 14);
+		athletePanel.add(athleteBoughtText);
 		athleteBoughtText.setForeground(new Color(255, 66, 66));
 		athleteBoughtText.setFont(new Font("Tahoma", Font.BOLD, 11));
-		athleteBoughtText.setBounds(10, 125, 88, 14);
-		athletePanel.add(athleteBoughtText);
 		
 		JPanel itemPanel = new JPanel();
 		itemPanel.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
-		itemPanel.setBounds(42, 259, 720, 162);
+		itemPanel.setBounds(35, 296, 844, 184);
 		frmMarketScreen.getContentPane().add(itemPanel);
 		itemPanel.setLayout(null);
 		
 		JLabel itemsForSaleLabel = new JLabel("Items For Sale!");
-		itemsForSaleLabel.setFont(new Font("Tempus Sans ITC", Font.PLAIN, 17));
-		itemsForSaleLabel.setBounds(20, 11, 104, 23);
+		itemsForSaleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		itemsForSaleLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
+		itemsForSaleLabel.setBounds(10, 27, 194, 20);
 		itemPanel.add(itemsForSaleLabel);
 		
 		JButton itemPurchaseButton = new JButton("Purchase");
-		itemPurchaseButton.setBounds(111, 121, 89, 23);
+		itemPurchaseButton.setFont(new Font("Tahoma", Font.BOLD, 11));
+		itemPurchaseButton.setBounds(60, 124, 94, 28);
 		itemPanel.add(itemPurchaseButton);
 		
 		JLabel itemExplainationText1 = new JLabel("Please select your purchase on the");
-		itemExplainationText1.setBounds(10, 61, 211, 14);
+		itemExplainationText1.setHorizontalAlignment(SwingConstants.CENTER);
+		itemExplainationText1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		itemExplainationText1.setBounds(10, 58, 194, 14);
 		itemPanel.add(itemExplainationText1);
 		
 		JLabel itemExplainationText2 = new JLabel("right and click the button below");
-		itemExplainationText2.setBounds(11, 81, 178, 14);
+		itemExplainationText2.setHorizontalAlignment(SwingConstants.CENTER);
+		itemExplainationText2.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		itemExplainationText2.setBounds(10, 75, 194, 14);
 		itemPanel.add(itemExplainationText2);
 		
 		JLabel itemBoughtText = new JLabel("Item Bought!");
+		itemBoughtText.setHorizontalAlignment(SwingConstants.CENTER);
 		itemBoughtText.setForeground(new Color(255, 66, 66));
 		itemBoughtText.setFont(new Font("Tahoma", Font.BOLD, 11));
-		itemBoughtText.setBounds(20, 125, 74, 14);
+		itemBoughtText.setBounds(10, 111, 194, 14);
 		itemPanel.add(itemBoughtText);
 		
 		// Create a ListModel to store the items in the JList
@@ -195,9 +209,9 @@ public class MarketScreen {
 		itemListModel.addAll(items);
 		
 		JList<Item> itemList = new JList<Item>(itemListModel);
-		itemList.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		itemList.setBorder(new LineBorder(new Color(186, 207, 248)));
-		itemList.setBounds(219, 11, 491, 140);
+		itemList.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		itemList.setBorder(new LineBorder(new Color(186, 207, 248), 2));
+		itemList.setBounds(214, 11, 620, 162);
 		itemPanel.add(itemList);
 		itemList.getSelectedValue();
 	}

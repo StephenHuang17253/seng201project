@@ -76,20 +76,21 @@ public class ClubScreen {
 	private void initialize() {
 		frmClubScreen = new JFrame();
 		frmClubScreen.setTitle("Club Screen");
-		frmClubScreen.setBounds(100, 100, 796, 650);
+		frmClubScreen.setBounds(100, 100, 1005, 700);
 		frmClubScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmClubScreen.getContentPane().setLayout(null);
 		
 		JLabel teamLabel = new JLabel(manager.getTeamName() + " Sports Club");
-		teamLabel.setBounds(181, 21, 417, 43);
+		teamLabel.setVerticalAlignment(SwingConstants.TOP);
+		teamLabel.setBounds(10, 29, 969, 55);
 		teamLabel.setFont(new Font("Tahoma", Font.BOLD, 35));
 		teamLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		frmClubScreen.getContentPane().add(teamLabel);
 		
 		JPanel activeRosterPanel = new JPanel();
-		activeRosterPanel.setBounds(47, 95, 686, 162);
+		activeRosterPanel.setBounds(42, 95, 905, 184);
 		activeRosterPanel.setLayout(null);
-		activeRosterPanel.setBorder(new LineBorder(new Color(255, 66, 66), 1, true));
+		activeRosterPanel.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
 		frmClubScreen.getContentPane().add(activeRosterPanel);
 		
 		// Create a ListModel to store the active athletes in the JList
@@ -107,15 +108,16 @@ public class ClubScreen {
 		// Create the JList for active roster 
 		JList<Athlete> activeRosterList = new JList<Athlete>(activeRosterModel);
 		activeRosterList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		activeRosterList.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		activeRosterList.setBorder(new LineBorder(new Color(255, 151, 151)));
-		activeRosterList.setBounds(219, 11, 457, 140);
+		activeRosterList.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		activeRosterList.setBorder(new LineBorder(new Color(186, 207, 248), 2));
+		activeRosterList.setBounds(237, 11, 658, 162);
 		activeRosterPanel.add(activeRosterList);
 		activeRosterList.getSelectedValue();
 		
 		JLabel activeRosterLabel = new JLabel("Active Roster");
-		activeRosterLabel.setFont(new Font("Tempus Sans ITC", Font.PLAIN, 17));
-		activeRosterLabel.setBounds(20, 11, 124, 23);
+		activeRosterLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		activeRosterLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
+		activeRosterLabel.setBounds(10, 11, 217, 23);
 		activeRosterPanel.add(activeRosterLabel);
 		
 		JButton activeRosterChangeButton = new JButton("Demote");
@@ -129,24 +131,30 @@ public class ClubScreen {
 
 			}
 		});
-		activeRosterChangeButton.setBounds(120, 128, 89, 23);
+		activeRosterChangeButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		activeRosterChangeButton.setFont(new Font("Tahoma", Font.BOLD, 11));
+		activeRosterChangeButton.setBounds(70, 145, 94, 28);
 		activeRosterPanel.add(activeRosterChangeButton);
-		
-		JLabel activeRosterChangedLabel = new JLabel("Athelete moved!");
-		activeRosterChangedLabel.setForeground(new Color(255, 66, 66));
-		activeRosterChangedLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
-		activeRosterChangedLabel.setBounds(20, 132, 110, 14);
-		activeRosterPanel.add(activeRosterChangedLabel);
 		
 		JTextArea activeExplanationTextArea = new JTextArea();
 		activeExplanationTextArea.setWrapStyleWord(true);
 		activeExplanationTextArea.setText("The active roster can have 5 athletes. A full active roster is required to compete in matches.\r\n\r\nPress the demote button to move selected player into your reserves.\r\n");
 		activeExplanationTextArea.setLineWrap(true);
-		activeExplanationTextArea.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		activeExplanationTextArea.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		activeExplanationTextArea.setEditable(false);
 		activeExplanationTextArea.setBackground(SystemColor.menu);
-		activeExplanationTextArea.setBounds(10, 39, 199, 87);
+		activeExplanationTextArea.setBounds(10, 33, 217, 101);
 		activeRosterPanel.add(activeExplanationTextArea);
+		
+		JLabel activeRosterChangedLabel = new JLabel("Athelete moved!");
+		activeRosterChangedLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		activeRosterChangedLabel.setBounds(10, 131, 217, 14);
+		activeRosterPanel.add(activeRosterChangedLabel);
+		activeRosterChangedLabel.setForeground(new Color(255, 66, 66));
+		activeRosterChangedLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
 		JButton backButton = new JButton("Go back");
 		backButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -155,29 +163,31 @@ public class ClubScreen {
 				finishedWindow();
 			}
 		});
-		backButton.setBounds(286, 535, 208, 54);
+		backButton.setBounds(359, 578, 270, 60);
 		frmClubScreen.getContentPane().add(backButton);
 		
 		JPanel reserveRosterPanel = new JPanel();
 		reserveRosterPanel.setLayout(null);
-		reserveRosterPanel.setBorder(new LineBorder(new Color(255, 66, 66), 1, true));
-		reserveRosterPanel.setBounds(47, 268, 686, 256);
+		reserveRosterPanel.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
+		reserveRosterPanel.setBounds(42, 298, 905, 256);
 		frmClubScreen.getContentPane().add(reserveRosterPanel);
 		
 
 		reserveRosterList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		reserveRosterList.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		reserveRosterList.setBorder(new LineBorder(new Color(255, 151, 151)));
-		reserveRosterList.setBounds(219, 11, 457, 234);
+		reserveRosterList.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		reserveRosterList.setBorder(new LineBorder(new Color(186, 207, 248), 2));
+		reserveRosterList.setBounds(237, 11, 658, 234);
 		reserveRosterPanel.add(reserveRosterList);
 		reserveRosterList.getSelectedValue();
 		
 		JLabel reserveRosterLabel = new JLabel("Reserve Roster");
-		reserveRosterLabel.setFont(new Font("Tempus Sans ITC", Font.PLAIN, 17));
-		reserveRosterLabel.setBounds(20, 11, 124, 23);
+		reserveRosterLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		reserveRosterLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
+		reserveRosterLabel.setBounds(10, 11, 217, 23);
 		reserveRosterPanel.add(reserveRosterLabel);
 		
 		JButton reserveRosterChangeButton = new JButton("Promote");
+		reserveRosterChangeButton.setFont(new Font("Tahoma", Font.BOLD, 11));
 		reserveRosterChangeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				moveAthlete(reserveRoster, activeRosterList.getSelectedValue(), activeRoster);
@@ -188,23 +198,24 @@ public class ClubScreen {
 
 			}
 		});
-		reserveRosterChangeButton.setBounds(120, 210, 89, 23);
+		reserveRosterChangeButton.setBounds(70, 210, 94, 28);
 		reserveRosterPanel.add(reserveRosterChangeButton);
 		
 		JLabel reserveRosterChangeLabel = new JLabel("Athelete moved!");
+		reserveRosterChangeLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		reserveRosterChangeLabel.setForeground(new Color(255, 66, 66));
 		reserveRosterChangeLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
-		reserveRosterChangeLabel.setBounds(20, 214, 110, 14);
+		reserveRosterChangeLabel.setBounds(10, 196, 217, 14);
 		reserveRosterPanel.add(reserveRosterChangeLabel);
 		
 		JTextArea reserveExplanationTextArea = new JTextArea();
 		reserveExplanationTextArea.setWrapStyleWord(true);
 		reserveExplanationTextArea.setText("Contains up to 15 players that haven't been selected to play in your next match.\r\n\r\nIt is recommened to have reserves incase your starting lineup gets injured or if someone leavees.\r\n\r\nPress the promote button to move selected player to your starting lineup.\r\n");
 		reserveExplanationTextArea.setLineWrap(true);
-		reserveExplanationTextArea.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		reserveExplanationTextArea.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		reserveExplanationTextArea.setEditable(false);
 		reserveExplanationTextArea.setBackground(SystemColor.menu);
-		reserveExplanationTextArea.setBounds(10, 45, 199, 154);
+		reserveExplanationTextArea.setBounds(10, 33, 217, 154);
 		reserveRosterPanel.add(reserveExplanationTextArea);
 		
 	}

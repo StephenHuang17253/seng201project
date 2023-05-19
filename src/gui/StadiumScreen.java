@@ -22,6 +22,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.ListSelectionModel;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
+import javax.swing.border.LineBorder;
 
 public class StadiumScreen {
 
@@ -92,14 +93,14 @@ public class StadiumScreen {
 		matchList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		matchList.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		matchList.setBounds(142, 142, 508, 158);
-		matchList.setBorder(UIManager.getBorder("List.focusCellHighlightBorder"));
+		matchList.setBorder(new LineBorder(new Color(186, 207, 248), 2));
 		frmStadium.getContentPane().add(matchList);
 		
 		JLabel listLabel = new JLabel("Available matches");
 		listLabel.setLabelFor(matchList);
-		listLabel.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 16));
+		listLabel.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 18));
 		listLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		listLabel.setBounds(142, 114, 113, 19);
+		listLabel.setBounds(142, 114, 127, 21);
 		frmStadium.getContentPane().add(listLabel);
 		
 		explanationText = new JTextArea();
@@ -113,7 +114,7 @@ public class StadiumScreen {
 		frmStadium.getContentPane().add(explanationText);
 		
 		JPanel titlePanel = new JPanel();
-		titlePanel.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		titlePanel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		titlePanel.setBounds(0, 0, 684, 99);
 		frmStadium.getContentPane().add(titlePanel);
 		titlePanel.setLayout(null);
