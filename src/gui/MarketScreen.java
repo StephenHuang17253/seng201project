@@ -86,7 +86,7 @@ public class MarketScreen {
 	private void initialize() {
 		frmMarketScreen = new JFrame();
 		frmMarketScreen.setTitle("Market");
-		frmMarketScreen.setBounds(100, 100, 796, 567);
+		frmMarketScreen.setBounds(100, 100, 796, 560);
 		frmMarketScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMarketScreen.getContentPane().setLayout(null);
 		
