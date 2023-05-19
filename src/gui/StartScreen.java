@@ -15,6 +15,7 @@ import java.awt.GridLayout;
 import javax.swing.BoxLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
 public class StartScreen {
 
@@ -75,13 +76,15 @@ public class StartScreen {
 		frmStartScreen.getContentPane().setLayout(null);
 		
 		lblWelcome = new JLabel(" Welcome to KickHeroes ");
-		lblWelcome.setBounds(104, 144, 794, 65);
+		lblWelcome.setHorizontalAlignment(SwingConstants.CENTER);
+		lblWelcome.setBounds(10, 128, 982, 77);
 		lblWelcome.setFont(new Font("Rockwell Extra Bold", Font.PLAIN, 54));
 		frmStartScreen.getContentPane().add(lblWelcome);
 		
-		JLabel lblStart = new JLabel("  Press \"Start\" to play!");
-		lblStart.setFont(new Font("Tahoma", Font.ITALIC, 26));
-		lblStart.setBounds(362, 220, 278, 32);
+		JLabel lblStart = new JLabel("Press \"Start\" to play!");
+		lblStart.setHorizontalAlignment(SwingConstants.CENTER);
+		lblStart.setFont(new Font("Tahoma", Font.ITALIC, 27));
+		lblStart.setBounds(120, 216, 755, 32);
 		frmStartScreen.getContentPane().add(lblStart);
 		
 		JButton btnStart = new JButton("Start");
@@ -90,8 +93,8 @@ public class StartScreen {
 				finishedWindow();
 			}
 		});
-		btnStart.setFont(new Font("Tahoma", Font.BOLD, 34));
-		btnStart.setBounds(337, 342, 328, 133);
+		btnStart.setFont(new Font("Tahoma", Font.BOLD, 40));
+		btnStart.setBounds(339, 314, 328, 108);
 		frmStartScreen.getContentPane().add(btnStart);
 	}
 }
