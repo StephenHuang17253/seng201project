@@ -111,13 +111,13 @@ public class SetupScreen {
 		
 		JLabel titleLabel = new JLabel("KickHeroes");
 		titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		titleLabel.setBounds(298, 21, 159, 29);
-		titleLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 18));
+		titleLabel.setBounds(271, 21, 212, 39);
+		titleLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 32));
 		frmSetupScreen.getContentPane().add(titleLabel);
 		
 		JLabel teamNameLabel = new JLabel("What is your team name?");
-		teamNameLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
-		teamNameLabel.setBounds(46, 85, 159, 14);
+		teamNameLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		teamNameLabel.setBounds(46, 85, 188, 19);
 		frmSetupScreen.getContentPane().add(teamNameLabel);
 		
 		teamNameField = new JTextField();
@@ -127,8 +127,8 @@ public class SetupScreen {
 		teamNameField.setColumns(10);
 		
 		JLabel seasonLengthLabel = new JLabel("Choose season length (weeks)");
-		seasonLengthLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
-		seasonLengthLabel.setBounds(46, 146, 188, 14);
+		seasonLengthLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		seasonLengthLabel.setBounds(46, 146, 187, 15);
 		frmSetupScreen.getContentPane().add(seasonLengthLabel);
 		
 		JSlider difficultySlider = new JSlider();
@@ -141,17 +141,17 @@ public class SetupScreen {
 		frmSetupScreen.getContentPane().add(difficultySlider);
 		
 		JLabel difficultyLabel = new JLabel("Choose difficulty");
-		difficultyLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		difficultyLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
 		difficultyLabel.setBounds(46, 196, 169, 14);
 		frmSetupScreen.getContentPane().add(difficultyLabel);
 		
 		JLabel startingAthletesLabel = new JLabel("Draft starting athletes");
-		startingAthletesLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		startingAthletesLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
 		startingAthletesLabel.setBounds(46, 322, 159, 14);
 		frmSetupScreen.getContentPane().add(startingAthletesLabel);
 		
 		JLabel nameLengthLabel = new JLabel("(Name must between 3 to 15 characters)");
-		nameLengthLabel.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		nameLengthLabel.setFont(new Font("Tahoma", Font.ITALIC, 11));
 		nameLengthLabel.setBounds(520, 111, 225, 14);
 		frmSetupScreen.getContentPane().add(nameLengthLabel);
 		
@@ -211,7 +211,7 @@ public class SetupScreen {
 		frmSetupScreen.getContentPane().add(listWarningLabel);
 		
 		JLabel listHeaderLabel = new JLabel("Name, Rating, Health, Stamina, Offence, Defence, Price");
-		listHeaderLabel.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		listHeaderLabel.setFont(new Font("Tahoma", Font.ITALIC, 11));
 		listHeaderLabel.setBounds(270, 280, 346, 14);
 		frmSetupScreen.getContentPane().add(listHeaderLabel);
 		
