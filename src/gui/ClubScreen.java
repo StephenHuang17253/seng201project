@@ -9,8 +9,10 @@ import main.Athlete;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
@@ -23,9 +25,12 @@ public class ClubScreen {
 
 	private JFrame frmClubScreen;
 	private GameManager manager;
+	private ArrayList<Athlete> activeRoster;
+	private ArrayList<Athlete> reserveRoster;
 
-	public ClubScreen(GameManager incomingManager) {
+	public ClubScreen(GameManager incomingManager, ArrayList<Athlete> incomingRoster) {
 		manager = incomingManager;
+		reserveRoster = incomingRoster;
 		initialize();
 		frmClubScreen.setVisible(true);
 	}
@@ -82,34 +87,41 @@ public class ClubScreen {
 		activeRosterPanel.setBorder(new LineBorder(new Color(255, 66, 66), 2, true));
 		frmClubScreen.getContentPane().add(activeRosterPanel);
 		
-		JList<Athlete> activeRosterList = new JList<Athlete>((ListModel) null);
+		// Create a ListModel to store the active athletes in the JList
+		DefaultListModel<Athlete> activeRosterModel = new DefaultListModel<Athlete>();
+		// Add athletes to the ListModel
+		// activeRosterModel.addAll(activeRoster)
+		
+		// Create the JList
+		JList<Athlete> activeRosterList = new JList<Athlete>(activeRosterModel);
 		activeRosterList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		activeRosterList.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		activeRosterList.setBorder(new LineBorder(new Color(255, 151, 151)));
 		activeRosterList.setBounds(219, 11, 457, 140);
 		activeRosterPanel.add(activeRosterList);
+		activeRosterList.getSelectedValue();
 		
 		JLabel activeRosterLabel = new JLabel("Active Roster");
 		activeRosterLabel.setFont(new Font("Tempus Sans ITC", Font.PLAIN, 17));
 		activeRosterLabel.setBounds(20, 11, 124, 23);
 		activeRosterPanel.add(activeRosterLabel);
 		
-		JButton activeRosterChangeButton = new JButton("Change?");
+		JButton activeRosterChangeButton = new JButton("Demote");
 		activeRosterChangeButton.setBounds(120, 121, 89, 23);
 		activeRosterPanel.add(activeRosterChangeButton);
 		
-		JLabel activeRosterChangeExplainationText1 = new JLabel(".....");
-		activeRosterChangeExplainationText1.setBounds(10, 61, 211, 14);
-		activeRosterPanel.add(activeRosterChangeExplainationText1);
+		JLabel activeRosterChangeExplanationText1 = new JLabel(".....");
+		activeRosterChangeExplanationText1.setBounds(10, 61, 211, 14);
+		activeRosterPanel.add(activeRosterChangeExplanationText1);
 		
-		JLabel activeRosterChangeExplainationText2 = new JLabel(".....");
-		activeRosterChangeExplainationText2.setBounds(11, 81, 198, 14);
-		activeRosterPanel.add(activeRosterChangeExplainationText2);
+		JLabel activeRosterChangeExplanationText2 = new JLabel(".....");
+		activeRosterChangeExplanationText2.setBounds(11, 81, 198, 14);
+		activeRosterPanel.add(activeRosterChangeExplanationText2);
 		
-		JLabel activeRosterChangedText = new JLabel("Athelete Changed!");
+		JLabel activeRosterChangedText = new JLabel("Athelete moved!");
 		activeRosterChangedText.setForeground(new Color(255, 66, 66));
 		activeRosterChangedText.setFont(new Font("Tahoma", Font.BOLD, 11));
-		activeRosterChangedText.setBounds(10, 125, 104, 14);
+		activeRosterChangedText.setBounds(10, 125, 110, 14);
 		activeRosterPanel.add(activeRosterChangedText);
 		
 		JButton backButton = new JButton("Go back");
@@ -127,7 +139,12 @@ public class ClubScreen {
 		reserveRosterPanel.setBounds(47, 253, 686, 162);
 		frmClubScreen.getContentPane().add(reserveRosterPanel);
 		
-		JList<Athlete> reserveRosterList = new JList<Athlete>((ListModel) null);
+		// Create a ListModel to store the athletes in the JList
+		DefaultListModel<Athlete> reserveRosterModel = new DefaultListModel<Athlete>();
+		reserveRosterModel.addAll(reserveRoster);
+		
+		// Create the JList
+		JList<Athlete> reserveRosterList = new JList<Athlete>(reserveRosterModel);
 		reserveRosterList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		reserveRosterList.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		reserveRosterList.setBorder(new LineBorder(new Color(255, 151, 151)));
@@ -139,7 +156,7 @@ public class ClubScreen {
 		reserveRosterText.setBounds(20, 11, 124, 23);
 		reserveRosterPanel.add(reserveRosterText);
 		
-		JButton reserveRosterChangeButton = new JButton("Purchase");
+		JButton reserveRosterChangeButton = new JButton("Promote");
 		reserveRosterChangeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -147,18 +164,18 @@ public class ClubScreen {
 		reserveRosterChangeButton.setBounds(120, 121, 89, 23);
 		reserveRosterPanel.add(reserveRosterChangeButton);
 		
-		JLabel reserveRosterChangeExplainationText1 = new JLabel("...");
-		reserveRosterChangeExplainationText1.setBounds(10, 61, 211, 14);
-		reserveRosterPanel.add(reserveRosterChangeExplainationText1);
+		JLabel reserveRosterChangeExplanationText1 = new JLabel("...");
+		reserveRosterChangeExplanationText1.setBounds(11, 61, 211, 14);
+		reserveRosterPanel.add(reserveRosterChangeExplanationText1);
 		
-		JLabel reserveRosterChangeExplainationText2 = new JLabel("...");
-		reserveRosterChangeExplainationText2.setBounds(11, 81, 198, 14);
-		reserveRosterPanel.add(reserveRosterChangeExplainationText2);
+		JLabel reserveRosterChangeExplanationText2 = new JLabel("...");
+		reserveRosterChangeExplanationText2.setBounds(11, 81, 198, 14);
+		reserveRosterPanel.add(reserveRosterChangeExplanationText2);
 		
-		JLabel reserveRosterChangeLabel = new JLabel("Athelete Changed!");
+		JLabel reserveRosterChangeLabel = new JLabel("Athelete moved");
 		reserveRosterChangeLabel.setForeground(new Color(255, 66, 66));
 		reserveRosterChangeLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
-		reserveRosterChangeLabel.setBounds(10, 125, 104, 14);
+		reserveRosterChangeLabel.setBounds(10, 125, 110, 14);
 		reserveRosterPanel.add(reserveRosterChangeLabel);
 		
 	}

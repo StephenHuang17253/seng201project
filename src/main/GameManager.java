@@ -117,7 +117,7 @@ public class GameManager {
 	}
 	
 	public void launchClubScreen() {
-		ClubScreen clubWindow = new ClubScreen(this);
+		ClubScreen clubWindow = new ClubScreen(this, teamRoster);
 	}
 	
 	public void closeClubScreen(ClubScreen clubWindow) {
