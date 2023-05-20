@@ -91,6 +91,13 @@ public class MarketScreen {
 		frmMarketScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMarketScreen.getContentPane().setLayout(null);
 		
+		JLabel moneyLabel = new JLabel("Money: $" + manager.getMoneyString());
+		moneyLabel.setForeground(new Color(0, 0, 0));
+		moneyLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		moneyLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+		moneyLabel.setBounds(506, 84, 200, 39);
+		frmMarketScreen.getContentPane().add(moneyLabel);
+		
 		JLabel marketLabel = new JLabel("The Market");
 		marketLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		marketLabel.setBounds(10, 25, 696, 52);
@@ -128,7 +135,7 @@ public class MarketScreen {
 		
 		JLabel athleteBoughtLabel = new JLabel("");
 		athleteBoughtLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		athleteBoughtLabel.setBounds(207, 24, 194, 14);
+		athleteBoughtLabel.setBounds(173, 24, 234, 14);
 		athletePanel.add(athleteBoughtLabel);
 		athleteBoughtLabel.setForeground(new Color(255, 66, 66));
 		athleteBoughtLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -182,6 +189,7 @@ public class MarketScreen {
 						athleteListModel.removeElement(targetAthlete);
 						athleteList.setModel(athleteListModel);
 						athleteBoughtLabel.setText(targetAthlete.getName() + " drafted to reserves.");
+						moneyLabel.setText("Money: $" + manager.getMoneyString());
 					}  		
 			}
 		});
@@ -219,6 +227,7 @@ public class MarketScreen {
 						athleteListModel.removeElement(targetAthlete);
 						athleteList.setModel(athleteListModel);
 						athleteBoughtLabel.setText(targetAthlete.getName() + " drafted to main.");
+						moneyLabel.setText("Money: $" + manager.getMoneyString());
 					} 
 				
 			}
@@ -265,6 +274,7 @@ public class MarketScreen {
 					itemListModel.removeElement(itemList.getSelectedValue());
 					itemList.setModel(itemListModel);
 					itemBoughtLabel.setText(targetItem.getName() + " Bought!");
+					moneyLabel.setText("Money: $" + manager.getMoneyString());
 					
 				} else {
 					Component insufficentFundsWarning = null;
@@ -292,9 +302,10 @@ public class MarketScreen {
 		inventoryButton.setBounds(223, 610, 270, 60);
 		frmMarketScreen.getContentPane().add(inventoryButton);
 		
-		JLabel athleteExplainationText1 = new JLabel("Select your purchase and choose your location for your new Athlete using the two buttons below");
-		athleteExplainationText1.setBounds(29, 101, 677, 15);
+		JLabel athleteExplainationText1 = new JLabel("Select your purchase and click a button");
+		athleteExplainationText1.setBounds(20, 97, 259, 16);
 		frmMarketScreen.getContentPane().add(athleteExplainationText1);
 		athleteExplainationText1.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		
 	}
 }
