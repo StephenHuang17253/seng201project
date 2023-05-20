@@ -27,6 +27,7 @@ import javax.swing.JTextPane;
 import javax.swing.JTextArea;
 import java.awt.SystemColor;
 import javax.swing.JTable;
+import javax.swing.JPanel;
 
 public class SetupScreen {
 
@@ -46,7 +47,6 @@ public class SetupScreen {
 	 *  and what's left after buying starting athletes
 	 */
 	private int startingMoney;
-	private JTable athleteStatsTable;
 
 	 
 	/**
@@ -109,33 +109,34 @@ public class SetupScreen {
 		frmSetupScreen = new JFrame();
 		frmSetupScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmSetupScreen.setTitle("VolleyballWorld - Game Setup");
-		frmSetupScreen.setBounds(100, 100, 771, 635);
+		frmSetupScreen.setBounds(100, 100, 876, 593);
 		frmSetupScreen.getContentPane().setLayout(null);
 		
 		JLabel titleLabel = new JLabel("VolleyballWorld");
 		titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		titleLabel.setBounds(10, 21, 735, 39);
+		titleLabel.setBounds(0, 16, 860, 39);
 		titleLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 32));
 		frmSetupScreen.getContentPane().add(titleLabel);
 		
 		JLabel teamNameLabel = new JLabel("What is your team name?");
-		teamNameLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
-		teamNameLabel.setBounds(46, 85, 188, 19);
+		teamNameLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
+		teamNameLabel.setBounds(34, 82, 188, 19);
 		frmSetupScreen.getContentPane().add(teamNameLabel);
 		
 		teamNameField = new JTextField();
-		teamNameField.setBounds(250, 78, 478, 29);
+		teamNameField.setBounds(260, 78, 566, 29);
 		teamNameField.setToolTipText("");
 		frmSetupScreen.getContentPane().add(teamNameField);
 		teamNameField.setColumns(10);
 		
 		JLabel seasonLengthLabel = new JLabel("Choose season length (weeks)");
-		seasonLengthLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
-		seasonLengthLabel.setBounds(46, 146, 187, 15);
+		seasonLengthLabel.setVerticalAlignment(SwingConstants.TOP);
+		seasonLengthLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
+		seasonLengthLabel.setBounds(34, 146, 204, 19);
 		frmSetupScreen.getContentPane().add(seasonLengthLabel);
 		
 		JSlider difficultySlider = new JSlider();
-		difficultySlider.setBounds(244, 126, 484, 55);
+		difficultySlider.setBounds(253, 126, 573, 55);
 		difficultySlider.setPaintLabels(true);
 		difficultySlider.setPaintTicks(true);
 		difficultySlider.setMajorTickSpacing(1);
@@ -144,18 +145,20 @@ public class SetupScreen {
 		frmSetupScreen.getContentPane().add(difficultySlider);
 		
 		JLabel difficultyLabel = new JLabel("Choose difficulty");
-		difficultyLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
-		difficultyLabel.setBounds(46, 196, 169, 14);
+		difficultyLabel.setVerticalAlignment(SwingConstants.TOP);
+		difficultyLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
+		difficultyLabel.setBounds(34, 196, 169, 18);
 		frmSetupScreen.getContentPane().add(difficultyLabel);
 		
 		JLabel startingAthletesLabel = new JLabel("Draft starting athletes");
-		startingAthletesLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
-		startingAthletesLabel.setBounds(46, 240, 159, 14);
+		startingAthletesLabel.setVerticalAlignment(SwingConstants.TOP);
+		startingAthletesLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
+		startingAthletesLabel.setBounds(34, 240, 188, 25);
 		frmSetupScreen.getContentPane().add(startingAthletesLabel);
 		
 		JLabel nameLengthLabel = new JLabel("(Name must between 3 to 15 characters)");
 		nameLengthLabel.setFont(new Font("Tahoma", Font.ITALIC, 11));
-		nameLengthLabel.setBounds(520, 111, 225, 14);
+		nameLengthLabel.setBounds(622, 111, 204, 14);
 		frmSetupScreen.getContentPane().add(nameLengthLabel);
 		
 		// Create a ListModel to store the athletes in the JList
@@ -165,67 +168,63 @@ public class SetupScreen {
 		
 		// Create the JList
 		JList<Athlete> athleteList = new JList<Athlete>(athleteListModel);
-		athleteList.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		athleteList.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		athleteList.setToolTipText("");
-		athleteList.setBounds(250, 260, 478, 209);
+		athleteList.setBounds(260, 260, 566, 173);
 		athleteList.setBorder(new LineBorder(new Color(0, 0, 0)));
 		frmSetupScreen.getContentPane().add(athleteList);
 		athleteList.getSelectedValue();		
 		
 		JComboBox<Object> difficultyChoice = new JComboBox<Object>();
+		difficultyChoice.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		difficultyChoice.setToolTipText("Difficulty determines your starting money and athletes.");
-		difficultyChoice.setBounds(250, 192, 478, 22);
+		difficultyChoice.setBounds(260, 192, 566, 22);
 		difficultyChoice.setModel(new DefaultComboBoxModel<Object>(new String[] {"Normal: start with $7.0M", "Hard: start with $3.5M"}));
 		frmSetupScreen.getContentPane().add(difficultyChoice);
 		
 		JTextPane listExplanation = new JTextPane();
-		listExplanation.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		listExplanation.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		listExplanation.setBackground(new Color(240, 240, 240));
 		listExplanation.setEditable(false);
 		listExplanation.setText("Pick at least 6.");
-		listExplanation.setBounds(56, 265, 77, 20);
+		listExplanation.setBounds(44, 264, 120, 19);
 		frmSetupScreen.getContentPane().add(listExplanation);
 		
 		JTextArea difficultyExplanation = new JTextArea();
 		difficultyExplanation.setEditable(false);
 		difficultyExplanation.setBackground(new Color(240, 240, 240));
-		difficultyExplanation.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		difficultyExplanation.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		difficultyExplanation.setWrapStyleWord(true);
 		difficultyExplanation.setLineWrap(true);
 		difficultyExplanation.setText("Normal Difficulty: Your club starts in a comfortable position, able to afford strong athletes.\r\n\r\nHard Difficulty: Your club has fallen upon hard times, you will have to spend every dollar wisely.");
-		difficultyExplanation.setBounds(46, 316, 188, 111);
+		difficultyExplanation.setBounds(34, 290, 204, 123);
 		frmSetupScreen.getContentPane().add(difficultyExplanation);
 		
 		nameWarningLabel = new JLabel("");
 		nameWarningLabel.setForeground(Color.RED);
-		nameWarningLabel.setFont(new Font("Tahoma", Font.BOLD, 10));
-		nameWarningLabel.setBounds(250, 61, 399, 20);
+		nameWarningLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		nameWarningLabel.setBounds(260, 58, 566, 20);
 		frmSetupScreen.getContentPane().add(nameWarningLabel);
 		
 		listCostWarningLabel = new JLabel("");
 		listCostWarningLabel.setForeground(Color.RED);
-		listCostWarningLabel.setFont(new Font("Tahoma", Font.BOLD, 10));
-		listCostWarningLabel.setBounds(461, 571, 204, 14);
+		listCostWarningLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		listCostWarningLabel.setBounds(544, 459, 204, 19);
 		frmSetupScreen.getContentPane().add(listCostWarningLabel);
 		
 		listWarningLabel = new JLabel("");
 		listWarningLabel.setForeground(Color.RED);
-		listWarningLabel.setFont(new Font("Tahoma", Font.BOLD, 10));
-		listWarningLabel.setBounds(46, 438, 188, 14);
+		listWarningLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		listWarningLabel.setBounds(34, 419, 216, 14);
 		frmSetupScreen.getContentPane().add(listWarningLabel);
-		
-		JLabel listHeaderLabel = new JLabel("Name, Rating, Health, Stamina, Offence, Defence, Price");
-		listHeaderLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
-		listHeaderLabel.setBounds(261, 241, 346, 14);
-		frmSetupScreen.getContentPane().add(listHeaderLabel);
 		
 		JLabel teamPriceLabel = new JLabel("Team price: ");
 		teamPriceLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		teamPriceLabel.setBounds(461, 547, 244, 14);
+		teamPriceLabel.setBounds(544, 507, 244, 14);
 		frmSetupScreen.getContentPane().add(teamPriceLabel);		
 		
 		JButton finishSetup = new JButton("Finish setup");
-		finishSetup.setBounds(310, 522, 134, 43);
+		finishSetup.setBounds(363, 482, 134, 43);
 		finishSetup.setFont(new Font("Tahoma", Font.BOLD, 14));
 		finishSetup.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -242,7 +241,7 @@ public class SetupScreen {
 				getTeamCost(athleteList.getSelectedValuesList(), teamPriceLabel, difficultyChoice.getSelectedItem().toString());
 			}
 		});
-		priceCheckbutton.setBounds(461, 522, 188, 23);
+		priceCheckbutton.setBounds(544, 482, 188, 23);
 		frmSetupScreen.getContentPane().add(priceCheckbutton);
 		
 		JTextPane txtpnHoldDownCtrl = new JTextPane();
@@ -250,13 +249,20 @@ public class SetupScreen {
 		txtpnHoldDownCtrl.setText("Hold down CTRL while clicking to select multiple athletes.\r\n\r\n");
 		txtpnHoldDownCtrl.setEditable(false);
 		txtpnHoldDownCtrl.setBackground(SystemColor.menu);
-		txtpnHoldDownCtrl.setBounds(260, 470, 322, 66);
+		txtpnHoldDownCtrl.setBounds(270, 432, 322, 29);
 		frmSetupScreen.getContentPane().add(txtpnHoldDownCtrl);
 		
-		athleteStatsTable = new JTable();
-		athleteStatsTable.setBorder(new LineBorder(new Color(0, 0, 0)));
-		athleteStatsTable.setBounds(250, 236, 478, 35);
-		frmSetupScreen.getContentPane().add(athleteStatsTable);
+		JPanel panel = new JPanel();
+		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel.setBackground(new Color(255, 255, 255));
+		panel.setBounds(260, 236, 566, 29);
+		frmSetupScreen.getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		JLabel listHeaderLabel = new JLabel("Name, Rating, Health, Stamina, Offence, Defence, Price");
+		listHeaderLabel.setBounds(10, 6, 397, 14);
+		panel.add(listHeaderLabel);
+		listHeaderLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
 
 

@@ -27,8 +27,6 @@ public class InventoryScreen {
 	private JFrame frmInventoryScreen;
 	private GameManager manager;
 	private String origin;
-	private ArrayList<Athlete> activeRoster;
-	private ArrayList<Athlete> reserveRoster;
 	private ArrayList<Item> inventory;
 	
 	public InventoryScreen(GameManager incomingManager, ArrayList<Item> items, String origin) {
@@ -76,7 +74,7 @@ public class InventoryScreen {
 	private void initialize() {
 		frmInventoryScreen = new JFrame();
 		frmInventoryScreen.setTitle("VolleyballWorld - Inventory");
-		frmInventoryScreen.setBounds(100, 100, 732, 744);
+		frmInventoryScreen.setBounds(100, 100, 732, 799);
 		frmInventoryScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmInventoryScreen.getContentPane().setLayout(null);
 		
@@ -89,15 +87,20 @@ public class InventoryScreen {
 		JPanel inventoryAthletePanel = new JPanel();
 		inventoryAthletePanel.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
 		inventoryAthletePanel.setBackground(new Color(240, 240, 240));
-		inventoryAthletePanel.setBounds(10, 119, 696, 234);
+		inventoryAthletePanel.setBounds(10, 119, 696, 265);
 		frmInventoryScreen.getContentPane().add(inventoryAthletePanel);
 		inventoryAthletePanel.setLayout(null);
 		
-		JList inventoryAthleteList = new JList();
+		DefaultListModel<Athlete> inventoryAthleteModel = new DefaultListModel<Athlete>();
+		inventoryAthleteModel.addAll(manager.getMainRoster());
+		inventoryAthleteModel.addAll(manager.getReserveRoster());
+		
+		JList<Athlete> inventoryAthleteList = new JList<Athlete>(inventoryAthleteModel);
 		inventoryAthleteList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		inventoryAthleteList.setBorder(new LineBorder(new Color(186, 207, 248), 2));
-		inventoryAthleteList.setBounds(10, 51, 676, 172);
+		inventoryAthleteList.setBounds(10, 51, 676, 203);
 		inventoryAthletePanel.add(inventoryAthleteList);
+		inventoryAthleteList.setModel(inventoryAthleteModel);
 		
 		JLabel inventoryAthletesLabel = new JLabel("Athletes");
 		inventoryAthletesLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
@@ -113,7 +116,7 @@ public class InventoryScreen {
 		
 		JPanel inventoryItemPanel = new JPanel();
 		inventoryItemPanel.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
-		inventoryItemPanel.setBounds(10, 365, 696, 234);
+		inventoryItemPanel.setBounds(10, 395, 696, 265);
 		frmInventoryScreen.getContentPane().add(inventoryItemPanel);
 		inventoryItemPanel.setLayout(null);
 		
@@ -122,7 +125,7 @@ public class InventoryScreen {
 		
 		JList<Item> inventoryItemList = new JList<Item>(inventoryItemListModel);
 		inventoryItemList.setBorder(new LineBorder(new Color(186, 207, 248), 2));
-		inventoryItemList.setBounds(10, 51, 676, 172);
+		inventoryItemList.setBounds(10, 51, 676, 203);
 		inventoryItemPanel.add(inventoryItemList);
 		
 		JLabel inventoryItemsLabel = new JLabel("Items");
@@ -131,14 +134,14 @@ public class InventoryScreen {
 		inventoryItemPanel.add(inventoryItemsLabel);
 		
 		JLabel itemUsedLabel = new JLabel("");
-		itemUsedLabel.setBounds(403, 20, 145, 14);
+		itemUsedLabel.setBounds(401, 23, 145, 14);
 		inventoryItemPanel.add(itemUsedLabel);
 		itemUsedLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
 		itemUsedLabel.setForeground(new Color(255, 66, 66));
 		itemUsedLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		JButton useItemButton = new JButton("Use Item");
-		useItemButton.setBounds(558, 13, 101, 28);
+		useItemButton.setBounds(554, 16, 132, 28);
 		inventoryItemPanel.add(useItemButton);
 		useItemButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -155,12 +158,12 @@ public class InventoryScreen {
 				finishedWindow(origin);
 			}
 		});
-		backButton.setBounds(223, 620, 270, 60);
+		backButton.setBounds(223, 681, 270, 60);
 		backButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		frmInventoryScreen.getContentPane().add(backButton);
 		
 		JLabel lblNewLabel = new JLabel("Please select the athlete that you want to use your item on.");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblNewLabel.setBounds(20, 100, 439, 14);
 		frmInventoryScreen.getContentPane().add(lblNewLabel);
 	}

@@ -86,14 +86,30 @@ public class MarketScreen {
 	 */
 	private void initialize() {
 		frmMarketScreen = new JFrame();
-		frmMarketScreen.setTitle("VolleyballWorld - Market");
+		frmMarketScreen.setTitle("VolleyballWorld - Market(Buy)");
 		frmMarketScreen.setBounds(100, 100, 732, 799);
 		frmMarketScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMarketScreen.getContentPane().setLayout(null);
 		
+		JLabel moneyLabel = new JLabel("Money: $" + manager.getMoneyString());
+		moneyLabel.setForeground(new Color(0, 0, 0));
+		moneyLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		moneyLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+		moneyLabel.setBounds(506, 84, 200, 39);
+		frmMarketScreen.getContentPane().add(moneyLabel);
+		
+		JButton sellPurchasablesButton = new JButton("Buy Purchasables");
+		sellPurchasablesButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		sellPurchasablesButton.setFont(new Font("Tahoma", Font.BOLD, 13));
+		sellPurchasablesButton.setBounds(269, 74, 176, 31);
+		frmMarketScreen.getContentPane().add(sellPurchasablesButton);
+		
 		JLabel marketLabel = new JLabel("The Market");
 		marketLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		marketLabel.setBounds(10, 25, 696, 52);
+		marketLabel.setBounds(10, 11, 696, 52);
 		marketLabel.setFont(new Font("Tahoma", Font.BOLD, 35));
 		frmMarketScreen.getContentPane().add(marketLabel);
 		
@@ -128,7 +144,7 @@ public class MarketScreen {
 		
 		JLabel athleteBoughtLabel = new JLabel("");
 		athleteBoughtLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		athleteBoughtLabel.setBounds(10, 96, 194, 14);
+		athleteBoughtLabel.setBounds(173, 24, 234, 14);
 		athletePanel.add(athleteBoughtLabel);
 		athleteBoughtLabel.setForeground(new Color(255, 66, 66));
 		athleteBoughtLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -182,6 +198,7 @@ public class MarketScreen {
 						athleteListModel.removeElement(targetAthlete);
 						athleteList.setModel(athleteListModel);
 						athleteBoughtLabel.setText(targetAthlete.getName() + " drafted to reserves.");
+						moneyLabel.setText("Money: $" + manager.getMoneyString());
 					}  		
 			}
 		});
@@ -219,6 +236,7 @@ public class MarketScreen {
 						athleteListModel.removeElement(targetAthlete);
 						athleteList.setModel(athleteListModel);
 						athleteBoughtLabel.setText(targetAthlete.getName() + " drafted to main.");
+						moneyLabel.setText("Money: $" + manager.getMoneyString());
 					} 
 				
 			}
@@ -246,7 +264,7 @@ public class MarketScreen {
 		itemBoughtLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		itemBoughtLabel.setForeground(new Color(255, 66, 66));
 		itemBoughtLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
-		itemBoughtLabel.setBounds(10, 111, 194, 14);
+		itemBoughtLabel.setBounds(350, 24, 194, 14);
 		itemPanel.add(itemBoughtLabel);
 		
 		JLabel itemsForSaleLabel = new JLabel("Items For Sale!");
@@ -265,6 +283,7 @@ public class MarketScreen {
 					itemListModel.removeElement(itemList.getSelectedValue());
 					itemList.setModel(itemListModel);
 					itemBoughtLabel.setText(targetItem.getName() + " Bought!");
+					moneyLabel.setText("Money: $" + manager.getMoneyString());
 					
 				} else {
 					Component insufficentFundsWarning = null;
@@ -292,9 +311,11 @@ public class MarketScreen {
 		inventoryButton.setBounds(223, 610, 270, 60);
 		frmMarketScreen.getContentPane().add(inventoryButton);
 		
-		JLabel athleteExplainationText1 = new JLabel("Select your purchase and choose your location for your new Athlete using the two buttons below");
-		athleteExplainationText1.setBounds(29, 101, 677, 15);
-		frmMarketScreen.getContentPane().add(athleteExplainationText1);
-		athleteExplainationText1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		JLabel sellPurchasablesText = new JLabel("Click to switch to sell Items and Athletes");
+		sellPurchasablesText.setHorizontalAlignment(SwingConstants.CENTER);
+		sellPurchasablesText.setBounds(259, 58, 204, 14);
+		frmMarketScreen.getContentPane().add(sellPurchasablesText);
+		sellPurchasablesText.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		
 	}
 }
