@@ -162,7 +162,7 @@ public class GameManager {
 	}
 	
 	public void launchInventoryScreen(String originScreen) {
-		InventoryScreen inventoryWindow = new InventoryScreen(this, originScreen);
+		InventoryScreen inventoryWindow = new InventoryScreen(this, inventory, originScreen);
 	}
 	
 	public void closeInventoryScreen(InventoryScreen inventoryWindow, String origin) {
