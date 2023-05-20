@@ -160,6 +160,7 @@ public class MarketScreen {
 		athletePanel.add(athleteBoughtLabel);
 		athleteBoughtLabel.setForeground(new Color(255, 66, 66));
 		athleteBoughtLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
 		JButton athletePurchaseButton = new JButton("Purchase");
 		
 		athletePurchaseButton.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -196,13 +197,6 @@ public class MarketScreen {
 		itemExplainationText2.setBounds(10, 75, 194, 14);
 		itemPanel.add(itemExplainationText2);
 		
-		JLabel itemBoughtText = new JLabel("Item Bought!");
-		itemBoughtText.setHorizontalAlignment(SwingConstants.CENTER);
-		itemBoughtText.setForeground(new Color(255, 66, 66));
-		itemBoughtText.setFont(new Font("Tahoma", Font.BOLD, 11));
-		itemBoughtText.setBounds(10, 111, 194, 14);
-		itemPanel.add(itemBoughtText);
-		
 		// Create a ListModel to store the items in the JList
 		DefaultListModel<Item> itemListModel = new DefaultListModel<Item>();
 		// Add the existing items to the ListModel
@@ -215,13 +209,23 @@ public class MarketScreen {
 		itemPanel.add(itemList);
 		itemList.getSelectedValue();
 		
+		JLabel itemBoughtLabel = new JLabel("");
+		itemBoughtLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		itemBoughtLabel.setForeground(new Color(255, 66, 66));
+		itemBoughtLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		itemBoughtLabel.setBounds(10, 111, 194, 14);
+		itemPanel.add(itemBoughtLabel);
+		
 		JButton itemPurchaseButton = new JButton("Purchase");
 		itemPurchaseButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (manager.getMoney() > itemList.getSelectedValue().getContractPrice()) {
+					Item targetItem = itemList.getSelectedValue();
 					manager.purchaseItem(itemList.getSelectedValue());
 					itemListModel.removeElement(itemList.getSelectedValue());
-					itemList.setModel(itemListModel);					
+					itemList.setModel(itemListModel);
+					itemBoughtLabel.setText(targetItem.getName() + " Bought!");
+					
 				} else {
 					Component insufficentFundsWarning = null;
 					JOptionPane.showMessageDialog(insufficentFundsWarning, "You can't afford this. "
