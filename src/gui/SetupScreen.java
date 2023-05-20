@@ -107,9 +107,9 @@ public class SetupScreen {
 	 */
 	private void initialize() {
 		frmSetupScreen = new JFrame();
+		frmSetupScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmSetupScreen.setTitle("Game Setup");
 		frmSetupScreen.setBounds(100, 100, 771, 635);
-		frmSetupScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmSetupScreen.getContentPane().setLayout(null);
 		
 		JLabel titleLabel = new JLabel("VolleyballWorld");

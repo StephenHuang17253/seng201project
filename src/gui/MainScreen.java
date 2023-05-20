@@ -68,9 +68,9 @@ public class MainScreen {
 	 */
 	private void initialize() {
 		frmMainScreen = new JFrame();
+		frmMainScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMainScreen.setTitle("Main Menu");
 		frmMainScreen.setBounds(100, 100, 611, 648);
-		frmMainScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMainScreen.getContentPane().setLayout(null);
 		
 		JLabel titleLabel = new JLabel("VolleyballWorld");
