@@ -11,6 +11,10 @@ import gui.ClubScreen;
 import gui.MainScreen;
 import gui.MarketScreen;
 import gui.StartScreen;
+import items.DefensiveCoach;
+import items.Nutritionist;
+import items.OffensiveCoach;
+import items.Trainer;
 
 /**
  * Game Manager class.
@@ -53,6 +57,10 @@ public class GameManager {
 	private ArrayList<Athlete> reserveRoster = new ArrayList<>();
 	private ArrayList<Item> inventory = new ArrayList<>();
 	
+	private ArrayList<Athlete> marketAthletes = new ArrayList<>();
+	private ArrayList<Item> marketItems = new ArrayList<>();
+	
+	
 
 	 
 	/**
@@ -80,22 +88,31 @@ public class GameManager {
 	 * @param mainWindow the main screen
 	 */
 	public void closeMainScreen(MainScreen mainWindow, String next) {
+	
 		mainWindow.closeWindow();
 		
 		if (next == "Stadium") {
+
 			launchStadiumScreen();
 		}
 		
 		if (next == "Club") {
+
 			launchClubScreen();
 		}
 		
 		if (next == "Market") {
+
 			launchMarketScreen();
 		}
 		
+		if (next == "Bye") {
+			takeBye();
+			launchMainScreen();
+		}
+		
 		if (next == "Quit") {
-			//TODO
+
 		}
 	}		
 	/**
@@ -110,6 +127,7 @@ public class GameManager {
 	 */
 	public void closeSetUpScreen(SetupScreen setupWindow) {
 		setupWindow.closeWindow();
+		refreshShop(marketAthletes, marketItems);
 		launchMainScreen();
 	}
 	
@@ -200,7 +218,10 @@ public class GameManager {
 		
 	}		
 			
-	
+	public void takeBye() {
+		incrementWeek();
+		refreshShop(getMarketAthletes(), marketItems);
+	}
 	
 	/**
 	 * Method that can be used to check for (lack of) special characters. 
@@ -250,6 +271,11 @@ public class GameManager {
 	public int getWeek() {
 		return week;
 	}
+	
+	public void incrementWeek() {
+		week++;
+	}
+	
 	/**
 	 * Simple getter for the total number of weeks.
 	 * @return int for the total number of weeks.
@@ -284,11 +310,42 @@ public class GameManager {
 	public void purchaseItem(Item item) {
 		money -= item.getContractPrice();
 		inventory.add(item);
+		marketItems.remove(item);
 		System.out.println(item.getName() + " was added to club inventory.");
 
-			
 	}
 
+	public ArrayList<Athlete> getMarketAthletes() {
+		return marketAthletes;
+	}
+	public void setMarketAthletes(ArrayList<Athlete> marketAthletes) {
+		this.marketAthletes = marketAthletes;
+	}
+	public ArrayList<Item> getMarketItems() {
+		return marketItems;
+	}
+	public void setMarketItems(ArrayList<Item> marketItems) {
+		this.marketItems = marketItems;
+	}
+	
+	public void refreshShop(ArrayList<Athlete> athletes, ArrayList<Item> items) {
+		ArrayList<Athlete> newAthletes = new ArrayList<>();
+		ArrayList<Item> newItems = new ArrayList<>();
+		
+		newAthletes.add(new Athlete("Shinsuke Kita", "S", 10, 10, 10, 10, 2000000));
+		newAthletes.add(new Athlete("Ren Omimi", "A", 10, 8, 8, 8, 850000));
+		newAthletes.add(new Athlete("Rintaro Suna", "A", 10, 7, 7, 7, 700000));
+		newAthletes.add(new Athlete("Atsumu Miya", "B", 10, 6, 5, 5, 300000));
+		newAthletes.add(new Athlete("Hitoshi Ginjima", "C", 10, 4, 4, 4, 250000));
+		
+		newItems.add(new Trainer());
+		newItems.add(new Nutritionist());
+		newItems.add(new OffensiveCoach());
+		newItems.add(new DefensiveCoach());
+		
+		setMarketAthletes(newAthletes);
+		setMarketItems(newItems);
+	}
 		
 	
 	

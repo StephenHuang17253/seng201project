@@ -43,18 +43,8 @@ public class MarketScreen {
 
 	public MarketScreen(GameManager incomingManager) {
 		manager = incomingManager;
-		
-		athletes.add(new Athlete("Shinsuke Kita", "S", 10, 10, 10, 10, 2000000));
-		athletes.add(new Athlete("Ren Omimi", "A", 10, 8, 8, 8, 850000));
-		athletes.add(new Athlete("Rintaro Suna", "A", 10, 7, 7, 7, 700000));
-		athletes.add(new Athlete("Atsumu Miya", "B", 10, 6, 5, 5, 300000));
-		athletes.add(new Athlete("Hitoshi Ginjima", "C", 10, 4, 4, 4, 250000));
-		
-		items.add(new Trainer());
-		items.add(new Nutritionist());
-		items.add(new OffensiveCoach());
-		items.add(new DefensiveCoach());
-		
+		athletes = manager.getMarketAthletes();
+		items = manager.getMarketItems();
 		initialize();
 		frmMarketScreen.setVisible(true);
 	}	
