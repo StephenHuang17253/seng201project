@@ -74,7 +74,7 @@ public class InventoryScreen {
 	private void initialize() {
 		frmInventoryScreen = new JFrame();
 		frmInventoryScreen.setTitle("VolleyballWorld - Inventory");
-		frmInventoryScreen.setBounds(100, 100, 732, 744);
+		frmInventoryScreen.setBounds(100, 100, 732, 799);
 		frmInventoryScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmInventoryScreen.getContentPane().setLayout(null);
 		
@@ -87,7 +87,7 @@ public class InventoryScreen {
 		JPanel inventoryAthletePanel = new JPanel();
 		inventoryAthletePanel.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
 		inventoryAthletePanel.setBackground(new Color(240, 240, 240));
-		inventoryAthletePanel.setBounds(10, 119, 696, 234);
+		inventoryAthletePanel.setBounds(10, 119, 696, 265);
 		frmInventoryScreen.getContentPane().add(inventoryAthletePanel);
 		inventoryAthletePanel.setLayout(null);
 		
@@ -98,7 +98,7 @@ public class InventoryScreen {
 		JList<Athlete> inventoryAthleteList = new JList<Athlete>(inventoryAthleteModel);
 		inventoryAthleteList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		inventoryAthleteList.setBorder(new LineBorder(new Color(186, 207, 248), 2));
-		inventoryAthleteList.setBounds(10, 51, 676, 172);
+		inventoryAthleteList.setBounds(10, 51, 676, 203);
 		inventoryAthletePanel.add(inventoryAthleteList);
 		inventoryAthleteList.setModel(inventoryAthleteModel);
 		
@@ -116,7 +116,7 @@ public class InventoryScreen {
 		
 		JPanel inventoryItemPanel = new JPanel();
 		inventoryItemPanel.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
-		inventoryItemPanel.setBounds(10, 365, 696, 234);
+		inventoryItemPanel.setBounds(10, 395, 696, 265);
 		frmInventoryScreen.getContentPane().add(inventoryItemPanel);
 		inventoryItemPanel.setLayout(null);
 		
@@ -125,7 +125,7 @@ public class InventoryScreen {
 		
 		JList<Item> inventoryItemList = new JList<Item>(inventoryItemListModel);
 		inventoryItemList.setBorder(new LineBorder(new Color(186, 207, 248), 2));
-		inventoryItemList.setBounds(10, 51, 676, 172);
+		inventoryItemList.setBounds(10, 51, 676, 203);
 		inventoryItemPanel.add(inventoryItemList);
 		
 		JLabel inventoryItemsLabel = new JLabel("Items");
@@ -158,7 +158,7 @@ public class InventoryScreen {
 				finishedWindow(origin);
 			}
 		});
-		backButton.setBounds(223, 620, 270, 60);
+		backButton.setBounds(223, 681, 270, 60);
 		backButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		frmInventoryScreen.getContentPane().add(backButton);
 		

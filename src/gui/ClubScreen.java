@@ -80,7 +80,7 @@ public class ClubScreen {
 	private void initialize() {
 		frmClubScreen = new JFrame();
 		frmClubScreen.setTitle("VolleyballWorld - Club Screen");
-		frmClubScreen.setBounds(100, 100, 945, 840);
+		frmClubScreen.setBounds(100, 100, 945, 817);
 		frmClubScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmClubScreen.getContentPane().setLayout(null);
 		
@@ -111,7 +111,7 @@ public class ClubScreen {
 		// Create the JList for active roster 
 		JList<Athlete> activeRosterList = new JList<Athlete>(activeRosterModel);
 		activeRosterList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		activeRosterList.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		activeRosterList.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		activeRosterList.setBorder(new LineBorder(new Color(186, 207, 248), 2));
 		activeRosterList.setBounds(10, 51, 676, 172);
 		activeRosterPanel.add(activeRosterList);
@@ -169,20 +169,20 @@ public class ClubScreen {
 				}
 			}
 		});
-		backButton.setBounds(329, 722, 270, 60);
+		backButton.setBounds(329, 695, 270, 60);
 		frmClubScreen.getContentPane().add(backButton);
 		
 		JPanel reserveRosterPanel = new JPanel();
 		reserveRosterPanel.setLayout(null);
 		reserveRosterPanel.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
-		reserveRosterPanel.setBounds(10, 355, 696, 277);
+		reserveRosterPanel.setBounds(10, 355, 696, 258);
 		frmClubScreen.getContentPane().add(reserveRosterPanel);
 		
 
 		reserveRosterList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		reserveRosterList.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		reserveRosterList.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		reserveRosterList.setBorder(new LineBorder(new Color(186, 207, 248), 2));
-		reserveRosterList.setBounds(10, 51, 676, 215);
+		reserveRosterList.setBounds(10, 51, 676, 196);
 		reserveRosterPanel.add(reserveRosterList);
 		
 		JLabel reserveRosterLabel = new JLabel("Reserve Roster");
@@ -228,7 +228,7 @@ public class ClubScreen {
 			}
 		});
 		inventoryButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		inventoryButton.setBounds(329, 651, 270, 60);
+		inventoryButton.setBounds(329, 624, 270, 60);
 		frmClubScreen.getContentPane().add(inventoryButton);
 		
 		JPanel activeRosterExplainationPanel = new JPanel();
@@ -250,16 +250,16 @@ public class ClubScreen {
 		JPanel reserveRosterExplainationPanel = new JPanel();
 		reserveRosterExplainationPanel.setLayout(null);
 		reserveRosterExplainationPanel.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
-		reserveRosterExplainationPanel.setBounds(703, 354, 216, 278);
+		reserveRosterExplainationPanel.setBounds(703, 354, 216, 258);
 		frmClubScreen.getContentPane().add(reserveRosterExplainationPanel);
 		
 
 		
 		JTextArea reserveExplanationTextArea = new JTextArea();
-		reserveExplanationTextArea.setBounds(10, 11, 197, 256);
+		reserveExplanationTextArea.setBounds(10, 11, 197, 236);
 		reserveRosterExplainationPanel.add(reserveExplanationTextArea);
 		reserveExplanationTextArea.setWrapStyleWord(true);
-		reserveExplanationTextArea.setText("Press the promote button to move selected player to your starting lineup.\r\n\r\n\r\n\r\nContains up to 5 players that haven't been selected to play in your next match.\r\n\r\n\r\nIt is recommended to have reserves incase your starting lineup gets injured or if someone leavees.\r\n\r\n\r\n");
+		reserveExplanationTextArea.setText("Press the promote button to move selected player to your starting lineup.\r\n\r\n\r\nContains up to 5 players that haven't been selected to play in your next match.\r\n\r\n\r\nIt is recommended to have reserves incase your starting lineup gets injured or if someone leaves.\r\n\r\n\r\n");
 		reserveExplanationTextArea.setLineWrap(true);
 		reserveExplanationTextArea.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		reserveExplanationTextArea.setEditable(false);

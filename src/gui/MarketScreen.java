@@ -86,7 +86,7 @@ public class MarketScreen {
 	 */
 	private void initialize() {
 		frmMarketScreen = new JFrame();
-		frmMarketScreen.setTitle("VolleyballWorld - Market");
+		frmMarketScreen.setTitle("VolleyballWorld - Market(Buy)");
 		frmMarketScreen.setBounds(100, 100, 732, 799);
 		frmMarketScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMarketScreen.getContentPane().setLayout(null);
@@ -98,9 +98,18 @@ public class MarketScreen {
 		moneyLabel.setBounds(506, 84, 200, 39);
 		frmMarketScreen.getContentPane().add(moneyLabel);
 		
+		JButton sellPurchasablesButton = new JButton("Buy Purchasables");
+		sellPurchasablesButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		sellPurchasablesButton.setFont(new Font("Tahoma", Font.BOLD, 13));
+		sellPurchasablesButton.setBounds(269, 74, 176, 31);
+		frmMarketScreen.getContentPane().add(sellPurchasablesButton);
+		
 		JLabel marketLabel = new JLabel("The Market");
 		marketLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		marketLabel.setBounds(10, 25, 696, 52);
+		marketLabel.setBounds(10, 11, 696, 52);
 		marketLabel.setFont(new Font("Tahoma", Font.BOLD, 35));
 		frmMarketScreen.getContentPane().add(marketLabel);
 		
@@ -302,10 +311,11 @@ public class MarketScreen {
 		inventoryButton.setBounds(223, 610, 270, 60);
 		frmMarketScreen.getContentPane().add(inventoryButton);
 		
-		JLabel athleteExplainationText1 = new JLabel("Select your purchase and click a button");
-		athleteExplainationText1.setBounds(20, 97, 259, 16);
-		frmMarketScreen.getContentPane().add(athleteExplainationText1);
-		athleteExplainationText1.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		JLabel sellPurchasablesText = new JLabel("Click to switch to sell Items and Athletes");
+		sellPurchasablesText.setHorizontalAlignment(SwingConstants.CENTER);
+		sellPurchasablesText.setBounds(259, 58, 204, 14);
+		frmMarketScreen.getContentPane().add(sellPurchasablesText);
+		sellPurchasablesText.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		
 	}
 }
