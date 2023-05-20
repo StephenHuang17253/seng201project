@@ -144,7 +144,7 @@ public class InventoryScreen {
 			public void actionPerformed(ActionEvent e) {
 				Item usedItem = inventoryItemList.getSelectedValue();
 				itemUsedLabel.setText(usedItem.getName() + " Used!");
-				athleteStatsLabel.setText("Athlete's Stats Increased by   !!");
+				athleteStatsLabel.setText("Athlete's Stats Increased!!!");
 			}
 		});
 		useItemButton.setFont(new Font("Tahoma", Font.BOLD, 11));

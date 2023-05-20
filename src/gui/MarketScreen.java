@@ -87,13 +87,13 @@ public class MarketScreen {
 	private void initialize() {
 		frmMarketScreen = new JFrame();
 		frmMarketScreen.setTitle("VolleyballWorld - Market");
-		frmMarketScreen.setBounds(100, 100, 931, 704);
+		frmMarketScreen.setBounds(100, 100, 732, 799);
 		frmMarketScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMarketScreen.getContentPane().setLayout(null);
 		
 		JLabel marketLabel = new JLabel("The Market");
 		marketLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		marketLabel.setBounds(358, 25, 199, 52);
+		marketLabel.setBounds(10, 25, 696, 52);
 		marketLabel.setFont(new Font("Tahoma", Font.BOLD, 35));
 		frmMarketScreen.getContentPane().add(marketLabel);
 		
@@ -104,12 +104,12 @@ public class MarketScreen {
 				finishedWindow();
 			}
 		});
-		backButton.setBounds(322, 578, 270, 60);
+		backButton.setBounds(223, 681, 270, 60);
 		frmMarketScreen.getContentPane().add(backButton);
 		
 		JPanel athletePanel = new JPanel();
 		athletePanel.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
-		athletePanel.setBounds(35, 101, 844, 184);
+		athletePanel.setBounds(10, 119, 696, 234);
 		frmMarketScreen.getContentPane().add(athletePanel);
 		athletePanel.setLayout(null);
 		
@@ -122,27 +122,9 @@ public class MarketScreen {
 		athleteList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		athleteList.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		athleteList.setBorder(new LineBorder(new Color(186, 207, 248), 2));
-		athleteList.setBounds(214, 11, 620, 162);
+		athleteList.setBounds(10, 51, 676, 172);
 		athletePanel.add(athleteList);
-		
-		JLabel athletesForSaleLabel = new JLabel("Athletes For Sale!");
-		athletesForSaleLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		athletesForSaleLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
-		athletesForSaleLabel.setBounds(10, 27, 194, 20);
-		athletePanel.add(athletesForSaleLabel);
 		athleteList.getSelectedValue();
-		
-		JLabel athleteExplainationText1 = new JLabel("Please select your purchase on the");
-		athleteExplainationText1.setHorizontalAlignment(SwingConstants.CENTER);
-		athleteExplainationText1.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		athleteExplainationText1.setBounds(10, 58, 194, 14);
-		athletePanel.add(athleteExplainationText1);
-		
-		JLabel athleteExplainationText2 = new JLabel("right and click the button below");
-		athleteExplainationText2.setHorizontalAlignment(SwingConstants.CENTER);
-		athleteExplainationText2.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		athleteExplainationText2.setBounds(10, 75, 194, 14);
-		athletePanel.add(athleteExplainationText2);
 		
 		JLabel athleteBoughtLabel = new JLabel("");
 		athleteBoughtLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -151,52 +133,19 @@ public class MarketScreen {
 		athleteBoughtLabel.setForeground(new Color(255, 66, 66));
 		athleteBoughtLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
-		JButton draftMainAthleteButton = new JButton("Draft to main");
+		JLabel athletesForSaleLabel = new JLabel("Athletes For Sale!");
+		athletesForSaleLabel.setBounds(20, 18, 194, 20);
+		athletePanel.add(athletesForSaleLabel);
+		athletesForSaleLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
 		
-		draftMainAthleteButton.setFont(new Font("Tahoma", Font.BOLD, 11));
-		draftMainAthleteButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				Athlete targetAthlete = athleteList.getSelectedValue();
-				
-				if (manager.getMainRoster().size() + manager.getReserveRoster().size() >= 11) {
-					// Warn player that they have too many athletes
-					Component fullClubWarning = null;
-					JOptionPane.showMessageDialog(fullClubWarning,
-							"Your club has too many athletes.", 
-							"Can't have more than 11 players", JOptionPane.WARNING_MESSAGE);
-					
-
-					}else if (manager.getMoney() < targetAthlete.getContractPrice()) {  
-						// Warn player if they can't afford the athlete
-						Component costWarning = null;
-						JOptionPane.showMessageDialog(costWarning,
-								"You can't afford this.", 
-								"Insufficent funds", JOptionPane.WARNING_MESSAGE);
-					}  
-					else if (manager.getMainRoster().size() >= 6) {
-						// Warn player that reserves are full
-						Component fullRosterWarning = null;
-						JOptionPane.showMessageDialog(fullRosterWarning,
-								"Main roster already has 6.", 
-								"Main roster full", JOptionPane.WARNING_MESSAGE);
-					}  
-
-					else{  
-						// Draft athlete if all above the conditions are false
-						manager.draftMainAthlete(targetAthlete);
-						athleteListModel.removeElement(targetAthlete);
-						athleteList.setModel(athleteListModel);
-						athleteBoughtLabel.setText(targetAthlete.getName() + " drafted to main.");
-					} 
-				
-			}
-		});
-		draftMainAthleteButton.setBounds(38, 110, 132, 28);
+		JButton draftMainAthleteButton = new JButton("Draft to main");
+		draftMainAthleteButton.setBounds(412, 16, 132, 28);
 		athletePanel.add(draftMainAthleteButton);
 		
+		draftMainAthleteButton.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
 		JButton draftReserveAthleteButton = new JButton("Draft to reserves");
-		draftReserveAthleteButton.setBounds(38, 145, 132, 28);
+		draftReserveAthleteButton.setBounds(554, 16, 132, 28);
 		athletePanel.add(draftReserveAthleteButton);
 		draftReserveAthleteButton.setFont(new Font("Tahoma", Font.BOLD, 11));
 		draftReserveAthleteButton.addActionListener(new ActionListener() {
@@ -236,30 +185,50 @@ public class MarketScreen {
 					}  		
 			}
 		});
+		draftMainAthleteButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				Athlete targetAthlete = athleteList.getSelectedValue();
+				
+				if (manager.getMainRoster().size() + manager.getReserveRoster().size() >= 11) {
+					// Warn player that they have too many athletes
+					Component fullClubWarning = null;
+					JOptionPane.showMessageDialog(fullClubWarning,
+							"Your club has too many athletes.", 
+							"Can't have more than 11 players", JOptionPane.WARNING_MESSAGE);
+					
+
+					}else if (manager.getMoney() < targetAthlete.getContractPrice()) {  
+						// Warn player if they can't afford the athlete
+						Component costWarning = null;
+						JOptionPane.showMessageDialog(costWarning,
+								"You can't afford this.", 
+								"Insufficent funds", JOptionPane.WARNING_MESSAGE);
+					}  
+					else if (manager.getMainRoster().size() >= 6) {
+						// Warn player that reserves are full
+						Component fullRosterWarning = null;
+						JOptionPane.showMessageDialog(fullRosterWarning,
+								"Main roster already has 6.", 
+								"Main roster full", JOptionPane.WARNING_MESSAGE);
+					}  
+
+					else{  
+						// Draft athlete if all above the conditions are false
+						manager.draftMainAthlete(targetAthlete);
+						athleteListModel.removeElement(targetAthlete);
+						athleteList.setModel(athleteListModel);
+						athleteBoughtLabel.setText(targetAthlete.getName() + " drafted to main.");
+					} 
+				
+			}
+		});
 		
 		JPanel itemPanel = new JPanel();
 		itemPanel.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
-		itemPanel.setBounds(35, 296, 844, 184);
+		itemPanel.setBounds(10, 365, 696, 234);
 		frmMarketScreen.getContentPane().add(itemPanel);
 		itemPanel.setLayout(null);
-		
-		JLabel itemsForSaleLabel = new JLabel("Items For Sale!");
-		itemsForSaleLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		itemsForSaleLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
-		itemsForSaleLabel.setBounds(10, 27, 194, 20);
-		itemPanel.add(itemsForSaleLabel);
-		
-		JLabel itemExplainationText1 = new JLabel("Please select your purchase on the");
-		itemExplainationText1.setHorizontalAlignment(SwingConstants.CENTER);
-		itemExplainationText1.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		itemExplainationText1.setBounds(10, 58, 194, 14);
-		itemPanel.add(itemExplainationText1);
-		
-		JLabel itemExplainationText2 = new JLabel("right and click the button below");
-		itemExplainationText2.setHorizontalAlignment(SwingConstants.CENTER);
-		itemExplainationText2.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		itemExplainationText2.setBounds(10, 75, 194, 14);
-		itemPanel.add(itemExplainationText2);
 		
 		// Create a ListModel to store the items in the JList
 		DefaultListModel<Item> itemListModel = new DefaultListModel<Item>();
@@ -269,7 +238,7 @@ public class MarketScreen {
 		JList<Item> itemList = new JList<Item>(itemListModel);
 		itemList.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		itemList.setBorder(new LineBorder(new Color(186, 207, 248), 2));
-		itemList.setBounds(214, 11, 620, 162);
+		itemList.setBounds(10, 51, 676, 172);
 		itemPanel.add(itemList);
 		itemList.getSelectedValue();
 		
@@ -280,7 +249,14 @@ public class MarketScreen {
 		itemBoughtLabel.setBounds(10, 111, 194, 14);
 		itemPanel.add(itemBoughtLabel);
 		
+		JLabel itemsForSaleLabel = new JLabel("Items For Sale!");
+		itemsForSaleLabel.setBounds(20, 18, 194, 20);
+		itemPanel.add(itemsForSaleLabel);
+		itemsForSaleLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
+		
 		JButton itemPurchaseButton = new JButton("Purchase");
+		itemPurchaseButton.setBounds(554, 16, 132, 28);
+		itemPanel.add(itemPurchaseButton);
 		itemPurchaseButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (manager.getMoney() > itemList.getSelectedValue().getContractPrice()) {
@@ -304,8 +280,6 @@ public class MarketScreen {
 		});
 		
 		itemPurchaseButton.setFont(new Font("Tahoma", Font.BOLD, 11));
-		itemPurchaseButton.setBounds(60, 124, 94, 28);
-		itemPanel.add(itemPurchaseButton);
 		
 		JButton inventoryButton = new JButton("Inventory");
 		inventoryButton.addActionListener(new ActionListener() {
@@ -315,7 +289,12 @@ public class MarketScreen {
 			}
 		});
 		inventoryButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		inventoryButton.setBounds(322, 507, 270, 60);
+		inventoryButton.setBounds(223, 610, 270, 60);
 		frmMarketScreen.getContentPane().add(inventoryButton);
+		
+		JLabel athleteExplainationText1 = new JLabel("Select your purchase and choose your location for your new Athlete using the two buttons below");
+		athleteExplainationText1.setBounds(29, 101, 677, 15);
+		frmMarketScreen.getContentPane().add(athleteExplainationText1);
+		athleteExplainationText1.setFont(new Font("Tahoma", Font.PLAIN, 12));
 	}
 }
