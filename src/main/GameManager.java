@@ -11,6 +11,7 @@ import main.Athlete;
 import gui.ClubScreen;
 import gui.MainScreen;
 import gui.MarketScreen;
+import gui.MatchScreen;
 import gui.StartScreen;
 import gui.InventoryScreen;
 import items.DefensiveCoach;
@@ -57,10 +58,11 @@ public class GameManager {
 	 * The player's reserve athletes.
 	 */
 	private ArrayList<Athlete> reserveRoster = new ArrayList<>();
-	private ArrayList<Item> inventory = new ArrayList<>();
-	
+	private ArrayList<Athlete> opponentRoster = new ArrayList<>();	
 	private ArrayList<Athlete> marketAthletes = new ArrayList<>();
 	private ArrayList<Item> marketItems = new ArrayList<>();
+	private ArrayList<Item> inventory = new ArrayList<>();	
+
 	
 	
 	
@@ -140,7 +142,6 @@ public class GameManager {
 	
 	public void closeStadiumScreen(StadiumScreen stadiumWindow) {
 		stadiumWindow.closeWindow();
-		launchMainScreen();
 	}
 	
 	public void launchClubScreen() {
@@ -175,8 +176,21 @@ public class GameManager {
 			inventoryWindow.closeWindow();
 			launchClubScreen();
 		}
-
 	}
+	
+	public void launchMatchScreen(Match match) {
+		MatchScreen matchWindow = new MatchScreen(this);
+		String outcome = match.runMatch(this, match);
+		System.out.println(outcome);
+	}
+		
+	public void closeMatchScreen(MatchScreen matchWindow) {
+		matchWindow.closeWindow();
+		
+	}
+		
+	
+	
 	
 	/**
 	 * Method to set up the game.
@@ -267,7 +281,9 @@ public class GameManager {
 	public int getMoney() {
 		return money;
 	}
-	
+	public void changeMoney(int amount) {
+		money += amount;
+	}
 	/**
 	 * Method returns the player's money in a more suitable format as a string.
 	 * @return String for money format
@@ -312,6 +328,17 @@ public class GameManager {
 	public ArrayList<Athlete> getReserveRoster() {
 		return reserveRoster;
 	}
+	
+	public ArrayList<Athlete> createOpponentTeam() {
+		return mainRoster;
+		
+	}
+	
+	public ArrayList<Athlete> getOpponentRoster() {
+		return opponentRoster;
+	}
+	
+
 	
 	public void promoteAthlete(Athlete athlete) {
 		System.out.println(athlete.getName() + " has been moved to main roster");
@@ -387,7 +414,6 @@ public class GameManager {
 	}
 		
 	
-	
 	/**
 	 * Main game method.
 	 * Begins by game by instantiating GameManager and calling launchStartScreen();  
@@ -397,6 +423,7 @@ public class GameManager {
 		GameManager manager = new GameManager();
 		manager.launchStartScreen();
 	}
+
 	
 
 

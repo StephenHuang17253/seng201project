@@ -58,7 +58,7 @@ public class Athlete implements Purchasable{
 	 */		
 	public Athlete(String name, int offence, int defence, int contractPrice) {
 		this.name = name;
-		this.proficiency = (offence + defence) / 2;
+		this.proficiency = (offence + defence);
 		this.health = 10; // Default health
 		this.stamina = 10; // Default stamina
 		this.offence = offence;
@@ -92,6 +92,15 @@ public class Athlete implements Purchasable{
 	public void setName(String name) {
 		this.name = name;
 	}
+	/**
+	 * Simple getter for Athlete proficiency
+	 * Will be used to determine faceoff winner in matches.
+	 * @return proficiency
+	 */
+	public int getProficiency() {
+		return proficiency;
+	}
+		
 	/**
 	 * Simple getter for Athlete's position.
 	 */		
@@ -128,8 +137,8 @@ public class Athlete implements Purchasable{
 	/**
 	 * Simple setter for Athlete's stamina.
 	 */		
-	public void setStamina(int stamina) {
-		this.stamina = stamina;
+	public void updateStamina(int amount) {
+		this.stamina += amount;
 	}
 	/**
 	 * Simple getter for Athlete's offence.

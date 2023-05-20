@@ -1,6 +1,8 @@
 package main;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import main.AthleteGenerator;
 
 public class Match {
 
@@ -10,6 +12,7 @@ public class Match {
 	private int prizeMoney;
 	private int pointGain;
 	private GameManager manager;
+	
 	
 	public Match (String opponentName, int prize, int points) {
 		matchName = opponentName;
@@ -59,10 +62,47 @@ public class Match {
 		this.pointGain = pointGain;
 	}
 	
+	public String runMatch(GameManager incomingManager, Match match) {
+		manager = incomingManager;
+		ArrayList<Athlete> playerTeam = manager.getMainRoster();
+		ArrayList<Athlete> opponentTeam = AthleteGenerator.generateTeam(6);
+		System.out.println(playerTeam);
+		System.out.println(opponentTeam);
+		for (int i = 0; i < playerTeam.size(); i++) {
+			// compare athletes
+			Athlete playerAthlete = playerTeam.get(i);
+			Athlete opposingAthlete = opponentTeam.get(i);
+			System.out.println(playerAthlete.getProficiency() + " vs " + opposingAthlete.getProficiency()); 
+			if (playerAthlete.getProficiency() >= opposingAthlete.getProficiency()) {
+				
+				playerScore += 1;
+				playerAthlete.updateStamina(-1);
+			} else {
+				opponentScore += 1;
+				playerAthlete.updateStamina(-2); // Stamina loss is higher on defeat
+				
+			}
+			
+		}
+		
+		if (playerScore > opponentScore) {
+			//manager.changeMoney(match.getPrizeMoney());
+			return "Victory";
+			
+		} else if (playerScore == opponentScore) {
+			return "Draw";
+			
+		}
+		else {
+			return "Defeat";
+		}
+	
+	}	
+	
 	public String toString() {
-		
 		return " Play against " + matchName + "  |  Reward: $" + getPrizeString(prizeMoney) + " & " + pointGain + " points.";
-		
 	}
+	
+
 	
 }

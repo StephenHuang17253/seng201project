@@ -134,6 +134,13 @@ public class StadiumScreen {
 		playButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		playButton.setBounds(207, 0, 270, 60);
 		buttonPanel.add(playButton);
+		playButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				finishedWindow();
+				Match targetMatch = matchList.getSelectedValue();
+				manager.launchMatchScreen(targetMatch);
+			}
+		});		
 		
 		JButton backButton = new JButton("Go back");
 		backButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -142,12 +149,9 @@ public class StadiumScreen {
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				finishedWindow();
+				manager.launchMainScreen();
 			}
 		});
-		playButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//TODO
-			}
-		});
+
 	}
 }
