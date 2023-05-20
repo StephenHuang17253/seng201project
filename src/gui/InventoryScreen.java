@@ -27,8 +27,6 @@ public class InventoryScreen {
 	private JFrame frmInventoryScreen;
 	private GameManager manager;
 	private String origin;
-	private ArrayList<Athlete> activeRoster;
-	private ArrayList<Athlete> reserveRoster;
 	private ArrayList<Item> inventory;
 	
 	public InventoryScreen(GameManager incomingManager, ArrayList<Item> items, String origin) {
@@ -93,11 +91,16 @@ public class InventoryScreen {
 		frmInventoryScreen.getContentPane().add(inventoryAthletePanel);
 		inventoryAthletePanel.setLayout(null);
 		
-		JList inventoryAthleteList = new JList();
+		DefaultListModel<Athlete> inventoryAthleteModel = new DefaultListModel<Athlete>();
+		inventoryAthleteModel.addAll(manager.getMainRoster());
+		inventoryAthleteModel.addAll(manager.getReserveRoster());
+		
+		JList<Athlete> inventoryAthleteList = new JList<Athlete>(inventoryAthleteModel);
 		inventoryAthleteList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		inventoryAthleteList.setBorder(new LineBorder(new Color(186, 207, 248), 2));
 		inventoryAthleteList.setBounds(10, 51, 676, 172);
 		inventoryAthletePanel.add(inventoryAthleteList);
+		inventoryAthleteList.setModel(inventoryAthleteModel);
 		
 		JLabel inventoryAthletesLabel = new JLabel("Athletes");
 		inventoryAthletesLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
