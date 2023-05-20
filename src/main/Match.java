@@ -16,7 +16,6 @@ public class Match {
 		prizeMoney = prize;
 		pointGain = points;
 		
-		
 	}
 	
 	public String getMatchName() {

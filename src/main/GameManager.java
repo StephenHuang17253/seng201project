@@ -7,6 +7,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import main.Athlete;
+
 import gui.ClubScreen;
 import gui.MainScreen;
 import gui.MarketScreen;
@@ -60,6 +61,7 @@ public class GameManager {
 	
 	private ArrayList<Athlete> marketAthletes = new ArrayList<>();
 	private ArrayList<Item> marketItems = new ArrayList<>();
+	
 	
 	
 
@@ -128,7 +130,7 @@ public class GameManager {
 	 */
 	public void closeSetUpScreen(SetupScreen setupWindow) {
 		setupWindow.closeWindow();
-		refreshShop(marketAthletes, marketItems);
+		refreshShop();
 		launchMainScreen();
 	}
 	
@@ -142,7 +144,7 @@ public class GameManager {
 	}
 	
 	public void launchClubScreen() {
-		ClubScreen clubWindow = new ClubScreen(this, mainRoster, reserveRoster);
+		ClubScreen clubWindow = new ClubScreen(this);
 	}
 	
 	public void closeClubScreen(ClubScreen clubWindow) {
@@ -237,7 +239,7 @@ public class GameManager {
 			
 	public void takeBye() {
 		incrementWeek();
-		refreshShop(getMarketAthletes(), marketItems);
+		refreshShop();
 	}
 	
 	/**
@@ -257,6 +259,7 @@ public class GameManager {
 	public String getTeamName() {
 		return teamName;
 	}
+	
 	/**
 	 * Method returns the player's money for use in calculations.
 	 * @return int for money
@@ -338,7 +341,7 @@ public class GameManager {
 		reserveRoster.add(athlete);
 		money -= athlete.getContractPrice();
 		marketAthletes.remove(athlete);
-		if (mainRoster.contains(athlete)) {
+		if (reserveRoster.contains(athlete)) {
 			System.out.println(athlete.getName() + "has been drafted to reserves.");
 		}
 	}
@@ -364,15 +367,15 @@ public class GameManager {
 		this.marketItems = marketItems;
 	}
 	
-	public void refreshShop(ArrayList<Athlete> athletes, ArrayList<Item> items) {
+	public void refreshShop() {
 		ArrayList<Athlete> newAthletes = new ArrayList<>();
 		ArrayList<Item> newItems = new ArrayList<>();
 		
-		newAthletes.add(new Athlete("Shinsuke Kita", "S", 10, 10, 10, 10, 2000000));
-		newAthletes.add(new Athlete("Ren Omimi", "A", 10, 8, 8, 8, 850000));
-		newAthletes.add(new Athlete("Rintaro Suna", "A", 10, 7, 7, 7, 700000));
-		newAthletes.add(new Athlete("Atsumu Miya", "B", 10, 6, 5, 5, 300000));
-		newAthletes.add(new Athlete("Hitoshi Ginjima", "C", 10, 4, 4, 4, 250000));
+		newAthletes.add(new Athlete("Shinsuke Kita", 10, 10, 2000000));
+		newAthletes.add(new Athlete("Ren Omimi", 8, 8, 850000));
+		newAthletes.add(new Athlete("Rintaro Suna", 7, 7, 700000));
+		newAthletes.add(new Athlete("Atsumu Miya", 5, 5, 300000));
+		newAthletes.add(new Athlete("Hitoshi Ginjima", 4, 4, 250000));
 		
 		newItems.add(new Trainer());
 		newItems.add(new Nutritionist());

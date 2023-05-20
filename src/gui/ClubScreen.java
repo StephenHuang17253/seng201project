@@ -30,15 +30,15 @@ public class ClubScreen {
 
 	private JFrame frmClubScreen;
 	private GameManager manager;
-	private ArrayList<Athlete> activeRoster;
-	private ArrayList<Athlete> reserveRoster;
+	//private ArrayList<Athlete> activeRoster;
+	//private ArrayList<Athlete> reserveRoster;
 	//DefaultListModel<Athlete> reserveRosterModel = new DefaultListModel<Athlete>();
 	//private JList<Athlete> reserveRosterList = new JList<Athlete>();
 
-	public ClubScreen(GameManager incomingManager, ArrayList<Athlete> starting, ArrayList<Athlete> reserves) {
+	public ClubScreen(GameManager incomingManager) {
 		manager = incomingManager;
-		activeRoster = starting;
-		reserveRoster = reserves;
+		//activeRoster = starting;
+		//reserveRoster = reserves;
 		initialize();
 		frmClubScreen.setVisible(true);
 	}
@@ -99,11 +99,11 @@ public class ClubScreen {
 		// Create a ListModel to store the active athletes in the JList
 		DefaultListModel<Athlete> activeRosterModel = new DefaultListModel<Athlete>();
 		// Add athletes to the ListModel
-		activeRosterModel.addAll(activeRoster);
+		activeRosterModel.addAll(manager.getMainRoster());
 		
 		// Create a ListModel to store the reserve athletes in the JList
 		DefaultListModel<Athlete> reserveRosterModel = new DefaultListModel<Athlete>();
-		reserveRosterModel.addAll(reserveRoster);
+		reserveRosterModel.addAll(manager.getReserveRoster());
 		
 		// Create the JList for reserve roster
 		// Needed to be declared early to allow demote button to work.
@@ -154,7 +154,7 @@ public class ClubScreen {
 		backButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (reserveRoster.size() > 5) {
+				if (manager.getReserveRoster().size() > 5) {
 					Component fullReservesWarning = null;
 					JOptionPane.showMessageDialog(fullReservesWarning, "You have too many players in reserves, add some to your starting lineup", 
 							"Reserves full", JOptionPane.WARNING_MESSAGE);
