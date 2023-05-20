@@ -11,6 +11,7 @@ import main.Athlete;
 import gui.ClubScreen;
 import gui.MainScreen;
 import gui.MarketScreen;
+import gui.MarketSellScreen;
 import gui.StartScreen;
 import gui.InventoryScreen;
 import items.DefensiveCoach;
@@ -158,6 +159,15 @@ public class GameManager {
 	
 	public void closeMarketScreen(MarketScreen marketWindow) {
 		marketWindow.closeWindow();
+		launchMainScreen();
+	}
+	
+	public void launchMarketSellScreen() {
+		MarketSellScreen marketSellWindow = new MarketSellScreen(this);
+	}
+	
+	public void closeMarketSellScreen(MarketSellScreen marketSellWindow) {
+		marketSellWindow.closeWindow();
 		launchMainScreen();
 	}
 	
