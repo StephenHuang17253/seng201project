@@ -51,12 +51,12 @@ public class InventoryScreen {
 	private void initialize() {
 		frmInventoryScreen = new JFrame();
 		frmInventoryScreen.setTitle("VolleyballWorld - Inventory");
-		frmInventoryScreen.setBounds(100, 100, 732, 696);
+		frmInventoryScreen.setBounds(100, 100, 732, 744);
 		frmInventoryScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmInventoryScreen.getContentPane().setLayout(null);
 		
 		JLabel inventoryLabel = new JLabel("Inventory");
-		inventoryLabel.setBounds(10, 16, 696, 43);
+		inventoryLabel.setBounds(10, 27, 696, 43);
 		inventoryLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		inventoryLabel.setFont(new Font("Tahoma", Font.BOLD, 35));
 		frmInventoryScreen.getContentPane().add(inventoryLabel);
@@ -64,7 +64,7 @@ public class InventoryScreen {
 		JPanel inventoryAthletePanel = new JPanel();
 		inventoryAthletePanel.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
 		inventoryAthletePanel.setBackground(new Color(240, 240, 240));
-		inventoryAthletePanel.setBounds(10, 80, 696, 234);
+		inventoryAthletePanel.setBounds(10, 119, 696, 234);
 		frmInventoryScreen.getContentPane().add(inventoryAthletePanel);
 		inventoryAthletePanel.setLayout(null);
 		
@@ -78,9 +78,16 @@ public class InventoryScreen {
 		inventoryAthletesLabel.setBounds(20, 18, 101, 14);
 		inventoryAthletePanel.add(inventoryAthletesLabel);
 		
+		JLabel athleteStatsLabel = new JLabel("Athlete's Stats Increased by   !!");
+		athleteStatsLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		athleteStatsLabel.setForeground(new Color(255, 66, 66));
+		athleteStatsLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		athleteStatsLabel.setBounds(161, 20, 493, 14);
+		inventoryAthletePanel.add(athleteStatsLabel);
+		
 		JPanel inventoryItemPanel = new JPanel();
 		inventoryItemPanel.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
-		inventoryItemPanel.setBounds(10, 326, 696, 234);
+		inventoryItemPanel.setBounds(10, 365, 696, 234);
 		frmInventoryScreen.getContentPane().add(inventoryItemPanel);
 		inventoryItemPanel.setLayout(null);
 		
@@ -115,8 +122,13 @@ public class InventoryScreen {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		backButton.setBounds(223, 580, 270, 60);
+		backButton.setBounds(223, 620, 270, 60);
 		backButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		frmInventoryScreen.getContentPane().add(backButton);
+		
+		JLabel lblNewLabel = new JLabel("Please select the athlete that you want to use your item on.");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel.setBounds(20, 100, 439, 14);
+		frmInventoryScreen.getContentPane().add(lblNewLabel);
 	}
 }
