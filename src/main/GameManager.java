@@ -220,6 +220,14 @@ public class GameManager {
 		return teamName;
 	}
 	/**
+	 * Method returns the player's money for use in calculations.
+	 * @return int for money
+	 */
+	public int getMoney() {
+		return money;
+	}
+	
+	/**
 	 * Method returns the player's money in a more suitable format as a string.
 	 * @return String for money format
 	 */
@@ -277,8 +285,12 @@ public class GameManager {
 		money -= item.getContractPrice();
 		inventory.add(item);
 		System.out.println(item.getName() + " was added to club inventory.");
-		
+
+			
 	}
+
+		
+	
 	
 	/**
 	 * Main game method.

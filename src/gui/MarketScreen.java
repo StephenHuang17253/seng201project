@@ -21,6 +21,8 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.awt.Component;
+
 import javax.swing.border.LineBorder;
 
 import items.DefensiveCoach;
@@ -29,6 +31,7 @@ import items.OffensiveCoach;
 import items.Trainer;
 
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 
 public class MarketScreen {
 
@@ -213,9 +216,20 @@ public class MarketScreen {
 		JButton itemPurchaseButton = new JButton("Purchase");
 		itemPurchaseButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				manager.purchaseItem(itemList.getSelectedValue());
-				itemListModel.removeElement(itemList.getSelectedValue());
-				itemList.setModel(itemListModel);
+				if (manager.getMoney() > itemList.getSelectedValue().getContractPrice()) {
+					manager.purchaseItem(itemList.getSelectedValue());
+					itemListModel.removeElement(itemList.getSelectedValue());
+					itemList.setModel(itemListModel);					
+				} else {
+					Component insufficentFundsWarning = null;
+					JOptionPane.showMessageDialog(insufficentFundsWarning, "You can't afford this. "
+							+ "\nGo some win games.", 
+							"Insufficient funds", JOptionPane.WARNING_MESSAGE);					
+				}
+
+				
+
+				
 			}
 		});
 		itemPurchaseButton.setFont(new Font("Tahoma", Font.BOLD, 11));
