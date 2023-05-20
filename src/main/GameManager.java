@@ -310,6 +310,7 @@ public class GameManager {
 	public void draftMainAthlete(Athlete athlete) {
 		mainRoster.add(athlete);
 		money -= athlete.getContractPrice();
+		marketAthletes.remove(athlete);
 		if (mainRoster.contains(athlete)) {
 			System.out.println(athlete.getName() + "has been drafted to main roster.");
 		}
@@ -319,6 +320,7 @@ public class GameManager {
 	public void draftReserveAthlete(Athlete athlete) {
 		mainRoster.add(athlete);
 		money -= athlete.getContractPrice();
+		marketAthletes.remove(athlete);
 		if (mainRoster.contains(athlete)) {
 			System.out.println(athlete.getName() + "has been drafted to reserves.");
 		}
