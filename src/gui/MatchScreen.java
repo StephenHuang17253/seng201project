@@ -10,6 +10,7 @@ import main.GameManager;
 
 import javax.swing.JLabel;
 import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class MatchScreen {
 
@@ -60,18 +61,15 @@ public class MatchScreen {
 	 */
 	private void initialize() {
 		frmMatchScreen = new JFrame();
-		frmMatchScreen.setTitle("VolleyballWorld - Arena");
-		frmMatchScreen.setBounds(100, 100, 450, 300);
+		frmMatchScreen.setTitle("Match");
+		frmMatchScreen.setBounds(100, 100, 727, 541);
 		frmMatchScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMatchScreen.getContentPane().setLayout(null);
 		
-		JProgressBar progressBar = new JProgressBar();
-		progressBar.setBounds(58, 130, 318, 55);
-		frmMatchScreen.getContentPane().add(progressBar);
-		
-		JLabel lblNewLabel = new JLabel("Match In Progress. . .");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblNewLabel.setBounds(120, 83, 194, 22);
-		frmMatchScreen.getContentPane().add(lblNewLabel);
+		JLabel headerLabel = new JLabel("Match In Progress. . .");
+		headerLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		headerLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
+		headerLabel.setBounds(201, 33, 309, 22);
+		frmMatchScreen.getContentPane().add(headerLabel);
 	}
 }

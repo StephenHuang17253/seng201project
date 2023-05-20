@@ -124,7 +124,16 @@ public class MainScreen {
 		stadiumButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		stadiumButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				finishedWindow("Stadium");
+				if (manager.canCompete()) {
+					finishedWindow("Stadium");
+				} else {
+					Component cantCompete = null;
+					JOptionPane.showMessageDialog(cantCompete,
+						    "Check that you have 6 non-injured athletes in your main roster.",
+						    "Can't compete!",
+						    JOptionPane.WARNING_MESSAGE);					
+				}
+				
 			}
 		});
 		stadiumButton.setBounds(97, 98, 400, 75);

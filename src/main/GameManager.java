@@ -12,6 +12,7 @@ import gui.ClubScreen;
 import gui.MainScreen;
 import gui.MarketScreen;
 import gui.MarketSellScreen;
+import gui.MatchScreen;
 import gui.StartScreen;
 import gui.InventoryScreen;
 import items.DefensiveCoach;
@@ -347,7 +348,18 @@ public class GameManager {
 		return opponentRoster;
 	}
 	
-
+	public boolean canCompete() {
+		if (mainRoster.size() == 6) {
+			for (Athlete athlete : mainRoster) {
+				if (athlete.getStamina() > 0) {
+					return true;
+				}
+				return true;
+			}
+		}  
+		return false;	
+		
+	}
 	
 	public void promoteAthlete(Athlete athlete) {
 		System.out.println(athlete.getName() + " has been moved to main roster");

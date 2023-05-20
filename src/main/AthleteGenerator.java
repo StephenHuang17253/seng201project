@@ -18,6 +18,7 @@ public class AthleteGenerator {
 
     public static Athlete generateRandomAthlete() {
     	
+    	
         Random random = new Random();
         String name = getRandomName(random);
         int offence = random.nextInt(maxStat - minStat + 1) + minStat;
