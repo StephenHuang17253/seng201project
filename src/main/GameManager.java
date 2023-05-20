@@ -11,6 +11,7 @@ import gui.ClubScreen;
 import gui.MainScreen;
 import gui.MarketScreen;
 import gui.StartScreen;
+import gui.InventoryScreen;
 import items.DefensiveCoach;
 import items.Nutritionist;
 import items.OffensiveCoach;
@@ -158,6 +159,22 @@ public class GameManager {
 		launchMainScreen();
 	}
 	
+	public void launchInventoryScreen(String originScreen) {
+		InventoryScreen inventoryWindow = new InventoryScreen(this, originScreen);
+	}
+	
+	public void closeInventoryScreen(InventoryScreen inventoryWindow, String origin) {
+		if (origin == "Market") {
+			inventoryWindow.closeWindow();
+			launchMarketScreen();
+		}
+		
+		if (origin == "Club") {
+			inventoryWindow.closeWindow();
+			launchClubScreen();
+		}
+
+	}
 	
 	/**
 	 * Method to set up the game.

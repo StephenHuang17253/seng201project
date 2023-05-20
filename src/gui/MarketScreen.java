@@ -56,7 +56,7 @@ public class MarketScreen {
 	public void finishedWindow() {
 		manager.closeMarketScreen(this);
 	}
-		
+	
 	
 	/**
 	 * Launch the application.
@@ -87,7 +87,7 @@ public class MarketScreen {
 	private void initialize() {
 		frmMarketScreen = new JFrame();
 		frmMarketScreen.setTitle("VolleyballWorld - Market");
-		frmMarketScreen.setBounds(100, 100, 931, 628);
+		frmMarketScreen.setBounds(100, 100, 931, 704);
 		frmMarketScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMarketScreen.getContentPane().setLayout(null);
 		
@@ -104,7 +104,7 @@ public class MarketScreen {
 				finishedWindow();
 			}
 		});
-		backButton.setBounds(322, 504, 270, 60);
+		backButton.setBounds(322, 578, 270, 60);
 		frmMarketScreen.getContentPane().add(backButton);
 		
 		JPanel athletePanel = new JPanel();
@@ -302,8 +302,20 @@ public class MarketScreen {
 				
 			}
 		});
+		
 		itemPurchaseButton.setFont(new Font("Tahoma", Font.BOLD, 11));
 		itemPurchaseButton.setBounds(60, 124, 94, 28);
-		itemPanel.add(itemPurchaseButton);	
+		itemPanel.add(itemPurchaseButton);
+		
+		JButton inventoryButton = new JButton("Inventory");
+		inventoryButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				closeWindow();
+				manager.launchInventoryScreen("Market");
+			}
+		});
+		inventoryButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		inventoryButton.setBounds(322, 507, 270, 60);
+		frmMarketScreen.getContentPane().add(inventoryButton);
 	}
 }

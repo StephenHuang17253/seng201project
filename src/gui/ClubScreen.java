@@ -79,7 +79,7 @@ public class ClubScreen {
 	private void initialize() {
 		frmClubScreen = new JFrame();
 		frmClubScreen.setTitle("VolleyballWorld - Club Screen");
-		frmClubScreen.setBounds(100, 100, 1005, 700);
+		frmClubScreen.setBounds(100, 100, 1005, 784);
 		frmClubScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmClubScreen.getContentPane().setLayout(null);
 		
@@ -182,7 +182,7 @@ public class ClubScreen {
 				}
 			}
 		});
-		backButton.setBounds(359, 578, 270, 60);
+		backButton.setBounds(359, 651, 270, 60);
 		frmClubScreen.getContentPane().add(backButton);
 		
 		JPanel reserveRosterPanel = new JPanel();
@@ -245,6 +245,15 @@ public class ClubScreen {
 		reserveExplanationTextArea.setBackground(SystemColor.menu);
 		reserveExplanationTextArea.setBounds(10, 33, 217, 154);
 		reserveRosterPanel.add(reserveExplanationTextArea);
+		
+		JButton inventoryButton = new JButton("Inventory");
+		inventoryButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		inventoryButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		inventoryButton.setBounds(359, 580, 270, 60);
+		frmClubScreen.getContentPane().add(inventoryButton);
 		
 	}
 	

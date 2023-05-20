@@ -11,6 +11,9 @@ import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
+
+import main.GameManager;
+
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JList;
@@ -21,7 +24,24 @@ import java.awt.event.ActionEvent;
 public class InventoryScreen {
 
 	private JFrame frmInventoryScreen;
-
+	private GameManager manager;
+	private String origin;
+	
+	public InventoryScreen(GameManager incomingManager, String origin) {
+		this.origin = origin;
+		manager = incomingManager;
+		initialize();
+		frmInventoryScreen.setVisible(true);
+	}
+	
+	public void closeWindow() {
+		frmInventoryScreen.dispose();
+	}
+	
+	public void finishedWindow(String origin) {
+		manager.closeInventoryScreen(this, origin);
+	}
+	
 	/**
 	 * Launch the application.
 	 */
@@ -120,6 +140,7 @@ public class InventoryScreen {
 		JButton backButton = new JButton("Go Back");
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				finishedWindow(origin);
 			}
 		});
 		backButton.setBounds(223, 620, 270, 60);
