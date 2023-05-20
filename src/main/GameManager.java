@@ -318,7 +318,7 @@ public class GameManager {
 	}
 	
 	public void draftReserveAthlete(Athlete athlete) {
-		mainRoster.add(athlete);
+		reserveRoster.add(athlete);
 		money -= athlete.getContractPrice();
 		marketAthletes.remove(athlete);
 		if (mainRoster.contains(athlete)) {
