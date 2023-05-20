@@ -4,21 +4,21 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import java.awt.BorderLayout;
 import java.awt.Font;
 import javax.swing.SwingConstants;
-import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
-import javax.swing.table.DefaultTableModel;
 
+import main.Athlete;
 import main.GameManager;
+import main.Item;
 
 import javax.swing.JPanel;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JList;
-import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class InventoryScreen {
@@ -26,9 +26,13 @@ public class InventoryScreen {
 	private JFrame frmInventoryScreen;
 	private GameManager manager;
 	private String origin;
+	private ArrayList<Athlete> activeRoster;
+	private ArrayList<Athlete> reserveRoster;
+	private ArrayList<Item> inventory;
 	
-	public InventoryScreen(GameManager incomingManager, String origin) {
+	public InventoryScreen(GameManager incomingManager, ArrayList<Item> items, String origin) {
 		this.origin = origin;
+		inventory = items;
 		manager = incomingManager;
 		initialize();
 		frmInventoryScreen.setVisible(true);
@@ -111,7 +115,10 @@ public class InventoryScreen {
 		frmInventoryScreen.getContentPane().add(inventoryItemPanel);
 		inventoryItemPanel.setLayout(null);
 		
-		JList inventoryItemList = new JList();
+		DefaultListModel<Item> inventoryItemListModel = new DefaultListModel<Item>();
+		inventoryItemListModel.addAll(inventory);
+		
+		JList<Item> inventoryItemList = new JList<Item>(inventoryItemListModel);
 		inventoryItemList.setBorder(new LineBorder(new Color(186, 207, 248), 2));
 		inventoryItemList.setBounds(10, 51, 676, 172);
 		inventoryItemPanel.add(inventoryItemList);
