@@ -142,15 +142,6 @@ public class MarketScreen {
 		athletePanel.add(athletesForSaleLabel);
 		athleteList.getSelectedValue();
 		
-		JButton athletePurchaseButton = new JButton("Purchase");
-		athletePurchaseButton.setFont(new Font("Tahoma", Font.BOLD, 11));
-		athletePurchaseButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		athletePurchaseButton.setBounds(60, 124, 94, 28);
-		athletePanel.add(athletePurchaseButton);
-		
 		JLabel athleteExplainationText1 = new JLabel("Please select your purchase on the");
 		athleteExplainationText1.setHorizontalAlignment(SwingConstants.CENTER);
 		athleteExplainationText1.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -163,12 +154,23 @@ public class MarketScreen {
 		athleteExplainationText2.setBounds(10, 75, 194, 14);
 		athletePanel.add(athleteExplainationText2);
 		
-		JLabel athleteBoughtText = new JLabel("Athlete Bought!");
-		athleteBoughtText.setHorizontalAlignment(SwingConstants.CENTER);
-		athleteBoughtText.setBounds(10, 111, 194, 14);
-		athletePanel.add(athleteBoughtText);
-		athleteBoughtText.setForeground(new Color(255, 66, 66));
-		athleteBoughtText.setFont(new Font("Tahoma", Font.BOLD, 11));
+		JLabel athleteBoughtLabel = new JLabel("");
+		athleteBoughtLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		athleteBoughtLabel.setBounds(10, 111, 194, 14);
+		athletePanel.add(athleteBoughtLabel);
+		athleteBoughtLabel.setForeground(new Color(255, 66, 66));
+		athleteBoughtLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		JButton athletePurchaseButton = new JButton("Purchase");
+		
+		athletePurchaseButton.setFont(new Font("Tahoma", Font.BOLD, 11));
+		athletePurchaseButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Athlete targetAthlete = athleteList.getSelectedValue();
+				athleteBoughtLabel.setText(targetAthlete.getName() + " Bought!");
+			}
+		});
+		athletePurchaseButton.setBounds(60, 124, 94, 28);
+		athletePanel.add(athletePurchaseButton);
 		
 		JPanel itemPanel = new JPanel();
 		itemPanel.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
