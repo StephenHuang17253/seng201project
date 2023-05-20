@@ -174,7 +174,7 @@ public class MarketScreen {
 								"You can't afford this.", 
 								"Insufficent funds", JOptionPane.WARNING_MESSAGE);
 					}  
-					else if (manager.getMainRoster().size() >= 5) {
+					else if (manager.getMainRoster().size() >= 6) {
 						// Warn player that reserves are full
 						Component fullRosterWarning = null;
 						JOptionPane.showMessageDialog(fullRosterWarning,
