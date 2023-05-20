@@ -20,6 +20,7 @@ import javax.swing.JList;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import javax.swing.ListSelectionModel;
 
 public class InventoryScreen {
 
@@ -93,6 +94,7 @@ public class InventoryScreen {
 		inventoryAthletePanel.setLayout(null);
 		
 		JList inventoryAthleteList = new JList();
+		inventoryAthleteList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		inventoryAthleteList.setBorder(new LineBorder(new Color(186, 207, 248), 2));
 		inventoryAthleteList.setBounds(10, 51, 676, 172);
 		inventoryAthletePanel.add(inventoryAthleteList);
@@ -102,11 +104,11 @@ public class InventoryScreen {
 		inventoryAthletesLabel.setBounds(20, 18, 101, 14);
 		inventoryAthletePanel.add(inventoryAthletesLabel);
 		
-		JLabel athleteStatsLabel = new JLabel("Athlete's Stats Increased by   !!");
+		JLabel athleteStatsLabel = new JLabel("");
 		athleteStatsLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		athleteStatsLabel.setForeground(new Color(255, 66, 66));
 		athleteStatsLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
-		athleteStatsLabel.setBounds(161, 20, 493, 14);
+		athleteStatsLabel.setBounds(290, 20, 364, 14);
 		inventoryAthletePanel.add(athleteStatsLabel);
 		
 		JPanel inventoryItemPanel = new JPanel();
@@ -128,21 +130,24 @@ public class InventoryScreen {
 		inventoryItemsLabel.setBounds(20, 18, 101, 14);
 		inventoryItemPanel.add(inventoryItemsLabel);
 		
-		JButton useItemButton = new JButton("Use Item");
-		useItemButton.setBounds(558, 13, 101, 28);
-		inventoryItemPanel.add(useItemButton);
-		useItemButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		useItemButton.setFont(new Font("Tahoma", Font.BOLD, 11));
-		
-		JLabel itemUsedLabel = new JLabel("Item Used!");
+		JLabel itemUsedLabel = new JLabel("");
 		itemUsedLabel.setBounds(403, 20, 145, 14);
 		inventoryItemPanel.add(itemUsedLabel);
 		itemUsedLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
 		itemUsedLabel.setForeground(new Color(255, 66, 66));
 		itemUsedLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		JButton useItemButton = new JButton("Use Item");
+		useItemButton.setBounds(558, 13, 101, 28);
+		inventoryItemPanel.add(useItemButton);
+		useItemButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Item usedItem = inventoryItemList.getSelectedValue();
+				itemUsedLabel.setText(usedItem.getName() + " Used!");
+				athleteStatsLabel.setText("Athlete's Stats Increased by   !!");
+			}
+		});
+		useItemButton.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
 		JButton backButton = new JButton("Go Back");
 		backButton.addActionListener(new ActionListener() {
