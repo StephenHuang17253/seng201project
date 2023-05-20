@@ -79,7 +79,7 @@ public class StadiumScreen {
 	 */
 	private void initialize() {
 		frmStadium = new JFrame();
-		frmStadium.setTitle("Stadium");
+		frmStadium.setTitle("VolleyballWorld - Stadium");
 		frmStadium.setBounds(100, 100, 700, 514);
 		frmStadium.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmStadium.getContentPane().setLayout(null);

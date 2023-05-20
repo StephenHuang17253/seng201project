@@ -69,7 +69,7 @@ public class MainScreen {
 	private void initialize() {
 		frmMainScreen = new JFrame();
 		frmMainScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmMainScreen.setTitle("Main Menu");
+		frmMainScreen.setTitle("VolleyballWorld - Main Menu");
 		frmMainScreen.setBounds(100, 100, 611, 648);
 		frmMainScreen.getContentPane().setLayout(null);
 		

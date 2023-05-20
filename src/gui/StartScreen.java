@@ -70,7 +70,7 @@ public class StartScreen {
 	 */
 	private void initialize() {
 		frmStartScreen = new JFrame();
-		frmStartScreen.setTitle("KickHeroes");
+		frmStartScreen.setTitle("VolleyballWorld ");
 		frmStartScreen.setBounds(100, 100, 1018, 564);
 		frmStartScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmStartScreen.getContentPane().setLayout(null);

@@ -86,7 +86,7 @@ public class MarketScreen {
 	 */
 	private void initialize() {
 		frmMarketScreen = new JFrame();
-		frmMarketScreen.setTitle("Market");
+		frmMarketScreen.setTitle("VolleyballWorld - Market");
 		frmMarketScreen.setBounds(100, 100, 931, 628);
 		frmMarketScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMarketScreen.getContentPane().setLayout(null);
@@ -132,15 +132,6 @@ public class MarketScreen {
 		athletePanel.add(athletesForSaleLabel);
 		athleteList.getSelectedValue();
 		
-		JButton athletePurchaseButton = new JButton("Purchase");
-		athletePurchaseButton.setFont(new Font("Tahoma", Font.BOLD, 11));
-		athletePurchaseButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		athletePurchaseButton.setBounds(60, 124, 94, 28);
-		athletePanel.add(athletePurchaseButton);
-		
 		JLabel athleteExplainationText1 = new JLabel("Please select your purchase on the");
 		athleteExplainationText1.setHorizontalAlignment(SwingConstants.CENTER);
 		athleteExplainationText1.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -153,12 +144,24 @@ public class MarketScreen {
 		athleteExplainationText2.setBounds(10, 75, 194, 14);
 		athletePanel.add(athleteExplainationText2);
 		
-		JLabel athleteBoughtText = new JLabel("Athlete Bought!");
-		athleteBoughtText.setHorizontalAlignment(SwingConstants.CENTER);
-		athleteBoughtText.setBounds(10, 111, 194, 14);
-		athletePanel.add(athleteBoughtText);
-		athleteBoughtText.setForeground(new Color(255, 66, 66));
-		athleteBoughtText.setFont(new Font("Tahoma", Font.BOLD, 11));
+		JLabel athleteBoughtLabel = new JLabel("");
+		athleteBoughtLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		athleteBoughtLabel.setBounds(10, 111, 194, 14);
+		athletePanel.add(athleteBoughtLabel);
+		athleteBoughtLabel.setForeground(new Color(255, 66, 66));
+		athleteBoughtLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		JButton athletePurchaseButton = new JButton("Purchase");
+		
+		athletePurchaseButton.setFont(new Font("Tahoma", Font.BOLD, 11));
+		athletePurchaseButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Athlete targetAthlete = athleteList.getSelectedValue();
+				athleteBoughtLabel.setText(targetAthlete.getName() + " Bought!");
+			}
+		});
+		athletePurchaseButton.setBounds(60, 124, 94, 28);
+		athletePanel.add(athletePurchaseButton);
 		
 		JPanel itemPanel = new JPanel();
 		itemPanel.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
@@ -184,13 +187,6 @@ public class MarketScreen {
 		itemExplainationText2.setBounds(10, 75, 194, 14);
 		itemPanel.add(itemExplainationText2);
 		
-		JLabel itemBoughtText = new JLabel("Item Bought!");
-		itemBoughtText.setHorizontalAlignment(SwingConstants.CENTER);
-		itemBoughtText.setForeground(new Color(255, 66, 66));
-		itemBoughtText.setFont(new Font("Tahoma", Font.BOLD, 11));
-		itemBoughtText.setBounds(10, 111, 194, 14);
-		itemPanel.add(itemBoughtText);
-		
 		// Create a ListModel to store the items in the JList
 		DefaultListModel<Item> itemListModel = new DefaultListModel<Item>();
 		// Add the existing items to the ListModel
@@ -203,13 +199,23 @@ public class MarketScreen {
 		itemPanel.add(itemList);
 		itemList.getSelectedValue();
 		
+		JLabel itemBoughtLabel = new JLabel("");
+		itemBoughtLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		itemBoughtLabel.setForeground(new Color(255, 66, 66));
+		itemBoughtLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		itemBoughtLabel.setBounds(10, 111, 194, 14);
+		itemPanel.add(itemBoughtLabel);
+		
 		JButton itemPurchaseButton = new JButton("Purchase");
 		itemPurchaseButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (manager.getMoney() > itemList.getSelectedValue().getContractPrice()) {
+					Item targetItem = itemList.getSelectedValue();
 					manager.purchaseItem(itemList.getSelectedValue());
 					itemListModel.removeElement(itemList.getSelectedValue());
-					itemList.setModel(itemListModel);					
+					itemList.setModel(itemListModel);
+					itemBoughtLabel.setText(targetItem.getName() + " Bought!");
+					
 				} else {
 					Component insufficentFundsWarning = null;
 					JOptionPane.showMessageDialog(insufficentFundsWarning, "You can't afford this. "
