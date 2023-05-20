@@ -131,14 +131,14 @@ public class InventoryScreen {
 		inventoryItemPanel.add(inventoryItemsLabel);
 		
 		JLabel itemUsedLabel = new JLabel("");
-		itemUsedLabel.setBounds(403, 20, 145, 14);
+		itemUsedLabel.setBounds(401, 23, 145, 14);
 		inventoryItemPanel.add(itemUsedLabel);
 		itemUsedLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
 		itemUsedLabel.setForeground(new Color(255, 66, 66));
 		itemUsedLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		JButton useItemButton = new JButton("Use Item");
-		useItemButton.setBounds(558, 13, 101, 28);
+		useItemButton.setBounds(554, 16, 132, 28);
 		inventoryItemPanel.add(useItemButton);
 		useItemButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
