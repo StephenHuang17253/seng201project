@@ -160,7 +160,7 @@ public class InventoryScreen {
 		frmInventoryScreen.getContentPane().add(backButton);
 		
 		JLabel lblNewLabel = new JLabel("Please select the athlete that you want to use your item on.");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblNewLabel.setBounds(20, 100, 439, 14);
 		frmInventoryScreen.getContentPane().add(lblNewLabel);
 	}

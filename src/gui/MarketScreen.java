@@ -295,6 +295,6 @@ public class MarketScreen {
 		JLabel athleteExplainationText1 = new JLabel("Select your purchase and choose your location for your new Athlete using the two buttons below");
 		athleteExplainationText1.setBounds(29, 101, 677, 15);
 		frmMarketScreen.getContentPane().add(athleteExplainationText1);
-		athleteExplainationText1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		athleteExplainationText1.setFont(new Font("Tahoma", Font.PLAIN, 13));
 	}
 }
