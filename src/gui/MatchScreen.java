@@ -40,7 +40,7 @@ public class MatchScreen {
 	 */
 	private void initialize() {
 		frmMatch = new JFrame();
-		frmMatch.setTitle("Arena");
+		frmMatch.setTitle("VolleyballWorld - Arena");
 		frmMatch.setBounds(100, 100, 450, 300);
 		frmMatch.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMatch.getContentPane().setLayout(null);

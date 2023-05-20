@@ -78,7 +78,7 @@ public class ClubScreen {
 	 */
 	private void initialize() {
 		frmClubScreen = new JFrame();
-		frmClubScreen.setTitle("Club Screen");
+		frmClubScreen.setTitle("VolleyballWorld - Club Screen");
 		frmClubScreen.setBounds(100, 100, 1005, 700);
 		frmClubScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmClubScreen.getContentPane().setLayout(null);

@@ -108,7 +108,7 @@ public class SetupScreen {
 	private void initialize() {
 		frmSetupScreen = new JFrame();
 		frmSetupScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmSetupScreen.setTitle("Game Setup");
+		frmSetupScreen.setTitle("VolleyballWorld - Game Setup");
 		frmSetupScreen.setBounds(100, 100, 771, 635);
 		frmSetupScreen.getContentPane().setLayout(null);
 		

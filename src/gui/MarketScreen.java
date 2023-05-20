@@ -96,7 +96,7 @@ public class MarketScreen {
 	 */
 	private void initialize() {
 		frmMarketScreen = new JFrame();
-		frmMarketScreen.setTitle("Market");
+		frmMarketScreen.setTitle("VolleyballWorld - Market");
 		frmMarketScreen.setBounds(100, 100, 931, 628);
 		frmMarketScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMarketScreen.getContentPane().setLayout(null);
