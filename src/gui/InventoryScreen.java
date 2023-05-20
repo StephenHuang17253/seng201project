@@ -11,10 +11,16 @@ import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JList;
+import javax.swing.JTextArea;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class InventoryScreen {
 
-	private JFrame frmVolleyballworldInventory;
+	private JFrame frmInventoryScreen;
 
 	/**
 	 * Launch the application.
@@ -24,7 +30,7 @@ public class InventoryScreen {
 			public void run() {
 				try {
 					InventoryScreen window = new InventoryScreen();
-					window.frmVolleyballworldInventory.setVisible(true);
+					window.frmInventoryScreen.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -43,16 +49,74 @@ public class InventoryScreen {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmVolleyballworldInventory = new JFrame();
-		frmVolleyballworldInventory.setTitle("VolleyballWorld - Inventory");
-		frmVolleyballworldInventory.setBounds(100, 100, 600, 369);
-		frmVolleyballworldInventory.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmVolleyballworldInventory.getContentPane().setLayout(null);
+		frmInventoryScreen = new JFrame();
+		frmInventoryScreen.setTitle("VolleyballWorld - Inventory");
+		frmInventoryScreen.setBounds(100, 100, 732, 696);
+		frmInventoryScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmInventoryScreen.getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Inventory");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 35));
-		lblNewLabel.setBounds(10, 11, 564, 43);
-		frmVolleyballworldInventory.getContentPane().add(lblNewLabel);
+		JLabel inventoryLabel = new JLabel("Inventory");
+		inventoryLabel.setBounds(10, 16, 696, 43);
+		inventoryLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		inventoryLabel.setFont(new Font("Tahoma", Font.BOLD, 35));
+		frmInventoryScreen.getContentPane().add(inventoryLabel);
+		
+		JPanel inventoryAthletePanel = new JPanel();
+		inventoryAthletePanel.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
+		inventoryAthletePanel.setBackground(new Color(240, 240, 240));
+		inventoryAthletePanel.setBounds(10, 80, 696, 234);
+		frmInventoryScreen.getContentPane().add(inventoryAthletePanel);
+		inventoryAthletePanel.setLayout(null);
+		
+		JList inventoryAthleteList = new JList();
+		inventoryAthleteList.setBorder(new LineBorder(new Color(186, 207, 248), 2));
+		inventoryAthleteList.setBounds(10, 51, 676, 172);
+		inventoryAthletePanel.add(inventoryAthleteList);
+		
+		JLabel inventoryAthletesLabel = new JLabel("Athletes");
+		inventoryAthletesLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
+		inventoryAthletesLabel.setBounds(20, 18, 101, 14);
+		inventoryAthletePanel.add(inventoryAthletesLabel);
+		
+		JPanel inventoryItemPanel = new JPanel();
+		inventoryItemPanel.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
+		inventoryItemPanel.setBounds(10, 326, 696, 234);
+		frmInventoryScreen.getContentPane().add(inventoryItemPanel);
+		inventoryItemPanel.setLayout(null);
+		
+		JList inventoryItemList = new JList();
+		inventoryItemList.setBorder(new LineBorder(new Color(186, 207, 248), 2));
+		inventoryItemList.setBounds(10, 51, 676, 172);
+		inventoryItemPanel.add(inventoryItemList);
+		
+		JLabel inventoryItemsLabel = new JLabel("Items");
+		inventoryItemsLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
+		inventoryItemsLabel.setBounds(20, 18, 101, 14);
+		inventoryItemPanel.add(inventoryItemsLabel);
+		
+		JButton useItemButton = new JButton("Use Item");
+		useItemButton.setBounds(558, 13, 101, 28);
+		inventoryItemPanel.add(useItemButton);
+		useItemButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		useItemButton.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		JLabel itemUsedLabel = new JLabel("Item Used!");
+		itemUsedLabel.setBounds(403, 20, 145, 14);
+		inventoryItemPanel.add(itemUsedLabel);
+		itemUsedLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		itemUsedLabel.setForeground(new Color(255, 66, 66));
+		itemUsedLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		JButton backButton = new JButton("Go Back");
+		backButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		backButton.setBounds(223, 580, 270, 60);
+		backButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		frmInventoryScreen.getContentPane().add(backButton);
 	}
 }
