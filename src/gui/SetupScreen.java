@@ -182,7 +182,7 @@ public class SetupScreen {
 		listExplanation.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		listExplanation.setBackground(new Color(240, 240, 240));
 		listExplanation.setEditable(false);
-		listExplanation.setText("Pick at least 5.");
+		listExplanation.setText("Pick at least 6.");
 		listExplanation.setBounds(56, 265, 77, 20);
 		frmSetupScreen.getContentPane().add(listExplanation);
 		

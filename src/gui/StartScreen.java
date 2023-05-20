@@ -77,14 +77,14 @@ public class StartScreen {
 		
 		lblWelcome = new JLabel(" Welcome to VolleyballWorld");
 		lblWelcome.setHorizontalAlignment(SwingConstants.CENTER);
-		lblWelcome.setBounds(10, 107, 982, 77);
-		lblWelcome.setFont(new Font("Rockwell Extra Bold", Font.PLAIN, 54));
+		lblWelcome.setBounds(10, 120, 982, 77);
+		lblWelcome.setFont(new Font("Rockwell Extra Bold", Font.PLAIN, 48));
 		frmStartScreen.getContentPane().add(lblWelcome);
 		
 		JLabel lblStart = new JLabel("Press \"Start\" to play!");
 		lblStart.setHorizontalAlignment(SwingConstants.CENTER);
-		lblStart.setFont(new Font("Tahoma", Font.ITALIC, 27));
-		lblStart.setBounds(10, 207, 982, 32);
+		lblStart.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblStart.setBounds(374, 191, 253, 31);
 		frmStartScreen.getContentPane().add(lblStart);
 		
 		JButton btnStart = new JButton("Start");
