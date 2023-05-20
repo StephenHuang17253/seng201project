@@ -125,7 +125,7 @@ public class MarketScreen {
 		athleteList.setBounds(214, 11, 620, 162);
 		athletePanel.add(athleteList);
 		
-		JLabel athletesForSaleLabel = new JLabel("Athletes For Sale!");
+		JLabel athletesForSaleLabel = new JLabel("Athletes For Sale!"); 
 		athletesForSaleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		athletesForSaleLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
 		athletesForSaleLabel.setBounds(10, 27, 194, 20);

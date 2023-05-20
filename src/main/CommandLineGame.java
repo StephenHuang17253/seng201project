@@ -80,8 +80,8 @@ public class CommandLineGame {
 		 	
 
 		// Athlete setup
-		athletes.add(new Athlete("Ross Bacani", "S", 100, 9, 9, 9, 1750000));
-		athletes.add(new Athlete("Raoul Bacani", "S", 100, 9, 9, 9, 1750000));
+		athletes.add(new Athlete("Ross Bacani", 10, 9, 1000));
+		athletes.add(new Athlete("Raoul Bacani", 10, 9, 1000));
 		
         // Once the game is ready, we can start!		
         startGame();

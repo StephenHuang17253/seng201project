@@ -55,16 +55,16 @@ public class SetupScreen {
 	 */
 	public SetupScreen(GameManager incomingManager) {
 		manager = incomingManager;
-		startAthletes.add(new Athlete("Ross Bacani", "S", 10, 9, 9, 9, 1500000));
-		startAthletes.add(new Athlete("Raoul Bacani", "S", 10, 9, 9, 9, 1500000));
-		startAthletes.add(new Athlete("Yousif Abdellatif", "A", 10, 8, 8, 7, 700000));
-		startAthletes.add(new Athlete("Robert Dalziel", "A", 10, 7, 8, 7, 700000));
-		startAthletes.add(new Athlete("Vincent Chen", "A", 10, 7, 7, 7, 600000));
-		startAthletes.add(new Athlete("Ryan Schaare", "B", 10, 5, 6, 5, 300000));
-		startAthletes.add(new Athlete("Max Richards", "B", 10, 6, 5, 5, 300000));
-		startAthletes.add(new Athlete("Yul Nam", "B", 10, 5, 5, 6, 300000));
-		startAthletes.add(new Athlete("Jackson Williams", "B", 10, 5, 5, 6, 350000));
-		startAthletes.add(new Athlete("Kelso du Mez", "C", 10, 4, 4, 4, 200000)); 
+		startAthletes.add(new Athlete("Ross Bacani", 9, 9, 1500000));
+		startAthletes.add(new Athlete("Raoul Bacani", 9, 9, 1500000));
+		startAthletes.add(new Athlete("Yousif Abdellatif", 8, 7, 700000));
+		startAthletes.add(new Athlete("Robert Dalziel", 8, 7, 700000));
+		startAthletes.add(new Athlete("Vincent Chen", 7, 7, 600000));
+		startAthletes.add(new Athlete("Ryan Schaare", 6, 5, 300000));
+		startAthletes.add(new Athlete("Max Richards", 5, 5, 300000));
+		startAthletes.add(new Athlete("Yul Nam", 5, 6, 300000));
+		startAthletes.add(new Athlete("Jackson Williams", 5, 6, 350000));
+		startAthletes.add(new Athlete("Kelso du Mez", 4, 4, 200000)); 
 		initialize();
 		frmSetupScreen.setVisible(true);
 	}
