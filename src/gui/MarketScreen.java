@@ -47,7 +47,7 @@ public class MarketScreen {
 		items = manager.getMarketItems();
 		initialize();
 		frmMarketScreen.setVisible(true);
-	}	
+	}	 
 	
 	public void closeWindow() {
 		frmMarketScreen.dispose();
@@ -146,22 +146,96 @@ public class MarketScreen {
 		
 		JLabel athleteBoughtLabel = new JLabel("");
 		athleteBoughtLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		athleteBoughtLabel.setBounds(10, 111, 194, 14);
+		athleteBoughtLabel.setBounds(10, 96, 194, 14);
 		athletePanel.add(athleteBoughtLabel);
 		athleteBoughtLabel.setForeground(new Color(255, 66, 66));
 		athleteBoughtLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
-		JButton athletePurchaseButton = new JButton("Purchase");
+		JButton draftMainAthleteButton = new JButton("Draft to main");
 		
-		athletePurchaseButton.setFont(new Font("Tahoma", Font.BOLD, 11));
-		athletePurchaseButton.addActionListener(new ActionListener() {
+		draftMainAthleteButton.setFont(new Font("Tahoma", Font.BOLD, 11));
+		draftMainAthleteButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				Athlete targetAthlete = athleteList.getSelectedValue();
-				athleteBoughtLabel.setText(targetAthlete.getName() + " Bought!");
+				
+				if (manager.getMainRoster().size() + manager.getReserveRoster().size() >= 11) {
+					// Warn player that they have too many athletes
+					Component fullClubWarning = null;
+					JOptionPane.showMessageDialog(fullClubWarning,
+							"Your club has too many athletes.", 
+							"Can't have more than 11 players", JOptionPane.WARNING_MESSAGE);
+					
+
+					}else if (manager.getMoney() < targetAthlete.getContractPrice()) {  
+						// Warn player if they can't afford the athlete
+						Component costWarning = null;
+						JOptionPane.showMessageDialog(costWarning,
+								"You can't afford this.", 
+								"Insufficent funds", JOptionPane.WARNING_MESSAGE);
+					}  
+					else if (manager.getMainRoster().size() >= 5) {
+						// Warn player that reserves are full
+						Component fullRosterWarning = null;
+						JOptionPane.showMessageDialog(fullRosterWarning,
+								"Main roster already has 6.", 
+								"Main roster full", JOptionPane.WARNING_MESSAGE);
+					}  
+
+					else{  
+						// Draft athlete if all above the conditions are false
+						manager.draftMainAthlete(targetAthlete);
+						athleteListModel.removeElement(targetAthlete);
+						athleteList.setModel(athleteListModel);
+						athleteBoughtLabel.setText(targetAthlete.getName() + " drafted to main.");
+					} 
+				
 			}
 		});
-		athletePurchaseButton.setBounds(60, 124, 94, 28);
-		athletePanel.add(athletePurchaseButton);
+		draftMainAthleteButton.setBounds(38, 110, 132, 28);
+		athletePanel.add(draftMainAthleteButton);
+		
+		JButton draftReserveAthleteButton = new JButton("Draft to reserves");
+		draftReserveAthleteButton.setBounds(38, 145, 132, 28);
+		athletePanel.add(draftReserveAthleteButton);
+		draftReserveAthleteButton.setFont(new Font("Tahoma", Font.BOLD, 11));
+		draftReserveAthleteButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				Athlete targetAthlete = athleteList.getSelectedValue();
+				
+				if (manager.getMainRoster().size() + manager.getReserveRoster().size() >= 11) {
+					// Warn player that they have too many athletes
+					Component fullClubWarning = null;
+					JOptionPane.showMessageDialog(fullClubWarning,
+							"Your club has too many athletes.", 
+							"Can't have more than 11 players", JOptionPane.WARNING_MESSAGE);
+					
+
+					}else if (manager.getMoney() < targetAthlete.getContractPrice()) {  
+						// Warn player if they can't afford the athlete
+						Component costWarning = null;
+						JOptionPane.showMessageDialog(costWarning,
+								"You can't afford this.", 
+								"Insufficent funds", JOptionPane.WARNING_MESSAGE);
+					}  
+					else if (manager.getReserveRoster().size() >= 5) {
+						// Warn player that reserves are full
+						Component fullRosterWarning = null;
+						JOptionPane.showMessageDialog(fullRosterWarning,
+								"Reserve roster already has 5.", 
+								"Reserves full", JOptionPane.WARNING_MESSAGE);
+					}  
+
+					else{  
+						// Draft athlete if all above the conditions are false
+						manager.draftReserveAthlete(targetAthlete);
+						athleteListModel.removeElement(targetAthlete);
+						athleteList.setModel(athleteListModel);
+						athleteBoughtLabel.setText(targetAthlete.getName() + " drafted to reserves.");
+					}  		
+			}
+		});
 		
 		JPanel itemPanel = new JPanel();
 		itemPanel.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
