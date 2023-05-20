@@ -73,10 +73,10 @@ public class MainScreen {
 		frmMainScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMainScreen.getContentPane().setLayout(null);
 		
-		JLabel titleLabel = new JLabel("KickHeroes");
+		JLabel titleLabel = new JLabel("VolleyballWorld");
 		titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		titleLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 40));
-		titleLabel.setBounds(169, 24, 256, 49);
+		titleLabel.setBounds(10, 24, 575, 49);
 		frmMainScreen.getContentPane().add(titleLabel);
 		
 		JLabel teamLabel = new JLabel(manager.getTeamName() + " Sports Club");
@@ -157,7 +157,7 @@ public class MainScreen {
 			public void actionPerformed(ActionEvent e) {
 				Component quitFrame = null;
 				int n = JOptionPane.showConfirmDialog(quitFrame, 
-						"Are you sure?", "Are you sure?", JOptionPane.YES_NO_OPTION);
+						"Are you sure? Doing so would make you lose all your progress.", "Quit", JOptionPane.YES_NO_OPTION);
 				if (n == 0) {
 					finishedWindow("Quit");
 				}

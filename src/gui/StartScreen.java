@@ -71,20 +71,20 @@ public class StartScreen {
 	private void initialize() {
 		frmStartScreen = new JFrame();
 		frmStartScreen.setTitle("KickHeroes");
-		frmStartScreen.setBounds(100, 100, 1018, 604);
+		frmStartScreen.setBounds(100, 100, 1018, 564);
 		frmStartScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmStartScreen.getContentPane().setLayout(null);
 		
-		lblWelcome = new JLabel(" Welcome to KickHeroes ");
+		lblWelcome = new JLabel(" Welcome to VolleyballWorld");
 		lblWelcome.setHorizontalAlignment(SwingConstants.CENTER);
-		lblWelcome.setBounds(10, 128, 982, 77);
+		lblWelcome.setBounds(10, 107, 982, 77);
 		lblWelcome.setFont(new Font("Rockwell Extra Bold", Font.PLAIN, 54));
 		frmStartScreen.getContentPane().add(lblWelcome);
 		
 		JLabel lblStart = new JLabel("Press \"Start\" to play!");
 		lblStart.setHorizontalAlignment(SwingConstants.CENTER);
 		lblStart.setFont(new Font("Tahoma", Font.ITALIC, 27));
-		lblStart.setBounds(120, 216, 755, 32);
+		lblStart.setBounds(10, 207, 982, 32);
 		frmStartScreen.getContentPane().add(lblStart);
 		
 		JButton btnStart = new JButton("Start");
@@ -94,7 +94,7 @@ public class StartScreen {
 			}
 		});
 		btnStart.setFont(new Font("Tahoma", Font.BOLD, 40));
-		btnStart.setBounds(339, 314, 328, 108);
+		btnStart.setBounds(337, 329, 328, 108);
 		frmStartScreen.getContentPane().add(btnStart);
 	}
 }
