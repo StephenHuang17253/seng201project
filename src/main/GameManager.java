@@ -248,8 +248,8 @@ public class GameManager {
 			    //System.out.print(("\n" + teamRoster.get(i)));
 			} 	
 		
-		if (startAthletes.size() < 6) {
-			setupWindow.setListWarningLabel("Please select at least 6 athletes!");
+		if (startAthletes.size() < 5) {
+			setupWindow.setListWarningLabel("Please select at least 5 athletes!");
 		} else {
 			setupWindow.setListWarningLabel("");
 			validTeam = true;

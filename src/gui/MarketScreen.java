@@ -96,7 +96,7 @@ public class MarketScreen {
 		JLabel moneyLabel = new JLabel("Money: $" + manager.getMoneyString());
 		moneyLabel.setForeground(new Color(0, 0, 0));
 		moneyLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		moneyLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+		moneyLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
 		moneyLabel.setBounds(506, 84, 200, 39);
 		frmMarketScreen.getContentPane().add(moneyLabel);
 		
@@ -143,7 +143,6 @@ public class MarketScreen {
 		athleteList.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		athleteList.setBorder(new LineBorder(new Color(186, 207, 248), 2));
 		athleteList.setBounds(10, 51, 676, 172);
-		athletePanel.add(athleteList);
 		athleteList.getSelectedValue();
 		
 		//Give the JList to ScrollPane and Display
@@ -267,7 +266,6 @@ public class MarketScreen {
 		itemList.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		itemList.setBorder(new LineBorder(new Color(186, 207, 248), 2));
 		itemList.setBounds(10, 51, 676, 172);
-		itemPanel.add(itemList);
 		itemList.getSelectedValue();
 		
 		//Give the JList to ScrollPane and Display

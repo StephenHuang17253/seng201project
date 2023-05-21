@@ -73,7 +73,7 @@ public class MarketSellScreen {
 	 */
 	private void initialize() {
 		frmMarketSellScreen = new JFrame();
-		frmMarketSellScreen.setTitle("VolleyballWorld - Market(Sell)");
+		frmMarketSellScreen.setTitle("KickHeroes - Market(Sell)");
 		frmMarketSellScreen.setBounds(100, 100, 732, 799);
 		frmMarketSellScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMarketSellScreen.getContentPane().setLayout(null);
@@ -182,18 +182,30 @@ public class MarketSellScreen {
 		itemsSellPanel.add(itemBoughtLabel);
 		
 		JButton inventoryButton = new JButton("Inventory");
+		inventoryButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				closeWindow();
+				manager.launchInventoryScreen("Market");
+			}
+		});
 		inventoryButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		inventoryButton.setBounds(223, 610, 270, 60);
 		frmMarketSellScreen.getContentPane().add(inventoryButton);
 		
 		JButton goBackButton = new JButton("Go Back");
 		goBackButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		goBackButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				finishedWindow();
+			}
+		});
+		
 		goBackButton.setBounds(223, 681, 270, 60);
 		frmMarketSellScreen.getContentPane().add(goBackButton);
 		
 		JLabel moneyLabel = new JLabel("Money: $" + manager.getMoneyString());
 		moneyLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		moneyLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+		moneyLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
 		moneyLabel.setBounds(506, 84, 200, 39);
 		frmMarketSellScreen.getContentPane().add(moneyLabel);
 		

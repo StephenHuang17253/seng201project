@@ -79,7 +79,7 @@ public class StadiumScreen {
 	 */
 	private void initialize() {
 		frmStadium = new JFrame();
-		frmStadium.setTitle("VolleyballWorld - Stadium");
+		frmStadium.setTitle("KickHeroes - Stadium");
 		frmStadium.setBounds(100, 100, 700, 514);
 		frmStadium.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmStadium.getContentPane().setLayout(null);
@@ -110,17 +110,17 @@ public class StadiumScreen {
 		explanationText.setLineWrap(true);
 		explanationText.setText("You can select a match to play.\r\n\r\nVictory is rewarded with money and season points.\r\n");
 		explanationText.setBackground(new Color(240, 240, 240));
-		explanationText.setBounds(19, 160, 113, 125);
+		explanationText.setBounds(19, 171, 113, 109);
 		frmStadium.getContentPane().add(explanationText);
 		
 		JPanel titlePanel = new JPanel();
 		titlePanel.setBorder(new LineBorder(new Color(0, 0, 0)));
-		titlePanel.setBounds(0, 0, 684, 99);
+		titlePanel.setBounds(-18, 0, 712, 99);
 		frmStadium.getContentPane().add(titlePanel);
 		titlePanel.setLayout(null);
 		
 		JLabel stadiumLabel = new JLabel("The Stadium");
-		stadiumLabel.setBounds(232, 24, 220, 43);
+		stadiumLabel.setBounds(246, 25, 220, 43);
 		titlePanel.add(stadiumLabel);
 		stadiumLabel.setFont(new Font("Tahoma", Font.BOLD, 35));
 		stadiumLabel.setHorizontalAlignment(SwingConstants.CENTER);
