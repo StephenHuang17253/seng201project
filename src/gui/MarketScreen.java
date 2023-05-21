@@ -216,12 +216,12 @@ public class MarketScreen {
 				
 				Athlete targetAthlete = athleteList.getSelectedValue();
 				
-				if (manager.getMainRoster().size() + manager.getReserveRoster().size() >= 11) {
+				if (manager.getMainRoster().size() + manager.getReserveRoster().size() == 10) {
 					// Warn player that they have too many athletes
 					Component fullClubWarning = null;
 					JOptionPane.showMessageDialog(fullClubWarning,
 							"Your club has too many athletes.", 
-							"Can't have more than 11 players", JOptionPane.WARNING_MESSAGE);
+							"Can't have more than 10 players", JOptionPane.WARNING_MESSAGE);
 					
 
 					}else if (manager.getMoney() < targetAthlete.getContractPrice()) {  
@@ -231,11 +231,11 @@ public class MarketScreen {
 								"You can't afford this.", 
 								"Insufficent funds", JOptionPane.WARNING_MESSAGE);
 					}  
-					else if (manager.getMainRoster().size() >= 6) { 
+					else if (manager.getMainRoster().size() == 5) { 
 						// Warn player that reserves are full
 						Component fullRosterWarning = null;
 						JOptionPane.showMessageDialog(fullRosterWarning,
-								"Main roster already has 6.", 
+								"Main roster already has 5.", 
 								"Main roster full", JOptionPane.WARNING_MESSAGE);
 					}  
 
