@@ -205,7 +205,7 @@ public class ClubScreen {
 			public void actionPerformed(ActionEvent e) {
 				if (manager.getMainRoster().size() >= 5) {
 					Component fullRosterWarning = null;
-					JOptionPane.showMessageDialog(fullRosterWarning, "Can't promote player - main roster already has 6.", 
+					JOptionPane.showMessageDialog(fullRosterWarning, "Can't promote player - main roster already has 5.", 
 							"Main roster full", JOptionPane.WARNING_MESSAGE);
 				} else {
 				Athlete targetAthlete = reserveRosterList.getSelectedValue();	
