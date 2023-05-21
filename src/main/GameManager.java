@@ -44,9 +44,13 @@ public class GameManager {
      */
     private String difficulty;
     /**
-     * The player's money.
+     * The club's money.
      */
     private int money;
+    /**
+     * The club's season points.
+     */
+    private int seasonPoints;
     /**
      * The window for setting up the game.
      */
@@ -331,6 +335,14 @@ public class GameManager {
 	 */
 	public int getTotalWeeks() {
 		return totalWeeks;
+	}
+	
+	public int getSeasonPoints() {
+		return seasonPoints;
+	}
+	
+	public void updateSeasonPoints(int points) {
+		seasonPoints += points;
 	}
 	
 	public ArrayList<Athlete> getMainRoster() {

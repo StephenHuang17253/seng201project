@@ -99,7 +99,7 @@ public class MatchScreen {
 		frmMatchScreen.getContentPane().add(playerPanel);
 		playerPanel.setLayout(null);
 		
-		JLabel strikerLabel1 = new JLabel("Striker:" + playerTeam.get(0).getName());
+		JLabel strikerLabel1 = new JLabel("Striker: " + playerTeam.get(0).getName());
 		strikerLabel1.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		strikerLabel1.setHorizontalAlignment(SwingConstants.CENTER);
 		strikerLabel1.setBounds(10, 77, 205, 14);
@@ -187,8 +187,13 @@ public class MatchScreen {
 		JLabel playerTeamName = new JLabel("Your Team");
 		playerTeamName.setText(manager.getTeamName());
 		playerTeamName.setHorizontalAlignment(SwingConstants.CENTER);
-		playerTeamName.setBounds(10, 21, 205, 14);
+		playerTeamName.setBounds(10, 30, 205, 14);
 		playerPanel.add(playerTeamName);
+		
+		JLabel playerScoreLabel = new JLabel("Score: " + match.getPlayerScore());
+		playerScoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		playerScoreLabel.setBounds(66, 5, 92, 14);
+		playerPanel.add(playerScoreLabel);
 		
 		JPanel opponentPanel = new JPanel();
 		opponentPanel.setLayout(null);
@@ -228,8 +233,13 @@ public class MatchScreen {
 		JLabel opponentName = new JLabel("Opponent");
 		opponentName.setText(manager.getOpponentName());
 		opponentName.setHorizontalAlignment(SwingConstants.CENTER);
-		opponentName.setBounds(10, 21, 205, 14);
+		opponentName.setBounds(10, 30, 205, 14);
 		opponentPanel.add(opponentName);
+		
+		JLabel opponentScoreLabel = new JLabel("Score: " + match.getOpponentScore());
+		opponentScoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		opponentScoreLabel.setBounds(78, 5, 69, 14);
+		opponentPanel.add(opponentScoreLabel);
 		
 		JLabel outcomeHighlight = new JLabel("The winner of this match is");
 		outcomeHighlight.setHorizontalAlignment(SwingConstants.CENTER);

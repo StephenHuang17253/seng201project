@@ -106,7 +106,7 @@ public class StadiumScreen {
 		frmStadium.getContentPane().add(listLabel);
 		
 		explanationText = new JTextArea();
-		explanationText.setFont(new Font("Tahoma", Font.ITALIC, 12));
+		explanationText.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		explanationText.setEditable(false);
 		explanationText.setWrapStyleWord(true);
 		explanationText.setLineWrap(true);
@@ -126,6 +126,11 @@ public class StadiumScreen {
 		titlePanel.add(stadiumLabel);
 		stadiumLabel.setFont(new Font("Tahoma", Font.BOLD, 35));
 		stadiumLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		JLabel seasonPointsLabel = new JLabel("Season points: " + manager.getSeasonPoints());
+		seasonPointsLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+		seasonPointsLabel.setBounds(38, 74, 123, 14);
+		titlePanel.add(seasonPointsLabel);
 		
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setBounds(0, 317, 684, 158);

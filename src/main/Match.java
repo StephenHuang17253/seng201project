@@ -147,6 +147,8 @@ public class Match {
 			//return "Victory";
 			match.setOutcome("Victory");
 			manager.setMatchOutcome(outcome);
+			manager.updateSeasonPoints(pointGain);
+			manager.changeMoney(prizeMoney);
 			
 		} else if (playerScore == opponentScore) {
 			//return "Draw";
