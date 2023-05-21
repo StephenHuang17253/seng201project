@@ -126,15 +126,16 @@ public class Match {
 		ArrayList<Athlete> opponentTeam = AthleteGenerator.generateTeam(5);
 		manager.setOpponentRoster(opponentTeam);
 		manager.setOpponentName(match.getName());
-		System.out.println(manager.getMainRoster());
-		System.out.println(manager.getOpponentRoster());
+		//System.out.println(manager.getMainRoster());
+		//System.out.println(manager.getOpponentRoster());
+		boolean noStamina = false; // Track if all player's athletes have 0 stamina
+		
 		for (int i = 0; i < playerTeam.size(); i++) {
 			// compare athletes
 			Athlete playerAthlete = playerTeam.get(i);
 			Athlete opposingAthlete = opponentTeam.get(i);
 			System.out.println(playerAthlete.getName() + " (" + playerAthlete.getProficiency() + ") vs (" + opposingAthlete.getProficiency() + ") " + opposingAthlete.getName()); 
-			if (playerAthlete.getProficiency() >= opposingAthlete.getProficiency()) {
-				
+			if (playerAthlete.getProficiency() >= opposingAthlete.getProficiency()) {		
 				playerScore += 1;
 				playerAthlete.setMatchUpResult("Won faceoff");
 				playerAthlete.updateStamina(-1);
@@ -145,32 +146,29 @@ public class Match {
 				
 			}
 			
+	        if (playerAthlete.getStamina() > 0) {
+	            noStamina = false; // As long as one athlete has stamina it's okay.
+	        }			
 		}
 		
-		if (playerScore > opponentScore) {
-			//manager.changeMoney(match.getPrizeMoney());
-			//return "Victory";
-			match.setOutcome("Victory");
-			manager.setMatchOutcome(outcome);
-			manager.updateSeasonPoints(pointGain);
-			manager.changeMoney(prizeMoney);
-			
-		} else if (playerScore == opponentScore) {
-			//return "Draw";
-			match.setOutcome("Draw");
-			manager.setMatchOutcome(outcome);
-			
-		}
-		else {
-			match.setOutcome("Defeat");
-			manager.setMatchOutcome(outcome);
-			//return "Defeat";
-		}
+		
+	    if (noStamina) {
+	        match.setOutcome("Defeat (Stamina)");
+	        manager.setMatchOutcome(outcome);
+	    } else if (playerScore > opponentScore) {
+	        match.setOutcome("Victory");
+	        manager.setMatchOutcome(outcome);
+	        manager.updateSeasonPoints(pointGain);
+	        manager.changeMoney(prizeMoney);
+	    } else {
+	        match.setOutcome("Defeat");
+	        manager.setMatchOutcome(outcome);
+	    }		
 	
 	}	
 	
 	public String toString() {
-		return " Play against " + opponentName + "  |  Reward: $" + createPrizeString(prizeMoney) + " & " + pointGain + " points.";
+		return "Play against " + opponentName + "  |  Reward: $" + createPrizeString(prizeMoney) + " & " + pointGain + " points.";
 	}
 	
 

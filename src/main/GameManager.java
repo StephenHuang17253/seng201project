@@ -98,6 +98,7 @@ public class GameManager {
 	/**
 	 * Method to close the main game screen when it's not needed.
 	 * @param mainWindow the main screen
+	 * @param next the next screen
 	 */
 	public void closeMainScreen(MainScreen mainWindow, String next) {
 	

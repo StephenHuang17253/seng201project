@@ -40,8 +40,8 @@ public class MatchScreen {
 		playerTeam = manager.getMainRoster();
 		opponentTeam = manager.getOpponentRoster();
 		match = incomingMatch;
-		System.out.println(playerTeam);
-		System.out.println(opponentTeam);
+		//System.out.println(playerTeam);
+		//System.out.println(opponentTeam);
 		initialize();
 		frmMatchScreen.setVisible(true);
 		
@@ -99,7 +99,7 @@ public class MatchScreen {
 		frmMatchScreen.getContentPane().add(playerPanel);
 		playerPanel.setLayout(null);
 		
-		JLabel strikerLabel1 = new JLabel("Striker: " + playerTeam.get(0).getName());
+		JLabel strikerLabel1 = new JLabel("Striker: " + playerTeam.get(0).getName() + " (" + playerTeam.get(0).getProficiency() + ")");
 		strikerLabel1.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		strikerLabel1.setHorizontalAlignment(SwingConstants.CENTER);
 		strikerLabel1.setBounds(10, 77, 205, 14);
@@ -113,10 +113,10 @@ public class MatchScreen {
 			strikerMatchupLabel.setForeground(new Color(255, 66, 66));
 		}
 		strikerMatchupLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
-		strikerMatchupLabel.setBounds(66, 97, 92, 14);
+		strikerMatchupLabel.setBounds(66, 92, 92, 15);
 		playerPanel.add(strikerMatchupLabel);
 		
-		JLabel leftWingLabel2 = new JLabel("Left Wing: " + playerTeam.get(1).getName());
+		JLabel leftWingLabel2 = new JLabel("Left Wing: " + playerTeam.get(1).getName() + " (" + playerTeam.get(1).getProficiency() + ")");
 		leftWingLabel2.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		leftWingLabel2.setHorizontalAlignment(SwingConstants.CENTER);
 		leftWingLabel2.setBounds(10, 133, 205, 14);
@@ -130,10 +130,10 @@ public class MatchScreen {
 		} else {
 			leftWingMatchupLabel.setForeground(new Color(255, 66, 66));
 		}
-		leftWingMatchupLabel.setBounds(66, 158, 92, 14);
+		leftWingMatchupLabel.setBounds(66, 148, 92, 15);
 		playerPanel.add(leftWingMatchupLabel);		
 		
-		JLabel rightWingLabel3 = new JLabel("Right Wing: " + playerTeam.get(2).getName());
+		JLabel rightWingLabel3 = new JLabel("Right Wing: " + playerTeam.get(2).getName() + " (" + playerTeam.get(2).getProficiency() + ")");
 		rightWingLabel3.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		rightWingLabel3.setHorizontalAlignment(SwingConstants.CENTER);
 		rightWingLabel3.setBounds(10, 190, 205, 14);
@@ -147,10 +147,10 @@ public class MatchScreen {
 			rightWingMatchupLabel.setForeground(new Color(255, 66, 66));
 		}
 		rightWingMatchupLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
-		rightWingMatchupLabel.setBounds(66, 209, 92, 14);
+		rightWingMatchupLabel.setBounds(66, 205, 92, 15);
 		playerPanel.add(rightWingMatchupLabel);	
 		
-		JLabel defenderLabel4 = new JLabel("Defender: " + playerTeam.get(3).getName());
+		JLabel defenderLabel4 = new JLabel("Defender: " + playerTeam.get(3).getName() + " (" + playerTeam.get(3).getProficiency() + ")");
 		defenderLabel4.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		defenderLabel4.setHorizontalAlignment(SwingConstants.CENTER);
 		defenderLabel4.setBounds(10, 245, 205, 14);
@@ -164,16 +164,16 @@ public class MatchScreen {
 		} else {
 			defenderMatchupLabel.setForeground(new Color(255, 66, 66));
 		}
-		defenderMatchupLabel.setBounds(66, 265, 92, 14);
+		defenderMatchupLabel.setBounds(66, 260, 92, 15);
 		playerPanel.add(defenderMatchupLabel);	
 		
-		JLabel keeperLabel5 = new JLabel("Keeper: " + playerTeam.get(4).getName());
+		JLabel keeperLabel5 = new JLabel("Keeper: " + playerTeam.get(4).getName() + " (" + playerTeam.get(4).getProficiency() + ")");
 		keeperLabel5.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		keeperLabel5.setHorizontalAlignment(SwingConstants.CENTER);
 		keeperLabel5.setBounds(10, 300, 205, 14);
 		playerPanel.add(keeperLabel5);
 		
-		JLabel keeperMatchupLabel = new JLabel(playerTeam.get(4).getMatchUpResult());
+		JLabel keeperMatchupLabel = new JLabel("" + playerTeam.get(4).getMatchUpResult());
 		keeperMatchupLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		keeperMatchupLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
 		if (playerTeam.get(4).getMatchUpResult() == "Won faceoff") {
@@ -181,7 +181,7 @@ public class MatchScreen {
 		} else {
 			keeperMatchupLabel.setForeground(new Color(255, 66, 66));
 		}
-		keeperMatchupLabel.setBounds(66, 320, 92, 14);
+		keeperMatchupLabel.setBounds(66, 315, 92, 15);
 		playerPanel.add(keeperMatchupLabel);	
 		
 		JLabel playerTeamName = new JLabel("Your Team");
@@ -200,35 +200,35 @@ public class MatchScreen {
 		opponentPanel.setBounds(415, 132, 225, 360);
 		frmMatchScreen.getContentPane().add(opponentPanel);
 		
-		JLabel opponentLabel1_1 = new JLabel("Striker: " + opponentTeam.get(0).getName());
-		opponentLabel1_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		opponentLabel1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		opponentLabel1_1.setBounds(10, 77, 205, 14);
-		opponentPanel.add(opponentLabel1_1);
+		JLabel opponentLabel1 = new JLabel("Striker: " + opponentTeam.get(0).getName() + " (" + opponentTeam.get(0).getProficiency() + ")");
+		opponentLabel1.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		opponentLabel1.setHorizontalAlignment(SwingConstants.CENTER);
+		opponentLabel1.setBounds(10, 77, 205, 14);
+		opponentPanel.add(opponentLabel1);
 		
-		JLabel opponentLabel2_1 = new JLabel("Left Wing: " + opponentTeam.get(1).getName());
-		opponentLabel2_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		opponentLabel2_1.setHorizontalAlignment(SwingConstants.CENTER);
-		opponentLabel2_1.setBounds(10, 133, 205, 14);
-		opponentPanel.add(opponentLabel2_1);
+		JLabel opponentLabel2 = new JLabel("Left Wing: " + opponentTeam.get(1).getName() + " (" + opponentTeam.get(1).getProficiency() + ")");
+		opponentLabel2.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		opponentLabel2.setHorizontalAlignment(SwingConstants.CENTER);
+		opponentLabel2.setBounds(10, 133, 205, 14);
+		opponentPanel.add(opponentLabel2);
 		
-		JLabel opponentLabel3_1 = new JLabel("Right Wing: " + opponentTeam.get(2).getName());
-		opponentLabel3_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		opponentLabel3_1.setHorizontalAlignment(SwingConstants.CENTER);
-		opponentLabel3_1.setBounds(10, 190, 205, 14);
-		opponentPanel.add(opponentLabel3_1);
+		JLabel opponentLabel3 = new JLabel("Right Wing: " + opponentTeam.get(2).getName() + " (" + opponentTeam.get(2).getProficiency() + ")");
+		opponentLabel3.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		opponentLabel3.setHorizontalAlignment(SwingConstants.CENTER);
+		opponentLabel3.setBounds(10, 190, 205, 14);
+		opponentPanel.add(opponentLabel3);
 		
-		JLabel opponentLabel4_1 = new JLabel("Defender: " + opponentTeam.get(3).getName());
-		opponentLabel4_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		opponentLabel4_1.setHorizontalAlignment(SwingConstants.CENTER);
-		opponentLabel4_1.setBounds(10, 245, 205, 14);
-		opponentPanel.add(opponentLabel4_1);
+		JLabel opponentLabel4 = new JLabel("Defender: " + opponentTeam.get(3).getName() + " (" + opponentTeam.get(3).getProficiency() + ")");
+		opponentLabel4.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		opponentLabel4.setHorizontalAlignment(SwingConstants.CENTER);
+		opponentLabel4.setBounds(10, 245, 205, 14);
+		opponentPanel.add(opponentLabel4);
 		
-		JLabel opponentLabel5_1 = new JLabel("Keeper: " + opponentTeam.get(4).getName());
-		opponentLabel5_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		opponentLabel5_1.setHorizontalAlignment(SwingConstants.CENTER);
-		opponentLabel5_1.setBounds(10, 300, 205, 14);
-		opponentPanel.add(opponentLabel5_1);
+		JLabel opponentLabel5 = new JLabel("Keeper: " + opponentTeam.get(4).getName() + " (" + opponentTeam.get(4).getProficiency() + ")");
+		opponentLabel5.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		opponentLabel5.setHorizontalAlignment(SwingConstants.CENTER);
+		opponentLabel5.setBounds(10, 300, 205, 14);
+		opponentPanel.add(opponentLabel5);
 		
 		JLabel opponentName = new JLabel("Opponent");
 		opponentName.setText(manager.getOpponentName());
@@ -241,7 +241,7 @@ public class MatchScreen {
 		opponentScoreLabel.setBounds(78, 5, 69, 14);
 		opponentPanel.add(opponentScoreLabel);
 		
-		JLabel outcomeHighlight = new JLabel("The winner of this match is");
+		JLabel outcomeHighlight = new JLabel("The winner of this match...");
 		outcomeHighlight.setHorizontalAlignment(SwingConstants.CENTER);
 		outcomeHighlight.setFont(new Font("Tahoma", Font.BOLD, 12)); 
 		outcomeHighlight.setBounds(250, 66, 211, 14);
@@ -251,11 +251,19 @@ public class MatchScreen {
 		outcomeLabel.setFont(new Font("Tahoma", Font.BOLD, 22));
 		if (match.getOutcome() == "Victory") {
 			outcomeLabel.setText(manager.getTeamName());
-			outcomeLabel.setForeground(new Color(0, 128, 0));
+			outcomeLabel.setForeground(new Color(0, 128, 0));			
+		} else if (match.getOutcome() == "Defeat (Stamina") {
+			outcomeLabel.setText(manager.getOpponentName());
+			outcomeLabel.setForeground(new Color(255, 66, 66));	
+			Object message = "All of your athletes were injured during the match " + manager.getOpponentName()
+			 + "\nAs a result you were forced to forfeit. ";
+			Component forfeitMatch = null;
+			JOptionPane.showMessageDialog(forfeitMatch, message, "Match concluded", JOptionPane.WARNING_MESSAGE);	
 		} else {
 			outcomeLabel.setText(manager.getOpponentName());
-			outcomeLabel.setForeground(new Color(255, 66, 66));
+			outcomeLabel.setForeground(new Color(255, 66, 66));				
 		}
+	
 		outcomeLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		outcomeLabel.setBounds(158, 76, 394, 45);
 		frmMatchScreen.getContentPane().add(outcomeLabel);
@@ -268,9 +276,7 @@ public class MatchScreen {
 									 + "\nPrize winnings: " + match.createPrizeString(match.getPrizeMoney())
 									 + "\nSeason points earned: " + match.getPointGain();
 					Component newWeekFrame = null;
-					JOptionPane.showMessageDialog(newWeekFrame, 
-							message, 
-							"Match concluded", JOptionPane.INFORMATION_MESSAGE);							
+					JOptionPane.showMessageDialog(newWeekFrame, message, "Match concluded", JOptionPane.INFORMATION_MESSAGE);							
 				}
 				finishedWindow();
 				manager.launchStadiumScreen();

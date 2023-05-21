@@ -15,7 +15,6 @@ import main.Match;
 import javax.swing.SwingConstants;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
-import javax.swing.UIManager;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
@@ -23,7 +22,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ListSelectionModel;
 import javax.swing.JPanel;
-import javax.swing.border.TitledBorder;
 import javax.swing.border.LineBorder;
 
 public class StadiumScreen {
@@ -152,7 +150,10 @@ public class StadiumScreen {
 							"Can't compete!", JOptionPane.INFORMATION_MESSAGE);			 				
 				} else {
 					System.out.println(targetMatch);
-					manager.launchMatchScreen(targetMatch); 
+					matches.remove(targetMatch);
+					manager.launchMatchScreen(targetMatch);
+					matchListModel.removeElement(targetMatch);
+					matchList.setModel(matchListModel);
 					finishedWindow();					
 				}
 				

@@ -88,7 +88,8 @@ public class Athlete implements Purchasable{
 	}	
 
 	/**
-	 * Simple getter for Athlete's name.
+	 * Returns the Athlete's name.
+	 * @return a string of the Athlete's name
 	 */		
 	public String getName() {
 		return name;
