@@ -522,7 +522,7 @@ public class GameManager {
 		newItems.add(new DefensiveCoach());
 		setMarketAthletes(newAthletes);
 		setMarketItems(newItems);
-		setWeeklyMatches(Match.generateWeeklyMatches());
+		setWeeklyMatches(MatchGenerator.generateWeeklyMatches());
 	}
 		
 	
