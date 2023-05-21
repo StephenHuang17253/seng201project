@@ -192,6 +192,11 @@ public class GameManager {
 			inventoryWindow.closeWindow();
 			launchClubScreen();
 		}
+		
+		if (origin == "SellMarket") {
+			inventoryWindow.closeWindow();
+			launchMarketSellScreen();
+		}
 	}
 	
 	public void launchMatchScreen(Match match) {

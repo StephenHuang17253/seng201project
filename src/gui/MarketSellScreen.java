@@ -185,7 +185,7 @@ public class MarketSellScreen {
 		inventoryButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closeWindow();
-				manager.launchInventoryScreen("Market");
+				manager.launchInventoryScreen("SellMarket");
 			}
 		});
 		inventoryButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
