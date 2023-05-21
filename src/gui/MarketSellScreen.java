@@ -23,6 +23,7 @@ import main.GameManager;
 import main.Item;
 
 import javax.swing.JList;
+import javax.swing.JTextArea;
 
 public class MarketSellScreen {
 
@@ -118,7 +119,7 @@ public class MarketSellScreen {
 		
 		// Label
 		JLabel athletesSellLabel = new JLabel("Athletes in Inventory");
-		athletesSellLabel.setBounds(20, 18, 194, 20);
+		athletesSellLabel.setBounds(20, 11, 194, 20);
 		athletesSellLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
 		athletesSellPanel.add(athletesSellLabel);
 	
@@ -139,11 +140,16 @@ public class MarketSellScreen {
 		athletesContainer.add(athletesScrollPane);
 		
 		JLabel athleteSoldLabel = new JLabel("");
-		athleteSoldLabel.setBounds(597, 48, 0, 0);
+		athleteSoldLabel.setBounds(350, 23, 194, 14);
 		athleteSoldLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		athleteSoldLabel.setForeground(new Color(255, 66, 66));
 		athleteSoldLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
 		athletesSellPanel.add(athleteSoldLabel);
+		
+		JLabel athletesSellbackPriceLabel = new JLabel("Sellback price is half of purchase price");
+		athletesSellbackPriceLabel.setBounds(20, 32, 191, 15);
+		athletesSellPanel.add(athletesSellbackPriceLabel);
+		athletesSellbackPriceLabel.setFont(new Font("Tahoma", Font.ITALIC, 11));
 		
 		JPanel itemsSellPanel = new JPanel();
 		itemsSellPanel.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
@@ -158,7 +164,7 @@ public class MarketSellScreen {
 		
 		JLabel itemsSellLabel = new JLabel("Items in Inventory");
 		itemsSellLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
-		itemsSellLabel.setBounds(20, 18, 194, 20);
+		itemsSellLabel.setBounds(20, 11, 194, 20);
 		itemsSellPanel.add(itemsSellLabel);
 		
 		DefaultListModel<Item> inventoryItemListModel = new DefaultListModel<Item>();
@@ -180,6 +186,11 @@ public class MarketSellScreen {
 		itemBoughtLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
 		itemBoughtLabel.setBounds(350, 23, 194, 14);
 		itemsSellPanel.add(itemBoughtLabel);
+		
+		JLabel itemSellbackPriceLabel = new JLabel("Sellback price is half of purchase price");
+		itemSellbackPriceLabel.setFont(new Font("Tahoma", Font.ITALIC, 11));
+		itemSellbackPriceLabel.setBounds(20, 32, 191, 15);
+		itemsSellPanel.add(itemSellbackPriceLabel);
 		
 		JButton inventoryButton = new JButton("Inventory");
 		inventoryButton.addActionListener(new ActionListener() {
@@ -208,6 +219,11 @@ public class MarketSellScreen {
 		moneyLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
 		moneyLabel.setBounds(506, 84, 200, 39);
 		frmMarketSellScreen.getContentPane().add(moneyLabel);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setBackground(new Color(240, 240, 240));
+		textArea.setBounds(32, 53, 58, 44);
+		frmMarketSellScreen.getContentPane().add(textArea);
 		
 	}
 }
