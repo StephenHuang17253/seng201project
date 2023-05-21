@@ -101,6 +101,8 @@ public class MarketScreen {
 		JButton sellPurchasablesButton = new JButton("Buy Purchasables");
 		sellPurchasablesButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				closeWindow();
+				manager.launchMarketSellScreen();
 			}
 		});
 		sellPurchasablesButton.setFont(new Font("Tahoma", Font.BOLD, 13));
