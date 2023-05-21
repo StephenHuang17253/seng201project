@@ -339,14 +339,14 @@ public class GameManager {
 		return reserveRoster;
 	}
 	
-	public ArrayList<Athlete> createOpponentTeam() {
-		return mainRoster;
-		
-	}
-	
 	public ArrayList<Athlete> getOpponentRoster() {
 		return opponentRoster;
 	}
+	
+	public void setOpponentTeam(ArrayList<Athlete> opponents) {
+		opponentRoster = opponents;
+	}
+	
 	
 	public boolean canCompete() {
 		if (mainRoster.size() == 6) {

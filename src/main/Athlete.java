@@ -174,8 +174,8 @@ public class Athlete implements Purchasable{
 		return name + ", Proficiency: " + proficiency + ", Health: " + health + ", Stamina: " + stamina
 				+ ", Offence: " + offence + ", Defence: " + defence + ", Contract: $" + priceString;
 		
-		//return name + ", " + rating + ", " + health + "-hp, " + stamina + "-stam, "
-				 //+ offence + "-off, " + defence + "-def, $" + priceString;	
+		//return name + ", " + position + ", " + "Proficiency: " + proficiency + ", Health: " + health + ", Stamina: " + stamina
+				//+ ", Offence: " + offence + ", Defence: " + defence + ", Contract: $" + priceString;
 	}
 	
 	public String getShortString() {

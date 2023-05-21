@@ -66,6 +66,7 @@ public class Match {
 		manager = incomingManager;
 		ArrayList<Athlete> playerTeam = manager.getMainRoster();
 		ArrayList<Athlete> opponentTeam = AthleteGenerator.generateTeam(6);
+		manager.setOpponentTeam(opponentTeam);
 		System.out.println(playerTeam);
 		System.out.println(opponentTeam);
 		for (int i = 0; i < playerTeam.size(); i++) {

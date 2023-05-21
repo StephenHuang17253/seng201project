@@ -53,26 +53,33 @@ public class AthleteGenerator {
     public static ArrayList<Athlete> generateTeam(int teamSize) {
         ArrayList<Athlete> team = new ArrayList<>();
         ArrayList<String> takenNames = new ArrayList<>();
-
+        String[] positions = { "Left-wing Spiker", "Middle Blocker", "Right-wing spiker", "Setter", "Libero", "Outside Hitter" }; 
+		int i = 0;
         while (team.size() < teamSize) {
             Athlete athlete = generateRandomAthlete();
             String name = athlete.getName();
 
+            
             if (!takenNames.contains(name)) {
+            	
+            	String position = positions[i];
+            	athlete.setPosition(position);
                 team.add(athlete);
                 takenNames.add(name);
+                i += 1;
             }
         }
         return team;
     }    
     
     public static void main(String[] args) {
-        Athlete athlete = generateRandomAthlete();
-        System.out.println(athlete);
+        //Athlete athlete = generateRandomAthlete();
+        //System.out.println(athlete);
         
-        ArrayList<Athlete> team = generateTeam(5);
+        ArrayList<Athlete> team = generateTeam(6);
         for (Athlete player : team) {
-            System.out.println(player);
+            System.out.println(player.getPosition() + ": " + player);
+            
         }
     }
 }
