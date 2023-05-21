@@ -164,7 +164,7 @@ public class GameManager {
 	}
 	
 	public void launchMarketSellScreen() {
-		MarketSellScreen marketSellWindow = new MarketSellScreen(this);
+		MarketSellScreen marketSellWindow = new MarketSellScreen(this, inventory);
 	}
 	
 	public void closeMarketSellScreen(MarketSellScreen marketSellWindow) {

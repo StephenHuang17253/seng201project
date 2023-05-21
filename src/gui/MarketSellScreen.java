@@ -5,7 +5,9 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -13,16 +15,21 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
+import main.Athlete;
 import main.GameManager;
+import main.Item;
+
 import javax.swing.JList;
 
 public class MarketSellScreen {
 
 	private JFrame frmMarketSellScreen;
 	private GameManager manager;
+	private ArrayList<Item> inventory;
 	
-	public MarketSellScreen(GameManager incomingManager) {
+	public MarketSellScreen(GameManager incomingManager, ArrayList<Item> items) {
 		manager = incomingManager;
+		inventory = items;
 		initialize();
 		frmMarketSellScreen.setVisible(true);
 	}
@@ -68,81 +75,108 @@ public class MarketSellScreen {
 		frmMarketSellScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMarketSellScreen.getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("The Market");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 35));
-		lblNewLabel.setBounds(10, 11, 696, 52);
-		frmMarketSellScreen.getContentPane().add(lblNewLabel);
+		JLabel marketSellLabel = new JLabel("The Market");
+		marketSellLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		marketSellLabel.setFont(new Font("Tahoma", Font.BOLD, 35));
+		marketSellLabel.setBounds(10, 11, 696, 52);
+		frmMarketSellScreen.getContentPane().add(marketSellLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Click to switch to buy Items and Athletes");
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(259, 58, 204, 14);
-		frmMarketSellScreen.getContentPane().add(lblNewLabel_1);
+		JLabel sellPurchasablesText = new JLabel("Click to switch to buy Items and Athletes");
+		sellPurchasablesText.setHorizontalAlignment(SwingConstants.CENTER);
+		sellPurchasablesText.setBounds(259, 58, 204, 14);
+		frmMarketSellScreen.getContentPane().add(sellPurchasablesText);
 		
-		JButton btnNewButton = new JButton("Sell Purchasables");
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 13));
-		btnNewButton.setBounds(269, 74, 176, 31);
-		frmMarketSellScreen.getContentPane().add(btnNewButton);
+		JButton sellPurchasablesButton = new JButton("Sell Purchasables");
+		sellPurchasablesButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				closeWindow();
+				manager.launchMarketScreen();
+			}
+		});
+		sellPurchasablesButton.setFont(new Font("Tahoma", Font.BOLD, 13));
+		sellPurchasablesButton.setBounds(269, 74, 176, 31);
+		frmMarketSellScreen.getContentPane().add(sellPurchasablesButton);
 		
-		JPanel panel = new JPanel();
-		panel.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
-		panel.setBounds(10, 119, 696, 234);
-		frmMarketSellScreen.getContentPane().add(panel);
-		panel.setLayout(null);
+		JPanel athletesSellPanel = new JPanel();
+		athletesSellPanel.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
+		athletesSellPanel.setBounds(10, 119, 696, 234);
+		frmMarketSellScreen.getContentPane().add(athletesSellPanel);
+		athletesSellPanel.setLayout(null);
 		
-		JButton btnNewButton_1_1 = new JButton("Sell");
-		btnNewButton_1_1.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnNewButton_1_1.setBounds(554, 16, 132, 28);
-		panel.add(btnNewButton_1_1);
+		JButton athleteSellButton = new JButton("Sell");
+		athleteSellButton.setFont(new Font("Tahoma", Font.BOLD, 11));
+		athleteSellButton.setBounds(554, 16, 132, 28);
+		athletesSellPanel.add(athleteSellButton);
 		
-		JLabel lblNewLabel_2 = new JLabel("Athletes in Inventory");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel_2.setBounds(20, 18, 194, 20);
-		panel.add(lblNewLabel_2);
+		JLabel athletesSellLabel = new JLabel("Athletes in Inventory");
+		athletesSellLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
+		athletesSellLabel.setBounds(20, 18, 194, 20);
+		athletesSellPanel.add(athletesSellLabel);
 		
-		JList list = new JList();
-		list.setBorder(new LineBorder(new Color(186, 207, 248), 2));
-		list.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		list.setBounds(10, 51, 676, 172);
-		panel.add(list);
+		DefaultListModel<Athlete> inventoryAthleteModel = new DefaultListModel<Athlete>();
+		inventoryAthleteModel.addAll(manager.getMainRoster());
+		inventoryAthleteModel.addAll(manager.getReserveRoster());
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
-		panel_1.setBounds(10, 365, 696, 234);
-		frmMarketSellScreen.getContentPane().add(panel_1);
-		panel_1.setLayout(null);
+		JList<Athlete> athletesList = new JList<Athlete>(inventoryAthleteModel);
+		athletesList.setBorder(new LineBorder(new Color(186, 207, 248), 2));
+		athletesList.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		athletesList.setBounds(10, 51, 676, 172);
+		athletesSellPanel.add(athletesList);
 		
-		JButton btnNewButton_1_1_1 = new JButton("Sell");
-		btnNewButton_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnNewButton_1_1_1.setBounds(554, 16, 132, 28);
-		panel_1.add(btnNewButton_1_1_1);
+		JLabel athleteSoldLabel = new JLabel("");
+		athleteSoldLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		athleteSoldLabel.setForeground(new Color(255, 66, 66));
+		athleteSoldLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		athleteSoldLabel.setBounds(239, 23, 305, 14);
+		athletesSellPanel.add(athleteSoldLabel);
 		
-		JLabel lblNewLabel_2_1 = new JLabel("Items in Inventory");
-		lblNewLabel_2_1.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel_2_1.setBounds(20, 18, 194, 20);
-		panel_1.add(lblNewLabel_2_1);
+		JPanel itemsSellPanel = new JPanel();
+		itemsSellPanel.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
+		itemsSellPanel.setBounds(10, 365, 696, 234);
+		frmMarketSellScreen.getContentPane().add(itemsSellPanel);
+		itemsSellPanel.setLayout(null);
 		
-		JList list_1 = new JList();
-		list_1.setBorder(new LineBorder(new Color(186, 207, 248), 2));
-		list_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		list_1.setBounds(10, 51, 676, 172);
-		panel_1.add(list_1);
+		JButton itemSellButton = new JButton("Sell");
+		itemSellButton.setFont(new Font("Tahoma", Font.BOLD, 11));
+		itemSellButton.setBounds(554, 16, 132, 28);
+		itemsSellPanel.add(itemSellButton);
 		
-		JButton btnNewButton_1_1_1_1 = new JButton("Inventory");
-		btnNewButton_1_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnNewButton_1_1_1_1.setBounds(223, 610, 270, 60);
-		frmMarketSellScreen.getContentPane().add(btnNewButton_1_1_1_1);
+		JLabel itemsSellLabel = new JLabel("Items in Inventory");
+		itemsSellLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
+		itemsSellLabel.setBounds(20, 18, 194, 20);
+		itemsSellPanel.add(itemsSellLabel);
 		
-		JButton btnNewButton_1_1_1_1_1 = new JButton("Go Back");
-		btnNewButton_1_1_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnNewButton_1_1_1_1_1.setBounds(223, 681, 270, 60);
-		frmMarketSellScreen.getContentPane().add(btnNewButton_1_1_1_1_1);
+		DefaultListModel<Item> inventoryItemListModel = new DefaultListModel<Item>();
+		inventoryItemListModel.addAll(inventory);
 		
-		JLabel lblNewLabel_3 = new JLabel("Money: $<dynamic>");
-		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_3.setBounds(506, 84, 200, 39);
-		frmMarketSellScreen.getContentPane().add(lblNewLabel_3);
+		JList<Item> itemList = new JList<Item>(inventoryItemListModel);
+		itemList.setBorder(new LineBorder(new Color(186, 207, 248), 2));
+		itemList.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		itemList.setBounds(10, 51, 676, 172);
+		itemsSellPanel.add(itemList);
+		
+		JLabel itemBoughtLabel = new JLabel("");
+		itemBoughtLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		itemBoughtLabel.setForeground(new Color(255, 66, 66));
+		itemBoughtLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		itemBoughtLabel.setBounds(350, 23, 194, 14);
+		itemsSellPanel.add(itemBoughtLabel);
+		
+		JButton inventoryButton = new JButton("Inventory");
+		inventoryButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		inventoryButton.setBounds(223, 610, 270, 60);
+		frmMarketSellScreen.getContentPane().add(inventoryButton);
+		
+		JButton goBackButton = new JButton("Go Back");
+		goBackButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		goBackButton.setBounds(223, 681, 270, 60);
+		frmMarketSellScreen.getContentPane().add(goBackButton);
+		
+		JLabel moneyLabel = new JLabel("Money: $" + manager.getMoneyString());
+		moneyLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		moneyLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+		moneyLabel.setBounds(506, 84, 200, 39);
+		frmMarketSellScreen.getContentPane().add(moneyLabel);
 		
 	}
 }
