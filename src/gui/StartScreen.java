@@ -21,7 +21,7 @@ public class StartScreen {
 
 	private JFrame frmStartScreen;
 	private GameManager manager;
-	private JLabel lblWelcome;
+	private JLabel welcomeLabel;
 
 	
 	/**
@@ -75,11 +75,11 @@ public class StartScreen {
 		frmStartScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmStartScreen.getContentPane().setLayout(null);
 		
-		lblWelcome = new JLabel(" Welcome to KickHeroes\r\n");
-		lblWelcome.setHorizontalAlignment(SwingConstants.CENTER);
-		lblWelcome.setBounds(10, 128, 982, 77);
-		lblWelcome.setFont(new Font("Rockwell Extra Bold", Font.PLAIN, 50));
-		frmStartScreen.getContentPane().add(lblWelcome);
+		welcomeLabel = new JLabel(" Welcome to KickHeroes\r\n");
+		welcomeLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		welcomeLabel.setBounds(10, 128, 982, 77);
+		welcomeLabel.setFont(new Font("Rockwell Extra Bold", Font.PLAIN, 50));
+		frmStartScreen.getContentPane().add(welcomeLabel);
 		
 		JLabel lblStart = new JLabel("Press \"Start\" to play!");
 		lblStart.setHorizontalAlignment(SwingConstants.CENTER);
