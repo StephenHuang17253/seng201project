@@ -186,11 +186,6 @@ public class MarketSellScreen {
 		frmMarketSellScreen.getContentPane().add(itemsSellPanel);
 		itemsSellPanel.setLayout(null);
 		
-		JButton itemSellButton = new JButton("Sell");
-		itemSellButton.setFont(new Font("Tahoma", Font.BOLD, 11));
-		itemSellButton.setBounds(554, 16, 132, 28);
-		itemsSellPanel.add(itemSellButton);
-		
 		JLabel itemsSellLabel = new JLabel("Items in Inventory");
 		itemsSellLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
 		itemsSellLabel.setBounds(20, 11, 194, 20);
@@ -209,17 +204,44 @@ public class MarketSellScreen {
 		Container itemsContainer = itemsSellPanel;
 		itemsContainer.add(itemsScrollPane);
 
-		JLabel itemBoughtLabel = new JLabel("");
-		itemBoughtLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		itemBoughtLabel.setForeground(new Color(255, 66, 66));
-		itemBoughtLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
-		itemBoughtLabel.setBounds(350, 23, 194, 14);
-		itemsSellPanel.add(itemBoughtLabel);
+		JLabel itemSoldLabel = new JLabel("");
+		itemSoldLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		itemSoldLabel.setForeground(new Color(255, 66, 66));
+		itemSoldLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		itemSoldLabel.setBounds(350, 23, 194, 14);
+		itemsSellPanel.add(itemSoldLabel);
 		
 		JLabel itemSellbackPriceLabel = new JLabel("Sellback price is half of purchase price");
 		itemSellbackPriceLabel.setFont(new Font("Tahoma", Font.ITALIC, 11));
 		itemSellbackPriceLabel.setBounds(20, 32, 191, 15);
 		itemsSellPanel.add(itemSellbackPriceLabel);
+		
+		JButton itemSellButton = new JButton("Sell item");
+		itemSellButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Item targetItem = itemList.getSelectedValue();
+				
+				if (targetItem == null) {
+					// Inform player that they have not selected an item.
+					itemSoldLabel.setText("");
+					Component notSelectedWarning = null;
+					JOptionPane.showMessageDialog(notSelectedWarning,
+							"You have not selected a item.", 
+							"No item selected", JOptionPane.INFORMATION_MESSAGE);									
+				}
+				else {
+					// Sell athlete if above condition/s are false.
+					manager.sellItem(targetItem);
+					inventoryItemListModel.removeElement(targetItem);
+					itemList.setModel(inventoryItemListModel);
+					itemSoldLabel.setText(targetItem.getName() + " sold for " + targetItem.getSellbackPrice());
+					moneyLabel.setText("Money: $" + manager.getMoneyString());
+				}	
+			}
+		});
+		itemSellButton.setFont(new Font("Tahoma", Font.BOLD, 11));
+		itemSellButton.setBounds(554, 16, 132, 28);
+		itemsSellPanel.add(itemSellButton);		
 		
 		JButton inventoryButton = new JButton("Inventory");
 		inventoryButton.addActionListener(new ActionListener() {

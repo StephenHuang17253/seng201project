@@ -52,13 +52,6 @@ public class ClubScreen {
 	}
 	
 	/**
-	 * Create the application.
-	 */
-	public ClubScreen() {
-		initialize();
-	}	
-	
-	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
@@ -73,6 +66,13 @@ public class ClubScreen {
 			}
 		});
 	}	
+	
+	/**
+	 * Create the application.
+	 */
+	public ClubScreen() {
+		initialize();
+	}		
 	
 	/**
 	 * Initialize the contents of the frame.

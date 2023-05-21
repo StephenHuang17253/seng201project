@@ -39,12 +39,6 @@ public class MainScreen {
 		manager.closeMainScreen(this, next);
 	}
 	
-	/**
-	 * Create the application.
-	 */	
-	public MainScreen() {
-		initialize();
-	}	
 	
 	/**
 	 * Launch the application.
@@ -62,7 +56,13 @@ public class MainScreen {
 		});
 	}
 
-
+	/**
+	 * Create the application.
+	 */	
+	public MainScreen() {
+		initialize();
+	}
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */

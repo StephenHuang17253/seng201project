@@ -9,6 +9,7 @@ import java.util.List;
 import main.Athlete;
 
 import gui.ClubScreen;
+import gui.EndScreen;
 import gui.MainScreen;
 import gui.MarketScreen;
 import gui.MarketSellScreen;
@@ -121,7 +122,12 @@ public class GameManager {
 		
 		if (next == "Bye") {
 			takeBye();
-			launchMainScreen();
+			if (week != totalWeeks) {
+				launchMainScreen();
+			} else {
+				launchEndScreen();
+			}
+			
 		}
 		
 		if (next == "Quit") {
@@ -212,8 +218,13 @@ public class GameManager {
 		
 	}
 		
+	public void launchEndScreen() {
+		EndScreen endWindow = new EndScreen(this);
+	}
 	
-	
+	public void closeEndScreen(EndScreen endWindow) {
+		endWindow.closeWindow();
+	}
 	
 	/**
 	 * Method to set up the game.
@@ -275,14 +286,19 @@ public class GameManager {
 	}		
 			
 	public void takeBye() {
-		ArrayList<Athlete> allAthletes = new ArrayList<>();
-		allAthletes.addAll(getMainRoster());
-		allAthletes.addAll(getOpponentRoster());
-		for (Athlete athlete : allAthletes) {
-			athlete.setStamina(10);
+		if (week != totalWeeks) {
+			ArrayList<Athlete> allAthletes = new ArrayList<>();
+			allAthletes.addAll(getMainRoster());
+			allAthletes.addAll(getOpponentRoster());
+			for (Athlete athlete : allAthletes) {
+				athlete.setStamina(athlete.getMaxStamina());			
+			incrementWeek();
+			refreshWeek();			
+			}
+		} else {
+			
 		}
-		incrementWeek();
-		refreshWeek();
+
 	}
 	
 	/**
@@ -342,7 +358,9 @@ public class GameManager {
 	}
 	
 	public void incrementWeek() {
-		week++;
+		if (week < totalWeeks) {
+			week++;
+		}
 	}
 	
 	/**
@@ -453,14 +471,17 @@ public class GameManager {
 		if (reserveRoster.contains(targetAthlete)) {
 			reserveRoster.remove(targetAthlete);
 		} else if (mainRoster.contains(targetAthlete) ) {
-			mainRoster.remove(targetAthlete);
+			mainRoster.remove(targetAthlete); 
 		}
 		
-		
-		
-		
-		
 	}
+		
+	public void sellItem(Item item) {
+		changeMoney(item.getSellbackPrice()); 
+		inventory.remove(item);
+	}
+		
+		
 	
 	public ArrayList<Athlete> getMarketAthletes() {
 		return marketAthletes;
