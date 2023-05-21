@@ -75,7 +75,7 @@ public class InventoryScreen {
 	 */
 	private void initialize() {
 		frmInventoryScreen = new JFrame();
-		frmInventoryScreen.setTitle("VolleyballWorld - Inventory");
+		frmInventoryScreen.setTitle("KickHeroes - Inventory");
 		frmInventoryScreen.setBounds(100, 100, 732, 799);
 		frmInventoryScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmInventoryScreen.getContentPane().setLayout(null);

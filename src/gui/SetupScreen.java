@@ -111,7 +111,7 @@ public class SetupScreen {
 	private void initialize() {
 		frmSetupScreen = new JFrame();
 		frmSetupScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmSetupScreen.setTitle("VolleyballWorld - Game Setup");
+		frmSetupScreen.setTitle("KickHeroes - Game Setup");
 		frmSetupScreen.setBounds(100, 100, 900, 600);
 		frmSetupScreen.getContentPane().setLayout(null);
 		
@@ -193,7 +193,7 @@ public class SetupScreen {
 		listExplanation.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		listExplanation.setBackground(new Color(240, 240, 240));
 		listExplanation.setEditable(false);
-		listExplanation.setText("Pick at least 6.");
+		listExplanation.setText("Pick at least 5.");
 		listExplanation.setBounds(44, 264, 120, 19);
 		frmSetupScreen.getContentPane().add(listExplanation);
 		

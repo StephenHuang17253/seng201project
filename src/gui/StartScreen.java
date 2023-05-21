@@ -70,12 +70,12 @@ public class StartScreen {
 	 */
 	private void initialize() {
 		frmStartScreen = new JFrame();
-		frmStartScreen.setTitle("VolleyballWorld ");
+		frmStartScreen.setTitle("KickHeroes");
 		frmStartScreen.setBounds(100, 100, 1018, 564);
 		frmStartScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmStartScreen.getContentPane().setLayout(null);
 		
-		lblWelcome = new JLabel(" Welcome to VolleyballWorld");
+		lblWelcome = new JLabel(" Welcome to KickHeroes\r\n");
 		lblWelcome.setHorizontalAlignment(SwingConstants.CENTER);
 		lblWelcome.setBounds(10, 128, 982, 77);
 		lblWelcome.setFont(new Font("Rockwell Extra Bold", Font.PLAIN, 50));

@@ -79,7 +79,7 @@ public class ClubScreen {
 	 */
 	private void initialize() {
 		frmClubScreen = new JFrame();
-		frmClubScreen.setTitle("VolleyballWorld - Club Screen");
+		frmClubScreen.setTitle("KickHeroes - Club Screen");
 		frmClubScreen.setBounds(100, 100, 1115, 817);
 		frmClubScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmClubScreen.getContentPane().setLayout(null);
@@ -241,7 +241,7 @@ public class ClubScreen {
 		activeExplanationTextArea.setBounds(10, 11, 127, 212);
 		activeRosterExplainationPanel.add(activeExplanationTextArea);
 		activeExplanationTextArea.setWrapStyleWord(true);
-		activeExplanationTextArea.setText("Press the demote button to move selected player into your reserves.\r\n\r\n\r\n\r\n\r\nThe active roster can have 6 athletes. A full active roster is required to compete in matches.\r\n\r\n\r\n\r\n\r\n");
+		activeExplanationTextArea.setText("Press the demote button to move selected player into your reserves.\r\n\r\n\r\n\r\n\r\nThe active roster can have 5 athletes. A full active roster is required to compete in matches.\r\n\r\n\r\n\r\n\r\n");
 		activeExplanationTextArea.setLineWrap(true);
 		activeExplanationTextArea.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		activeExplanationTextArea.setEditable(false);
