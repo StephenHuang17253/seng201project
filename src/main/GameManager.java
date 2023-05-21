@@ -122,10 +122,11 @@ public class GameManager {
 		
 		if (next == "Bye") {
 			takeBye();
-			if (week <= totalWeeks) {
-				launchMainScreen();
-			} else {
+			
+			if (week > totalWeeks || !getCanContinue()){
 				launchEndScreen();
+			} else {
+				launchMainScreen();
 			}
 			
 		} 
@@ -134,6 +135,15 @@ public class GameManager {
 
 		}
 	}		
+	public boolean getCanContinue() {
+		int totalAthletes = getMainRoster().size() + getReserveRoster().size();
+		if (totalAthletes < 5 && getMoney() < 100000) {
+			return false;
+		} else {
+			return true;
+		}
+			
+	}
 	/**
 	 * Method to launch the setup screen.
 	 */
