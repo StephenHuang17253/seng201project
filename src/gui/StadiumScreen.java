@@ -36,16 +36,12 @@ public class StadiumScreen {
 	 
 	public StadiumScreen(GameManager incomingManager) {
 		manager = incomingManager;
-		matches.add(new Match("The Eagles", 1000000, 5));
-		matches.add(new Match("The Bulls", 1500000, 7));
-		matches.add(new Match("Natus Vincere Sports Club", 2000000, 8));
-		matches.add(new Match("Shiratorizawa", 3500000, 9));
-		matches.add(new Match("Karasuno Sports Club", 4000000, 10));
+		matches = manager.getWeeklyMatches(); 
 		initialize();
 		frmStadium.setVisible(true);
 	}
 
-	public void closeWindow() {
+	public void closeWindow() { 
 		frmStadium.dispose();
 	}
 	
@@ -106,7 +102,7 @@ public class StadiumScreen {
 		frmStadium.getContentPane().add(listLabel);
 		
 		explanationText = new JTextArea();
-		explanationText.setFont(new Font("Tahoma", Font.ITALIC, 12));
+		explanationText.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		explanationText.setEditable(false);
 		explanationText.setWrapStyleWord(true);
 		explanationText.setLineWrap(true);
@@ -127,6 +123,11 @@ public class StadiumScreen {
 		stadiumLabel.setFont(new Font("Tahoma", Font.BOLD, 35));
 		stadiumLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
+		JLabel seasonPointsLabel = new JLabel("Season points: " + manager.getSeasonPoints());
+		seasonPointsLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+		seasonPointsLabel.setBounds(38, 74, 151, 14);
+		titlePanel.add(seasonPointsLabel);
+		
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setBounds(0, 317, 684, 158);
 		frmStadium.getContentPane().add(buttonPanel);
@@ -139,16 +140,22 @@ public class StadiumScreen {
 		playButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Match targetMatch = matchList.getSelectedValue();
-				if (targetMatch != null) {
-					System.out.println(targetMatch);
-					manager.launchMatchScreen(targetMatch); 
-					finishedWindow();					
-				} else {
+				if (targetMatch == null) {
 					Component noMatchSelected = null;
 					JOptionPane.showMessageDialog(noMatchSelected, 
 							"You have not selected a match.", 
-							"No match selected.", JOptionPane.INFORMATION_MESSAGE);
-				}					
+							"No match selected.", JOptionPane.INFORMATION_MESSAGE);				
+				} else if (manager.canCompete() != true) {
+					Component cantCompete = null;
+					JOptionPane.showMessageDialog(cantCompete, 
+							"At least one of your main players is injured.\nGo make a substitution to play.", 
+							"Can't compete!", JOptionPane.INFORMATION_MESSAGE);			 				
+				} else {
+					System.out.println(targetMatch);
+					manager.launchMatchScreen(targetMatch); 
+					finishedWindow();					
+				}
+				
 			}
 
 		});		

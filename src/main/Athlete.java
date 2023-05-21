@@ -21,7 +21,7 @@ public class Athlete implements Purchasable{
 	 * The Athlete's proficiency is the average of an athlete's offence and defence.
 	 * This is used in match calculations.
 	 */
-	private String position;
+	private String position = "unassigned";
 	/**
 	 * The Athelete's health stat.
 	 */		
@@ -177,7 +177,7 @@ public class Athlete implements Purchasable{
 				+ ", Offence: " + offence + ", Defence: " + defence + ", Contract: $" + priceString;
 		
 		//return name + ", " + position + ", " + "Proficiency: " + proficiency + ", Health: " + health + ", Stamina: " + stamina
-				//+ ", Offence: " + offence + ", Defence: " + defence + ", Contract: $" + priceString;
+		//		+ ", Offence: " + offence + ", Defence: " + defence + ", Contract: $" + priceString;
 	}
 	
 	public String getShortString() {

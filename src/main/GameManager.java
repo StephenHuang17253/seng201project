@@ -44,9 +44,13 @@ public class GameManager {
      */
     private String difficulty;
     /**
-     * The player's money.
+     * The club's money.
      */
     private int money;
+    /**
+     * The club's season points.
+     */
+    private int seasonPoints;
     /**
      * The window for setting up the game.
      */
@@ -66,7 +70,7 @@ public class GameManager {
 	private ArrayList<Item> marketItems = new ArrayList<>();
 	private ArrayList<Item> inventory = new ArrayList<>();	
 	private String matchOutcome;
-	
+	private ArrayList<Match> weeklyMatches = new ArrayList<>();
 	
 	
 
@@ -135,7 +139,7 @@ public class GameManager {
 	 */
 	public void closeSetUpScreen(SetupScreen setupWindow) {
 		setupWindow.closeWindow();
-		refreshShop();
+		refreshWeek();
 		launchMainScreen();
 	}
 	
@@ -259,6 +263,9 @@ public class GameManager {
 			teamName = name;
 			money -= teamCost;
 			this.reserveRoster.addAll(startAthletes);
+			for (Athlete athlete : startAthletes) {
+				AthleteGenerator.takenNames.add(athlete.getName());
+			}
 			closeSetUpScreen(setupWindow);
 		}
 		
@@ -266,7 +273,7 @@ public class GameManager {
 			
 	public void takeBye() {
 		incrementWeek();
-		refreshShop();
+		refreshWeek();
 	}
 	
 	/**
@@ -333,6 +340,14 @@ public class GameManager {
 		return totalWeeks;
 	}
 	
+	public int getSeasonPoints() {
+		return seasonPoints;
+	}
+	
+	public void updateSeasonPoints(int points) {
+		seasonPoints += points;
+	}
+	
 	public ArrayList<Athlete> getMainRoster() {
 		return mainRoster;
 		
@@ -367,16 +382,16 @@ public class GameManager {
 	}
 	
 	public boolean canCompete() {
+
 		if (mainRoster.size() == 5) {
-			for (Athlete athlete : mainRoster) {
-				if (athlete.getStamina() > 0) {
-					return true;
-				}
-				return true;
-			}
-		}  
-		return false;	
-		
+		    for (Athlete athlete : mainRoster) {
+		        if (athlete.getStamina() < 1) {
+		            return false;
+		        }
+		    }
+		    return true;
+		}
+		return false;		
 	}
 	
 	public void promoteAthlete(Athlete athlete) {
@@ -397,6 +412,7 @@ public class GameManager {
 		mainRoster.add(athlete);
 		money -= athlete.getContractPrice();
 		marketAthletes.remove(athlete);
+		AthleteGenerator.takenNames.add(athlete.getName());
 		if (mainRoster.contains(athlete)) {
 			System.out.println(athlete.getName() + "has been drafted to main roster.");
 		}
@@ -423,33 +439,37 @@ public class GameManager {
 	public ArrayList<Athlete> getMarketAthletes() {
 		return marketAthletes;
 	}
+	
 	public void setMarketAthletes(ArrayList<Athlete> marketAthletes) {
 		this.marketAthletes = marketAthletes;
 	}
+	
 	public ArrayList<Item> getMarketItems() {
 		return marketItems;
 	}
+	
 	public void setMarketItems(ArrayList<Item> marketItems) {
 		this.marketItems = marketItems;
 	}
 	
-	public void refreshShop() {
-		ArrayList<Athlete> newAthletes = new ArrayList<>();
+	public ArrayList<Match> getWeeklyMatches() {
+		return weeklyMatches;
+	}
+	
+	public void setWeeklyMatches(ArrayList<Match> matches) {
+		this.weeklyMatches = matches;
+	}	
+	
+	public void refreshWeek() {
+		ArrayList<Athlete> newAthletes = AthleteGenerator.generateTeam(5);
 		ArrayList<Item> newItems = new ArrayList<>();
-		
-		newAthletes.add(new Athlete("Shinsuke Kita", 10, 10, 2000000));
-		newAthletes.add(new Athlete("Ren Omimi", 8, 8, 850000));
-		newAthletes.add(new Athlete("Rintaro Suna", 7, 7, 700000));
-		newAthletes.add(new Athlete("Atsumu Miya", 5, 5, 300000));
-		newAthletes.add(new Athlete("Hitoshi Ginjima", 4, 4, 250000));
-		
 		newItems.add(new Trainer());
 		newItems.add(new Nutritionist());
 		newItems.add(new OffensiveCoach());
 		newItems.add(new DefensiveCoach());
-		
 		setMarketAthletes(newAthletes);
 		setMarketItems(newItems);
+		setWeeklyMatches(Match.generateWeeklyMatches());
 	}
 		
 	
