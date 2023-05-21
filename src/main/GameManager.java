@@ -59,7 +59,9 @@ public class GameManager {
 	 * The player's reserve athletes.
 	 */
 	private ArrayList<Athlete> reserveRoster = new ArrayList<>();
+	
 	private ArrayList<Athlete> opponentRoster = new ArrayList<>();	
+	private String opponentTeamName;
 	private ArrayList<Athlete> marketAthletes = new ArrayList<>();
 	private ArrayList<Item> marketItems = new ArrayList<>();
 	private ArrayList<Item> inventory = new ArrayList<>();	
@@ -189,9 +191,9 @@ public class GameManager {
 	}
 	
 	public void launchMatchScreen(Match match) {
+		match.runMatch(this, match);
 		MatchScreen matchWindow = new MatchScreen(this);
-		String outcome = match.runMatch(this, match);
-		System.out.println(outcome);
+		System.out.println(match.getOutcome());
 	}
 		
 	public void closeMatchScreen(MatchScreen matchWindow) {
@@ -343,13 +345,21 @@ public class GameManager {
 		return opponentRoster;
 	}
 	
-	public void setOpponentTeam(ArrayList<Athlete> opponents) {
+	public void setOpponentRoster(ArrayList<Athlete> opponents) {
 		opponentRoster = opponents;
 	}
 	
+	public String getOpponentName() {
+		return opponentTeamName;
+	}
+	
+	public void setOpponentName(String name) {
+		opponentTeamName = name;
+	}
+		
 	
 	public boolean canCompete() {
-		if (mainRoster.size() == 6) {
+		if (mainRoster.size() == 5) {
 			for (Athlete athlete : mainRoster) {
 				if (athlete.getStamina() > 0) {
 					return true;

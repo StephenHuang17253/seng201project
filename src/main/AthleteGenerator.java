@@ -53,7 +53,7 @@ public class AthleteGenerator {
     public static ArrayList<Athlete> generateTeam(int teamSize) {
         ArrayList<Athlete> team = new ArrayList<>();
         ArrayList<String> takenNames = new ArrayList<>();
-        String[] positions = { "Left-wing Spiker", "Middle Blocker", "Right-wing spiker", "Setter", "Libero", "Outside Hitter" }; 
+        String[] positions = { "Striker", "Left Wing", "Right Wing", "Defender", "Keeper" }; 
 		int i = 0;
         while (team.size() < teamSize) {
             Athlete athlete = generateRandomAthlete();
@@ -76,7 +76,7 @@ public class AthleteGenerator {
         //Athlete athlete = generateRandomAthlete();
         //System.out.println(athlete);
         
-        ArrayList<Athlete> team = generateTeam(6);
+        ArrayList<Athlete> team = generateTeam(5);
         for (Athlete player : team) {
             System.out.println(player.getPosition() + ": " + player);
             
