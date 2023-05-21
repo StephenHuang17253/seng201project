@@ -69,11 +69,11 @@ public class MainScreen {
 	private void initialize() {
 		frmMainScreen = new JFrame();
 		frmMainScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmMainScreen.setTitle("VolleyballWorld - Main Menu");
+		frmMainScreen.setTitle("KickHeroes - Main Menu");
 		frmMainScreen.setBounds(100, 100, 611, 648);
 		frmMainScreen.getContentPane().setLayout(null);
 		
-		JLabel titleLabel = new JLabel("VolleyballWorld");
+		JLabel titleLabel = new JLabel("KickHeroes");
 		titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		titleLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 40));
 		titleLabel.setBounds(10, 24, 575, 49);
