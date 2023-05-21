@@ -64,39 +64,51 @@ public class EndScreen {
 		
 		JLabel titleLabel = new JLabel("Game Over\r\n");
 		titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		titleLabel.setFont(new Font("Tahoma", Font.BOLD, 24));
-		titleLabel.setBounds(196, 33, 250, 29);
+		titleLabel.setFont(new Font("Tahoma", Font.BOLD, 42));
+		titleLabel.setBounds(191, 24, 260, 38);
 		frmEndScreen.getContentPane().add(titleLabel);
 		
 		JPanel summaryPanel = new JPanel();
-		summaryPanel.setBounds(100, 100, 441, 371);
+		summaryPanel.setBounds(100, 86, 441, 385);
 		frmEndScreen.getContentPane().add(summaryPanel);
 		summaryPanel.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Club Name");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 28));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(114, 11, 213, 23);
+		summaryPanel.add(lblNewLabel);
 		
 		JLabel panelLabel = new JLabel("Season Summary");
 		panelLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		panelLabel.setBounds(139, 5, 163, 23);
+		panelLabel.setBounds(139, 40, 163, 23);
 		summaryPanel.add(panelLabel);
 		
 		JLabel moneyEarnedLabel = new JLabel("Money earned: $");
 		moneyEarnedLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		moneyEarnedLabel.setBounds(143, 64, 155, 14);
+		moneyEarnedLabel.setBounds(143, 96, 155, 14);
 		summaryPanel.add(moneyEarnedLabel);
 		
 		JLabel matchesWonLabel = new JLabel("Matches won: ");
 		matchesWonLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		matchesWonLabel.setBounds(154, 104, 133, 14);
+		matchesWonLabel.setBounds(154, 136, 133, 14);
 		summaryPanel.add(matchesWonLabel);
 		
 		JLabel seasonPointsLabel = new JLabel("Season points earned: ");
 		seasonPointsLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		seasonPointsLabel.setBounds(143, 144, 155, 14);
+		seasonPointsLabel.setBounds(143, 176, 155, 14);
 		summaryPanel.add(seasonPointsLabel);
 		
 		JLabel bestAthleteLabel = new JLabel("Best Athlete: ");
 		bestAthleteLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		bestAthleteLabel.setBounds(143, 186, 155, 14);
+		bestAthleteLabel.setBounds(143, 218, 155, 14);
 		summaryPanel.add(bestAthleteLabel);
+		
+		JLabel thanksLabel = new JLabel("Thank you for playing!");
+		thanksLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
+		thanksLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		thanksLabel.setBounds(114, 276, 213, 35);
+		summaryPanel.add(thanksLabel);
 	}
 }

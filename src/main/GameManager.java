@@ -122,13 +122,13 @@ public class GameManager {
 		
 		if (next == "Bye") {
 			takeBye();
-			if (week != totalWeeks) {
+			if (week <= totalWeeks) {
 				launchMainScreen();
 			} else {
 				launchEndScreen();
 			}
 			
-		}
+		} 
 		
 		if (next == "Quit") {
 
@@ -286,17 +286,14 @@ public class GameManager {
 	}		
 			
 	public void takeBye() {
-		if (week != totalWeeks) {
-			ArrayList<Athlete> allAthletes = new ArrayList<>();
-			allAthletes.addAll(getMainRoster());
-			allAthletes.addAll(getOpponentRoster());
-			for (Athlete athlete : allAthletes) {
-				athlete.setStamina(athlete.getMaxStamina());			
-			incrementWeek();
-			refreshWeek();			
-			}
-		} else {
-			
+		
+		incrementWeek();
+		refreshWeek();	
+		ArrayList<Athlete> allAthletes = new ArrayList<>();
+		allAthletes.addAll(getMainRoster());
+		allAthletes.addAll(getOpponentRoster());
+		for (Athlete athlete : allAthletes) {
+			athlete.setStamina(athlete.getMaxStamina());			
 		}
 
 	}
@@ -358,9 +355,8 @@ public class GameManager {
 	}
 	
 	public void incrementWeek() {
-		if (week < totalWeeks) {
-			week++;
-		}
+		week += 1;
+
 	}
 	
 	/**

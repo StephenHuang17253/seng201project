@@ -149,11 +149,25 @@ public class MainScreen {
 		marketButton.setBounds(97, 180, 400, 75);
 		buttonPanel.add(marketButton);
 		
+
+				
 		JButton byeButton = new JButton("Take a bye");
 		byeButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		if (manager.getWeek() == manager.getTotalWeeks()) {
+			byeButton.setText("Finish game");
+		}		
 		byeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				if (manager.getWeek() == manager.getTotalWeeks()) {
+					Component ByeFrame = null;
+					int n = JOptionPane.showConfirmDialog(ByeFrame, 
+							"Ready to finish the game?", 
+							"End game", JOptionPane.YES_NO_OPTION);		
+					if (n == 0) {
+						finishedWindow("Bye");
+					}
+				} else {
 				Component ByeFrame = null;
 				int n = JOptionPane.showConfirmDialog(ByeFrame, 
 						"Ready to move to next week?", 
@@ -164,8 +178,8 @@ public class MainScreen {
 					JOptionPane.showMessageDialog(newWeekFrame, 
 							"Stadium and Market have refreshed.", 
 							"New week", JOptionPane.INFORMATION_MESSAGE);
+					}					
 				}
-				
 			}
 		});
 		byeButton.setBounds(97, 262, 400, 75);
