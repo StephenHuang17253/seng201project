@@ -89,7 +89,7 @@ public class InventoryScreen {
 		JPanel inventoryAthletePanel = new JPanel();
 		inventoryAthletePanel.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
 		inventoryAthletePanel.setBackground(new Color(240, 240, 240));
-		inventoryAthletePanel.setBounds(10, 119, 696, 265);
+		inventoryAthletePanel.setBounds(10, 119, 696, 234);
 		frmInventoryScreen.getContentPane().add(inventoryAthletePanel);
 		inventoryAthletePanel.setLayout(null);
 		
@@ -98,10 +98,10 @@ public class InventoryScreen {
 		inventoryAthleteModel.addAll(manager.getReserveRoster());
 		
 		JList<Athlete> inventoryAthleteList = new JList<Athlete>(inventoryAthleteModel);
+		inventoryAthleteList.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		inventoryAthleteList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		inventoryAthleteList.setBorder(new LineBorder(new Color(186, 207, 248), 2));
 		inventoryAthleteList.setBounds(10, 51, 676, 203);
-		inventoryAthletePanel.add(inventoryAthleteList);
 		inventoryAthleteList.setModel(inventoryAthleteModel);
 		
 		JScrollPane inventoryAthleteScrollPane = new JScrollPane(inventoryAthleteList);
@@ -111,7 +111,7 @@ public class InventoryScreen {
 		
 		JLabel inventoryAthletesLabel = new JLabel("Athletes");
 		inventoryAthletesLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
-		inventoryAthletesLabel.setBounds(20, 18, 101, 14);
+		inventoryAthletesLabel.setBounds(20, 18, 194, 20);
 		inventoryAthletePanel.add(inventoryAthletesLabel);
 		
 		JLabel athleteStatsLabel = new JLabel("");
@@ -123,7 +123,7 @@ public class InventoryScreen {
 		
 		JPanel inventoryItemPanel = new JPanel();
 		inventoryItemPanel.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
-		inventoryItemPanel.setBounds(10, 395, 696, 265);
+		inventoryItemPanel.setBounds(10, 365, 696, 234);
 		frmInventoryScreen.getContentPane().add(inventoryItemPanel);
 		inventoryItemPanel.setLayout(null);
 		
@@ -131,9 +131,9 @@ public class InventoryScreen {
 		inventoryItemListModel.addAll(inventory);
 		
 		JList<Item> inventoryItemList = new JList<Item>(inventoryItemListModel);
+		inventoryItemList.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		inventoryItemList.setBorder(new LineBorder(new Color(186, 207, 248), 2));
 		inventoryItemList.setBounds(10, 51, 676, 203);
-		inventoryItemPanel.add(inventoryItemList);
 		
 		JScrollPane inventoryItemScrollPane = new JScrollPane(inventoryItemList);
 		inventoryItemScrollPane.setBounds(10, 51, 676, 172);
@@ -142,7 +142,7 @@ public class InventoryScreen {
 		
 		JLabel inventoryItemsLabel = new JLabel("Items");
 		inventoryItemsLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
-		inventoryItemsLabel.setBounds(20, 18, 101, 14);
+		inventoryItemsLabel.setBounds(20, 18, 194, 20);
 		inventoryItemPanel.add(inventoryItemsLabel);
 		
 		JLabel itemUsedLabel = new JLabel("");
@@ -170,7 +170,7 @@ public class InventoryScreen {
 				finishedWindow(origin);
 			}
 		});
-		backButton.setBounds(223, 681, 270, 60);
+		backButton.setBounds(223, 649, 270, 60);
 		backButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		frmInventoryScreen.getContentPane().add(backButton);
 		
