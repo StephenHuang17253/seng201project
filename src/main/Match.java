@@ -15,9 +15,10 @@ public class Match {
 	private String outcome;
 	private GameManager manager;
 	private static final String[] NAMES = {
-		    "Karasuno Sports Club", "Shiratorizawa Academy", "Inarizaki Futsal Club", "Aoba Johsai", "The Stags", "The Spartans",
-		    "Elevate", "Escalation Sports Club", "Team Vitality", "Golden Guardians", "Paris Saint-Germain F.C.", "Evil Geniuses",
-		    "Team Liquid", "Natus Vincere", "The Eagles", "The Bulls", "The Dreams"
+		    "Karasuno Sports Club", "Shiratorizawa Academy", "Inarizaki F.C.", "Aoba Johsai F.C.", "The Stags", "The Spartans",
+		    "Elevate F.C.", "Escalation Sports Club", "Team Vitality", "Golden Guardians", "Paris Saint-Germain F.C.", "Evil Geniuses",
+		    "Team Liquid", "Natus Vincere", "The Eagles", "The Bulls", "The Dreams", "F.C. Renegades", "Team Bliss", "The Chiefs F.C.",
+		    "Radiants F.C.", "Windrunners"
 		    // Add more teams here as needed
 		};
 	
@@ -38,7 +39,11 @@ public class Match {
 		return new Match(name, prize, points);
 	}
 	
-	public static ArrayList<Match> generateWeeklyMatches(int numMatches) {
+	public static ArrayList<Match> generateWeeklyMatches() {
+		Random random = new Random();
+		int minMatches = 3;
+		int maxMatches = 5;
+		int numMatches = random.nextInt(maxMatches - minMatches + 1) + minMatches;
         ArrayList<Match> matches = new ArrayList<>();
         ArrayList<String> takenNames = new ArrayList<>();
         while (matches.size() < numMatches) {

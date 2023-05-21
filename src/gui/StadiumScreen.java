@@ -36,16 +36,12 @@ public class StadiumScreen {
 	 
 	public StadiumScreen(GameManager incomingManager) {
 		manager = incomingManager;
-		matches.add(new Match("The Eagles", 1000000, 5));
-		matches.add(new Match("The Bulls", 1500000, 7));
-		matches.add(new Match("Natus Vincere Sports Club", 2000000, 8));
-		matches.add(new Match("Shiratorizawa", 3500000, 9));
-		matches.add(new Match("Karasuno Sports Club", 4000000, 10));
+		matches = manager.getWeeklyMatches(); 
 		initialize();
 		frmStadium.setVisible(true);
 	}
 
-	public void closeWindow() {
+	public void closeWindow() { 
 		frmStadium.dispose();
 	}
 	
@@ -129,7 +125,7 @@ public class StadiumScreen {
 		
 		JLabel seasonPointsLabel = new JLabel("Season points: " + manager.getSeasonPoints());
 		seasonPointsLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
-		seasonPointsLabel.setBounds(38, 74, 123, 14);
+		seasonPointsLabel.setBounds(38, 74, 151, 14);
 		titlePanel.add(seasonPointsLabel);
 		
 		JPanel buttonPanel = new JPanel();

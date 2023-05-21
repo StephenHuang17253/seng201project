@@ -118,7 +118,7 @@ public class SetupScreen {
 		frmSetupScreen.setBounds(100, 100, 900, 600);
 		frmSetupScreen.getContentPane().setLayout(null);
 		
-		JLabel titleLabel = new JLabel("VolleyballWorld");
+		JLabel titleLabel = new JLabel("KickHeroes");
 		titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		titleLabel.setBounds(0, 16, 860, 39);
 		titleLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 32));
