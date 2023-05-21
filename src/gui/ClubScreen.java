@@ -159,7 +159,7 @@ public class ClubScreen {
 					JOptionPane.showMessageDialog(fullReservesWarning, "You have too many players in reserves, add some to your starting lineup", 
 							"Reserves full", JOptionPane.WARNING_MESSAGE);
 					
-				} else if (manager.getMainRoster().size() < 6) {
+				} else if (manager.getMainRoster().size() < 5) {
 					Component fullRosterWarning = null;
 					JOptionPane.showMessageDialog(fullRosterWarning, "Your main roster does not have enough players to compete. "
 							+ "\nPromote some reserves.", 
@@ -203,7 +203,7 @@ public class ClubScreen {
 		reserveRosterChangeLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
 		reserveRosterChangeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (manager.getMainRoster().size() >= 6) {
+				if (manager.getMainRoster().size() >= 5) {
 					Component fullRosterWarning = null;
 					JOptionPane.showMessageDialog(fullRosterWarning, "Can't promote player - main roster already has 6.", 
 							"Main roster full", JOptionPane.WARNING_MESSAGE);

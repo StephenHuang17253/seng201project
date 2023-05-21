@@ -138,6 +138,7 @@ public class StadiumScreen {
 			public void actionPerformed(ActionEvent e) {
 				finishedWindow();
 				Match targetMatch = matchList.getSelectedValue();
+				System.out.println(targetMatch);
 				manager.launchMatchScreen(targetMatch);
 			}
 		});		

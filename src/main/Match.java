@@ -3,26 +3,71 @@ package main;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import main.AthleteGenerator;
+import java.util.Random;
 
 public class Match {
 
-	private String matchName;
+	private String opponentName;
 	private int playerScore;
 	private int opponentScore;
 	private int prizeMoney;
 	private int pointGain;
+	private String outcome;
 	private GameManager manager;
+	private static final String[] NAMES = {
+		    "Karasuno Sports Club", "Shiratorizawa Academy", "Inarizaki Futsal Club", "Aoba Johsai", "The Stags", "The Spartans",
+		    "Elevate", "Escalation Sports Club", "Team Vitality", "Golden Guardians", "Paris Saint-Germain F.C.", "Evil Geniuses",
+		    "Team Liquid"
+		    // Add more teams here as needed
+		};
 	
 	
-	public Match (String opponentName, int prize, int points) {
-		matchName = opponentName;
+	public Match(String name, int prize, int points) {
+		opponentName = name;
 		prizeMoney = prize;
 		pointGain = points;
+	}
+
+	public static Match generateMatch() {
+		Random random = new Random();
+		String name = pickOpponentName(random);
+    	int minPrize = 1000000;
+    	int maxPrize = 3000000;
+		int prize = random.nextInt(maxPrize - minPrize + 1) + minPrize;
+		int points = 10;
+		return new Match(name, prize, points);
+	}
+	
+	public static ArrayList<Match> generateWeeklyMatches(int numMatches) {
+        ArrayList<Match> matches = new ArrayList<>();
+        ArrayList<String> takenNames = new ArrayList<>();
+        while (matches.size() < numMatches) {
+            Match match = generateMatch();
+            String name = match.getName();
+
+            
+            if (!takenNames.contains(name)) {
+            	
+                matches.add(match);
+                takenNames.add(name);
+            }
+        }
+        return matches;
 		
 	}
 	
-	public String getMatchName() {
-		return matchName;
+
+	private static String pickOpponentName(Random random) {
+        int index = random.nextInt(NAMES.length);
+        return NAMES[index];
+    }	
+	
+	public String getName() {
+		return opponentName;
+	}
+	
+	private void setName(String name) {
+		opponentName = name;
 	}
 	
 	public int getPlayerScore() {
@@ -62,18 +107,27 @@ public class Match {
 		this.pointGain = pointGain;
 	}
 	
-	public String runMatch(GameManager incomingManager, Match match) {
+	public String getOutcome() {
+		return outcome;
+	}
+	
+	public void setOutcome(String outcome) {
+		this.outcome = outcome;
+	}
+	
+	public void runMatch(GameManager incomingManager, Match match) {
 		manager = incomingManager;
 		ArrayList<Athlete> playerTeam = manager.getMainRoster();
-		ArrayList<Athlete> opponentTeam = AthleteGenerator.generateTeam(6);
-		manager.setOpponentTeam(opponentTeam);
-		System.out.println(playerTeam);
-		System.out.println(opponentTeam);
+		ArrayList<Athlete> opponentTeam = AthleteGenerator.generateTeam(5);
+		manager.setOpponentRoster(opponentTeam);
+		manager.setOpponentName(match.getName());
+		System.out.println(manager.getMainRoster());
+		System.out.println(manager.getOpponentRoster());
 		for (int i = 0; i < playerTeam.size(); i++) {
 			// compare athletes
 			Athlete playerAthlete = playerTeam.get(i);
 			Athlete opposingAthlete = opponentTeam.get(i);
-			System.out.println(playerAthlete.getProficiency() + " vs " + opposingAthlete.getProficiency()); 
+			System.out.println(playerAthlete.getName() + " (" + playerAthlete.getProficiency() + ") vs (" + opposingAthlete.getProficiency() + ") " + opposingAthlete.getName()); 
 			if (playerAthlete.getProficiency() >= opposingAthlete.getProficiency()) {
 				
 				playerScore += 1;
@@ -88,20 +142,23 @@ public class Match {
 		
 		if (playerScore > opponentScore) {
 			//manager.changeMoney(match.getPrizeMoney());
-			return "Victory";
+			//return "Victory";
+			match.setOutcome("Victory");
 			
 		} else if (playerScore == opponentScore) {
-			return "Draw";
+			//return "Draw";
+			match.setOutcome("Draw");
 			
 		}
 		else {
-			return "Defeat";
+			match.setOutcome("Defeat");
+			//return "Defeat";
 		}
 	
 	}	
 	
 	public String toString() {
-		return " Play against " + matchName + "  |  Reward: $" + getPrizeString(prizeMoney) + " & " + pointGain + " points.";
+		return " Play against " + opponentName + "  |  Reward: $" + getPrizeString(prizeMoney) + " & " + pointGain + " points.";
 	}
 	
 
