@@ -247,9 +247,6 @@ public class GameManager {
 			setupWindow.setNameWarningLabel("");
 			validName = true;
 			
-			// Check if selecting athletes works.
-			//for(int i = 0; i < teamRoster.size(); i++) {   
-			    //System.out.print(("\n" + teamRoster.get(i)));
 			} 	
 		
 		if (startAthletes.size() < 5) {
@@ -272,6 +269,12 @@ public class GameManager {
 	}		
 			
 	public void takeBye() {
+		ArrayList<Athlete> allAthletes = new ArrayList<>();
+		allAthletes.addAll(getMainRoster());
+		allAthletes.addAll(getOpponentRoster());
+		for (Athlete athlete : allAthletes) {
+			athlete.setStamina(10);
+		}
 		incrementWeek();
 		refreshWeek();
 	}

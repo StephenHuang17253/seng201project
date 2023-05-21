@@ -22,6 +22,7 @@ public class StartScreen {
 	private JFrame frmStartScreen;
 	private GameManager manager;
 	private JLabel welcomeLabel;
+	private JLabel gameLabel;
 
 	
 	/**
@@ -96,5 +97,10 @@ public class StartScreen {
 		btnStart.setFont(new Font("Tahoma", Font.BOLD, 40));
 		btnStart.setBounds(337, 329, 328, 108);
 		frmStartScreen.getContentPane().add(btnStart);
+		
+		gameLabel = new JLabel("... a Futsal Club management sim");
+		gameLabel.setFont(new Font("Rockwell", Font.PLAIN, 14));
+		gameLabel.setBounds(670, 200, 220, 22);
+		frmStartScreen.getContentPane().add(gameLabel);
 	}
 }

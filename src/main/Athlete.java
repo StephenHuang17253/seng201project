@@ -27,9 +27,13 @@ public class Athlete implements Purchasable{
 	 */		
 	private int health;
 	/**
-	 * The Athelete's stamina stat.
+	 * The Athelete's current stamina stat.
 	 */			
 	private int stamina;
+	/**
+	 * The athlete's maximum stamina stat.
+	 */
+	private int maxStamina;
 	/**
 	 * The Athelete's offence stat.
 	 */			
@@ -62,7 +66,8 @@ public class Athlete implements Purchasable{
 		this.name = name;
 		this.proficiency = (offence + defence);
 		this.health = 10; // Default health
-		this.stamina = 10; // Default stamina
+		this.maxStamina = 10; // Default stamina
+		this.stamina = maxStamina;
 		this.offence = offence;
 		this.defence = defence;
 		this.contractPrice = contractPrice;
@@ -105,6 +110,7 @@ public class Athlete implements Purchasable{
 		
 	/**
 	 * Simple getter for Athlete's position.
+	 * @return string position
 	 */		
 	public String getPosition() {
 		return position;
@@ -120,6 +126,7 @@ public class Athlete implements Purchasable{
 
 	/**
 	 * Simple getter for Athlete's health.
+	 * @return int health
 	 */		
 	public int getHealth() {
 		return health;
@@ -131,19 +138,42 @@ public class Athlete implements Purchasable{
 		this.health = health;
 	}
 	/**
-	 * Simple getter for Athlete's stamina.
+	 * Simple getter for Athlete's current stamina.
+	 * @return int stamina
 	 */			
 	public int getStamina() {
 		return stamina;
 	}
 	/**
-	 * Simple setter for Athlete's stamina.
+	 * Simple setter for Athlete's current stamina.
+	 */
+	public void setStamina(int amount) {
+		stamina = amount;
+	}
+	/**
+	 * Simple incrementer for Athlete's current stamina.
 	 */		
 	public void updateStamina(int amount) {
 		this.stamina += amount;
 	}
 	/**
+	 * Simple getter for Athlete's maximum stamina.
+	 * @return int MaxStamina.
+	 */
+	public int getMaxStamina() {
+		return maxStamina;
+	}
+	/**
+	 * Updates Athlete's maximum stamina by amount
+	 * @param int amount
+	 */
+	public void updateMaxStamina(int amount) {
+		maxStamina += amount;
+	}
+	
+	/**
 	 * Simple getter for Athlete's offence.
+	 * @return int offence
 	 */			
 	public int getOffence() {
 		return offence;
@@ -156,6 +186,7 @@ public class Athlete implements Purchasable{
 	}
 	/**
 	 * Simple getter for Athlete's defence.
+	 * @return int defence
 	 */	
 	public int getDefence() {
 		return defence;
@@ -186,6 +217,7 @@ public class Athlete implements Purchasable{
 	 
 	/**
 	 * Simple getter for Athlete's contract price.
+	 * @return int contractPrice
 	 */		
 	public int getContractPrice() {
 		return contractPrice;
@@ -198,6 +230,7 @@ public class Athlete implements Purchasable{
 	}
 	/**
 	 * Simple getter for Athlete's sell price.
+	 * @return int sellbackPrice
 	 */		
 	public int getSellbackPrice() {
 		return sellbackPrice;
@@ -210,6 +243,7 @@ public class Athlete implements Purchasable{
 	}
 	/**
 	 * Simple getter for Athlete's description.
+	 * @return string description
 	 */		
 	public String getDescription() {
 		return description;
