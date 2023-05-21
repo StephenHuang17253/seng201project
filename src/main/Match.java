@@ -94,7 +94,7 @@ public class Match {
 		this.prizeMoney = prizeMoney;
 	}
 	
-	public String getPrizeString(int amount) {
+	public String createPrizeString(int amount) {
 		DecimalFormat formatter = new DecimalFormat("#,###"); 
 		return formatter.format(amount);		
 	}	
@@ -163,7 +163,7 @@ public class Match {
 	}	
 	
 	public String toString() {
-		return " Play against " + opponentName + "  |  Reward: $" + getPrizeString(prizeMoney) + " & " + pointGain + " points.";
+		return " Play against " + opponentName + "  |  Reward: $" + createPrizeString(prizeMoney) + " & " + pointGain + " points.";
 	}
 	
 

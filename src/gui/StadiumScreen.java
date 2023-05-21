@@ -7,12 +7,14 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.util.ArrayList;
 import java.awt.Color;
+import java.awt.Component;
 
 import main.GameManager;
 import main.Match;
 
 import javax.swing.SwingConstants;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -136,11 +138,19 @@ public class StadiumScreen {
 		buttonPanel.add(playButton);
 		playButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				finishedWindow();
 				Match targetMatch = matchList.getSelectedValue();
-				System.out.println(targetMatch);
-				manager.launchMatchScreen(targetMatch);
+				if (targetMatch != null) {
+					System.out.println(targetMatch);
+					manager.launchMatchScreen(targetMatch); 
+					finishedWindow();					
+				} else {
+					Component noMatchSelected = null;
+					JOptionPane.showMessageDialog(noMatchSelected, 
+							"You have not selected a match.", 
+							"No match selected.", JOptionPane.INFORMATION_MESSAGE);
+				}					
 			}
+
 		});		
 		
 		JButton backButton = new JButton("Go back");

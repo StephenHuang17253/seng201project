@@ -192,7 +192,7 @@ public class GameManager {
 	
 	public void launchMatchScreen(Match match) {
 		match.runMatch(this, match);
-		MatchScreen matchWindow = new MatchScreen(this);
+		MatchScreen matchWindow = new MatchScreen(this, match);
 		matchOutcome = match.getOutcome();
 		System.out.println(match.getOutcome());
 	}
