@@ -310,6 +310,10 @@ public class GameManager {
 	public int getMoney() {
 		return money;
 	}
+	/**
+	 * Changes the player's money by the incoming amount.
+	 * @param int amount that money will be changed by.
+	 */
 	public void changeMoney(int amount) {
 		money += amount;
 	}
@@ -423,7 +427,7 @@ public class GameManager {
 		marketAthletes.remove(athlete);
 		AthleteGenerator.takenNames.add(athlete.getName());
 		if (mainRoster.contains(athlete)) {
-			System.out.println(athlete.getName() + "has been drafted to main roster.");
+			System.out.println(athlete.getName() + "has been drafted to active roster.");
 		}
 		
 	}
@@ -438,13 +442,26 @@ public class GameManager {
 	}
 	
 	public void purchaseItem(Item item) {
-		money -= item.getContractPrice();
+		changeMoney(item.getSellbackPrice());
 		inventory.add(item);
 		marketItems.remove(item);
 		System.out.println(item.getName() + " was added to club inventory.");
-
 	}
 
+	public void sellAthlete(Athlete targetAthlete) {
+		changeMoney(targetAthlete.getSellbackPrice());
+		if (reserveRoster.contains(targetAthlete)) {
+			reserveRoster.remove(targetAthlete);
+		} else if (mainRoster.contains(targetAthlete) ) {
+			mainRoster.remove(targetAthlete);
+		}
+		
+		
+		
+		
+		
+	}
+	
 	public ArrayList<Athlete> getMarketAthletes() {
 		return marketAthletes;
 	}
@@ -491,8 +508,6 @@ public class GameManager {
 		GameManager manager = new GameManager();
 		manager.launchStartScreen();
 	}
-
-	
 
 
 }

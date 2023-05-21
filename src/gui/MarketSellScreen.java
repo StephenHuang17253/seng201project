@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
@@ -23,6 +24,7 @@ import main.GameManager;
 import main.Item;
 
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
 public class MarketSellScreen {
@@ -85,6 +87,12 @@ public class MarketSellScreen {
 		marketSellLabel.setBounds(10, 11, 696, 52);
 		frmMarketSellScreen.getContentPane().add(marketSellLabel);
 		
+		JLabel moneyLabel = new JLabel("Money: $" + manager.getMoneyString());
+		moneyLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		moneyLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
+		moneyLabel.setBounds(455, 83, 235, 39);
+		frmMarketSellScreen.getContentPane().add(moneyLabel);
+		
 		JLabel sellPurchasablesText = new JLabel("Click to switch to buy Items and Athletes");
 		sellPurchasablesText.setHorizontalAlignment(SwingConstants.CENTER);
 		sellPurchasablesText.setBounds(10, 58, 696, 14);
@@ -108,15 +116,6 @@ public class MarketSellScreen {
 		athletesSellPanel.setLayout(null);
 		athletesSellPanel.setLayout(null);
 		
-		JButton athleteSellButton = new JButton("Sell");
-		athleteSellButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		athleteSellButton.setBounds(554, 16, 132, 28);
-		athleteSellButton.setFont(new Font("Tahoma", Font.BOLD, 11));
-		athletesSellPanel.add(athleteSellButton);
-		
 		// Label
 		JLabel athletesSellLabel = new JLabel("Athletes in Inventory");
 		athletesSellLabel.setBounds(20, 11, 194, 20);
@@ -139,6 +138,8 @@ public class MarketSellScreen {
 		Container athletesContainer = athletesSellPanel;
 		athletesContainer.add(athletesScrollPane);
 		
+
+		
 		JLabel athleteSoldLabel = new JLabel("");
 		athleteSoldLabel.setBounds(350, 23, 194, 14);
 		athleteSoldLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -150,6 +151,34 @@ public class MarketSellScreen {
 		athletesSellbackPriceLabel.setBounds(20, 32, 191, 15);
 		athletesSellPanel.add(athletesSellbackPriceLabel);
 		athletesSellbackPriceLabel.setFont(new Font("Tahoma", Font.ITALIC, 11));
+		
+		JButton athleteSellButton = new JButton("Sell player");
+		athleteSellButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Athlete targetAthlete = athletesList.getSelectedValue();
+				
+				if (targetAthlete == null) {
+					//Inform player that they have not selected an athlete.
+					athleteSoldLabel.setText("");
+					Component notSelectedWarning = null;
+					JOptionPane.showMessageDialog(notSelectedWarning,
+							"You haven't selected any athletes.", 
+							"No athlete selected", JOptionPane.INFORMATION_MESSAGE);									
+				}
+				
+				else {
+					// Sell athlete if above condition/s are false.
+					manager.sellAthlete(targetAthlete);
+					inventoryAthleteModel.removeElement(targetAthlete);
+					athletesList.setModel(inventoryAthleteModel);
+					athleteSoldLabel.setText(targetAthlete.getName() + " sold for " + targetAthlete.getSellbackPrice());
+					moneyLabel.setText("Money: $" + manager.getMoneyString());
+				}
+			}
+		});		
+		athleteSellButton.setBounds(554, 16, 132, 28);
+		athleteSellButton.setFont(new Font("Tahoma", Font.BOLD, 11));
+		athletesSellPanel.add(athleteSellButton);	
 		
 		JPanel itemsSellPanel = new JPanel();
 		itemsSellPanel.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
@@ -213,12 +242,6 @@ public class MarketSellScreen {
 		
 		goBackButton.setBounds(223, 681, 270, 60);
 		frmMarketSellScreen.getContentPane().add(goBackButton);
-		
-		JLabel moneyLabel = new JLabel("Money: $" + manager.getMoneyString());
-		moneyLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		moneyLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
-		moneyLabel.setBounds(506, 84, 200, 39);
-		frmMarketSellScreen.getContentPane().add(moneyLabel);
 		
 		JTextArea textArea = new JTextArea();
 		textArea.setBackground(new Color(240, 240, 240));

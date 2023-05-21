@@ -71,21 +71,11 @@ public class Athlete implements Purchasable{
 		this.offence = offence;
 		this.defence = defence;
 		this.contractPrice = contractPrice;
+		this.sellbackPrice = contractPrice / 2;
 		
 
 	}
-
-
-	/**
-	 * Purchase method for Athlete.
-	 * Doesn't do anything right now.
-	 */		
-	public void purchase(int contractPrice, int sellbackPrice, String description) {
-		this.setContractPrice(contractPrice);
-		this.setSellbackPrice(sellbackPrice);
-		this.setDescription(description);
-		
-	}	
+	
 
 	/**
 	 * Returns the Athlete's name.
@@ -231,6 +221,7 @@ public class Athlete implements Purchasable{
 	}
 	/**
 	 * Simple getter for Athlete's sell price.
+	 * The sellback price is half of the purchase price.
 	 * @return int sellbackPrice
 	 */		
 	public int getSellbackPrice() {

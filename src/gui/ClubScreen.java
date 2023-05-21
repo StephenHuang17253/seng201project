@@ -164,6 +164,7 @@ public class ClubScreen {
 					JOptionPane.showMessageDialog(fullRosterWarning, "Your main roster does not have enough players to compete. "
 							+ "\nPromote some reserves.", 
 							"Main roster full", JOptionPane.WARNING_MESSAGE);
+					finishedWindow();
 				} else {
 					finishedWindow();	
 				}

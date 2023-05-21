@@ -176,31 +176,39 @@ public class MarketScreen {
 			public void actionPerformed(ActionEvent e) {
 				
 				Athlete targetAthlete = athleteList.getSelectedValue();
+				int totalAthletes = manager.getMainRoster().size() + manager.getReserveRoster().size();
 				
-				if (manager.getMainRoster().size() + manager.getReserveRoster().size() >= 11) {
-					// Warn player that they have too many athletes
+				if (targetAthlete == null) {
+					// Inform player that they have not selected an athlete.
+					Component notSelectedWarning = null;
+					JOptionPane.showMessageDialog(notSelectedWarning,
+							"You haven't selected any athletes.", 
+							"No athlete selected", JOptionPane.INFORMATION_MESSAGE);
+					
+					} else if (totalAthletes == 10){
+					// Warn player that they have too many athletes.
 					Component fullClubWarning = null;
 					JOptionPane.showMessageDialog(fullClubWarning,
 							"Your club has too many athletes.", 
-							"Can't have more than 11 players", JOptionPane.WARNING_MESSAGE);
+							"Can't have more than 10 players", JOptionPane.WARNING_MESSAGE);
 					
 
-					}else if (manager.getMoney() < targetAthlete.getContractPrice()) {  
-						// Warn player if they can't afford the athlete
+					} else if (manager.getMoney() < targetAthlete.getContractPrice()) {  
+						// Warn player if they can't afford the athlete.
 						Component costWarning = null;
 						JOptionPane.showMessageDialog(costWarning,
 								"You can't afford this.", 
 								"Insufficent funds", JOptionPane.WARNING_MESSAGE);
-					}  
-					else if (manager.getReserveRoster().size() >= 5) {
-						// Warn player that reserves are full
+					  
+					} else if (manager.getReserveRoster().size() >= 5) {
+						// Warn player that reserves are full.
 						Component fullRosterWarning = null;
 						JOptionPane.showMessageDialog(fullRosterWarning,
 								"Reserve roster already has 5.", 
 								"Reserves full", JOptionPane.WARNING_MESSAGE);
 					}  
 
-					else{  
+					else {  
 						// Draft athlete if all above the conditions are false
 						manager.draftReserveAthlete(targetAthlete);
 						athleteListModel.removeElement(targetAthlete);
@@ -214,23 +222,30 @@ public class MarketScreen {
 			public void actionPerformed(ActionEvent e) {
 				
 				Athlete targetAthlete = athleteList.getSelectedValue();
+				int athleteSum = manager.getMainRoster().size() + manager.getReserveRoster().size();
 				
-				if (manager.getMainRoster().size() + manager.getReserveRoster().size() == 10) {
-					// Warn player that they have too many athletes
-					Component fullClubWarning = null;
-					JOptionPane.showMessageDialog(fullClubWarning,
-							"Your club has too many athletes.", 
-							"Can't have more than 10 players", JOptionPane.WARNING_MESSAGE);
+			
+				if (targetAthlete == null) {
+					// Inform player that they haven't selected an athlete.
+					Component notSelectedWarning = null;
+					JOptionPane.showMessageDialog(notSelectedWarning,
+							"You have not selected an athlete.", 
+							"No athlete selected", JOptionPane.INFORMATION_MESSAGE);
+				
+					} else if (athleteSum == 10) {
+						// Warn player that they have too many athletes
+						Component fullClubWarning = null;
+						JOptionPane.showMessageDialog(fullClubWarning,
+								"Your club has too many athletes.", 
+								"Can't have more than 10 players", JOptionPane.WARNING_MESSAGE);
 					
-
-					}else if (manager.getMoney() < targetAthlete.getContractPrice()) {  
+					} else if (manager.getMoney() < targetAthlete.getContractPrice()) {  
 						// Warn player if they can't afford the athlete
 						Component costWarning = null;
 						JOptionPane.showMessageDialog(costWarning,
 								"You can't afford this.", 
 								"Insufficent funds", JOptionPane.WARNING_MESSAGE);
-					}  
-					else if (manager.getMainRoster().size() == 5) { 
+					} else if (manager.getMainRoster().size() == 5) { 
 						// Warn player that reserves are full
 						Component fullRosterWarning = null;
 						JOptionPane.showMessageDialog(fullRosterWarning,
@@ -290,24 +305,24 @@ public class MarketScreen {
 		itemPanel.add(itemPurchaseButton);
 		itemPurchaseButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (manager.getMoney() >= itemList.getSelectedValue().getContractPrice()) {
-					Item targetItem = itemList.getSelectedValue();
-					manager.purchaseItem(itemList.getSelectedValue());
-					itemListModel.removeElement(itemList.getSelectedValue());
-					itemList.setModel(itemListModel);
-					itemBoughtLabel.setText(targetItem.getName() + " Bought!");
-					moneyLabel.setText("Money: $" + manager.getMoneyString());
-					
-				} else {
-					Component insufficentFundsWarning = null;
-					JOptionPane.showMessageDialog(insufficentFundsWarning, "You can't afford this. "
-							+ "\nGo some win games.", 
-							"Insufficient funds", JOptionPane.WARNING_MESSAGE);					
-				}
-
-				
-
-				
+			    Item targetItem = itemList.getSelectedValue();
+			    if (targetItem != null && manager.getMoney() >= targetItem.getContractPrice()) {
+			        manager.purchaseItem(targetItem);
+			        itemListModel.removeElement(targetItem);
+			        itemList.setModel(itemListModel);
+			        itemBoughtLabel.setText(targetItem.getName() + " Bought!");
+			        moneyLabel.setText("Money: $" + manager.getMoneyString());
+			    } else {
+			        Component purchaseWarning = null;
+			        if (targetItem == null) {
+			            JOptionPane.showMessageDialog(purchaseWarning, "No item selected.", 
+			                    "No Item Selected", JOptionPane.WARNING_MESSAGE);
+			        } else {
+			            JOptionPane.showMessageDialog(purchaseWarning, "You can't afford this. "
+			                    + "\nGo win some games.", 
+			                    "Insufficient Funds", JOptionPane.WARNING_MESSAGE);
+			        }
+			    }
 			}
 		});
 		
