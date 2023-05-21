@@ -129,7 +129,7 @@ public class MainScreen {
 				} else {
 					Component cantCompete = null;
 					JOptionPane.showMessageDialog(cantCompete,
-						    "Check that you have 6 non-injured athletes in your main roster.",
+						    "Check that you have 5 non-injured athletes in your main roster.",
 						    "Can't compete!",
 						    JOptionPane.WARNING_MESSAGE);					
 				}

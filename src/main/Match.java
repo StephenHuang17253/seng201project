@@ -17,7 +17,7 @@ public class Match {
 	private static final String[] NAMES = {
 		    "Karasuno Sports Club", "Shiratorizawa Academy", "Inarizaki Futsal Club", "Aoba Johsai", "The Stags", "The Spartans",
 		    "Elevate", "Escalation Sports Club", "Team Vitality", "Golden Guardians", "Paris Saint-Germain F.C.", "Evil Geniuses",
-		    "Team Liquid"
+		    "Team Liquid", "Natus Vincere", "The Eagles", "The Bulls", "The Dreams"
 		    // Add more teams here as needed
 		};
 	

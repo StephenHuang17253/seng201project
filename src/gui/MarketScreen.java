@@ -88,7 +88,7 @@ public class MarketScreen {
 	 */
 	private void initialize() {
 		frmMarketScreen = new JFrame();
-		frmMarketScreen.setTitle("VolleyballWorld - Market(Buy)");
+		frmMarketScreen.setTitle("KickHeroes - Market(Buy)");
 		frmMarketScreen.setBounds(100, 100, 732, 799);
 		frmMarketScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMarketScreen.getContentPane().setLayout(null);

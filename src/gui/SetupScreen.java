@@ -20,6 +20,7 @@ import javax.swing.border.LineBorder;
 
 import main.Athlete;
 import main.GameManager;
+import main.AthleteGenerator;
 
 import java.awt.Color;
 import java.awt.Container;
@@ -58,16 +59,18 @@ public class SetupScreen {
 	 */
 	public SetupScreen(GameManager incomingManager) {
 		manager = incomingManager;
-		startAthletes.add(new Athlete("Ross Bacani", 16, 15, 1500000));
-		startAthletes.add(new Athlete("Raoul Bacani", 15, 16, 1500000));
-		startAthletes.add(new Athlete("Yousif Abdellatif", 14, 11, 700000));
-		startAthletes.add(new Athlete("Robert Dalziel", 13, 12, 700000));
-		startAthletes.add(new Athlete("Vincent Chen", 11, 11, 600000));
-		startAthletes.add(new Athlete("Ryan Schaare",14, 6, 300000));
-		startAthletes.add(new Athlete("Max Richards", 14, 5, 300000));
-		startAthletes.add(new Athlete("Yul Nam", 4, 12, 300000));
-		startAthletes.add(new Athlete("Jackson Williams", 7, 7, 350000));
-		startAthletes.add(new Athlete("Kelso du Mez", 5, 5, 200000)); 
+		//startAthletes.add(new Athlete("Ross Bacani", 16, 15, 1500000));
+		//startAthletes.add(new Athlete("Raoul Bacani", 15, 16, 1500000));
+		//startAthletes.add(new Athlete("Yousif Abdellatif", 14, 11, 700000));
+		//startAthletes.add(new Athlete("Robert Dalziel", 13, 12, 700000));
+		//startAthletes.add(new Athlete("Vincent Chen", 11, 11, 600000));
+		//startAthletes.add(new Athlete("Ryan Schaare",14, 6, 300000));
+		//startAthletes.add(new Athlete("Max Richards", 14, 5, 300000));
+		//startAthletes.add(new Athlete("Yul Nam", 4, 12, 300000));
+		//startAthletes.add(new Athlete("Jackson Williams", 7, 7, 350000));
+		//startAthletes.add(new Athlete("Kelso du Mez", 5, 5, 200000)); 
+		startAthletes.addAll(AthleteGenerator.generateTeam(5));
+		startAthletes.addAll(AthleteGenerator.generateTeam(5));
 		initialize();
 		frmSetupScreen.setVisible(true);
 	}
