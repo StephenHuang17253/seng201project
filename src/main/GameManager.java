@@ -65,7 +65,7 @@ public class GameManager {
 	private ArrayList<Athlete> marketAthletes = new ArrayList<>();
 	private ArrayList<Item> marketItems = new ArrayList<>();
 	private ArrayList<Item> inventory = new ArrayList<>();	
-
+	private String matchOutcome;
 	
 	
 	
@@ -193,6 +193,7 @@ public class GameManager {
 	public void launchMatchScreen(Match match) {
 		match.runMatch(this, match);
 		MatchScreen matchWindow = new MatchScreen(this);
+		matchOutcome = match.getOutcome();
 		System.out.println(match.getOutcome());
 	}
 		
@@ -357,6 +358,13 @@ public class GameManager {
 		opponentTeamName = name;
 	}
 		
+	public String getMatchOutcome() {
+		return matchOutcome;
+	}
+	
+	public void setMatchOutcome(String outcome) {
+		matchOutcome = outcome;
+	}
 	
 	public boolean canCompete() {
 		if (mainRoster.size() == 5) {

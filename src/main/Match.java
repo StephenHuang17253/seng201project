@@ -131,9 +131,11 @@ public class Match {
 			if (playerAthlete.getProficiency() >= opposingAthlete.getProficiency()) {
 				
 				playerScore += 1;
+				playerAthlete.setMatchUpResult("Won faceoff");
 				playerAthlete.updateStamina(-1);
 			} else {
 				opponentScore += 1;
+				playerAthlete.setMatchUpResult("Lost faceoff");
 				playerAthlete.updateStamina(-2); // Stamina loss is higher on defeat
 				
 			}
@@ -144,14 +146,17 @@ public class Match {
 			//manager.changeMoney(match.getPrizeMoney());
 			//return "Victory";
 			match.setOutcome("Victory");
+			manager.setMatchOutcome(outcome);
 			
 		} else if (playerScore == opponentScore) {
 			//return "Draw";
 			match.setOutcome("Draw");
+			manager.setMatchOutcome(outcome);
 			
 		}
 		else {
 			match.setOutcome("Defeat");
+			manager.setMatchOutcome(outcome);
 			//return "Defeat";
 		}
 	
