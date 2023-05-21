@@ -1,7 +1,9 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.EventQueue;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
@@ -83,10 +86,10 @@ public class MarketSellScreen {
 		
 		JLabel sellPurchasablesText = new JLabel("Click to switch to buy Items and Athletes");
 		sellPurchasablesText.setHorizontalAlignment(SwingConstants.CENTER);
-		sellPurchasablesText.setBounds(259, 58, 204, 14);
+		sellPurchasablesText.setBounds(10, 58, 696, 14);
 		frmMarketSellScreen.getContentPane().add(sellPurchasablesText);
 		
-		JButton sellPurchasablesButton = new JButton("Sell Purchasables");
+		JButton sellPurchasablesButton = new JButton("Buy Purchasables");
 		sellPurchasablesButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closeWindow();
@@ -102,17 +105,24 @@ public class MarketSellScreen {
 		athletesSellPanel.setBounds(10, 119, 696, 234);
 		frmMarketSellScreen.getContentPane().add(athletesSellPanel);
 		athletesSellPanel.setLayout(null);
+		athletesSellPanel.setLayout(null);
 		
 		JButton athleteSellButton = new JButton("Sell");
-		athleteSellButton.setFont(new Font("Tahoma", Font.BOLD, 11));
+		athleteSellButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		athleteSellButton.setBounds(554, 16, 132, 28);
+		athleteSellButton.setFont(new Font("Tahoma", Font.BOLD, 11));
 		athletesSellPanel.add(athleteSellButton);
 		
+		// Label
 		JLabel athletesSellLabel = new JLabel("Athletes in Inventory");
-		athletesSellLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
 		athletesSellLabel.setBounds(20, 18, 194, 20);
+		athletesSellLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
 		athletesSellPanel.add(athletesSellLabel);
-		
+	
+		//Create Athlete JList
 		DefaultListModel<Athlete> inventoryAthleteModel = new DefaultListModel<Athlete>();
 		inventoryAthleteModel.addAll(manager.getMainRoster());
 		inventoryAthleteModel.addAll(manager.getReserveRoster());
@@ -121,13 +131,18 @@ public class MarketSellScreen {
 		athletesList.setBorder(new LineBorder(new Color(186, 207, 248), 2));
 		athletesList.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		athletesList.setBounds(10, 51, 676, 172);
-		athletesSellPanel.add(athletesList);
+		
+		//Give the JList to ScrollPane and Display
+		JScrollPane athletesScrollPane = new JScrollPane(athletesList);
+		athletesScrollPane.setBounds(10, 51, 676, 172);
+		Container athletesContainer = athletesSellPanel;
+		athletesContainer.add(athletesScrollPane);
 		
 		JLabel athleteSoldLabel = new JLabel("");
+		athleteSoldLabel.setBounds(597, 48, 0, 0);
 		athleteSoldLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		athleteSoldLabel.setForeground(new Color(255, 66, 66));
 		athleteSoldLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
-		athleteSoldLabel.setBounds(239, 23, 305, 14);
 		athletesSellPanel.add(athleteSoldLabel);
 		
 		JPanel itemsSellPanel = new JPanel();
@@ -153,8 +168,12 @@ public class MarketSellScreen {
 		itemList.setBorder(new LineBorder(new Color(186, 207, 248), 2));
 		itemList.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		itemList.setBounds(10, 51, 676, 172);
-		itemsSellPanel.add(itemList);
 		
+		JScrollPane itemsScrollPane = new JScrollPane(itemList);
+		itemsScrollPane.setBounds(10, 51, 676, 172);
+		Container itemsContainer = itemsSellPanel;
+		itemsContainer.add(itemsScrollPane);
+
 		JLabel itemBoughtLabel = new JLabel("");
 		itemBoughtLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		itemBoughtLabel.setForeground(new Color(255, 66, 66));

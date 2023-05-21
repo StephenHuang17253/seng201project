@@ -12,6 +12,7 @@ import main.Item;
 
 import java.awt.Font;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
 
@@ -22,6 +23,7 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Container;
 
 import javax.swing.border.LineBorder;
 
@@ -98,7 +100,7 @@ public class MarketScreen {
 		moneyLabel.setBounds(506, 84, 200, 39);
 		frmMarketScreen.getContentPane().add(moneyLabel);
 		
-		JButton sellPurchasablesButton = new JButton("Buy Purchasables");
+		JButton sellPurchasablesButton = new JButton("Sell Purchasables");
 		sellPurchasablesButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closeWindow();
@@ -143,6 +145,12 @@ public class MarketScreen {
 		athleteList.setBounds(10, 51, 676, 172);
 		athletePanel.add(athleteList);
 		athleteList.getSelectedValue();
+		
+		//Give the JList to ScrollPane and Display
+		JScrollPane athleteScrollPane = new JScrollPane(athleteList);
+		athleteScrollPane.setBounds(10, 51, 676, 172);
+		Container athleteContainer = athletePanel;
+		athleteContainer.add(athleteScrollPane);
 		
 		JLabel athleteBoughtLabel = new JLabel("");
 		athleteBoughtLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -262,6 +270,12 @@ public class MarketScreen {
 		itemPanel.add(itemList);
 		itemList.getSelectedValue();
 		
+		//Give the JList to ScrollPane and Display
+		JScrollPane itemScrollPane = new JScrollPane(itemList);
+		itemScrollPane.setBounds(10, 51, 676, 172);
+		Container itemContainer = itemPanel;
+		itemContainer.add(itemScrollPane);
+		
 		JLabel itemBoughtLabel = new JLabel("");
 		itemBoughtLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		itemBoughtLabel.setForeground(new Color(255, 66, 66));
@@ -279,7 +293,7 @@ public class MarketScreen {
 		itemPanel.add(itemPurchaseButton);
 		itemPurchaseButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (manager.getMoney() > itemList.getSelectedValue().getContractPrice()) {
+				if (manager.getMoney() >= itemList.getSelectedValue().getContractPrice()) {
 					Item targetItem = itemList.getSelectedValue();
 					manager.purchaseItem(itemList.getSelectedValue());
 					itemListModel.removeElement(itemList.getSelectedValue());
@@ -315,7 +329,7 @@ public class MarketScreen {
 		
 		JLabel sellPurchasablesText = new JLabel("Click to switch to sell Items and Athletes");
 		sellPurchasablesText.setHorizontalAlignment(SwingConstants.CENTER);
-		sellPurchasablesText.setBounds(259, 58, 204, 14);
+		sellPurchasablesText.setBounds(10, 58, 696, 14);
 		frmMarketScreen.getContentPane().add(sellPurchasablesText);
 		sellPurchasablesText.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		

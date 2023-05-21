@@ -22,12 +22,15 @@ import main.Athlete;
 import main.GameManager;
 
 import java.awt.Color;
+import java.awt.Container;
+
 import javax.swing.SwingConstants;
 import javax.swing.JTextPane;
 import javax.swing.JTextArea;
 import java.awt.SystemColor;
 import javax.swing.JTable;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 public class SetupScreen {
 
@@ -173,7 +176,12 @@ public class SetupScreen {
 		athleteList.setBounds(260, 260, 566, 173);
 		athleteList.setBorder(new LineBorder(new Color(0, 0, 0)));
 		frmSetupScreen.getContentPane().add(athleteList);
-		athleteList.getSelectedValue();		
+		athleteList.getSelectedValue();
+		
+		JScrollPane athleteListPane = new JScrollPane(athleteList);
+		athleteListPane.setBounds(260, 260, 566, 173);
+		Container inventoryItemContainer = frmSetupScreen.getContentPane();
+		inventoryItemContainer.add(athleteListPane);
 		
 		JComboBox<Object> difficultyChoice = new JComboBox<Object>();
 		difficultyChoice.setFont(new Font("Tahoma", Font.PLAIN, 12));

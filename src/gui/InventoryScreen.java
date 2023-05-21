@@ -8,12 +8,14 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
+import java.awt.Container;
 
 import main.Athlete;
 import main.GameManager;
 import main.Item;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JList;
@@ -102,6 +104,11 @@ public class InventoryScreen {
 		inventoryAthletePanel.add(inventoryAthleteList);
 		inventoryAthleteList.setModel(inventoryAthleteModel);
 		
+		JScrollPane inventoryAthleteScrollPane = new JScrollPane(inventoryAthleteList);
+		inventoryAthleteScrollPane.setBounds(10, 51, 676, 172);
+		Container inventoryAthleteContainer = inventoryAthletePanel;
+		inventoryAthleteContainer.add(inventoryAthleteScrollPane);
+		
 		JLabel inventoryAthletesLabel = new JLabel("Athletes");
 		inventoryAthletesLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
 		inventoryAthletesLabel.setBounds(20, 18, 101, 14);
@@ -127,6 +134,11 @@ public class InventoryScreen {
 		inventoryItemList.setBorder(new LineBorder(new Color(186, 207, 248), 2));
 		inventoryItemList.setBounds(10, 51, 676, 203);
 		inventoryItemPanel.add(inventoryItemList);
+		
+		JScrollPane inventoryItemScrollPane = new JScrollPane(inventoryItemList);
+		inventoryItemScrollPane.setBounds(10, 51, 676, 172);
+		Container inventoryItemContainer = inventoryItemPanel;
+		inventoryItemContainer.add(inventoryItemScrollPane);
 		
 		JLabel inventoryItemsLabel = new JLabel("Items");
 		inventoryItemsLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
