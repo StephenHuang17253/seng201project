@@ -129,8 +129,8 @@ public class MainScreen {
 				} else {
 					Component cantCompete = null;
 					JOptionPane.showMessageDialog(cantCompete,
-						    "Check that you have 5 non-injured athletes in your main roster.",
-						    "Can't compete!",
+						    "To compete your main roster needs 5 players with stamina",
+						    "Check your roster!",
 						    JOptionPane.WARNING_MESSAGE);					
 				}
 				

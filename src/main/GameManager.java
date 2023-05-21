@@ -382,16 +382,16 @@ public class GameManager {
 	}
 	
 	public boolean canCompete() {
+
 		if (mainRoster.size() == 5) {
-			for (Athlete athlete : mainRoster) {
-				if (athlete.getStamina() > 0) {
-					return true;
-				}
-				return true;
-			}
-		}  
-		return false;	
-		
+		    for (Athlete athlete : mainRoster) {
+		        if (athlete.getStamina() < 1) {
+		            return false;
+		        }
+		    }
+		    return true;
+		}
+		return false;		
 	}
 	
 	public void promoteAthlete(Athlete athlete) {

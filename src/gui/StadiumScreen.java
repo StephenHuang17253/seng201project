@@ -140,16 +140,22 @@ public class StadiumScreen {
 		playButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Match targetMatch = matchList.getSelectedValue();
-				if (targetMatch != null) {
-					System.out.println(targetMatch);
-					manager.launchMatchScreen(targetMatch); 
-					finishedWindow();					
-				} else {
+				if (targetMatch == null) {
 					Component noMatchSelected = null;
 					JOptionPane.showMessageDialog(noMatchSelected, 
 							"You have not selected a match.", 
-							"No match selected.", JOptionPane.INFORMATION_MESSAGE);
-				}					
+							"No match selected.", JOptionPane.INFORMATION_MESSAGE);				
+				} else if (manager.canCompete() != true) {
+					Component cantCompete = null;
+					JOptionPane.showMessageDialog(cantCompete, 
+							"At least one of your main players is injured.\nGo make a substitution to play.", 
+							"Can't compete!", JOptionPane.INFORMATION_MESSAGE);			 				
+				} else {
+					System.out.println(targetMatch);
+					manager.launchMatchScreen(targetMatch); 
+					finishedWindow();					
+				}
+				
 			}
 
 		});		
