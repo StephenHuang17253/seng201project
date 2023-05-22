@@ -72,7 +72,7 @@ public class Athlete implements Purchasable{
 		setContractPrice(contractPrice);
 		setSellbackPrice(contractPrice / 2);
 		setDescription("A professional Futsal player. ");
-		this.proficiency = (offence + defence);
+		getProficiency();
 		setPosition("Unassigned");
 		//setPosition(AthleteGenerator.getRandomPosition());
 
@@ -98,6 +98,9 @@ public class Athlete implements Purchasable{
 	 * @return proficiency
 	 */
 	public int getProficiency() {
+		int offence = getOffence();
+		int defence = getDefence();
+		proficiency = offence + defence;
 		return proficiency;
 	}
 		
@@ -131,6 +134,12 @@ public class Athlete implements Purchasable{
 		this.health = health;
 	}
 	/**
+	 * Changes an Athlete's health by the given amount.
+	 */
+	public void changeHealth(int amount) {
+		this.health += amount;
+	}
+	/**
 	 * Simple getter for Athlete's current stamina.
 	 * @return int stamina
 	 */			
@@ -144,10 +153,14 @@ public class Athlete implements Purchasable{
 		stamina = amount;
 	}
 	/**
-	 * Simple incrementer for Athlete's current stamina.
+	 * Changes current stamina by a given amount.
+	 * If stamina goes lower than zero, set to zero.
 	 */		
-	public void updateStamina(int amount) {
+	public void changeStamina(int amount) {
 		this.stamina += amount;
+		if (stamina <= 0) {
+			setStamina(0);
+		}
 	}
 	/**
 	 * Simple getter for Athlete's maximum stamina.
@@ -163,15 +176,13 @@ public class Athlete implements Purchasable{
 	private void setMaxStamina(int i) {
 		maxStamina = i;
 	}
-
 	/**
 	 * Updates Athlete's maximum stamina by amount
 	 * @param int amount
 	 */
-	public void updateMaxStamina(int amount) {
+	public void changeMaxStamina(int amount) {
 		maxStamina += amount;
 	}
-	
 	/**
 	 * Simple getter for Athlete's offence.
 	 * @return int offence
@@ -186,6 +197,14 @@ public class Athlete implements Purchasable{
 		this.offence = offence;
 	}
 	/**
+	 * Changes offence by a given amount.
+	 * @param int amount 
+	 */
+	public void changeOffence(int amount) {
+		this.offence += amount;
+	}
+	
+	/**
 	 * Simple getter for Athlete's defence.
 	 * @return int defence
 	 */	
@@ -199,6 +218,14 @@ public class Athlete implements Purchasable{
 		this.defence = defence;
 	} 
 	/**
+	 * Changes defence by a given amount.
+	 * @param int amount 
+	 */
+	public void changeDefence(int amount) {
+		this.defence += amount;
+	}	
+	
+	/**
 	 * Athlete's toString, handles printing Athletes.
 	 */	
 	public String toString() {
@@ -208,7 +235,7 @@ public class Athlete implements Purchasable{
 		//return name + ", Proficiency: " + proficiency + ", Offence: " + offence + ", Defence: " + defence
 		//		+ ", Health: " + health + ", Stamina: " + stamina + ", Contract: $" + priceString;
 		
-		return name + ", " + position + " (" + proficiency + ")" + ", Offence: " + offence + ", Defence: " + defence
+		return name + ", " + position + " (" + getProficiency() + ")" + ", Offence: " + offence + ", Defence: " + defence
 				+ ", Health: " + health + ", Stamina: " + stamina + ", Contract: $" + priceString;
 	}
 	

@@ -8,25 +8,36 @@ public class Item implements Purchasable {
     private int sellbackPrice;
     private String itemName;
     private String description;
-    // Need to add stat boosts next
+    private String statChanged;
+    private int amount;
 
-    public Item(String name, int buyPrice, String description) {
+    public Item(String name, int buyPrice, String description, String stat, int amount) {
 		itemName = name;
-		this.description = description;
-		contractPrice = buyPrice;
+		setDescription(description);
+		setContractPrice(buyPrice);
 		sellbackPrice = buyPrice / 2;
+		setStatChanged(stat);
+		setChange(amount);
 
     }
     
     /**
-     * Simple getter for an Item's name.
+     * Return name of item.
      */
 	public String getName() {
 		return itemName;
 	}
+	
+	/**
+	 * Changes the Item's name to the given string
+	 * @param name
+	 */
+	public void setName(String name) {
+		itemName = name;
+	}
     
 	/**
-	 * Simple getter for Item's contract price.
+	 * Return contract price of Item.
 	 */		
 	public int getContractPrice() {
 		return contractPrice;
@@ -60,6 +71,24 @@ public class Item implements Purchasable {
 	 */		
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	/**
+	 * Simple getter for which Athlete stat the item increases.
+	 */
+	public String getStatChanged() {
+		return statChanged;
+	}
+	
+	public void setStatChanged(String stat) {
+		statChanged = (stat);
+	}
+	
+	public int getChange() {
+		return amount;
+	}
+
+	public void setChange(int amount) {
+		this.amount = amount;
 	}
 
 	public String toString() {

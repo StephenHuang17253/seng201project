@@ -5,7 +5,7 @@ import main.Item;
 public class Nutritionist extends Item{
 
 	public Nutritionist() {
-		super("Nutritionist", 100000, "Improve an athlete's health stat.");
+		super("Nutritionist", 750000, "Improve an athlete's health stat by 1.", "Health", 1);
 	}
 
 }
