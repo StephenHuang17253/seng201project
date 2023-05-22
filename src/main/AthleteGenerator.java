@@ -94,7 +94,9 @@ public class AthleteGenerator {
     public static ArrayList<Athlete> generateTeam(int teamSize) {
         ArrayList<Athlete> team = new ArrayList<>();
         ArrayList<String> generatedNames = new ArrayList<>();
-		generatedNames.addAll(takenNames); // This way we don't use up the name if the athlete is not part of club. 
+        // Don't need to permanently add to takenNames if athlete can't be purchased.
+        // Only need to prevent duplicate names on opponent rosters.
+		generatedNames.addAll(takenNames);  
         
 		int i = 0;
 		

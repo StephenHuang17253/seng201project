@@ -73,9 +73,11 @@ public class GameManager {
 	
 	private ArrayList<Athlete> opponentRoster = new ArrayList<>();	
 	private String opponentTeamName;
+	
 	private ArrayList<Athlete> marketAthletes = new ArrayList<>();
 	private ArrayList<Item> marketItems = new ArrayList<>();
 	private ArrayList<Item> inventory = new ArrayList<>();	
+	
 	private String matchOutcome;
 	private ArrayList<Match> weeklyMatches = new ArrayList<>();
 	
@@ -508,7 +510,7 @@ public class GameManager {
 	public void demoteAthlete(Athlete athlete) {
 		System.out.println(athlete.getName() + " has been moved to reserves");
 		mainRoster.remove(athlete);
-		athlete.getPosition();
+		athlete.setPosition("Unassigned");
 	    reserveRoster.add(athlete);
 	    
 	 
