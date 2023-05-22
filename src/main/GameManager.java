@@ -38,6 +38,14 @@ public class GameManager {
      */
     private int money;
     /**
+     * The amount of money earned.
+     */
+    private int totalEarned;
+    
+    private int totalGames;
+    
+    private int totalGamesWon;
+    /**
      * The club's season points.
      */
     private int seasonPoints;
@@ -344,6 +352,14 @@ public class GameManager {
 	public void changeMoney(int amount) {
 		money += amount;
 	}
+	
+	public void totalMoneyEarned(int earned) {
+		totalEarned += earned;
+	}
+	
+	public int getMoneyEarned() {
+		return totalEarned;
+	}
 	/**
 	 * Method returns the player's money in a more suitable format as a string.
 	 * @return String for money format
@@ -420,6 +436,22 @@ public class GameManager {
 	
 	public void setMatchOutcome(String outcome) {
 		matchOutcome = outcome;
+	}
+	
+	public void totalGamesPlayed() {
+		totalGames += 1;
+	}
+	
+	public int getGamesPlayed() {
+		return totalGames;
+	}
+	
+	public void totalGamesWon() {
+		totalGamesWon += 1;
+	}
+	
+	public int getGamesWon() {
+		return totalGamesWon;
 	}
 	
 	public boolean canCompete() {
