@@ -100,11 +100,11 @@ public class Match {
 			if (playerAthlete.getProficiency() >= opposingAthlete.getProficiency()) {		
 				playerScore += 1;
 				playerAthlete.setMatchUpResult("Won faceoff");
-				playerAthlete.updateStamina(-3);
+				playerAthlete.changeStamina(-1);
 			} else {
 				opponentScore += 1;
 				playerAthlete.setMatchUpResult("Lost faceoff");
-				playerAthlete.updateStamina(-5); // Stamina loss is higher on defeat
+				playerAthlete.changeStamina(-2); // Stamina loss is higher on defeat
 				
 			}
 			

@@ -7,19 +7,8 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import gui.ClubScreen;
-import gui.EndScreen;
-import gui.MainScreen;
-import gui.MarketScreen;
-import gui.MarketSellScreen;
-import gui.MatchScreen;
-import gui.StartScreen;
-import gui.InventoryScreen;
-import gui.TrainingScreen;
-import items.DefensiveCoach;
-import items.Nutritionist;
-import items.OffensiveCoach;
-import items.Trainer;
+import gui.*;
+import items.*;
 
 /**
  * Game Manager class.
@@ -560,8 +549,6 @@ public class GameManager {
 		inventory.remove(item);
 	}
 		
-		
-	
 	public ArrayList<Athlete> getMarketAthletes() {
 		return marketAthletes;
 	}
@@ -586,15 +573,22 @@ public class GameManager {
 		this.weeklyMatches = matches;
 	}	
 	
+	public ArrayList<Item> getPossibleItems() {
+		ArrayList<Item> items = new ArrayList<>();
+		items.add(new DefensiveCoach());
+		items.add(new OffensiveCoach());	
+		items.add(new DefenceTrainingEquipment());		
+		items.add(new OffenceTrainingEquipment());		
+		items.add(new InsaneFood());
+		items.add(new Nutritionist());
+		items.add(new Trainer());
+		return items;
+	}
+	
 	public void refreshWeek() {
 		// Refresh taken names before generating new athletes.
 		refreshTakenNames(); 
-		ArrayList<Item> newItems = new ArrayList<>();
-		newItems.add(new Trainer());
-		newItems.add(new Nutritionist());
-		newItems.add(new OffensiveCoach());
-		newItems.add(new DefensiveCoach());
-		setMarketItems(newItems);
+		setMarketItems(getPossibleItems());
 		setMarketAthletes(AthleteGenerator.generateMarketAthletes(5));
 		setWeeklyMatches(MatchGenerator.generateWeeklyMatches());
 	}
@@ -613,14 +607,29 @@ public class GameManager {
 	
 		
 	public void greatlyIncreaseStats(Athlete athlete) {
-		athlete.setDefence(athlete.getDefence()+2);
-		athlete.setHealth(athlete.getHealth()+2);
-		athlete.setOffence(athlete.getOffence()+2);
-		athlete.setStamina(athlete.getStamina()+2);
+		athlete.changeOffence(3);
+		athlete.changeDefence(3);
+		athlete.changeHealth(3);
+		athlete.changeMaxStamina(3); 
 	}
 	
-	public void itemIncreaseAthleteStats(Athlete athlete, Item item) {
-		
+	public void useItem(Athlete athlete, Item item) {
+		String stat = item.getStatChanged();
+		int changeBy = item.getChange();
+		switch (stat) {
+		case "Offence":
+			athlete.changeOffence(changeBy);
+			break;
+		case "Defence":
+			athlete.changeDefence(changeBy);
+			break;
+		case "Health":
+			athlete.changeHealth(changeBy);
+			break;
+		case "Stamina":
+			athlete.changeMaxStamina(changeBy);
+			break;
+		}
 	}
 	
 	public void rosterWarnings() {
