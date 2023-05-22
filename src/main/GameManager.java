@@ -6,7 +6,6 @@ import gui.StadiumScreen;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
-import main.Athlete;
 
 import gui.ClubScreen;
 import gui.EndScreen;

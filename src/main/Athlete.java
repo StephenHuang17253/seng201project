@@ -63,16 +63,17 @@ public class Athlete implements Purchasable{
 	 * Constructor for Athlete
 	 */		
 	public Athlete(String name, int offence, int defence, int contractPrice) {
-		this.name = name;
+		setName(name);
+		setHealth(10); // Default health = 10
+		setMaxStamina(10); // Default stamina = 10
+		setStamina(maxStamina);
+		setOffence(offence);
+		setDefence(defence);
+		setContractPrice(contractPrice);
+		setSellbackPrice(contractPrice / 2);
+		setDescription("A professional Futsal player. ");
 		this.proficiency = (offence + defence);
-		this.health = 10; // Default health
-		this.maxStamina = 10; // Default stamina
-		this.stamina = maxStamina;
-		this.offence = offence;
-		this.defence = defence;
-		this.contractPrice = contractPrice;
-		this.sellbackPrice = contractPrice / 2;
-		
+		setPosition(AthleteGenerator.getRandomPosition());
 
 	}
 	
@@ -155,6 +156,14 @@ public class Athlete implements Purchasable{
 		return maxStamina;
 	}
 	/**
+	 * Simple setter for Athlete's maximum stamina
+	 * @param int i
+	 */
+	private void setMaxStamina(int i) {
+		maxStamina = i;
+	}
+
+	/**
 	 * Updates Athlete's maximum stamina by amount
 	 * @param int amount
 	 */
@@ -195,8 +204,8 @@ public class Athlete implements Purchasable{
 		DecimalFormat formatter = new DecimalFormat("#,###");
 		String priceString = formatter.format(contractPrice);
 		
-		return name + ", Proficiency: " + proficiency + ", Health: " + health + ", Stamina: " + stamina
-				+ ", Offence: " + offence + ", Defence: " + defence + ", Contract: $" + priceString;
+		return name + ", Proficiency: " + position + ", Offence: " + offence + ", Defence: " + defence
+				+ ", Health: " + health + ", Stamina: " + stamina + ", Contract: $" + priceString;
 		
 		//return name + ", " + position + ", " + "Proficiency: " + proficiency + ", Health: " + health + ", Stamina: " + stamina
 		//		+ ", Offence: " + offence + ", Defence: " + defence + ", Contract: $" + priceString;
