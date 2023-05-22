@@ -90,7 +90,7 @@ public class Match {
 		manager.setOpponentName(match.getName());
 		//System.out.println(manager.getMainRoster());
 		//System.out.println(manager.getOpponentRoster());
-		boolean noStamina = false; // Track if all player's athletes have 0 stamina
+		boolean noStamina = true; // Track if all player's athletes have 0 stamina
 		
 		for (int i = 0; i < playerTeam.size(); i++) {
 			// compare athletes
@@ -100,11 +100,11 @@ public class Match {
 			if (playerAthlete.getProficiency() >= opposingAthlete.getProficiency()) {		
 				playerScore += 1;
 				playerAthlete.setMatchUpResult("Won faceoff");
-				playerAthlete.updateStamina(-1);
+				playerAthlete.updateStamina(-3);
 			} else {
 				opponentScore += 1;
 				playerAthlete.setMatchUpResult("Lost faceoff");
-				playerAthlete.updateStamina(-2); // Stamina loss is higher on defeat
+				playerAthlete.updateStamina(-5); // Stamina loss is higher on defeat
 				
 			}
 			
@@ -115,8 +115,8 @@ public class Match {
 		
 		
 	    if (noStamina) {
-	        match.setOutcome("Defeat (Stamina)");
 	        manager.setMatchOutcome(outcome);
+	        match.setOutcome("Defeat (Stamina)");
 	    } else if (playerScore > opponentScore) {
 	        match.setOutcome("Victory");
 	        manager.setMatchOutcome(outcome);

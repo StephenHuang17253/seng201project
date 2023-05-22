@@ -96,7 +96,7 @@ public class MarketScreen {
 		JLabel moneyLabel = new JLabel("Money: $" + manager.getMoneyString());
 		moneyLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		moneyLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
-		moneyLabel.setBounds(506, 84, 200, 39);
+		moneyLabel.setBounds(455, 84, 251, 39);
 		frmMarketScreen.getContentPane().add(moneyLabel);
 		
 		JButton sellPurchasablesButton = new JButton("Sell Purchasables");

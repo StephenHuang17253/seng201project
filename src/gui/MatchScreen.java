@@ -277,10 +277,14 @@ public class MatchScreen {
 		
 		JLabel outcomeLabel = new JLabel("Victory Text");
 		outcomeLabel.setFont(new Font("Tahoma", Font.BOLD, 22));
+		outcomeLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		outcomeLabel.setBounds(158, 76, 394, 45);
+		frmMatchScreen.getContentPane().add(outcomeLabel);
+		
 		if (match.getOutcome() == "Victory") {
 			outcomeLabel.setText(manager.getTeamName());
 			outcomeLabel.setForeground(new Color(0, 128, 0));			
-		} else if (match.getOutcome() == "Defeat (Stamina") {
+		} else if (match.getOutcome() == "Defeat (Stamina)") {
 			outcomeLabel.setText(manager.getOpponentName());
 			outcomeLabel.setForeground(new Color(255, 66, 66));	
 			Object message = "All of your athletes were injured during the match " + manager.getOpponentName()
@@ -291,10 +295,6 @@ public class MatchScreen {
 			outcomeLabel.setText(manager.getOpponentName());
 			outcomeLabel.setForeground(new Color(255, 66, 66));				
 		}
-	
-		outcomeLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		outcomeLabel.setBounds(158, 76, 394, 45);
-		frmMatchScreen.getContentPane().add(outcomeLabel);
 		
 		JButton backButton = new JButton("Go back");
 		backButton.addActionListener(new ActionListener() {

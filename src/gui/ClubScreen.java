@@ -510,45 +510,45 @@ public class ClubScreen {
 		keeperButton.setBounds(10, 183, 127, 32);
 		reserveRosterExplainationPanel.add(keeperButton);
 		
-		JPanel panel = new JPanel();
-		panel.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
-		panel.setBounds(22, 111, 222, 200);
-		frmClubScreen.getContentPane().add(panel);
-		panel.setLayout(null);
+		JPanel positionPanel = new JPanel();
+		positionPanel.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
+		positionPanel.setBounds(22, 111, 222, 200);
+		frmClubScreen.getContentPane().add(positionPanel);
+		positionPanel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Positions explained");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel.setBounds(10, 23, 202, 17);
-		panel.add(lblNewLabel);
+		JLabel positionLabel = new JLabel("Positions explained");
+		positionLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		positionLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
+		positionLabel.setBounds(10, 23, 202, 17);
+		positionPanel.add(positionLabel);
 		
-		JTextArea txtrStrikerxOffence = new JTextArea();
-		txtrStrikerxOffence.setWrapStyleWord(true);
-		txtrStrikerxOffence.setText("Striker: 1.5x offence stat\r\n\r\nWingers: 1.15x offence and defence\r\n\r\nDefender: 1.5x defence stat\r\n\r\nKeeper: 2x defence stat\r\n\r\n\r\n");
-		txtrStrikerxOffence.setLineWrap(true);
-		txtrStrikerxOffence.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		txtrStrikerxOffence.setEditable(false);
-		txtrStrikerxOffence.setBackground(SystemColor.menu);
-		txtrStrikerxOffence.setBounds(26, 51, 170, 139);
-		panel.add(txtrStrikerxOffence);
+		JTextArea positionText = new JTextArea();
+		positionText.setWrapStyleWord(true);
+		positionText.setText("Striker: 1.5x offence stat\r\n\r\nWingers: 1.15x offence and defence\r\n\r\nDefender: 1.5x defence stat\r\n\r\nKeeper: 2x defence stat\r\n\r\n\r\n");
+		positionText.setLineWrap(true);
+		positionText.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		positionText.setEditable(false);
+		positionText.setBackground(SystemColor.menu);
+		positionText.setBounds(26, 51, 170, 139);
+		positionPanel.add(positionText);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setLayout(null);
-		panel_1.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
-		panel_1.setBounds(22, 322, 222, 234);
-		frmClubScreen.getContentPane().add(panel_1);
+		JPanel reservePanel = new JPanel();
+		reservePanel.setLayout(null);
+		reservePanel.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
+		reservePanel.setBounds(22, 322, 222, 234);
+		frmClubScreen.getContentPane().add(reservePanel);
 		
 
 		
-		JTextArea reserveExplanationTextArea = new JTextArea();
-		reserveExplanationTextArea.setBounds(10, 17, 202, 199);
-		panel_1.add(reserveExplanationTextArea);
-		reserveExplanationTextArea.setWrapStyleWord(true);
-		reserveExplanationTextArea.setText("Press the promote button to move selected player to your starting lineup.\r\n\r\nContains up to 5 players that haven't been selected to play in your next match.\r\n\r\nIt is recommended to have reserves incase your starting lineup gets injured or if someone leaves.\r\n\r\n\r\n");
-		reserveExplanationTextArea.setLineWrap(true);
-		reserveExplanationTextArea.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		reserveExplanationTextArea.setEditable(false);
-		reserveExplanationTextArea.setBackground(SystemColor.menu);
+		JTextArea reserveExplanationText = new JTextArea();
+		reserveExplanationText.setBounds(10, 17, 202, 199);
+		reservePanel.add(reserveExplanationText);
+		reserveExplanationText.setWrapStyleWord(true);
+		reserveExplanationText.setText("Press the promote button to move selected player to your starting lineup.\r\n\r\nContains up to 5 players that haven't been selected to play in your next match.\r\n\r\nIt is recommended to have reserves incase your starting lineup gets injured or if someone leaves.\r\n\r\n\r\n");
+		reserveExplanationText.setLineWrap(true);
+		reserveExplanationText.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		reserveExplanationText.setEditable(false);
+		reserveExplanationText.setBackground(SystemColor.menu);
 	
 		
 	}

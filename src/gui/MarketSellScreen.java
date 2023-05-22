@@ -90,7 +90,7 @@ public class MarketSellScreen {
 		JLabel moneyLabel = new JLabel("Money: $" + manager.getMoneyString());
 		moneyLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		moneyLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
-		moneyLabel.setBounds(455, 83, 235, 39);
+		moneyLabel.setBounds(455, 84, 251, 39);
 		frmMarketSellScreen.getContentPane().add(moneyLabel);
 		
 		JLabel sellPurchasablesText = new JLabel("Click to switch to buy Items and Athletes");
@@ -264,11 +264,6 @@ public class MarketSellScreen {
 		
 		goBackButton.setBounds(223, 681, 270, 60);
 		frmMarketSellScreen.getContentPane().add(goBackButton);
-		
-		JTextArea textArea = new JTextArea();
-		textArea.setBackground(new Color(240, 240, 240));
-		textArea.setBounds(32, 53, 58, 44);
-		frmMarketSellScreen.getContentPane().add(textArea);
 		
 	}
 }

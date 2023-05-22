@@ -71,6 +71,7 @@ public class TrainingScreen {
 	 */
 	private void initialize() {
 		frmTrainingScreen = new JFrame();
+		frmTrainingScreen.setTitle("KickHeroes - Training");
 		frmTrainingScreen.setBounds(100, 100, 715, 375);
 		frmTrainingScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -108,10 +109,10 @@ public class TrainingScreen {
 		takeByeButton.setBounds(214, 260, 270, 60);
 		athletesTrainingPanel.add(takeByeButton);
 		
-		JLabel lblNewLabel = new JLabel("Choose an athlete to significantly improve their stats.");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel.setBounds(224, 31, 332, 15);
-		athletesTrainingPanel.add(lblNewLabel);
+		JLabel trainingLabel = new JLabel("Choose an athlete to significantly improve their stats.");
+		trainingLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		trainingLabel.setBounds(224, 31, 332, 15);
+		athletesTrainingPanel.add(trainingLabel);
 		takeByeButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				Athlete targetAthlete = athletesTrainingList.getSelectedValue();
