@@ -106,18 +106,25 @@ public class EndScreen {
 		matchesPlayedLabel.setBounds(10, 176, 421, 23);
 		summaryPanel.add(matchesPlayedLabel);
 		
+		JLabel seasonLengthLabel = new JLabel("Season Length: " + manager.getTotalWeeks());
+		seasonLengthLabel.setVerticalAlignment(SwingConstants.TOP);
+		seasonLengthLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		seasonLengthLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		seasonLengthLabel.setBounds(10, 216, 421, 23);
+		summaryPanel.add(seasonLengthLabel);
+		
 		JLabel seasonPointsLabel = new JLabel("Season Points Earned: " + manager.getSeasonPoints());
 		seasonPointsLabel.setVerticalAlignment(SwingConstants.TOP);
 		seasonPointsLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		seasonPointsLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		seasonPointsLabel.setBounds(10, 216, 421, 23);
+		seasonPointsLabel.setBounds(10, 256, 421, 23);
 		summaryPanel.add(seasonPointsLabel); 
 		
 		JLabel bestAthleteLabel = new JLabel("Best Athlete: ");
 		bestAthleteLabel.setVerticalAlignment(SwingConstants.TOP);
 		bestAthleteLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		bestAthleteLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		bestAthleteLabel.setBounds(10, 256, 421, 23);
+		bestAthleteLabel.setBounds(10, 296, 421, 23);
 		summaryPanel.add(bestAthleteLabel);
 		
 		JLabel thanksLabel = new JLabel("Thank you for playing!");
@@ -125,6 +132,7 @@ public class EndScreen {
 		thanksLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		thanksLabel.setBounds(10, 325, 421, 35);
 		summaryPanel.add(thanksLabel);
+
 
 	}
 }
