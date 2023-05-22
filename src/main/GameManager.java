@@ -38,12 +38,16 @@ public class GameManager {
      */
     private int money;
     /**
-     * The amount of money earned.
+     * The amount of money earned from winning matches.
      */
     private int totalEarned;
-    
+    /**
+     * The amount games played.
+     */
     private int totalGames;
-    
+    /**
+     * The amount games won.
+     */
     private int totalGamesWon;
     /**
      * The club's season points.
