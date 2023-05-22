@@ -296,11 +296,12 @@ public class GameManager {
 	}		
 			
 	public void takeBye() {
-		
+
 		incrementWeek();
 		refreshWeek();	
 		ArrayList<Athlete> allAthletes = new ArrayList<>();
 		allAthletes.addAll(getMainRoster());
+		allAthletes.addAll(getReserveRoster());
 		allAthletes.addAll(getOpponentRoster());
 		for (Athlete athlete : allAthletes) {
 			athlete.setStamina(athlete.getMaxStamina());			

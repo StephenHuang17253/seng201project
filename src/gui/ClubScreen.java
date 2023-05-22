@@ -30,6 +30,7 @@ public class ClubScreen {
 
 	private JFrame frmClubScreen;
 	private GameManager manager;
+	private JLabel warningLabel;
 	//private ArrayList<Athlete> activeRoster;
 	//private ArrayList<Athlete> reserveRoster;
 	//DefaultListModel<Athlete> reserveRosterModel = new DefaultListModel<Athlete>();
@@ -80,7 +81,7 @@ public class ClubScreen {
 	private void initialize() {
 		frmClubScreen = new JFrame();
 		frmClubScreen.setTitle("KickHeroes - Club Screen");
-		frmClubScreen.setBounds(100, 100, 1115, 817);
+		frmClubScreen.setBounds(100, 100, 1115, 794);
 		frmClubScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmClubScreen.getContentPane().setLayout(null);
 		
@@ -89,6 +90,20 @@ public class ClubScreen {
 		teamLabel.setFont(new Font("Tahoma", Font.BOLD, 35));
 		teamLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		frmClubScreen.getContentPane().add(teamLabel);
+		
+		warningLabel = new JLabel("");
+		warningLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		warningLabel.setForeground(new Color(255, 66, 66));
+		warningLabel.setBounds(27, 91, 891, 14);
+		frmClubScreen.getContentPane().add(warningLabel);
+		if (manager.getMainRoster().size() < 5) {
+			if ((manager.getMainRoster().size() + manager.getReserveRoster().size() < 5)){
+				warningLabel.setText("You do not have enough players to compete! Go buy more Athletes in the market.");
+			}
+			else {
+				warningLabel.setText("Your main roster does not have enough players to compete! Promote some reserves.");
+			}
+		}
 		
 		JPanel activeRosterPanel = new JPanel();
 		activeRosterPanel.setBounds(240, 111, 696, 234);
@@ -125,11 +140,11 @@ public class ClubScreen {
 		activeRosterPanel.add(activeRosterChangeButton);
 		
 		JLabel activeRosterChangedLabel = new JLabel("");
-		activeRosterChangedLabel.setBounds(326, 24, 217, 14);
+		activeRosterChangedLabel.setBounds(247, 24, 296, 14);
 		activeRosterPanel.add(activeRosterChangedLabel);
 		activeRosterChangedLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		activeRosterChangedLabel.setForeground(new Color(255, 66, 66));
-		activeRosterChangedLabel.setFont(new Font("Tahoma", Font.BOLD, 11));		
+		activeRosterChangedLabel.setFont(new Font("Tahoma", Font.BOLD, 12));		
 		activeRosterList.getSelectedValue();
 		
 		activeRosterChangeButton.addActionListener(new ActionListener() {
@@ -141,9 +156,20 @@ public class ClubScreen {
 				activeRosterModel.removeElement(targetAthlete);
 				activeRosterList.setModel(activeRosterModel);
 				activeRosterChangedLabel.setText(targetAthlete.getName() + " benched");
-
+				if (manager.getMainRoster().size() < 5) {
+					if ((manager.getMainRoster().size() + manager.getReserveRoster().size() < 5)){
+						warningLabel.setText("You do not have enough players to compete! Go buy more Athletes in the market.");
+					}
+					else {
+						warningLabel.setText("Your main roster does not have enough players to compete! Promote some reserves.");
+					}
+				}
+				else{
+					warningLabel.setText("");
+				}
 			}
 		});
+		
 		activeRosterChangeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -154,36 +180,22 @@ public class ClubScreen {
 		backButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (manager.getReserveRoster().size() > 5) {
-					Component fullReservesWarning = null;
-					JOptionPane.showMessageDialog(fullReservesWarning, "You have too many players in reserves, add some to your starting lineup", 
-							"Reserves full", JOptionPane.WARNING_MESSAGE);
-					
-				} else if (manager.getMainRoster().size() < 5) {
-					Component fullRosterWarning = null;
-					JOptionPane.showMessageDialog(fullRosterWarning, "Your main roster does not have enough players to compete. "
-							+ "\nPromote some reserves.", 
-							"Main roster full", JOptionPane.WARNING_MESSAGE);
-					finishedWindow();
-				} else {
-					finishedWindow();	
-				}
+				finishedWindow();
 			}
 		});
-		backButton.setBounds(414, 707, 270, 60);
+		backButton.setBounds(414, 677, 270, 60);
 		frmClubScreen.getContentPane().add(backButton);
 		
 		JPanel reserveRosterPanel = new JPanel();
 		reserveRosterPanel.setLayout(null);
 		reserveRosterPanel.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
-		reserveRosterPanel.setBounds(240, 356, 696, 269);
+		reserveRosterPanel.setBounds(240, 356, 696, 234);
 		frmClubScreen.getContentPane().add(reserveRosterPanel);
 		
-
 		reserveRosterList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		reserveRosterList.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		reserveRosterList.setBorder(new LineBorder(new Color(186, 207, 248), 2));
-		reserveRosterList.setBounds(10, 52, 676, 196);
+		reserveRosterList.setBounds(10, 52, 676, 172);
 		reserveRosterPanel.add(reserveRosterList);
 		
 		JLabel reserveRosterLabel = new JLabel("Reserve Roster");
@@ -197,11 +209,11 @@ public class ClubScreen {
 		reserveRosterChangeButton.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
 		JLabel reserveRosterChangeLabel = new JLabel("");
-		reserveRosterChangeLabel.setBounds(326, 24, 217, 14);
+		reserveRosterChangeLabel.setBounds(247, 24, 296, 14);
 		reserveRosterPanel.add(reserveRosterChangeLabel);
 		reserveRosterChangeLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		reserveRosterChangeLabel.setForeground(new Color(255, 66, 66));
-		reserveRosterChangeLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		reserveRosterChangeLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
 		reserveRosterChangeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (manager.getMainRoster().size() >= 5) {
@@ -216,6 +228,17 @@ public class ClubScreen {
 				reserveRosterModel.removeElement(targetAthlete);
 				reserveRosterList.setModel(reserveRosterModel);	
 				reserveRosterChangeLabel.setText(targetAthlete.getName() + " promoted");
+				if (manager.getMainRoster().size() < 5) {
+					if ((manager.getMainRoster().size() + manager.getReserveRoster().size() < 5)){
+						warningLabel.setText("You do not have enough players to compete! Go buy more Athletes in the market.");
+					}
+					else {
+						warningLabel.setText("Your main roster does not have enough players to compete! Promote some reserves.");
+					}
+				}
+				else{
+					warningLabel.setText("");
+				}
 				}
 			}
 		});
@@ -229,7 +252,7 @@ public class ClubScreen {
 			}
 		});
 		inventoryButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		inventoryButton.setBounds(414, 636, 270, 60);
+		inventoryButton.setBounds(414, 606, 270, 60);
 		frmClubScreen.getContentPane().add(inventoryButton);
 		
 		JPanel activeRosterExplainationPanel = new JPanel();
@@ -251,43 +274,38 @@ public class ClubScreen {
 		JPanel reserveRosterExplainationPanel = new JPanel();
 		reserveRosterExplainationPanel.setLayout(null);
 		reserveRosterExplainationPanel.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
-		reserveRosterExplainationPanel.setBounds(933, 355, 147, 270);
+		reserveRosterExplainationPanel.setBounds(933, 355, 147, 235);
 		frmClubScreen.getContentPane().add(reserveRosterExplainationPanel);
 		
-		JButton btnNewButton = new JButton("Right Side Hitter");
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnNewButton.setBounds(10, 11, 127, 32);
-		reserveRosterExplainationPanel.add(btnNewButton);
+		JButton strikerButton = new JButton("Striker");
+		strikerButton.setFont(new Font("Tahoma", Font.BOLD, 11));
+		strikerButton.setBounds(10, 11, 127, 32);
+		reserveRosterExplainationPanel.add(strikerButton);
 		
-		JButton btnMiddleBlocker = new JButton("Middle Blocker");
-		btnMiddleBlocker.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnMiddleBlocker.addActionListener(new ActionListener() {
+		JButton leftWingButton = new JButton("Left Wing");
+		leftWingButton.setFont(new Font("Tahoma", Font.BOLD, 11));
+		leftWingButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnMiddleBlocker.setBounds(10, 54, 127, 32);
-		reserveRosterExplainationPanel.add(btnMiddleBlocker);
+		leftWingButton.setBounds(10, 54, 127, 32);
+		reserveRosterExplainationPanel.add(leftWingButton);
 		
-		JButton btnOpposite = new JButton("Opposite");
-		btnOpposite.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnOpposite.setBounds(10, 97, 127, 32);
-		reserveRosterExplainationPanel.add(btnOpposite);
+		JButton rightWingButton = new JButton("Right Wing");
+		rightWingButton.setFont(new Font("Tahoma", Font.BOLD, 11));
+		rightWingButton.setBounds(10, 97, 127, 32);
+		reserveRosterExplainationPanel.add(rightWingButton);
 		
-		JButton btnSetter = new JButton("Setter");
-		btnSetter.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnSetter.setBounds(10, 140, 127, 32);
-		reserveRosterExplainationPanel.add(btnSetter);
+		JButton defenderButton = new JButton("Defender");
+		defenderButton.setFont(new Font("Tahoma", Font.BOLD, 11));
+		defenderButton.setBounds(10, 140, 127, 32);
+		reserveRosterExplainationPanel.add(defenderButton);
 		
-		JButton btnLibero = new JButton("Libero");
-		btnLibero.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnLibero.setBounds(10, 183, 127, 32);
-		reserveRosterExplainationPanel.add(btnLibero);
-		
-		JButton btnOutsideHitter = new JButton("Outside Hitter");
-		btnOutsideHitter.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnOutsideHitter.setBounds(10, 226, 127, 32);
-		reserveRosterExplainationPanel.add(btnOutsideHitter);
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton keeperButton = new JButton("Keeper");
+		keeperButton.setFont(new Font("Tahoma", Font.BOLD, 11));
+		keeperButton.setBounds(10, 183, 127, 32);
+		reserveRosterExplainationPanel.add(keeperButton);
+		keeperButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
@@ -311,13 +329,13 @@ public class ClubScreen {
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
 		panel_1.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
-		panel_1.setBounds(22, 356, 222, 269);
+		panel_1.setBounds(22, 356, 222, 234);
 		frmClubScreen.getContentPane().add(panel_1);
 		
 
 		
 		JTextArea reserveExplanationTextArea = new JTextArea();
-		reserveExplanationTextArea.setBounds(10, 11, 202, 247);
+		reserveExplanationTextArea.setBounds(10, 11, 202, 212);
 		panel_1.add(reserveExplanationTextArea);
 		reserveExplanationTextArea.setWrapStyleWord(true);
 		reserveExplanationTextArea.setText("Press the promote button to move selected player to your starting lineup.\r\n\r\n\r\nContains up to 5 players that haven't been selected to play in your next match.\r\n\r\n\r\nIt is recommended to have reserves incase your starting lineup gets injured or if someone leaves.\r\n\r\n\r\n");
@@ -325,6 +343,7 @@ public class ClubScreen {
 		reserveExplanationTextArea.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		reserveExplanationTextArea.setEditable(false);
 		reserveExplanationTextArea.setBackground(SystemColor.menu);
+	
 		
 	}
 }

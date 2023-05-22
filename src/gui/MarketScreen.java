@@ -155,7 +155,7 @@ public class MarketScreen {
 		athleteBoughtLabel.setBounds(173, 24, 234, 14);
 		athletePanel.add(athleteBoughtLabel);
 		athleteBoughtLabel.setForeground(new Color(255, 66, 66));
-		athleteBoughtLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		athleteBoughtLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
 		JLabel athletesForSaleLabel = new JLabel("Athletes For Sale!");
 		athletesForSaleLabel.setBounds(20, 18, 194, 20);
@@ -291,8 +291,8 @@ public class MarketScreen {
 		JLabel itemBoughtLabel = new JLabel("");
 		itemBoughtLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		itemBoughtLabel.setForeground(new Color(255, 66, 66));
-		itemBoughtLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
-		itemBoughtLabel.setBounds(350, 24, 194, 14);
+		itemBoughtLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		itemBoughtLabel.setBounds(268, 24, 276, 14);
 		itemPanel.add(itemBoughtLabel);
 		
 		JLabel itemsForSaleLabel = new JLabel("Items For Sale!");

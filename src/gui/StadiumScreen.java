@@ -123,7 +123,7 @@ public class StadiumScreen {
 		
 		JLabel seasonPointsLabel = new JLabel("Season points: " + manager.getSeasonPoints());
 		seasonPointsLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
-		seasonPointsLabel.setBounds(38, 74, 151, 14);
+		seasonPointsLabel.setBounds(38, 74, 151, 25);
 		titlePanel.add(seasonPointsLabel);
 		
 		JPanel buttonPanel = new JPanel();
