@@ -10,11 +10,13 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 
 import main.GameManager;
+import main.RandomEvent;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 import java.awt.event.ActionListener;
+import java.util.Random;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.Component; 
@@ -176,6 +178,38 @@ public class MainScreen {
 				if (n == 0) {
 					finishedWindow("Bye");
 					manager.launchTrainingScreen();
+					Random random = new Random();
+					int chance = random.nextInt(4);
+					RandomEvent event = RandomEvent.generateRandomEvent(manager, chance);
+					Component eventFrame = null;
+					if (event != null) {
+					switch(event.getType()) {
+						case "Starter Boost":
+							JOptionPane.showMessageDialog(eventFrame,
+								    event.getMessage(),
+								    "Event - Stat boost for a starter",
+								    JOptionPane.INFORMATION_MESSAGE);
+							break;
+						 
+						case "Reserve Boost":
+							JOptionPane.showMessageDialog(eventFrame,
+								    event.getMessage(),
+								    "Event - Stat boost for a reserve",
+								    JOptionPane.INFORMATION_MESSAGE);
+						    break;
+						case "Athlete Quit":
+							JOptionPane.showMessageDialog(eventFrame,
+								    event.getMessage(),
+								    "Event - Athlete retires",
+								    JOptionPane.INFORMATION_MESSAGE);
+						case "Athlete Joins":
+							JOptionPane.showMessageDialog(eventFrame,
+								    event.getMessage(),
+								    "Event - Athlete joins",
+								    JOptionPane.INFORMATION_MESSAGE);
+							
+					}						
+					}
 					}					
 				}
 			}

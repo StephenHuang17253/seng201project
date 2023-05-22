@@ -107,11 +107,12 @@ public class Match {
 				playerScore += 1;
 				playerAthlete.setMatchUpResult("Won faceoff");
 				playerAthlete.incrementWins();
-				playerAthlete.changeStamina(-3);
+				playerAthlete.changeStamina(-1);
 			} else {
 				opponentScore += 1;
 				playerAthlete.setMatchUpResult("Lost faceoff");
-				playerAthlete.changeStamina(-5); // Stamina loss is higher on defeat
+				playerAthlete.incrementLosses();
+				playerAthlete.changeStamina(-4); // Stamina loss is higher on defeat
 				
 			}
 			

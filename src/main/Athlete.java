@@ -59,6 +59,8 @@ public class Athlete implements Purchasable{
 	
 	private int faceOffWins;
 	
+	private int faceOffLosses;
+	
 	
 
 	/**
@@ -306,8 +308,25 @@ public class Athlete implements Purchasable{
 		faceOffWins += 1;
 	}	
 	
+
+	public int getFaceOffLosses() {
+		return faceOffLosses;
+	}
+
+
+	public void setFaceOffLosses(int faceOffLosses) {
+		this.faceOffLosses = faceOffLosses;
+	}	
+	
+	
+	public void incrementLosses() {
+		faceOffLosses += 1;
+	}	
+	
 	public static void main(String[] args) {
 	}
+
+
 
 
 
