@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JPanel;
+import java.awt.Color;
 
 public class EndScreen {
 
@@ -132,7 +133,23 @@ public class EndScreen {
 		thanksLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		thanksLabel.setBounds(10, 325, 421, 35);
 		summaryPanel.add(thanksLabel);
-
-
+		
+		JLabel winLoseLabel = new JLabel("");
+		winLoseLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+		winLoseLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		winLoseLabel.setBounds(10, 65, 622, 22);
+		frmEndScreen.getContentPane().add(winLoseLabel);
+		if (manager.getCanContinue() == false) {
+			winLoseLabel.setText("You Lost. You ran out of Money and Athletes :(");
+			winLoseLabel.setForeground(new Color(255, 66, 66));
+		}
+		else if (manager.getEnoughAthletes() == false) {
+			winLoseLabel.setText("You Lost. You ran out Athletes :(");
+			winLoseLabel.setForeground(new Color(255, 66, 66));
+		}
+		else {
+			winLoseLabel.setText("You Won!!! Congratulations for completing the season! :D");
+			winLoseLabel.setForeground(new Color(0, 128, 0));
+		}
 	}
 }

@@ -174,8 +174,20 @@ public class MainScreen {
 						"Ready to move to next week?", 
 						"Take a bye", JOptionPane.YES_NO_OPTION);
 				if (n == 0) {
-					finishedWindow("Bye");
-					manager.launchTrainingScreen();
+					if(manager.getMainRoster().size() + manager.getReserveRoster().size()==0) {
+						int p = JOptionPane.showConfirmDialog(ByeFrame, 
+								"You have no athletes left. If you continue you will lose." +
+								"\n Are you sure you want to continue?", 
+								"No athletes left", JOptionPane.YES_NO_OPTION);
+						if (p==0) {
+							finishedWindow("Bye");					
+						}								
+					}
+					else {
+						finishedWindow("Bye");
+					}
+
+					
 					}					
 				}
 			}

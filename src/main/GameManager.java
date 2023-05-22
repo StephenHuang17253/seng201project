@@ -127,14 +127,22 @@ public class GameManager {
 		
 		if (next == "Bye") {
 			takeBye();
-			
 			if (week > totalWeeks || !getCanContinue()){
 				launchEndScreen();
 			} 
+			else {
+				if (getEnoughAthletes() == false) {
+					launchEndScreen();
+				}
+				else {
+					launchTrainingScreen();
+				}
+			}
+		
 		} 
 		
 		if (next == "Quit") {
-
+			mainWindow.closeWindow();
 		}
 	}		
 
@@ -144,8 +152,17 @@ public class GameManager {
 			return false;
 		} else {
 			return true;
+		}			
+	}
+	
+	
+	public boolean getEnoughAthletes() {
+		int totalAthletes = getMainRoster().size() + getReserveRoster().size();
+		if (totalAthletes < 1) {
+			return false;
+		} else {
+			return true;
 		}
-			
 	}
 	/**
 	 * Method to launch the setup screen.
