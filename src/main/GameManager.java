@@ -608,12 +608,13 @@ public class GameManager {
 	public ArrayList<Item> getPossibleItems() {
 		ArrayList<Item> items = new ArrayList<>();
 		items.add(new DefensiveCoach());
-		items.add(new OffensiveCoach());	
+		items.add(new OffensiveCoach());
+		items.add(new Trainer());
 		items.add(new DefenceTrainingEquipment());		
 		items.add(new OffenceTrainingEquipment());		
 		items.add(new InsaneFood());
 		items.add(new Nutritionist());
-		items.add(new Trainer());
+		
 		return items;
 	}
 	
@@ -639,10 +640,10 @@ public class GameManager {
 	
 		
 	public void greatlyIncreaseStats(Athlete athlete) {
-		athlete.changeOffence(3);
-		athlete.changeDefence(3);
-		athlete.changeHealth(3);
-		athlete.changeMaxStamina(3); 
+		athlete.changeOffence(2);
+		athlete.changeDefence(2);
+		athlete.changeHealth(2);
+		athlete.changeMaxStamina(2); 
 	}
 	
 	public void useItem(Athlete athlete, Item item) {
@@ -660,6 +661,7 @@ public class GameManager {
 			break;
 		case "Stamina":
 			athlete.changeMaxStamina(changeBy);
+			athlete.changeStamina(changeBy);
 			break;
 		}
 	}
