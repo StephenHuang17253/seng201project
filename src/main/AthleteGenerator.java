@@ -49,13 +49,13 @@ public class AthleteGenerator {
     private static int minStat = 1;
     private static int maxStat = 20;
 
-    public static Athlete generateRandomAthlete() {
+    public static Athlete generateRandomAthlete(int min, int max) {
     	
     	
         Random random = new Random();
         String name = getRandomName();
-        int offence = random.nextInt(maxStat - minStat + 1) + minStat;
-        int defence = random.nextInt(maxStat - minStat + 1) + minStat;
+        int offence = random.nextInt(max - min + 1) + min;
+        int defence = random.nextInt(max - min + 1) + min;
         int minContractPrice;
         int maxContractPrice;
         int statSum = offence + defence;
@@ -96,12 +96,13 @@ public class AthleteGenerator {
         ArrayList<String> generatedNames = new ArrayList<>();
         // Don't need to permanently add to takenNames if athlete can't be purchased.
         // Only need to prevent duplicate names on opponent rosters.
-		generatedNames.addAll(takenNames);  
-        
+		generatedNames.addAll(takenNames);    
+		
 		int i = 0;
 		
         while (team.size() < teamSize) {
-            Athlete athlete = generateRandomAthlete();
+        	
+            Athlete athlete = generateRandomAthlete(minStat, maxStat);
             String name = athlete.getName();
 
             
@@ -118,29 +119,47 @@ public class AthleteGenerator {
         return team;
     }    
     
+
+    
+    /**
+     * Generates a list of athletes that can be bought from the market.
+     * @param amount the number of athletes
+     * @return marketAthletes an array list of athletes
+     */
     public static ArrayList<Athlete> generateMarketAthletes(int amount) {
-        ArrayList<Athlete> team = new ArrayList<>();
+        ArrayList<Athlete> marketAthletes = new ArrayList<>();
         ArrayList<String> generatedNames = new ArrayList<>();
 		generatedNames.addAll(takenNames); // This way we don't use up the name if the athlete is not part of club. 
         
 		
-        while (team.size() < amount) {
-            Athlete athlete = generateRandomAthlete();
+        while (marketAthletes.size() < amount) {
+            Athlete athlete = generateRandomAthlete(minStat, maxStat);
             String name = athlete.getName();
 
             
             if (!generatedNames.contains(name)) {
             	
-            	//String position = POSITIONS[i];
-            	// Athletes in market and setup won't have positions because they are not on a starting lineup
+            	// Athletes in market or setup won't have positions because they are not on a starting lineup
             	athlete.setPosition("Unassigned"); 
-                team.add(athlete);
+                marketAthletes.add(athlete);
                 generatedNames.add(name);
             }
         }
-        return team;
+        return marketAthletes;
     }    
         
+    public static void setMinStat (int amount) {
+    	minStat = amount;
+    }
+    
+    public static void setMaxStat (int amount) {
+    	maxStat = amount;
+    }    
+    
+    public static void incrementMinMaxStats() {
+    	minStat += 1;
+    	maxStat += 1;
+    }
     
     public static void main(String[] args) {
         //Athlete athlete = generateRandomAthlete();

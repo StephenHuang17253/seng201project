@@ -11,8 +11,10 @@ import gui.*;
 import items.*;
 
 /**
- * Game Manager class.
- * Contains and keeps track of the game.
+ * Game Manager class. 
+ * The main class of the program.
+ * Contains and keeps track of the game logic.
+ * Game is played from this class.
  * @author Stephen Huang and Jasmine Ong
  */
 public class GameManager {
@@ -26,31 +28,33 @@ public class GameManager {
      */
     private int totalWeeks;
     /**
-     * The team name.
+     * The team name, determined by the player.
      */
     private String teamName;
     /**
-     * The game difficulty.
+     * The game difficulty, used to determine starting money.
      */
     private String difficulty;
     /**
-     * The club's money.
+     * The club's money, used for purchasing from the market.
      */
     private int money;
     /**
      * The amount of money earned from winning matches.
+     * Displayed in the end screen summary.
      */
     private int totalEarned;
     /**
-     * The amount games played.
+     * The amount of games played.
      */
     private int totalGames;
     /**
-     * The amount games won.
+     * The amount of games won.
      */
     private int totalGamesWon;
     /**
      * The club's season points.
+     * Displayed in the end screen summary.
      */
     private int seasonPoints;
     /**
@@ -65,19 +69,50 @@ public class GameManager {
 	 * The player's reserve athletes.
 	 */
 	private ArrayList<Athlete> reserveRoster = new ArrayList<>();
-	
+	/**
+	 * Stores the Athlete playing the Striker position.
+	 */
 	private Athlete teamStriker;
+	/**
+	 * Stores the Athlete playing the Left Wing position.
+	 */
 	private Athlete teamLeftWing;
+	/**
+	 * Stores the Athlete playing the Right Wing position.
+	 */
 	private Athlete teamRightWing;
+	/**
+	 * Stores the Athlete playing the Defender position.
+	 */
 	private Athlete teamDefender;
+	/**
+	 * Stores the Athlete playing the Keeper position.
+	 */
 	private Athlete teamKeeper;
+	/**
+	 * Stores the Athlete with the most matchup wins.
+	 * matchup or faceoff wins refer to beating their assigned opponent in matches.
+	 */
 	private Athlete bestAthlete;
-	
+	/**
+	 * Holds the roster of the current opponent of a match.
+	 */
 	private ArrayList<Athlete> opponentRoster = new ArrayList<>();	
+	/**
+	 * The name of the opponent team.
+	 */
 	private String opponentTeamName;
-	
+	/**
+	 * An ArrayList list of Athletes available for sale in the MarketScreen.
+	 */
 	private ArrayList<Athlete> marketAthletes = new ArrayList<>();
+	/**
+	 * An ArrayList of Items available for sale in the MarketScreen.
+	 */
 	private ArrayList<Item> marketItems = new ArrayList<>();
+	/**
+	 * Stores the Items owned by the player.
+	 */
 	private ArrayList<Item> inventory = new ArrayList<>();	
 	
 	private String matchOutcome;
@@ -163,7 +198,7 @@ public class GameManager {
 	
 	public boolean getEnoughAthletes() {
 		int totalAthletes = getMainRoster().size() + getReserveRoster().size();
-		if (totalAthletes < 1) {
+		if (totalAthletes < 5) {
 			return false;
 		} else {
 			return true;
@@ -176,7 +211,7 @@ public class GameManager {
 		setupWindow = new SetupScreen(this);
 	}
 	/**
-	 * Method to clsoe the setup screen when ready.
+	 * Method to close the setup screen when ready.
 	 * @param setupWindow the setup screen
 	 */
 	public void closeSetUpScreen(SetupScreen setupWindow) {
@@ -331,6 +366,7 @@ public class GameManager {
 			
 	public void takeBye() {
 		incrementWeek();
+		AthleteGenerator.incrementMinMaxStats(); // Opponent teams get stronger each weak.
 		refreshWeek();	
 		determineBestAthlete();
 		ArrayList<Athlete> allAthletes = new ArrayList<>();
@@ -425,7 +461,11 @@ public class GameManager {
 	}
 	
 	public void updateSeasonPoints(int points) {
-		seasonPoints += points;
+		if (difficulty == "Normal") {
+			seasonPoints += points;
+		} else {
+			seasonPoints += (2 * points);
+		}
 	}
 	
 	public ArrayList<Athlete> getMainRoster() {

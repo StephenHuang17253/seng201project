@@ -29,14 +29,15 @@ public class RandomEvent {
 		switch (chance) {
 		case 0:
 			// Random starter stat boost
-			if (mainRoster.size() > 0) {
+			int startBoostChance = random.nextInt(100);
+			if (mainRoster.size() > 0 && startBoostChance < 10) {
 				Athlete athlete = mainRoster.get(random.nextInt(mainRoster.size()));
 				athlete.changeOffence(random.nextInt(1, 11));
 				athlete.changeDefence(random.nextInt(1, 11));
 				athlete.changeHealth(random.nextInt(1, 11));
 				athlete.changeMaxStamina(random.nextInt(1, 11));
-				System.out.println(athlete.getName() + "has been showing incredible results in practice matches! His stats have improved.");
-				String message = (athlete.getName() + "has been showing incredible results in practice matches! His stats have improved.");
+				System.out.println(athlete.getName() + "has been showing incredible results in practice matches! Their stats have improved.");
+				String message = (athlete.getName() + "has been showing incredible results in practice matches! Their stats have improved.");
 				eventType = "Starter Boost";
 				eventGenerated = new RandomEvent(eventType, athlete, message);
 				break;				
@@ -45,14 +46,15 @@ public class RandomEvent {
 	
 		case 1:
 			// Random reserve stat boost
-			if (reserves.size() > 0) {
+			int reserveBoostChance = random.nextInt(100); 
+			if (reserves.size() > 0 && reserveBoostChance < 15) {
 				Athlete athlete = mainRoster.get(random.nextInt(mainRoster.size()));
 				athlete.changeOffence(random.nextInt(1, 11));
 				athlete.changeDefence(random.nextInt(1, 11));
 				athlete.changeHealth(random.nextInt(1, 11));
 				athlete.changeMaxStamina(random.nextInt(1, 11));
-				System.out.println(athlete.getName() + " has been showing incredible results in practice matches! His stats have improved.");
-				String message = athlete.getName() + " has been showing incredible results in practice matches! His stats have improved.";
+				System.out.println(athlete.getName() + " has been showing incredible results in practice matches! Their stats have improved.");
+				String message = athlete.getName() + " has been showing incredible results in practice matches! Their stats have improved.";
 				eventType = "Starter Boost";
 				eventGenerated = new RandomEvent(eventType, athlete, message);
 			}
@@ -74,9 +76,9 @@ public class RandomEvent {
 	
 		case 3:
 			// New Athlete joins
-			int probability = random.nextInt(50);
-			if (reserves.size() < 5) {
-				Athlete newAthlete = AthleteGenerator.generateRandomAthlete();
+			int randomJoinChance = random.nextInt(100);
+			if (reserves.size() < 5 && randomJoinChance < 8) {
+				Athlete newAthlete = AthleteGenerator.generateRandomAthlete(15, 30);
 				manager.getReserveRoster().add(newAthlete);
 				System.out.println("An up and coming talent has joined your team!");
 				String message = "An up and coming talent has joined your team!\n" + newAthlete.getName() + " has been added to reserves.";

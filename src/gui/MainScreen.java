@@ -18,7 +18,6 @@ import javax.swing.border.TitledBorder;
 import java.awt.event.ActionListener;
 import java.util.Random;
 import java.awt.event.ActionEvent;
-import java.awt.Color;
 import java.awt.Component; 
 
 public class MainScreen {
@@ -194,8 +193,8 @@ public class MainScreen {
 						finishedWindow("Bye");												
 					}
 					else {
-						finishedWindow("Bye");
-						Random random = new Random();
+						
+						Random random = new Random(); 
 						int chance = random.nextInt(4);
 						RandomEvent event = RandomEvent.generateRandomEvent(manager, chance);
 						Component eventFrame = null;
@@ -219,14 +218,16 @@ public class MainScreen {
 										event.getMessage(),
 										"Event - Athlete retires",
 										JOptionPane.INFORMATION_MESSAGE);
+								
 							case "Athlete Joins":
 								JOptionPane.showMessageDialog(eventFrame,
 										event.getMessage(),
 										"Event - Athlete joins",
-										JOptionPane.INFORMATION_MESSAGE);
-								
-						}						
+										JOptionPane.INFORMATION_MESSAGE);		
+							}						
 						}
+						finishedWindow("Bye");
+						
 					}
 
 					

@@ -89,18 +89,13 @@ public class Match {
 		ArrayList<Athlete> opponentTeam = AthleteGenerator.generateTeam(5);
 		manager.setOpponentRoster(opponentTeam);
 		manager.setOpponentName(match.getName());
-		//System.out.println(manager.getMainRoster());
-		//System.out.println(manager.getOpponentRoster());
-		boolean noStamina = true; // Track if all player's athletes have 0 stamina
-		
-		
-		
+		boolean noStamina = true;
 		
 		for (int i = 0; i < playerTeam.size(); i++) {
 			// compare athletes
 			String[] positions = {"Striker", "Left Wing", "Right Wing", "Defender", "Keeper"};
 			
-			Athlete playerAthlete = manager.getPlayerInPosition(positions[i]);
+			Athlete playerAthlete = manager.getPlayerInPosition(positions[i]); // Find correct player for matchup
 			Athlete opposingAthlete = opponentTeam.get(i);
 			System.out.println(playerAthlete.getName() + " (" + playerAthlete.getProficiency() + ") vs (" + opposingAthlete.getProficiency() + ") " + opposingAthlete.getName()); 
 			if (playerAthlete.getProficiency() >= opposingAthlete.getProficiency()) {		
