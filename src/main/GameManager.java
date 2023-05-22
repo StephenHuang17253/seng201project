@@ -304,7 +304,7 @@ public class GameManager {
 		allAthletes.addAll(getReserveRoster());
 		allAthletes.addAll(getOpponentRoster());
 		for (Athlete athlete : allAthletes) {
-			athlete.setStamina(athlete.getMaxStamina());			
+			athlete.setStamina(athlete.getMaxStamina());		
 		}
 
 	}
@@ -467,8 +467,8 @@ public class GameManager {
 	}
 	
 	public void purchaseItem(Item item) {
-		changeMoney(item.getSellbackPrice());
 		inventory.add(item);
+		money -= item.getContractPrice();
 		marketItems.remove(item);
 		System.out.println(item.getName() + " was added to club inventory.");
 	}

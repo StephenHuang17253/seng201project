@@ -182,7 +182,7 @@ public class MarketScreen {
 					// Inform player that they have not selected an athlete.
 					Component notSelectedWarning = null;
 					JOptionPane.showMessageDialog(notSelectedWarning,
-							"You haven't selected any athletes.", 
+							"You have not selected an athlete.", 
 							"No athlete selected", JOptionPane.INFORMATION_MESSAGE);
 					
 					} else if (totalAthletes == 10){
@@ -204,7 +204,7 @@ public class MarketScreen {
 						// Warn player that reserves are full.
 						Component fullRosterWarning = null;
 						JOptionPane.showMessageDialog(fullRosterWarning,
-								"Reserve roster already has 5.", 
+								"Reserve roster already has 5 athletes.", 
 								"Reserves full", JOptionPane.WARNING_MESSAGE);
 					}  
 
@@ -249,7 +249,7 @@ public class MarketScreen {
 						// Warn player that reserves are full
 						Component fullRosterWarning = null;
 						JOptionPane.showMessageDialog(fullRosterWarning,
-								"Main roster already has 5.", 
+								"Main roster already has 5 athletes.", 
 								"Main roster full", JOptionPane.WARNING_MESSAGE);
 					}  
 
@@ -318,8 +318,7 @@ public class MarketScreen {
 			            JOptionPane.showMessageDialog(purchaseWarning, "No item selected.", 
 			                    "No Item Selected", JOptionPane.WARNING_MESSAGE);
 			        } else {
-			            JOptionPane.showMessageDialog(purchaseWarning, "You can't afford this. "
-			                    + "\nGo win some games.", 
+			            JOptionPane.showMessageDialog(purchaseWarning, "You can't afford this.",
 			                    "Insufficient Funds", JOptionPane.WARNING_MESSAGE);
 			        }
 			    }

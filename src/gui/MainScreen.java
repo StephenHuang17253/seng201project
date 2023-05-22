@@ -166,6 +166,7 @@ public class MainScreen {
 							"End game", JOptionPane.YES_NO_OPTION);		
 					if (n == 0) {
 						finishedWindow("Bye");
+					
 					}
 				} else {
 				Component ByeFrame = null;
@@ -173,11 +174,11 @@ public class MainScreen {
 						"Ready to move to next week?", 
 						"Take a bye", JOptionPane.YES_NO_OPTION);
 				if (n == 0) {
-					finishedWindow("Bye");
 					Component newWeekFrame = null;
 					JOptionPane.showMessageDialog(newWeekFrame, 
 							"Stadium and Market have refreshed.", 
 							"New week", JOptionPane.INFORMATION_MESSAGE);
+					finishedWindow("Bye");
 					}					
 				}
 			}
