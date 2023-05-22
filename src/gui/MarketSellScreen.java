@@ -141,10 +141,10 @@ public class MarketSellScreen {
 
 		
 		JLabel athleteSoldLabel = new JLabel("");
-		athleteSoldLabel.setBounds(350, 23, 194, 14);
+		athleteSoldLabel.setBounds(268, 23, 276, 14);
 		athleteSoldLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		athleteSoldLabel.setForeground(new Color(255, 66, 66));
-		athleteSoldLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		athleteSoldLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
 		athletesSellPanel.add(athleteSoldLabel);
 		
 		JLabel athletesSellbackPriceLabel = new JLabel("Sellback price is half of purchase price");
@@ -171,7 +171,7 @@ public class MarketSellScreen {
 					manager.sellAthlete(targetAthlete);
 					inventoryAthleteModel.removeElement(targetAthlete);
 					athletesList.setModel(inventoryAthleteModel);
-					athleteSoldLabel.setText(targetAthlete.getName() + " sold for " + targetAthlete.getSellbackPrice());
+					athleteSoldLabel.setText(targetAthlete.getName() + " sold for $" + targetAthlete.getSellbackPrice());
 					moneyLabel.setText("Money: $" + manager.getMoneyString());
 				}
 			}
@@ -207,8 +207,8 @@ public class MarketSellScreen {
 		JLabel itemSoldLabel = new JLabel("");
 		itemSoldLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		itemSoldLabel.setForeground(new Color(255, 66, 66));
-		itemSoldLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
-		itemSoldLabel.setBounds(350, 23, 194, 14);
+		itemSoldLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		itemSoldLabel.setBounds(268, 23, 276, 14);
 		itemsSellPanel.add(itemSoldLabel);
 		
 		JLabel itemSellbackPriceLabel = new JLabel("Sellback price is half of purchase price");
@@ -234,7 +234,7 @@ public class MarketSellScreen {
 					manager.sellItem(targetItem);
 					inventoryItemListModel.removeElement(targetItem);
 					itemList.setModel(inventoryItemListModel);
-					itemSoldLabel.setText(targetItem.getName() + " sold for " + targetItem.getSellbackPrice());
+					itemSoldLabel.setText(targetItem.getName() + " sold for $" + targetItem.getSellbackPrice());
 					moneyLabel.setText("Money: $" + manager.getMoneyString());
 				}	
 			}

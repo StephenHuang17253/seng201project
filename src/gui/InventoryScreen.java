@@ -117,8 +117,8 @@ public class InventoryScreen {
 		JLabel athleteStatsLabel = new JLabel("");
 		athleteStatsLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		athleteStatsLabel.setForeground(new Color(255, 66, 66));
-		athleteStatsLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
-		athleteStatsLabel.setBounds(290, 20, 364, 14);
+		athleteStatsLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		athleteStatsLabel.setBounds(166, 20, 364, 14);
 		inventoryAthletePanel.add(athleteStatsLabel);
 		
 		JPanel inventoryItemPanel = new JPanel();
@@ -146,9 +146,9 @@ public class InventoryScreen {
 		inventoryItemPanel.add(inventoryItemsLabel);
 		
 		JLabel itemUsedLabel = new JLabel("");
-		itemUsedLabel.setBounds(401, 23, 145, 14);
+		itemUsedLabel.setBounds(166, 23, 364, 14);
 		inventoryItemPanel.add(itemUsedLabel);
-		itemUsedLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		itemUsedLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
 		itemUsedLabel.setForeground(new Color(255, 66, 66));
 		itemUsedLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
