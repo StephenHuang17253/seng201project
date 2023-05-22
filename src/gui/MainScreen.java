@@ -171,17 +171,25 @@ public class MainScreen {
 				} else {
 				Component ByeFrame = null;
 				int n = JOptionPane.showConfirmDialog(ByeFrame, 
-						"Ready to move to next week?", 
+						"Ready to move onto next week?" 
+						+ "\n You will lose if you have either:"
+						+ "\n- No Athletes left"
+						+ "\n- Less than $100,000"
+						+ "\n Are you sure you want to continue?",
 						"Take a bye", JOptionPane.YES_NO_OPTION);
 				if (n == 0) {
-					if(manager.getMainRoster().size() + manager.getReserveRoster().size()==0) {
-						int p = JOptionPane.showConfirmDialog(ByeFrame, 
-								"You have no athletes left. If you continue you will lose." +
-								"\n Are you sure you want to continue?", 
-								"No athletes left", JOptionPane.YES_NO_OPTION);
-						if (p==0) {
-							finishedWindow("Bye");					
-						}								
+					if(manager.getCanContinue() == false) {
+						JOptionPane.showMessageDialog(ByeFrame, 
+								"You have no athletes or money left. You lost.", 
+								"No athletes or money left", JOptionPane.WARNING_MESSAGE);
+						
+						finishedWindow("Bye");					
+					}
+					else if(manager.getEnoughAthletes() == false) {
+						JOptionPane.showMessageDialog(ByeFrame, 
+								"You have no athletes left. You Lost.",
+								"No athletes left", JOptionPane.WARNING_MESSAGE);
+						finishedWindow("Bye");												
 					}
 					else {
 						finishedWindow("Bye");
