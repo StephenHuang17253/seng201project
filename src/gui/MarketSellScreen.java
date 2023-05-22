@@ -170,7 +170,7 @@ public class MarketSellScreen {
 					manager.sellAthlete(targetAthlete);
 					inventoryAthleteModel.removeElement(targetAthlete);
 					athletesList.setModel(inventoryAthleteModel);
-					athleteSoldLabel.setText(targetAthlete.getName() + " sold for $" + targetAthlete.getSellbackPrice());
+					athleteSoldLabel.setText(targetAthlete.getName() + " sold for $" + manager.getMoneyFormat(targetAthlete.getSellbackPrice()));
 					moneyLabel.setText("Money: $" + manager.getMoneyString());
 				}
 			}
@@ -233,7 +233,7 @@ public class MarketSellScreen {
 					manager.sellItem(targetItem);
 					inventoryItemListModel.removeElement(targetItem);
 					itemList.setModel(inventoryItemListModel);
-					itemSoldLabel.setText(targetItem.getName() + " sold for $" + targetItem.getSellbackPrice());
+					itemSoldLabel.setText(targetItem.getName() + " sold for $" + manager.getMoneyFormat(targetItem.getSellbackPrice()));
 					moneyLabel.setText("Money: $" + manager.getMoneyString());
 				}	
 			}

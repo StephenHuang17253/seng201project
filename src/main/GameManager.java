@@ -67,6 +67,7 @@ public class GameManager {
 	private Athlete teamRightWing;
 	private Athlete teamDefender;
 	private Athlete teamKeeper;
+	private Athlete bestAthlete;
 	
 	private ArrayList<Athlete> opponentRoster = new ArrayList<>();	
 	private String opponentTeamName;
@@ -310,6 +311,7 @@ public class GameManager {
 	public void takeBye() {
 		incrementWeek();
 		refreshWeek();	
+		determineBestAthlete();
 		ArrayList<Athlete> allAthletes = new ArrayList<>();
 		allAthletes.addAll(getMainRoster());
 		allAthletes.addAll(getReserveRoster());
@@ -643,7 +645,7 @@ public class GameManager {
 		athlete.changeOffence(2);
 		athlete.changeDefence(2);
 		athlete.changeHealth(2);
-		athlete.changeMaxStamina(2); 
+		athlete.changeMaxStamina(1); 
 	}
 	
 	public void useItem(Athlete athlete, Item item) {
@@ -679,6 +681,29 @@ public class GameManager {
 			ClubScreen.warningLabel.setText("");
 		}
 	}
+	
+	public void determineBestAthlete() {
+		
+		ArrayList<Athlete> athletes = new ArrayList<>();
+		athletes.addAll(getMainRoster());
+		athletes.addAll(getReserveRoster());
+		int highestWins = 0;
+		for (Athlete athlete : athletes) {
+			int wins = athlete.getFaceOffWins();
+			if (wins > highestWins) {
+				highestWins = wins;
+				bestAthlete = athlete;
+			}
+			
+		}
+
+	}
+	
+	public Athlete getBestAthlete( ) {
+		return bestAthlete;
+	}
+	
+	
 	/**
 	 * Main game method.
 	 * Begins by game by instantiating GameManager and calling launchStartScreen();  

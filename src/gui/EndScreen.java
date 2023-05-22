@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
+import main.Athlete;
 import main.GameManager;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -113,7 +114,11 @@ public class EndScreen {
 		seasonPointsLabel.setBounds(10, 216, 421, 23);
 		summaryPanel.add(seasonPointsLabel); 
 		
-		JLabel bestAthleteLabel = new JLabel("Best Athlete: ");
+		Athlete bestAthlete = manager.getBestAthlete();
+		JLabel bestAthleteLabel = new JLabel("");
+		if (bestAthlete != null) {
+			bestAthleteLabel.setText("Best Athlete: " + bestAthlete.getName() + " with (" + bestAthlete.getFaceOffWins() + ") wins");
+		}
 		bestAthleteLabel.setVerticalAlignment(SwingConstants.TOP);
 		bestAthleteLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		bestAthleteLabel.setHorizontalAlignment(SwingConstants.CENTER);

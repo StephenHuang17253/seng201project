@@ -55,7 +55,9 @@ public class Athlete implements Purchasable{
 	 */	
 	private String description;
 	
-	private String faceoffResult;
+	private String faceOffResult;
+	
+	private int faceOffWins;
 	
 	
 
@@ -285,15 +287,30 @@ public class Athlete implements Purchasable{
 	}
 	
 	public String getMatchUpResult() {
-		return faceoffResult;
+		return faceOffResult;
 	}
 	
 	public void setMatchUpResult(String result) {
-		this.faceoffResult = result;
+		this.faceOffResult = result;
 	}
+	
+	public int getFaceOffWins() {
+		return faceOffWins;
+	}
+
+	public void setFaceOffWins(int faceOffWins) {
+		this.faceOffWins = faceOffWins;
+	}	
+	
+	public void incrementWins() {
+		faceOffWins += 1;
+	}	
 	
 	public static void main(String[] args) {
 	}
+
+
+
 
 
 

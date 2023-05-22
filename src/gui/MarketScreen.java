@@ -350,7 +350,7 @@ public class MarketScreen {
 			        manager.purchaseItem(targetItem);
 			        itemListModel.removeElement(targetItem);
 			        itemList.setModel(itemListModel);
-			        itemBoughtLabel.setText(targetItem.getName() + " Bought!");
+			        itemBoughtLabel.setText(targetItem.getName() + " Bought for" + manager.getMoneyFormat(targetItem.getContractPrice()));
 			        moneyLabel.setText("Money: $" + manager.getMoneyString());
 			    } else {
 			        Component purchaseWarning = null;

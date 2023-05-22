@@ -106,6 +106,7 @@ public class Match {
 			if (playerAthlete.getProficiency() >= opposingAthlete.getProficiency()) {		
 				playerScore += 1;
 				playerAthlete.setMatchUpResult("Won faceoff");
+				playerAthlete.incrementWins();
 				playerAthlete.changeStamina(-3);
 			} else {
 				opponentScore += 1;
