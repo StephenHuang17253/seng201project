@@ -45,9 +45,6 @@ public class AthleteGenerator {
 		    "Xavier Thorpe", "Morticia Addams", "Kohaku Nushi", "Frodo Baggins", "Meiko Honma", "Taki Tachi",
 		    "Naruko Anjo", "Jinta Yadomi", "Sakura Yamauchi", "Haruki Shiga", "Mitsuha Miya", "Toono Takaki"
 		    
-		    
-		    
-		    // Add more names here as needed
 		};
 	/**
 	 * A list of positions for the generateTeam() method to use.

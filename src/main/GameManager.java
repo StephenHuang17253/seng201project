@@ -923,7 +923,7 @@ public class GameManager {
 	 * @param item
 	 */
 	public void useItem(Athlete athlete, Item item) {
-		String stat = item.getStatChanged();
+		String stat = item.getStatToChange();
 		int changeBy = item.getChange();
 		switch (stat) {
 		case "Offence":

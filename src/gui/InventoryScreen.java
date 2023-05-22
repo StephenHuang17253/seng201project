@@ -186,7 +186,7 @@ public class InventoryScreen {
 				else {
 					manager.useItem(targetAthlete, usedItem);
 					itemUsedLabel.setText(usedItem.getName() + " Used!");
-					athleteStatsLabel.setText(targetAthlete.getName() + "'s "+ usedItem.getStatChanged() + " stat increased by " + usedItem.getChange());
+					athleteStatsLabel.setText(targetAthlete.getName() + "'s "+ usedItem.getStatToChange() + " stat increased by " + usedItem.getChange());
 					inventoryModel.removeElement(usedItem);
 					inventoryItemList.setModel(inventoryModel);
 					inventoryAthleteList.setModel(inventoryAthleteModel);
