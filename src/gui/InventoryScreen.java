@@ -8,6 +8,7 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Container;
 
 import main.Athlete;
@@ -19,6 +20,8 @@ import javax.swing.JScrollPane;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
+
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
@@ -158,6 +161,13 @@ public class InventoryScreen {
 		useItemButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Item usedItem = inventoryItemList.getSelectedValue();
+				if (usedItem == null) {
+					// Inform player that they have not selected an item.
+					Component notSelectedWarning = null;
+					JOptionPane.showMessageDialog(notSelectedWarning,
+							"You have not selected a item.", 
+							"No item selected", JOptionPane.INFORMATION_MESSAGE);									
+				}
 				itemUsedLabel.setText(usedItem.getName() + " Used!");
 				athleteStatsLabel.setText("Athlete's Stats Increased!!!");
 			}

@@ -16,6 +16,7 @@ import gui.MarketSellScreen;
 import gui.MatchScreen;
 import gui.StartScreen;
 import gui.InventoryScreen;
+import gui.TrainingScreen;
 import items.DefensiveCoach;
 import items.Nutritionist;
 import items.OffensiveCoach;
@@ -125,16 +126,14 @@ public class GameManager {
 			
 			if (week > totalWeeks || !getCanContinue()){
 				launchEndScreen();
-			} else {
-				launchMainScreen();
-			}
-			
+			} 
 		} 
 		
 		if (next == "Quit") {
 
 		}
 	}		
+
 	public boolean getCanContinue() {
 		int totalAthletes = getMainRoster().size() + getReserveRoster().size();
 		if (totalAthletes < 5 && getMoney() < 100000) {
@@ -183,6 +182,15 @@ public class GameManager {
 	
 	public void closeMarketScreen(MarketScreen marketWindow) {
 		marketWindow.closeWindow();
+		launchMainScreen();
+	}
+	
+	public void launchTrainingScreen() {
+		TrainingScreen trainingWindow = new TrainingScreen(this);		
+	}
+	
+	public void closeTrainingScreen(TrainingScreen trainingWindow) {
+		trainingWindow.closeWindow();
 		launchMainScreen();
 	}
 	
@@ -296,7 +304,6 @@ public class GameManager {
 	}		
 			
 	public void takeBye() {
-
 		incrementWeek();
 		refreshWeek();	
 		ArrayList<Athlete> allAthletes = new ArrayList<>();

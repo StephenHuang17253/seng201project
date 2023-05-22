@@ -174,11 +174,8 @@ public class MainScreen {
 						"Ready to move to next week?", 
 						"Take a bye", JOptionPane.YES_NO_OPTION);
 				if (n == 0) {
-					Component newWeekFrame = null;
-					JOptionPane.showMessageDialog(newWeekFrame, 
-							"Stadium and Market have refreshed.", 
-							"New week", JOptionPane.INFORMATION_MESSAGE);
 					finishedWindow("Bye");
+					manager.launchTrainingScreen();
 					}					
 				}
 			}
