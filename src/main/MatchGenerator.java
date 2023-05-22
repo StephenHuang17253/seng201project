@@ -18,7 +18,7 @@ public class MatchGenerator {
 		Random random = new Random();
 		String name = pickOpponentName(random);
     	int minPrize = 1000000;
-    	int maxPrize = 3000000;
+    	int maxPrize = 4000000;
 		int prize = random.nextInt(maxPrize - minPrize + 1) + minPrize;
 		int points = 10;
 		return new Match(name, prize, points);

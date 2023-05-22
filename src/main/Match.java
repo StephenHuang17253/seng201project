@@ -125,8 +125,8 @@ public class Match {
 	        manager.setMatchOutcome(outcome);
 	        manager.updateSeasonPoints(pointGain);
 	        manager.changeMoney(prizeMoney);
-	        manager.totalMoneyEarned(prizeMoney);
-	        manager.totalGamesWon();
+	        manager.changeMoneyEarned(prizeMoney);
+	        manager.incrementGamesWon();
 	    } else {
 	        match.setOutcome("Defeat");
 	        manager.setMatchOutcome(outcome);
