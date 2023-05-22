@@ -532,6 +532,16 @@ public class GameManager {
 		setWeeklyMatches(MatchGenerator.generateWeeklyMatches());
 	}
 		
+	public void greatlyIncreaseStats(Athlete athlete) {
+		athlete.setDefence(athlete.getDefence()+2);
+		athlete.setHealth(athlete.getHealth()+2);
+		athlete.setOffence(athlete.getOffence()+2);
+		athlete.setStamina(athlete.getStamina()+2);
+	}
+	
+	public void itemIncreaseAthleteStats(Athlete athlete, Item item) {
+		
+	}
 	
 	/**
 	 * Main game method.

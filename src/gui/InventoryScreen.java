@@ -130,10 +130,10 @@ public class InventoryScreen {
 		frmInventoryScreen.getContentPane().add(inventoryItemPanel);
 		inventoryItemPanel.setLayout(null);
 		
-		DefaultListModel<Item> inventoryItemListModel = new DefaultListModel<Item>();
-		inventoryItemListModel.addAll(inventory);
+		DefaultListModel<Item> inventoryModel = new DefaultListModel<Item>();
+		inventoryModel.addAll(inventory);
 		
-		JList<Item> inventoryItemList = new JList<Item>(inventoryItemListModel);
+		JList<Item> inventoryItemList = new JList<Item>(inventoryModel);
 		inventoryItemList.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		inventoryItemList.setBorder(new LineBorder(new Color(186, 207, 248), 2));
 		inventoryItemList.setBounds(10, 51, 676, 203);
@@ -160,16 +160,37 @@ public class InventoryScreen {
 		inventoryItemPanel.add(useItemButton);
 		useItemButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Athlete targetAthlete = inventoryAthleteList.getSelectedValue();
 				Item usedItem = inventoryItemList.getSelectedValue();
-				if (usedItem == null) {
+				if ((targetAthlete == null)&&(usedItem == null)) {
+					// Inform player that they have not selected an athlete.
+					Component notSelectedWarning = null;
+					JOptionPane.showMessageDialog(notSelectedWarning,
+							"You have not selected an athlete or an item.", 
+							"No athlete or item selected", JOptionPane.INFORMATION_MESSAGE);
+				}
+				else if (targetAthlete == null) {
+					// Inform player that they have not selected an athlete.
+					Component notSelectedWarning = null;
+					JOptionPane.showMessageDialog(notSelectedWarning,
+							"You have not selected an athlete.", 
+							"No athlete selected", JOptionPane.INFORMATION_MESSAGE);
+				}
+				else if (usedItem == null) {
 					// Inform player that they have not selected an item.
 					Component notSelectedWarning = null;
 					JOptionPane.showMessageDialog(notSelectedWarning,
 							"You have not selected a item.", 
 							"No item selected", JOptionPane.INFORMATION_MESSAGE);									
 				}
-				itemUsedLabel.setText(usedItem.getName() + " Used!");
-				athleteStatsLabel.setText("Athlete's Stats Increased!!!");
+				else {
+					manager.itemIncreaseAthleteStats(targetAthlete, usedItem);
+					itemUsedLabel.setText(usedItem.getName() + " Used!");
+					athleteStatsLabel.setText(targetAthlete.getName() + " Stats Increased!!!");
+					inventoryModel.removeElement(usedItem);
+					inventoryItemList.setModel(inventoryModel);
+				}
+
 			}
 		});
 		useItemButton.setFont(new Font("Tahoma", Font.BOLD, 11));
