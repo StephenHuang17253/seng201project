@@ -63,7 +63,7 @@ public class RandomEvent {
 		case 2:
 			// Athlete quits
 			for (Athlete athlete : reserves) {
-				if (random.nextInt(5) * (athlete.getFaceOffLosses() / 2) >= 55) {
+				if (random.nextInt(100) + (athlete.getFaceOffLosses() / 2) >= 125) {
 					manager.getReserveRoster().remove(athlete);
 					System.out.println(athlete.getName() + " has decided to retire after repeated poor performances.");
 					String message = athlete.getName() + " has decided to retire after repeated poor performances.";
