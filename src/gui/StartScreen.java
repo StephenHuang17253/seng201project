@@ -85,7 +85,7 @@ public class StartScreen {
 		JLabel lblStart = new JLabel("Press \"Start\" to play!");
 		lblStart.setHorizontalAlignment(SwingConstants.CENTER);
 		lblStart.setFont(new Font("Tahoma", Font.ITALIC, 25));
-		lblStart.setBounds(374, 229, 253, 31);
+		lblStart.setBounds(374, 240, 253, 31);
 		frmStartScreen.getContentPane().add(lblStart);
 		
 		JButton btnStart = new JButton("Start");
@@ -99,8 +99,9 @@ public class StartScreen {
 		frmStartScreen.getContentPane().add(btnStart);
 		
 		gameLabel = new JLabel("... a Futsal Club management sim");
-		gameLabel.setFont(new Font("Rockwell", Font.PLAIN, 14));
-		gameLabel.setBounds(670, 200, 220, 22);
+		gameLabel.setHorizontalAlignment(SwingConstants.TRAILING);
+		gameLabel.setFont(new Font("Rockwell", Font.PLAIN, 16));
+		gameLabel.setBounds(588, 203, 273, 22);
 		frmStartScreen.getContentPane().add(gameLabel);
 	}
 }

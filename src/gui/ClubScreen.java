@@ -310,8 +310,8 @@ public class ClubScreen {
 		strikerButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Athlete targetAthlete = reserveRosterList.getSelectedValue();
-				targetAthlete.setPosition("Striker");
-				manager.promoteAthlete(targetAthlete);
+				//targetAthlete.setPosition("Striker");
+				manager.promoteAthlete(targetAthlete, "Striker");
 		        // Check if there is already an athlete in the strikerList
 		        if (strikerModel.getSize() > 0) {
 		            // Get the existing athlete in the strikerList
@@ -351,8 +351,8 @@ public class ClubScreen {
 		leftWingButton.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		        Athlete targetAthlete = reserveRosterList.getSelectedValue();
-		        targetAthlete.setPosition("Left Wing");
-		        manager.promoteAthlete(targetAthlete);
+		       // targetAthlete.setPosition("Left Wing");
+		        manager.promoteAthlete(targetAthlete, "Left Wing");
 		        // Check if there is already an athlete in the leftWingList
 		        if (leftWingModel.getSize() > 0) {
 		            // Get the existing athlete in the leftWingList
@@ -391,8 +391,8 @@ public class ClubScreen {
 		rightWingButton.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		        Athlete targetAthlete = reserveRosterList.getSelectedValue();
-		        targetAthlete.setPosition("Right Wing");
-		        manager.promoteAthlete(targetAthlete);
+		        //targetAthlete.setPosition("Right Wing");
+		        manager.promoteAthlete(targetAthlete, "Right Wing");
 		        // Check if there is already an athlete in the rightWingList
 		        if (rightWingModel.getSize() > 0) {
 		            // Get the existing athlete in the rightWingList
@@ -432,8 +432,8 @@ public class ClubScreen {
 		defenderButton.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		        Athlete targetAthlete = reserveRosterList.getSelectedValue();
-		        targetAthlete.setPosition("Defender");
-		        manager.promoteAthlete(targetAthlete);
+		        //targetAthlete.setPosition("Defender");
+		        manager.promoteAthlete(targetAthlete, "Defender");
 		        // Check if there is already an athlete in the defenderList
 		        if (defenderModel.getSize() > 0) {
 		            // Get the existing athlete in the defenderList
@@ -472,8 +472,8 @@ public class ClubScreen {
 		keeperButton.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		        Athlete targetAthlete = reserveRosterList.getSelectedValue();
-		        targetAthlete.setPosition("Keeper");
-		        manager.promoteAthlete(targetAthlete);
+		        //targetAthlete.setPosition("Keeper");
+		        manager.promoteAthlete(targetAthlete, "Keeper");
 		        // Check if there is already an athlete in the keeperList
 		        if (keeperModel.getSize() > 0) {
 		            // Get the existing athlete in the keeperList

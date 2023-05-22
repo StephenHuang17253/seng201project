@@ -64,7 +64,7 @@ public class AthleteGenerator {
         	minContractPrice = 1000000;
         	maxContractPrice = 2000000;
         	
-        	} else if (statSum >= 20  && statSum <= 30) {  
+        	} else if (statSum >= 20  && statSum <= 30) {   
             	minContractPrice = 500000;
             	maxContractPrice = 900000;
         	}  

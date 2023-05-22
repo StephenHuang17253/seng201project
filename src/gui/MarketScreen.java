@@ -132,6 +132,7 @@ public class MarketScreen {
 		frmMarketScreen.getContentPane().add(athletePanel);
 		athletePanel.setLayout(null);
 		
+		
 		// Create a ListModel to store the athletes in the JList
 		DefaultListModel<Athlete> athleteListModel = new DefaultListModel<Athlete>();
 		// Add the existing athletes to the ListModel
@@ -162,10 +163,95 @@ public class MarketScreen {
 		athletePanel.add(athletesForSaleLabel);
 		athletesForSaleLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
 		
+		
 		JButton draftMainAthleteButton = new JButton("Draft to main");
 		draftMainAthleteButton.setBounds(412, 16, 132, 28);
 		athletePanel.add(draftMainAthleteButton);
-		
+		draftMainAthleteButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				Athlete targetAthlete = athleteList.getSelectedValue();
+				int athleteSum = manager.getMainRoster().size() + manager.getReserveRoster().size();
+				
+			
+				if (targetAthlete == null) {
+					// Inform player that they haven't selected an athlete.
+					Component notSelectedWarning = null;
+					JOptionPane.showMessageDialog(notSelectedWarning,
+							"You have not selected an athlete.", 
+							"No athlete selected", JOptionPane.INFORMATION_MESSAGE);
+				
+					} else if (athleteSum == 10) {
+						// Warn player that they have too many athletes
+						Component fullClubWarning = null;
+						JOptionPane.showMessageDialog(fullClubWarning,
+								"Your club has too many athletes.", 
+								"Can't have more than 10 players", JOptionPane.WARNING_MESSAGE);
+					
+					} else if (manager.getMoney() < targetAthlete.getContractPrice()) {  
+						// Warn player if they can't afford the athlete
+						Component costWarning = null;
+						JOptionPane.showMessageDialog(costWarning,
+								"You can't afford this.", 
+								"Insufficent funds", JOptionPane.WARNING_MESSAGE);
+					//} else if (manager.getMainRoster().size() == 5) { 
+						// Warn player that reserves are full
+						//Component fullRosterWarning = null;
+						//JOptionPane.showMessageDialog(fullRosterWarning,
+								//"Main roster already has 5 athletes.", 
+								//"Main roster full", JOptionPane.WARNING_MESSAGE);
+					}  
+
+					else{  
+						// Draft athlete if all above the conditions are false
+				        String[] options = { "Striker", "Left Wing", "Right Wing", "Defender", "Keeper" };
+
+				        Component pickPosition = null;
+						int selectedPosition = JOptionPane.showOptionDialog(pickPosition,
+				                "Which position would you like to assign to the athlete?",
+				                "Drafting to active roster",
+				                JOptionPane.DEFAULT_OPTION,
+				                JOptionPane.QUESTION_MESSAGE,
+				                null,
+				                options,
+				                options[0]);
+						// Need to account for player closing the dialog
+				        if (selectedPosition >= 0) {
+				            String position = options[selectedPosition];
+				            System.out.println("Assigned position: " + position);
+				            Object draftMessage = null;
+				            // Update Game
+				    		manager.checkAthletePositions();
+				    		Athlete previousPlayer = manager.getPlayerInPosition(position);
+				    		if (previousPlayer != null) {
+				    			manager.demoteAthlete(previousPlayer);
+				    			draftMessage = targetAthlete.getName() + " assigned as " + position + 
+				    					"\n" + previousPlayer.getName() + " benched.";
+				    		} else {
+				    			draftMessage = targetAthlete.getName() + " has been drafted as a " + position;
+				    		}
+							manager.draftMainAthlete(targetAthlete, position);
+							
+							
+							// Update UI
+							athleteListModel.removeElement(targetAthlete);
+							athleteList.setModel(athleteListModel);
+							athleteBoughtLabel.setText(targetAthlete.getName() + " drafted to main.");
+							moneyLabel.setText("Money: $" + manager.getMoneyString());		
+							
+							// Inform player of replacement
+			    			Component draftFrame = null;
+							JOptionPane.showMessageDialog(draftFrame,
+									draftMessage,
+									"Athlete drafted", JOptionPane.INFORMATION_MESSAGE);
+							
+							
+				        }
+
+					} 
+				
+			}
+		});	
 		draftMainAthleteButton.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
 		JButton draftReserveAthleteButton = new JButton("Draft to reserves");
@@ -218,53 +304,7 @@ public class MarketScreen {
 					}  		
 			}
 		});
-		draftMainAthleteButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				Athlete targetAthlete = athleteList.getSelectedValue();
-				int athleteSum = manager.getMainRoster().size() + manager.getReserveRoster().size();
-				
-			
-				if (targetAthlete == null) {
-					// Inform player that they haven't selected an athlete.
-					Component notSelectedWarning = null;
-					JOptionPane.showMessageDialog(notSelectedWarning,
-							"You have not selected an athlete.", 
-							"No athlete selected", JOptionPane.INFORMATION_MESSAGE);
-				
-					} else if (athleteSum == 10) {
-						// Warn player that they have too many athletes
-						Component fullClubWarning = null;
-						JOptionPane.showMessageDialog(fullClubWarning,
-								"Your club has too many athletes.", 
-								"Can't have more than 10 players", JOptionPane.WARNING_MESSAGE);
-					
-					} else if (manager.getMoney() < targetAthlete.getContractPrice()) {  
-						// Warn player if they can't afford the athlete
-						Component costWarning = null;
-						JOptionPane.showMessageDialog(costWarning,
-								"You can't afford this.", 
-								"Insufficent funds", JOptionPane.WARNING_MESSAGE);
-					} else if (manager.getMainRoster().size() == 5) { 
-						// Warn player that reserves are full
-						Component fullRosterWarning = null;
-						JOptionPane.showMessageDialog(fullRosterWarning,
-								"Main roster already has 5 athletes.", 
-								"Main roster full", JOptionPane.WARNING_MESSAGE);
-					}  
 
-					else{  
-						// Draft athlete if all above the conditions are false
-						manager.draftMainAthlete(targetAthlete);
-						athleteListModel.removeElement(targetAthlete);
-						athleteList.setModel(athleteListModel);
-						athleteBoughtLabel.setText(targetAthlete.getName() + " drafted to main.");
-						moneyLabel.setText("Money: $" + manager.getMoneyString());
-					} 
-				
-			}
-		});
-		
 		JPanel itemPanel = new JPanel();
 		itemPanel.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
 		itemPanel.setBounds(10, 365, 696, 234);

@@ -65,6 +65,12 @@ public class GameManager {
 	 */
 	private ArrayList<Athlete> reserveRoster = new ArrayList<>();
 	
+	private Athlete teamStriker;
+	private Athlete teamLeftWing;
+	private Athlete teamRightWing;
+	private Athlete teamDefender;
+	private Athlete teamKeeper;
+	
 	private ArrayList<Athlete> opponentRoster = new ArrayList<>();	
 	private String opponentTeamName;
 	private ArrayList<Athlete> marketAthletes = new ArrayList<>();
@@ -438,25 +444,83 @@ public class GameManager {
 		return false;		
 	}
 	
-	public void promoteAthlete(Athlete athlete) {
+	public void checkAthletePositions() {
+		teamStriker = null;
+		teamLeftWing = null;
+		teamRightWing = null;
+		teamDefender = null;
+		teamKeeper = null;
+		// Find Athlete positions.
+		for (Athlete athlete : getMainRoster()) {
+			
+			switch(athlete.getPosition()) {
+			 	case "Striker":
+			 		teamStriker = athlete;
+			 		break;
+			 	case "Left Wing":
+			 		teamLeftWing = athlete;
+			 		break;
+			 	case "Right Wing":
+			 		teamRightWing = athlete;
+			 		break;
+			    case "Defender":
+			    	teamDefender = athlete;
+			    	break;
+			    case "Keeper":
+			    	teamKeeper = athlete;
+			    	break;
+			}
+		}	
+	}
+	
+	public Athlete getPlayerInPosition(String position) {
+		
+		Athlete athlete = null;
+		
+		switch(position) {
+	 	case "Striker":
+	 		athlete = teamStriker;
+	 		break;
+	 	case "Left Wing":
+	 		athlete = teamLeftWing;
+	 		break;
+	 	case "Right Wing":
+	 		athlete = teamRightWing;
+	 		break;
+	    case "Defender":
+	    	athlete = teamDefender;
+	    	break;
+	    case "Keeper":
+	    	athlete = teamKeeper;
+	    	break;
+		}		
+		return athlete;
+		
+	}
+	
+	public void promoteAthlete(Athlete athlete, String position) {
 		System.out.println(athlete.getName() + " has been moved to main roster");
+		athlete.setPosition(position);
 	    mainRoster.add(athlete);
 	    reserveRoster.remove(athlete);
-	    
 	}	
 	
 	public void demoteAthlete(Athlete athlete) {
 		System.out.println(athlete.getName() + " has been moved to reserves");
+		mainRoster.remove(athlete);
+		athlete.getPosition();
 	    reserveRoster.add(athlete);
-	    mainRoster.remove(athlete);
+	    
 	 
 	}
 	
-	public void draftMainAthlete(Athlete athlete) {
+	public void draftMainAthlete(Athlete athlete, String position) {
+		//AthleteGenerator.takenNames.add(athlete.getName());
+		
+		athlete.setPosition(position);
 		mainRoster.add(athlete);
 		money -= athlete.getContractPrice();
 		marketAthletes.remove(athlete);
-		AthleteGenerator.takenNames.add(athlete.getName());
 		if (mainRoster.contains(athlete)) {
 			System.out.println(athlete.getName() + "has been drafted to active roster.");
 		}

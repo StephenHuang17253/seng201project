@@ -140,7 +140,7 @@ public class StadiumScreen {
 				Match targetMatch = matchList.getSelectedValue();
 				if (targetMatch == null) {
 					Component noMatchSelected = null;
-					JOptionPane.showMessageDialog(noMatchSelected, 
+					JOptionPane.showMessageDialog(noMatchSelected,  
 							"You have not selected a match.", 
 							"No match selected.", JOptionPane.INFORMATION_MESSAGE);				
 				} else if (manager.canCompete() != true) {
