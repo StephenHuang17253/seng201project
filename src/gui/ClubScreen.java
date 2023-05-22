@@ -134,7 +134,8 @@ public class ClubScreen {
 		activeRosterPanel.add(activeRosterChangedLabel);
 		activeRosterChangedLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		activeRosterChangedLabel.setForeground(new Color(255, 66, 66));
-		activeRosterChangedLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		activeRosterChangedLabel.setFont(new Font("Tahoma", Font.BOLD, 12));		
+		
 				
 		JButton backButton = new JButton("Go back");
 		backButton.setFont(new Font("Tahoma", Font.PLAIN, 16));

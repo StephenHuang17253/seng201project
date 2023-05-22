@@ -18,6 +18,28 @@ public class AthleteGenerator {
 		    "Peng Li-Xun", "Zeng Qi", "Zhao Jia-Hao", "Luo Wen-Jun", "Stephen Huang", "Park Jae-hyuk", 
 		    "Choi Woo-je", "Mun Hyeon-jun", "Lee Sang-hyeok", "Lee Min-heyong", "Ryu Min-seok", "Kim Hyuk-kyu",
 		    "Robert Dalziel", "Yousif Abdellatif", "Ross Bacani", "Raoul Bacani", "James Li", "Steven Ye",
+		    "Iason Emiliya", "Ai Hoshino", "Ruby Hoshino", "Aqua Hoshino", "Kana Arima", "Miyako Saitou",
+		    "Taishi Gotanda", "Minami Kotobuki", "Frill Shiranui", "Yuki Sumi", "Akane Kurokawa", "Gabriel Korey",
+		    "Jake Peralta", "Rosa Diaz", "Amy Santiago", "Gina Linetti", "Ray Holt", "Charles Boyle",
+		    "Doug Judy", "Cassian Andor", "Kino Loy", "Vel Sartha", "Luthen Rael", "Bix Caleen", 
+		    "Bond Forger", "Anya Forger", "Loid Forger", "Yor Forger", "Damian Desmond", "Yuri Briar",
+		    "Henry Henderson", "Becky Blackbell", "Fiona Frost", "Boba Fett", "Cara Dune", "Paul Atreides",
+		    "Aoi Akane", "Dalinar Kholin", "Shallan Davar", "Sylvia Sherwood", "Tanjiro Kamado", "Nezuko Kamado",
+		    "Eren Jaegar", "Mikasa Ackerman", "Armin Arlert", "Levi Ackerman", "Krista Lenz", "Hange Zoe",
+		    "Sasha Blouse", "Erwin Smith", "Jean Kirstein", "Connie Springer", "Ymir Fritz", "Annie Leonheart",
+		    "Reiner Braun", "Bertolt Hoover", "Zeke Jaegar", "Grisha Jaegar", "Carla Jaegar", "Kenny Ackerman",
+		    "Ken Kaneki", "Touka Kirishima", "Violet Evergarden", "Erica Brown", "Claudia Hodgins", "Shoya Ishida",
+		    "Miki Kawai", "Shouko Nishimiya", "Fio Piccolo", "Sophie Hatter", "Chihiro Ogino", "Harry Potter",
+		    "Steve Rogers", "Sherlock Holmes", "Tony Stark", "Bruce Wayne", "Clark Kent", "Thor Odinson",
+		    "Peter Parker", "Loki Laufeyson", "Briar Rose", "Katniss Everdeen", "Peeta Mellark", "Gale Hawthorne",
+		    "Haymitch Abernathy", "Primrose Everdeen", "Finnick Odair", "Johanna Mason", "Effie Trinket", "Annie Cresta",
+		    "Blake Cooper", "Max Mayfield", "Will Byers", "Steve Harrington", "Jim Hopper", "Lara Jean",
+		    "John Ambrose", "Yumeko Jabami", "Midari Ikishima", "Runa Yomozuki", "Kirari Momobami", "Mary Saotome",
+		    "Ryota Suzui", "Sayaka Igarashi", "Yumemi Yumemite", "Kaede Manyuda", "Itsuki Sumeragi", "Enid Sinclair",
+		    "Xavier Thorpe", "Morticia Addams", "Kohaku Nushi", "Frodo Baggins", "Meiko Honma", "Taki Tachi",
+		    "Naruko Anjo", "Jinta Yadomi", "Sakura Yamauchi", "Haruki Shiga", "Mitsuha Miya", "Toono Takaki"
+		    
+		    
 		    
 		    // Add more names here as needed
 		};
@@ -89,6 +111,7 @@ public class AthleteGenerator {
                 generatedNames.add(name);
                 i += 1;
             }
+            
         }
         return team;
     }    
