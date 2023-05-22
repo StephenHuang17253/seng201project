@@ -68,10 +68,12 @@ public class AthleteGenerator {
     	return POSITIONS[index];
     }
     
+    
     public static ArrayList<Athlete> generateTeam(int teamSize) {
         ArrayList<Athlete> team = new ArrayList<>();
-        //String[] positions = { "Striker", "Left Wing", "Right Wing", "Defender", "Keeper" }; 
-        ArrayList<String> generatedNames = takenNames; // This way we don't use up the name if the athlete is not drafted. 
+        ArrayList<String> generatedNames = new ArrayList<>();
+		generatedNames.addAll(takenNames); // This way we don't use up the name if the athlete is not part of club. 
+        
 		int i = 0;
 		
         while (team.size() < teamSize) {
@@ -90,6 +92,30 @@ public class AthleteGenerator {
         }
         return team;
     }    
+    
+    public static ArrayList<Athlete> generateMarketAthletes(int amount) {
+        ArrayList<Athlete> team = new ArrayList<>();
+        ArrayList<String> generatedNames = new ArrayList<>();
+		generatedNames.addAll(takenNames); // This way we don't use up the name if the athlete is not part of club. 
+        
+		
+        while (team.size() < amount) {
+            Athlete athlete = generateRandomAthlete();
+            String name = athlete.getName();
+
+            
+            if (!generatedNames.contains(name)) {
+            	
+            	//String position = POSITIONS[i];
+            	// Athletes in market and setup won't have positions because they are not on a starting lineup
+            	athlete.setPosition("Unassigned"); 
+                team.add(athlete);
+                generatedNames.add(name);
+            }
+        }
+        return team;
+    }    
+        
     
     public static void main(String[] args) {
         //Athlete athlete = generateRandomAthlete();

@@ -36,10 +36,14 @@ import javax.swing.JScrollPane;
 public class SetupScreen {
 
 	private JFrame frmSetupScreen;
-	// The input field for the team name
+	/**
+	 *  The input text field for the team name
+	 */
 	private JTextField teamNameField;
 	private GameManager manager;
-	// ArrayList to contain Athletes
+	/**
+	 * ArrayList to contain Athletes
+	 */
 	private ArrayList<Athlete> startAthletes = new ArrayList<>();
 	private JLabel nameWarningLabel;
 	private JLabel listCostWarningLabel;
@@ -59,18 +63,8 @@ public class SetupScreen {
 	 */
 	public SetupScreen(GameManager incomingManager) {
 		manager = incomingManager;
-		//startAthletes.add(new Athlete("Ross Bacani", 16, 15, 1500000));
-		//startAthletes.add(new Athlete("Raoul Bacani", 15, 16, 1500000));
-		//startAthletes.add(new Athlete("Yousif Abdellatif", 14, 11, 700000));
-		//startAthletes.add(new Athlete("Robert Dalziel", 13, 12, 700000));
-		//startAthletes.add(new Athlete("Vincent Chen", 11, 11, 600000));
-		//startAthletes.add(new Athlete("Ryan Schaare",14, 6, 300000));
-		//startAthletes.add(new Athlete("Max Richards", 14, 5, 300000));
-		//startAthletes.add(new Athlete("Yul Nam", 4, 12, 300000));
-		//startAthletes.add(new Athlete("Jackson Williams", 7, 7, 350000));
-		//startAthletes.add(new Athlete("Kelso du Mez", 5, 5, 200000)); 
-		startAthletes.addAll(AthleteGenerator.generateTeam(5));
-		startAthletes.addAll(AthleteGenerator.generateTeam(5));
+		startAthletes.addAll(AthleteGenerator.generateMarketAthletes(5));
+		startAthletes.addAll(AthleteGenerator.generateMarketAthletes(5));
 		initialize();
 		frmSetupScreen.setVisible(true);
 	}
@@ -115,7 +109,7 @@ public class SetupScreen {
 		frmSetupScreen = new JFrame();
 		frmSetupScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmSetupScreen.setTitle("KickHeroes - Game Setup");
-		frmSetupScreen.setBounds(100, 100, 900, 600);
+		frmSetupScreen.setBounds(100, 100, 920, 600);
 		frmSetupScreen.getContentPane().setLayout(null);
 		
 		JLabel titleLabel = new JLabel("KickHeroes");
@@ -130,7 +124,7 @@ public class SetupScreen {
 		frmSetupScreen.getContentPane().add(teamNameLabel);
 		
 		teamNameField = new JTextField();
-		teamNameField.setBounds(260, 78, 600, 29);
+		teamNameField.setBounds(260, 78, 618, 29);
 		teamNameField.setToolTipText("");
 		frmSetupScreen.getContentPane().add(teamNameField);
 		teamNameField.setColumns(10);
@@ -142,7 +136,7 @@ public class SetupScreen {
 		frmSetupScreen.getContentPane().add(seasonLengthLabel);
 		
 		JSlider difficultySlider = new JSlider();
-		difficultySlider.setBounds(253, 126, 607, 55);
+		difficultySlider.setBounds(253, 126, 625, 55);
 		difficultySlider.setPaintLabels(true);
 		difficultySlider.setPaintTicks(true);
 		difficultySlider.setMajorTickSpacing(1);
@@ -164,7 +158,7 @@ public class SetupScreen {
 		
 		JLabel nameLengthLabel = new JLabel("(Name must between 3 to 15 characters)");
 		nameLengthLabel.setFont(new Font("Tahoma", Font.ITALIC, 11));
-		nameLengthLabel.setBounds(656, 110, 204, 14);
+		nameLengthLabel.setBounds(656, 110, 222, 14);
 		frmSetupScreen.getContentPane().add(nameLengthLabel);
 		
 		// Create a ListModel to store the athletes in the JList
@@ -181,14 +175,14 @@ public class SetupScreen {
 		athleteList.getSelectedValue();
 		
 		JScrollPane athleteListPane = new JScrollPane(athleteList);
-		athleteListPane.setBounds(260, 260, 600, 173);
+		athleteListPane.setBounds(260, 260, 618, 173);
 		Container inventoryItemContainer = frmSetupScreen.getContentPane();
 		inventoryItemContainer.add(athleteListPane);
 		
 		JComboBox<Object> difficultyChoice = new JComboBox<Object>();
 		difficultyChoice.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		difficultyChoice.setToolTipText("Difficulty determines your starting money and athletes.");
-		difficultyChoice.setBounds(260, 192, 600, 22);
+		difficultyChoice.setBounds(260, 192, 618, 22);
 		difficultyChoice.setModel(new DefaultComboBoxModel<Object>(new String[] {"Normal: start with $7.0M", "Hard: start with $3.5M"}));
 		frmSetupScreen.getContentPane().add(difficultyChoice);
 		
@@ -265,11 +259,11 @@ public class SetupScreen {
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(260, 236, 600, 29);
+		panel.setBounds(260, 236, 618, 29);
 		frmSetupScreen.getContentPane().add(panel);
 		panel.setLayout(null);
 		
-		JLabel listHeaderLabel = new JLabel("Name, Rating, Health, Stamina, Offence, Defence, Price");
+		JLabel listHeaderLabel = new JLabel("Name, Position (Level), Offence, Defence, Health, Stamina, Price");
 		listHeaderLabel.setBounds(10, 6, 397, 14);
 		panel.add(listHeaderLabel);
 		listHeaderLabel.setFont(new Font("Tahoma", Font.BOLD, 12));

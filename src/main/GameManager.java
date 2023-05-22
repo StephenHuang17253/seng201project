@@ -514,17 +514,30 @@ public class GameManager {
 	}	
 	
 	public void refreshWeek() {
-		ArrayList<Athlete> newAthletes = AthleteGenerator.generateTeam(5);
+		// Refresh taken names before generating new athletes.
+		refreshTakenNames(); 
 		ArrayList<Item> newItems = new ArrayList<>();
 		newItems.add(new Trainer());
 		newItems.add(new Nutritionist());
 		newItems.add(new OffensiveCoach());
 		newItems.add(new DefensiveCoach());
-		setMarketAthletes(newAthletes);
 		setMarketItems(newItems);
+		setMarketAthletes(AthleteGenerator.generateMarketAthletes(5));
 		setWeeklyMatches(MatchGenerator.generateWeeklyMatches());
 	}
-		
+	
+    public void refreshTakenNames() {
+    	ArrayList<Athlete> allAthletes = new ArrayList<>();
+    	allAthletes.addAll(getMainRoster());
+    	allAthletes.addAll(getReserveRoster());
+    	for (Athlete athlete : allAthletes) {
+    		String name = athlete.getName();
+    		if (!AthleteGenerator.takenNames.contains(name)) {
+    			AthleteGenerator.takenNames.add(name);
+    		}
+    	}
+    }	
+	
 	
 	/**
 	 * Main game method.

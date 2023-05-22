@@ -73,7 +73,8 @@ public class Athlete implements Purchasable{
 		setSellbackPrice(contractPrice / 2);
 		setDescription("A professional Futsal player. ");
 		this.proficiency = (offence + defence);
-		setPosition(AthleteGenerator.getRandomPosition());
+		setPosition("Unassigned");
+		//setPosition(AthleteGenerator.getRandomPosition());
 
 	}
 	
@@ -204,11 +205,11 @@ public class Athlete implements Purchasable{
 		DecimalFormat formatter = new DecimalFormat("#,###");
 		String priceString = formatter.format(contractPrice);
 		
-		return name + ", Proficiency: " + position + ", Offence: " + offence + ", Defence: " + defence
-				+ ", Health: " + health + ", Stamina: " + stamina + ", Contract: $" + priceString;
+		//return name + ", Proficiency: " + proficiency + ", Offence: " + offence + ", Defence: " + defence
+		//		+ ", Health: " + health + ", Stamina: " + stamina + ", Contract: $" + priceString;
 		
-		//return name + ", " + position + ", " + "Proficiency: " + proficiency + ", Health: " + health + ", Stamina: " + stamina
-		//		+ ", Offence: " + offence + ", Defence: " + defence + ", Contract: $" + priceString;
+		return name + ", " + position + " (" + proficiency + ")" + ", Offence: " + offence + ", Defence: " + defence
+				+ ", Health: " + health + ", Stamina: " + stamina + ", Contract: $" + priceString;
 	}
 	
 	public String getShortString() {
