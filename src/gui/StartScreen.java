@@ -7,19 +7,16 @@ import javax.swing.JLabel;
 
 import main.GameManager;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
+
 import java.awt.Font;
 import javax.swing.JButton;
-import java.awt.GridLayout;
-import javax.swing.BoxLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 /**
  * This is the page that opens when the game starts, it's a simple title screen
  * with a start button that takes you to the next screen.
- * @author steph
+ * @author Stephen Huang
  *
  */
 public class StartScreen {
