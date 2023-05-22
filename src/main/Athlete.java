@@ -201,7 +201,7 @@ public class Athlete implements Purchasable{
 	 * Simple setter for Athlete's maximum stamina
 	 * @param int i
 	 */
-	private void setMaxStamina(int i) {
+	public void setMaxStamina(int i) {
 		maxStamina = i;
 	}
 	/**

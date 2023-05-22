@@ -34,19 +34,41 @@ import items.Trainer;
 
 import javax.swing.JList;
 import javax.swing.JOptionPane;
-
+/**
+ * The screen that displays Athletes and Items for sale and allows the player to make purchases/sales.
+ * Also allows the player to access the inventory so they can more quickly access their new Items.
+ * @author steph
+ *
+ */
 public class MarketScreen {
-
+	/**
+	 * The MarketScreen frame in which all UI elements are contained.
+	 */
 	private JFrame frmMarketScreen;
+	/**
+	 * The instance of GameManger which manages this screen.
+	 */
 	private GameManager manager;
-	private ArrayList<Athlete> athletes = new ArrayList<>();
-	private ArrayList<Item> items = new ArrayList<>();
+	/**
+	 * Initialise an ArrayList to hold this week's generated Athlete objects
+	 */
+	private ArrayList<Athlete> athletesForSale = new ArrayList<>();
+	/**
+	 * Initialise an ArrayList to hold this week's Item objects
+	 */
+	private ArrayList<Item> itemsForSale = new ArrayList<>();
 	
-
+	/**
+	 * Create the application
+	 * Takes an incoming manager and makes it the manager of the screen
+	 * Set the athletesForSale equal to this week's list of generated Athletes
+	 * Set the ItemsForSale equal to a restock of Items
+	 * @param incomingManager
+	 */
 	public MarketScreen(GameManager incomingManager) {
 		manager = incomingManager;
-		athletes = manager.getMarketAthletes();
-		items = manager.getMarketItems();
+		athletesForSale = manager.getMarketAthletes();
+		itemsForSale = manager.getMarketItems();
 		initialize();
 		frmMarketScreen.setVisible(true);
 	}	 
@@ -136,7 +158,7 @@ public class MarketScreen {
 		// Create a ListModel to store the athletes in the JList
 		DefaultListModel<Athlete> athleteListModel = new DefaultListModel<Athlete>();
 		// Add the existing athletes to the ListModel
-		athleteListModel.addAll(athletes);
+		athleteListModel.addAll(athletesForSale);
 		
 		JList<Athlete> athleteList = new JList<Athlete>(athleteListModel);
 		athleteList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -314,7 +336,7 @@ public class MarketScreen {
 		// Create a ListModel to store the items in the JList
 		DefaultListModel<Item> itemListModel = new DefaultListModel<Item>();
 		// Add the existing items to the ListModel
-		itemListModel.addAll(items);
+		itemListModel.addAll(itemsForSale);
 		
 		JList<Item> itemList = new JList<Item>(itemListModel);
 		itemList.setFont(new Font("Tahoma", Font.PLAIN, 14));

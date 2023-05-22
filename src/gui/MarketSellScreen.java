@@ -25,13 +25,34 @@ import main.Item;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
-
+/**
+ * A variation of the Market that enables selling of items instead of purchases.
+ * Swapping back and forth between the two modes is easy.
+ * @author Stephen Huang
+ *
+ */
 public class MarketSellScreen {
 
+	/**
+	 * The MarketSell frame in which all UI elemets are contained.
+	 */
 	private JFrame frmMarketSellScreen;
+	/**
+	 * The instance of GameManager which manages this screen.
+	 */
 	private GameManager manager;
+	/**
+	 * An ArrayList that will go on to hold the player's owned items.
+	 */
 	private ArrayList<Item> inventory;
 	
+	/**
+	 * Create the application
+	 * Takes an incoming manager and makes it the manager of the screen.
+	 * Assign inventory to the list of items from GameManager.
+	 * @param incomingManager
+	 * @param items the inventory from GameManager
+	 */
 	public MarketSellScreen(GameManager incomingManager, ArrayList<Item> items) {
 		manager = incomingManager;
 		inventory = items;

@@ -14,20 +14,24 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 /**
- * This is the page that opens when the game starts, it's a simple title screen
+ * This is the screen that opens when the game starts, it's a simple title screen
  * with a start button that takes you to the next screen.
  * @author Stephen Huang
  *
  */
 public class StartScreen {
-
+	/**
+	 * The StartScreen frame in which all UI elemets are contained.
+	 */
 	private JFrame frmStartScreen;
+	/**
+	 * The instance of GameManager which manages this screen.
+	 */
 	private GameManager manager;
-	private JLabel welcomeLabel;
-	private JLabel gameLabel;
 
 	
 	/**
+	 * Create the application.
 	 * Takes an incoming manager and makes it the manager of the screen.
 	 * @param incomingManager The manager for this screen
 	 */
@@ -82,7 +86,7 @@ public class StartScreen {
 		frmStartScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmStartScreen.getContentPane().setLayout(null);
 		
-		welcomeLabel = new JLabel(" Welcome to KickHeroes\r\n");
+		JLabel welcomeLabel = new JLabel(" Welcome to KickHeroes\r\n");
 		welcomeLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		welcomeLabel.setBounds(10, 128, 982, 77);
 		welcomeLabel.setFont(new Font("Rockwell Extra Bold", Font.PLAIN, 50));
@@ -104,7 +108,7 @@ public class StartScreen {
 		startButton.setBounds(337, 329, 328, 108);
 		frmStartScreen.getContentPane().add(startButton);
 		
-		gameLabel = new JLabel("... a Futsal Club management sim");
+		JLabel gameLabel = new JLabel("... a Futsal Club management sim");
 		gameLabel.setHorizontalAlignment(SwingConstants.TRAILING);
 		gameLabel.setFont(new Font("Rockwell", Font.PLAIN, 16));
 		gameLabel.setBounds(588, 203, 273, 22);

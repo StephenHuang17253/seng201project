@@ -22,23 +22,41 @@ import main.Athlete;
 import main.GameManager;
 import main.Item;
 import javax.swing.JButton;
-
+/**
+ * The TrainingScreen opens whenever the player takes a bye. It allows the player to pick one of their Athletes
+ * to train which will increase their stats. This screen does not open on the final week as the EndScreen will be launched instead.
+ * @author Stephen Huang
+ *
+ */
 public class TrainingScreen {
-
+	/**
+	 * The TrainingScreen frame in which all UI elemets are contained.
+	 */
 	private JFrame frmTrainingScreen;
+	/**
+	 * The instance of GameManager which manages this screen.
+	 */
 	private GameManager manager;
-	private ArrayList<Athlete> athletes = new ArrayList<>();
-	
+
+	/**
+	 * Create the application.
+	 * Takes an incoming manager and makes it the manager of the screen.
+	 * @param incomingManager The manager for this screen
+	 */
 	public TrainingScreen(GameManager incomingManager) {
 		manager = incomingManager;
 		initialize();
 		frmTrainingScreen.setVisible(true);
 	}
-
+	/**
+	 * Close the training screen window
+	 */
 	public void closeWindow() {
 		frmTrainingScreen.dispose();
 	}
-	
+	/**
+	 * Close this instance of TrainingScreen using GameManager
+	 */
 	public void finishedWindow() {
 		manager.closeTrainingScreen(this);
 	}

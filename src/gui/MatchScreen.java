@@ -25,16 +25,41 @@ import javax.swing.JButton;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
+/**
+ * This is the screen that displays the outcome of a Match and the individual Athlete faceoffs that constitute a Match.
+ * @author Stephen Huang
+ *
+ */
 public class MatchScreen {
-
+	/**
+	 * The MatchScreen frame in which all UI elements are contained.
+	 */
 	private JFrame frmMatchScreen;
+	/**
+	 * The instance of GameManager which manages this screen.
+	 */
 	private GameManager manager;
+	/**
+	 * The ArrayList that will store the player's Athletes.
+	 */
 	private ArrayList<Athlete> playerTeam;
+	/**
+	 * The ArrayList will that store the opponent's Athletes.
+	 */
 	private ArrayList<Athlete> opponentTeam;
+	/**
+	 * The Match object representing the Match being played.
+	 */
 	private Match match;
 
-
+	/**
+	 * Create the Application.
+	 * Takes an incoming manager and makes it the manager of the screen.
+	 * Takes an incoming Match to display.
+	 * Set teams using manager.
+	 * @param incomingManager
+	 * @param incomingMatch
+	 */
 	public MatchScreen(GameManager incomingManager, Match incomingMatch) {
 		manager = incomingManager;
 		playerTeam = manager.getMainRoster();
@@ -46,11 +71,15 @@ public class MatchScreen {
 		frmMatchScreen.setVisible(true);
 		
 	}
-	
+	/**
+	 * Close the match screen window.
+	 */
 	public void closeWindow() {
 		frmMatchScreen.dispose();
 	}
-	
+	/**
+	 * Close this instance of the MatchScreen using GameManager
+	 */
 	public void finishedWindow() {
 		manager.closeMatchScreen(this); 
 	}

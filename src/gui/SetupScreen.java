@@ -33,20 +33,42 @@ import javax.swing.JTable;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+/**
+ * This is the screen that opens immediately after the start screen.
+ * It will be used by the player to set their team name, purchase some athletes,
+ * and select the difficulty.
+ * The difficulty affects the game by significantly lowering starting money.
+ * @author steph
+ *
+ */
 public class SetupScreen {
-
+	/**
+	 * The SetUpScreen frame in which all UI elements are contained.
+	 */
 	private JFrame frmSetupScreen;
 	/**
 	 *  The input text field for the team name
 	 */
 	private JTextField teamNameField;
+	/**
+	 * The instance of GameManager which manages this screen.
+	 */
 	private GameManager manager;
 	/**
-	 * ArrayList to contain Athletes
+	 * ArrayList to contain the list of Athletes displayed in the SetupScreen
 	 */
 	private ArrayList<Athlete> startAthletes = new ArrayList<>();
+	/**
+	 * A label that changes to warn the player if their chosen team name is invalid.
+	 */
 	private JLabel nameWarningLabel;
+	/**
+	 * A label that changes to warn the player if their selected team is too expensive.
+	 */
 	private JLabel listCostWarningLabel;
+	/**
+	 * A label that warns the player if they have not selected enough athletes.
+	 */
 	private JLabel listWarningLabel;
 	// Cost of currently selected athletes
 	private int teamCost;
@@ -59,21 +81,25 @@ public class SetupScreen {
 	 
 	/**
 	 * Takes an incoming manager and makes it the manager of the screen.
+	 * Generates a list of Athletes available for sale using the AthleteGenerator
 	 * @param incomingManager The manager for this screen
 	 */
 	public SetupScreen(GameManager incomingManager) {
 		manager = incomingManager;
-		startAthletes.addAll(AthleteGenerator.generateMarketAthletes(5));
-		startAthletes.addAll(AthleteGenerator.generateMarketAthletes(5));
+		startAthletes.addAll(AthleteGenerator.generateMarketAthletes(10));
 		initialize();
 		frmSetupScreen.setVisible(true);
 	}
 	
-	
+	/**
+	 * Close the set up window.
+	 */
 	public void closeWindow() {
 		frmSetupScreen.dispose();
 	}
-		
+	/**
+	 * CLose this instance of SetupScreen using GameManager	
+	 */
 	public void finishedWindow() {
 		manager.closeSetUpScreen(this);
 	}

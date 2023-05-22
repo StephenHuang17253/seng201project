@@ -19,23 +19,44 @@ import java.awt.event.ActionListener;
 import java.util.Random;
 import java.awt.event.ActionEvent;
 import java.awt.Component; 
-
+/**
+ * This class represents the main screen of the game, which connects most of the other screens together.
+ * From the MainScreen the player can access the Club, Stadium, Market, and take byes to transition into the next week.
+ * The MainScreen also displays their current money, the current week, and the total weeks in the season.
+ * @author Stephen Huang
+ *
+ */
 public class MainScreen {
 
+	/**
+	 * The MainScreen frame in which all UI elements are contained.
+	 */
 	private JFrame frmMainScreen;
+	/**
+	 * The instance of GameManager which manages this screen.
+	 */
 	private GameManager manager;
 
-
+	/**
+	 * Create the application
+	 * Takes an incoming manager and makes it the manager of this screen.
+	 * @param incomingManager
+	 */
 	public MainScreen(GameManager incomingManager) {
 		manager = incomingManager;
 		initialize();
 		frmMainScreen.setVisible(true);
 	}	
-	
+	/**
+	 * Close the main screen window
+	 */
 	public void closeWindow() {
 		frmMainScreen.dispose();
 	}
-	
+	/**
+	 * Close this instance of MainScreen using GameManager
+	 * @param next pass the next screen to the manager
+	 */
 	public void finishedWindow(String next) {
 		manager.closeMainScreen(this, next);
 	}

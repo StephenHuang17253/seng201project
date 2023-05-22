@@ -26,14 +26,39 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.ListSelectionModel;
-
+/**
+ * The Inventory page is where the player can view and use Items they have bought from the Market.
+ * It is accessed from either the Club or the Market and the class tracks which screen it came from
+ * so it can return to the correct one when the player presses 'Go Back'.
+ * @author Stephen Huang
+ * @author Jasmine Ong
+ */
 public class InventoryScreen {
-
+	/**
+	 * The InventoryScreen frame, contains all the UI elements.
+	 */
 	private JFrame frmInventoryScreen;
+	/**
+	 * The instance of GameManager that manages this screen.
+	 */
 	private GameManager manager;
+	/**
+	 * A string representing a record of which screen the player was in when they accessed the inventory.
+	 */
 	private String origin;
+	/**
+	 * The ArrayList which stores the Items objects owned by the player.
+	 * Consider this list the inventory the screen is named after.
+	 */
 	private ArrayList<Item> inventory;
 	
+	/**
+	 * Create the Application
+	 * Takes an incoming manager and makes it the manager of this screen.
+	 * @param incomingManager instance of GameManager that will manage this screen
+	 * @param items ArrayList that is the inventory
+	 * @param origin the screen from which the player accessed the inventory
+	 */
 	public InventoryScreen(GameManager incomingManager, ArrayList<Item> items, String origin) {
 		this.origin = origin;
 		inventory = items;
@@ -41,11 +66,16 @@ public class InventoryScreen {
 		initialize();
 		frmInventoryScreen.setVisible(true);
 	}
-	
+	/**
+	 * Close the start screen window.
+	 */
 	public void closeWindow() {
 		frmInventoryScreen.dispose();
 	}
-	
+	/**
+	 * Close this instance of InventoryScreen using GameManager
+	 * @param origin
+	 */
 	public void finishedWindow(String origin) {
 		manager.closeInventoryScreen(this, origin);
 	}

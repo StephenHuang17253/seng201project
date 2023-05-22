@@ -11,22 +11,41 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JPanel;
 import java.awt.Color;
-
+/**
+ * This is the final screen of the game and it is opened at the end of the season.
+ * Displays a summary of the season, showing stats such as matches won and poinst earned.
+ * @author Stephen Huang
+ * @author Jasmine Ong
+ *
+ */
 public class EndScreen {
-
+	/**
+	 * The EndScreen frame which contains all the UI elements.
+	 */
 	private JFrame frmEndScreen;
+	/**
+	 * The instance of GameManager managing this screen.
+	 */
 	private GameManager manager;
-
+	/**
+	 * Create the application.
+	 * Takes an incoming maanger and makes it the manager of the screen
+	 * @param incomingManager
+	 */
 	public EndScreen(GameManager incomingManager) {
 		manager = incomingManager;
 		initialize();
 		frmEndScreen.setVisible(true);
 	}
-	
+	/**
+	 * Close the end screen window.
+	 */
 	public void closeWindow( ) {
 		frmEndScreen.dispose();
 	}
-	
+	/**
+	 * Close this instance of EndScreen using GameManager
+	 */
 	public void finishedWindow( ) {
 		manager.closeEndScreen(this);
 	}

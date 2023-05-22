@@ -37,9 +37,17 @@ import javax.swing.ListModel;
  * @author Stephen Huang and Jasmine Ong
  */
 public class ClubScreen {
-
+	/**
+	 * The ClubScreen frame in which all UI elements are contained.
+	 */
 	private JFrame frmClubScreen;
+	/**
+	 * The instance of GameManager which manages this screen.
+	 */
 	private GameManager manager;
+	/**
+	 * A warning label accessible outside of Club so that it may be changed more conveniently.
+	 */
 	public static JLabel warningLabel;
 
 	/**
@@ -255,7 +263,8 @@ public class ClubScreen {
 		DefaultListModel<Athlete> strikerModel = new DefaultListModel<Athlete>();
 		// Add Striker to the ListModel
 		if (teamStriker != null) {
-			strikerModel.addElement(teamStriker);		
+			strikerModel.addElement(teamStriker);
+			
 		}
 		// Create the JList to hold Striker.
 		JList<Athlete> strikerList = new JList<Athlete>(strikerModel);

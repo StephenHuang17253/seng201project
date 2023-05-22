@@ -23,26 +23,51 @@ import java.awt.event.ActionEvent;
 import javax.swing.ListSelectionModel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
-
+/**
+ * This screen presents the player with a list of available Matches to play and shows their total season points earned thus far.
+ * It will check if the player's roster is eligible to compete and inform them if that is not the case.
+ * If the player is able to compete and they choose a Match to play, the MatchScreen will open while the Stadium closes for now.
+ * @author Stephen Huang
+ *
+ */
 public class StadiumScreen {
-
+	/**
+	 * The StadiumScreen frame in which all UI elements are contained.
+	 */
 	private JFrame frmStadium;
+	/**
+	 * The instance of GameManager which manages this screen.
+	 */
 	private GameManager manager; 
+	/**
+	 * A JTextArea that provides some explanations on the screen.
+	 */
 	private JTextArea explanationText;
+	/**
+	 * An ArrayList of Match objects representing the available games to compete in.
+	 */
 	private ArrayList<Match> matches = new ArrayList<>();
 
-	 
+	/**
+	 * Create the application.
+	 * Takes an incoming manager and makes it the manager of the screen.
+	 * @param incomingManager The manager for this screen
+	 */
 	public StadiumScreen(GameManager incomingManager) {
 		manager = incomingManager;
 		matches = manager.getWeeklyMatches(); 
 		initialize();
 		frmStadium.setVisible(true);
 	}
-
+	/**
+	 * Close the stadium screen window.
+	 */
 	public void closeWindow() { 
 		frmStadium.dispose();
 	}
-	
+	/**
+	 * Close this instance of StadiumScreen using GameManager
+	 */	
 	public void finishedWindow() {
 		manager.closeStadiumScreen(this);
 	}
