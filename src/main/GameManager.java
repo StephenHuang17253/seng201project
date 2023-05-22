@@ -15,7 +15,8 @@ import items.*;
  * The main class of the program.
  * Contains and keeps track of the game logic.
  * Game is played from this class.
- * @author Stephen Huang and Jasmine Ong
+ * @author Stephen Huang
+ * @author Jasmine Ong
  */
 public class GameManager {
 
