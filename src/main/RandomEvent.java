@@ -3,17 +3,46 @@ package main;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * The RandomEvent class represents, generates and handles a RandomEvent.
+ * When the player takes a bye to progress to the next week, there is a random chance of
+ * a RandomEvent occuring. The outcome of that event is determined by this class.
+ * @author Stephen Huang
+ *
+ */
 public class RandomEvent {
+	/**
+	 * The event which occured, for example "Athlete quits" or "Random starter got a stat boost"
+	 */
 	private String event;
+	/**
+	 * The specific Athlete affected by the event.
+	 */
 	private Athlete athlete;
+	/**
+	 * The message that goes along with the event, to be passed to a Dialogbox in UI so
+	 * that the player may be informed of what occured.
+	 */
 	private String message;
 	
+	/**
+	 * The RandomEvent constructor creates a RandomEvent with the specified parameters.
+	 * @param event the event which occured, for example "Athlete quits."
+	 * @param athlete the specific Athlete affected by the event.
+	 * @param message the message that goes along with the event, to inform player.
+	 */
 	public RandomEvent(String event, Athlete athlete, String message) {
         this.event = event;
         this.athlete = athlete;
         this.message = message;
 	}
-	
+	/**
+	 * This method generates a RandomEvent after taking information from the GameManager
+	 * and a probability.
+	 * @param manager the GameManager
+	 * @param chance a probabiltiy to use
+	 * @return
+	 */
 	public static RandomEvent generateRandomEvent(GameManager manager, int chance) {
 		
 		RandomEvent eventGenerated = null;
@@ -93,14 +122,24 @@ public class RandomEvent {
 		return eventGenerated;		
 	}
 	
+	/**
+	 * Get the type of the event so we know what happened
+	 * @return event string of what occured
+	 */
     public String getType() {
         return event;
     }
-
+    /**
+     * Get the athlete that was affected
+     * @return athlete Athlete that was affected
+     */
     public Athlete getAthlete() {
         return athlete;
     }
-    
+    /**
+     * Get the related message so we can inform the player of what occured.
+     * @return message string informing what happened
+     */
     public String getMessage() {
         return message;
     }
