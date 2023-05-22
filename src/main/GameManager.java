@@ -458,7 +458,7 @@ public class GameManager {
 		marketAthletes.remove(athlete);
 		AthleteGenerator.takenNames.add(athlete.getName());
 		if (mainRoster.contains(athlete)) {
-			System.out.println(athlete.getName() + "has been drafted to active roster.");
+			System.out.println(athlete.getName() + " has been drafted to active roster.");
 		}
 		
 	}
@@ -468,7 +468,7 @@ public class GameManager {
 		money -= athlete.getContractPrice();
 		marketAthletes.remove(athlete);
 		if (reserveRoster.contains(athlete)) {
-			System.out.println(athlete.getName() + "has been drafted to reserves.");
+			System.out.println(athlete.getName() + " has been drafted to reserves.");
 		}
 	}
 	
@@ -557,6 +557,19 @@ public class GameManager {
 		
 	}
 	
+	public void rosterWarnings() {
+		if (getMainRoster().size() < 5) {
+			if ((getMainRoster().size() + getReserveRoster().size() < 5)){
+				ClubScreen.warningLabel.setText("You do not have enough players to compete! Go buy more Athletes in the market.");
+			}
+			else {
+				ClubScreen.warningLabel.setText("Your main roster does not have enough players to compete! Promote some reserves.");
+			}
+		}
+		else {
+			ClubScreen.warningLabel.setText("");
+		}
+	}
 	/**
 	 * Main game method.
 	 * Begins by game by instantiating GameManager and calling launchStartScreen();  
