@@ -71,7 +71,7 @@ public class TrainingScreen {
 	 */
 	private void initialize() {
 		frmTrainingScreen = new JFrame();
-		frmTrainingScreen.setBounds(100, 100, 732, 358);
+		frmTrainingScreen.setBounds(100, 100, 715, 350);
 		frmTrainingScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel athletesTrainingPanel = new JPanel();
@@ -83,7 +83,7 @@ public class TrainingScreen {
 		
 		// Label
 		JLabel trainingCenterLabel = new JLabel("Training Center");
-		trainingCenterLabel.setBounds(20, 20, 194, 20);
+		trainingCenterLabel.setBounds(20, 26, 194, 20);
 		trainingCenterLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
 		athletesTrainingPanel.add(trainingCenterLabel);
 		
@@ -92,26 +92,46 @@ public class TrainingScreen {
 		inventoryAthleteModel.addAll(manager.getReserveRoster());
 		
 		JList<Athlete> athletesTrainingList = new JList<Athlete>(inventoryAthleteModel);
+		athletesTrainingList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		athletesTrainingList.setBorder(new LineBorder(new Color(186, 207, 248), 2));
 		athletesTrainingList.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		athletesTrainingList.setBounds(10, 51, 676, 172);
 		
 		//Give the JList to ScrollPane and Display
 		JScrollPane athletesTrainingScrollPane = new JScrollPane(athletesTrainingList);
-		athletesTrainingScrollPane.setBounds(10, 51, 676, 172);
+		athletesTrainingScrollPane.setBounds(10, 51, 679, 172);
 		Container athletesContainer = athletesTrainingPanel;
 		athletesContainer.add(athletesTrainingScrollPane);
 		
 		JButton takeByeButton = new JButton("Done");
-		takeByeButton.setBounds(297, 239, 89, 23);
+		takeByeButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		takeByeButton.setBounds(223, 234, 270, 60);
 		athletesTrainingPanel.add(takeByeButton);
+		
+		JLabel lblNewLabel = new JLabel("Choose an athlete to significantly improve their stats.");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel.setBounds(224, 31, 332, 15);
+		athletesTrainingPanel.add(lblNewLabel);
 		takeByeButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				finishedWindow();
-				Component newWeekFrame = null;
-				JOptionPane.showMessageDialog(newWeekFrame, 
-						"Stadium and Market have refreshed.", 
-						"New week", JOptionPane.INFORMATION_MESSAGE);
+				Athlete targetAthlete = athletesTrainingList.getSelectedValue();
+				if (targetAthlete == null) {
+					// Inform player that they have not selected an athlete.
+					Component notSelectedWarning = null;
+					JOptionPane.showMessageDialog(notSelectedWarning,
+							"You have not selected an athlete.", 
+							"No athlete selected", JOptionPane.INFORMATION_MESSAGE);
+				}
+				else {  
+					manager.greatlyIncreaseStats(targetAthlete);
+					finishedWindow();
+					Component newWeekFrame = null;
+					JOptionPane.showMessageDialog(newWeekFrame, 
+							"Stadium and Market have refreshed." + 
+							"\nAthletes' Stamina refreshed." +
+							"\n" + targetAthlete.getName() + "'s stats increased.", 
+							"New week", JOptionPane.INFORMATION_MESSAGE);
+				}  		
 			}
 		
 		});
