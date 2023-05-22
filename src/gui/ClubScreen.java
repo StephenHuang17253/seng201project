@@ -32,7 +32,8 @@ import javax.swing.ListModel;
  * ClubScreen class.
  * The screen where the player manages their team and athletes.
  * Allows players to promote players to and from the main roster.
- * Designate position roles to athletes.
+ * Designate position roles to athletes. 
+ * The inventory can also be accessed from here.
  * @author Stephen Huang and Jasmine Ong
  */
 public class ClubScreen {
@@ -53,12 +54,14 @@ public class ClubScreen {
 	}
 	
 	/**
-	 * Close ClubScreen Window
+	 * Closes the ClubScreen Window
 	 */
 	public void closeWindow() {
 		frmClubScreen.dispose();
 	}
-
+	/**
+	 * Close this instance of ClubScreen using GameManager
+	 */
 	public void finishedWindow() {
 		manager.closeClubScreen(this);
 	}
@@ -208,7 +211,7 @@ public class ClubScreen {
 		activeExplanationTextArea.setBounds(10, 11, 127, 187);
 		activeRosterExplainationPanel.add(activeExplanationTextArea);
 		activeExplanationTextArea.setWrapStyleWord(true);
-		activeExplanationTextArea.setText("The active roster can have 5 athletes. \r\nA full active roster is required to compete in matches.\r\n\r\nPress the buttons below to assign a position to the selected reserve athlete.\r\n\r\n\r\n\r\n");
+		activeExplanationTextArea.setText("Press the buttons below to assign a position to the selected reserve athlete.\r\n\r\nIf another athlete is already in that position, they will swap places.\r\n\r\n");
 		activeExplanationTextArea.setLineWrap(true);
 		activeExplanationTextArea.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		activeExplanationTextArea.setEditable(false);
@@ -519,27 +522,21 @@ public class ClubScreen {
 		keeperButton.setBounds(10, 183, 127, 32);
 		reserveRosterExplainationPanel.add(keeperButton);
 		
-		JPanel positionPanel = new JPanel();
-		positionPanel.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
-		positionPanel.setBounds(22, 111, 222, 200);
-		frmClubScreen.getContentPane().add(positionPanel);
-		positionPanel.setLayout(null);
+		JPanel leftPanel = new JPanel();
+		leftPanel.setBorder(new LineBorder(new Color(130, 169, 242), 2, true));
+		leftPanel.setBounds(22, 111, 222, 200);
+		frmClubScreen.getContentPane().add(leftPanel);
+		leftPanel.setLayout(null);
 		
-		JLabel positionLabel = new JLabel("Positions explained");
-		positionLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		positionLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
-		positionLabel.setBounds(10, 23, 202, 17);
-		positionPanel.add(positionLabel);
-		
-		JTextArea positionText = new JTextArea();
-		positionText.setWrapStyleWord(true);
-		positionText.setText("Striker: 1.5x offence stat\r\n\r\nWingers: 1.15x offence and defence\r\n\r\nDefender: 1.5x defence stat\r\n\r\nKeeper: 2x defence stat\r\n\r\n\r\n");
-		positionText.setLineWrap(true);
-		positionText.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		positionText.setEditable(false);
-		positionText.setBackground(SystemColor.menu);
-		positionText.setBounds(26, 51, 170, 139);
-		positionPanel.add(positionText);
+		JTextArea txtrTheActiveRoster = new JTextArea();
+		txtrTheActiveRoster.setWrapStyleWord(true);
+		txtrTheActiveRoster.setText("The active roster can have up to 5 athletes. \r\n\r\nA full active roster is required to compete in matches.\r\n\r\nFurthermore each starting athlete must have at least one stamina.\r\n\r\nAthletes with depleted stamina cannot compete.\r\n\r\n\r\n\r\n");
+		txtrTheActiveRoster.setLineWrap(true);
+		txtrTheActiveRoster.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		txtrTheActiveRoster.setEditable(false);
+		txtrTheActiveRoster.setBackground(SystemColor.menu);
+		txtrTheActiveRoster.setBounds(10, 11, 202, 187);
+		leftPanel.add(txtrTheActiveRoster);
 		
 		JPanel reservePanel = new JPanel();
 		reservePanel.setLayout(null);
@@ -550,10 +547,10 @@ public class ClubScreen {
 
 		
 		JTextArea reserveExplanationText = new JTextArea();
-		reserveExplanationText.setBounds(10, 17, 202, 199);
+		reserveExplanationText.setBounds(10, 55, 202, 161);
 		reservePanel.add(reserveExplanationText);
 		reserveExplanationText.setWrapStyleWord(true);
-		reserveExplanationText.setText("Press the promote button to move selected player to your starting lineup.\r\n\r\nContains up to 5 players that haven't been selected to play in your next match.\r\n\r\nIt is recommended to have reserves incase your starting lineup gets injured or if someone leaves.\r\n\r\n\r\n");
+		reserveExplanationText.setText("Contains up to 5 players that haven't been selected to play in your next match.\r\n\r\nIt is recommended to have reserves incase your starting lineup gets injured or if someone leaves.\r\n\r\n\r\n");
 		reserveExplanationText.setLineWrap(true);
 		reserveExplanationText.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		reserveExplanationText.setEditable(false);

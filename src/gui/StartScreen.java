@@ -43,7 +43,7 @@ public class StartScreen {
 		frmStartScreen.dispose();
 	}
 	/**
-	 * Close this instance of StartScreen using the GameManager
+	 * Close this instance of StartScreen using GameManager
 	 */
 	public void finishedWindow() {
 		manager.closeStartScreen(this);
