@@ -16,7 +16,12 @@ import javax.swing.BoxLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
-
+/**
+ * This is the page that opens when the game starts, it's a simple title screen
+ * with a start button that takes you to the next screen.
+ * @author steph
+ *
+ */
 public class StartScreen {
 
 	private JFrame frmStartScreen;
@@ -34,11 +39,15 @@ public class StartScreen {
 		initialize();
 		frmStartScreen.setVisible(true);
 	}
-	
+	/**
+	 * Close the start screen window.
+	 */
 	public void closeWindow() {
 		frmStartScreen.dispose();
 	}
-	
+	/**
+	 * Close this instance of StartScreen using the GameManager
+	 */
 	public void finishedWindow() {
 		manager.closeStartScreen(this);
 	}

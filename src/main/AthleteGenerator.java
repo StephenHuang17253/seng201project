@@ -3,9 +3,15 @@ package main;
 import java.util.ArrayList;
 import java.util.Random;
 
-
+/**
+ * The AthleteGenerator Class is used to randomly generate Athletes
+ * to be used in the game. This allows the game to populate market lists and opponent teams.
+ */
 public class AthleteGenerator {
-	
+	/**
+	 * A list of names that will be picked from when generating an Athlete.
+	 * There are measures in place to prevent duplicate Athletes appearing.
+	 */
 	private static final String[] NAMES = {
 		    "John Smith", "Alice Johnson", "Michael Williams", "Emma Jones", "David Brown", "Olivia Davis",
 		    "James Miller", "Sophia Wilson", "Robert Moore", "Isabella Taylor", "Daniel Anderson", "Mia Thomas",
@@ -43,12 +49,30 @@ public class AthleteGenerator {
 		    
 		    // Add more names here as needed
 		};
+	/**
+	 * A list of positions for the generateTeam() method to use.
+	 * Enables easy assignment of positions.
+	 */
 	private static final String[] POSITIONS = {"Striker", "Left Wing", "Right Wing", "Defender", "Keeper"};
+	/**
+	 * The list of names that are currently used in the game by the player's Athletes.
+	 */
     static ArrayList<String> takenNames = new ArrayList<>();	
-    
+    /**
+     * The minimum value for a stat being generated
+     */
     private static int minStat = 1;
+    /**
+     * The maximum value a stat being generated
+     */
     private static int maxStat = 20;
 
+    /**
+     * Generates an Athlete with a randomised name and statistics.
+     * @param min the minimum value for a stat being generated
+     * @param max the maximum value for a stat being generated
+     * @return Athlete a randomly generated Athlete
+     */
     public static Athlete generateRandomAthlete(int min, int max) {
     	
     	
@@ -82,20 +106,31 @@ public class AthleteGenerator {
         return new Athlete(name, offence, defence, contractPrice);
     }
 
+    /**
+     * Returns a name randomly picked from the name list.
+     * @return the name string at the index of the list
+     */
     public static String getRandomName() {
     	Random random = new Random();
         int index = random.nextInt(NAMES.length);
         return NAMES[index];
     }
-
+    /**
+     * Used when a random position is wanted for an Athlete.
+     * Not used in team generation to ensure correct distribution of positions.
+     * @return the position string at the index of the list
+     */
     public static String getRandomPosition() {
     	Random random = new Random();
     	int index = random.nextInt(POSITIONS.length);
     	return POSITIONS[index];
     }
     
-    
-    public static ArrayList<Athlete> generateTeam(int teamSize) {
+    /**
+     * Generates an ArrayList of 5 Athletes, representing an opponent team
+     * @return
+     */
+    public static ArrayList<Athlete> generateTeam() {
         ArrayList<Athlete> team = new ArrayList<>();
         ArrayList<String> generatedNames = new ArrayList<>();
         // Don't need to permanently add to takenNames if athlete can't be purchased.
@@ -104,7 +139,7 @@ public class AthleteGenerator {
 		
 		int i = 0;
 		
-        while (team.size() < teamSize) {
+        while (team.size() < 5) {
         	
             Athlete athlete = generateRandomAthlete(minStat, maxStat);
             String name = athlete.getName();
@@ -151,29 +186,35 @@ public class AthleteGenerator {
         }
         return marketAthletes;
     }    
-        
+    /**
+     * Changes minStat to the specified amount
+     * Not used at the moment but here for future proofing.    
+     * @param amount
+     */
     public static void setMinStat (int amount) {
     	minStat = amount;
     }
-    
+    /**
+     * Changes maxStat to the specified amount
+     * Not used at the moment but here for future proofing.
+     * @param amount
+     */
     public static void setMaxStat (int amount) {
     	maxStat = amount;
     }    
-    
+    /**
+     * Increases both minStat and maxStat by 1.
+     * This method is called to increase the difficulty of the game as it progresses
+     * by increasing the average strength of an opponent team.
+     */
     public static void incrementMinMaxStats() {
     	minStat += 1;
     	maxStat += 1;
     }
     
     public static void main(String[] args) {
-        //Athlete athlete = generateRandomAthlete();
-        //System.out.println(athlete);
-        ArrayList<Athlete> team = generateTeam(5);
-        for (Athlete player : team) {
-        	
-            System.out.println(player.getPosition() + ": " + player);
             
-        }
+        
     }
 }
 

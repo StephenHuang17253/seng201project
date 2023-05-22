@@ -86,7 +86,7 @@ public class Match {
 		manager = incomingManager;
 		manager.checkAthletePositions();
 		ArrayList<Athlete> playerTeam = manager.getMainRoster();
-		ArrayList<Athlete> opponentTeam = AthleteGenerator.generateTeam(5);
+		ArrayList<Athlete> opponentTeam = AthleteGenerator.generateTeam();
 		manager.setOpponentRoster(opponentTeam);
 		manager.setOpponentName(match.getName());
 		boolean noStamina = true;
