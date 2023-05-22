@@ -150,12 +150,21 @@ public class ClubScreen {
 		activeRosterChangeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Athlete targetAthlete = activeRosterList.getSelectedValue();
+				if (targetAthlete == null) {
+					// Inform player that they have not selected an athlete.
+					Component notSelectedWarning = null;
+					JOptionPane.showMessageDialog(notSelectedWarning,
+							"You have not selected an athlete.", 
+							"No athlete selected", JOptionPane.INFORMATION_MESSAGE);
+				}
+				
 				manager.demoteAthlete(targetAthlete);
 				reserveRosterModel.addElement(targetAthlete);
 				reserveRosterList.setModel(reserveRosterModel);				
 				activeRosterModel.removeElement(targetAthlete);
 				activeRosterList.setModel(activeRosterModel);
 				activeRosterChangedLabel.setText(targetAthlete.getName() + " benched");
+		
 				if (manager.getMainRoster().size() < 5) {
 					if ((manager.getMainRoster().size() + manager.getReserveRoster().size() < 5)){
 						warningLabel.setText("You do not have enough players to compete! Go buy more Athletes in the market.");
@@ -229,6 +238,13 @@ public class ClubScreen {
 							"Main roster full", JOptionPane.WARNING_MESSAGE);
 				} else {
 				Athlete targetAthlete = reserveRosterList.getSelectedValue();	
+				if (targetAthlete == null) {
+					// Inform player that they have not selected an athlete.
+					Component notSelectedWarning = null;
+					JOptionPane.showMessageDialog(notSelectedWarning,
+							"You have not selected an athlete.", 
+							"No athlete selected", JOptionPane.INFORMATION_MESSAGE);
+				}
 				manager.promoteAthlete(targetAthlete); 
 				activeRosterModel.addElement(targetAthlete);
 				activeRosterList.setModel(activeRosterModel);				
