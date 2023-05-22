@@ -71,7 +71,7 @@ public class TrainingScreen {
 	 */
 	private void initialize() {
 		frmTrainingScreen = new JFrame();
-		frmTrainingScreen.setBounds(100, 100, 715, 350);
+		frmTrainingScreen.setBounds(100, 100, 715, 375);
 		frmTrainingScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel athletesTrainingPanel = new JPanel();
@@ -99,13 +99,13 @@ public class TrainingScreen {
 		
 		//Give the JList to ScrollPane and Display
 		JScrollPane athletesTrainingScrollPane = new JScrollPane(athletesTrainingList);
-		athletesTrainingScrollPane.setBounds(10, 51, 679, 172);
+		athletesTrainingScrollPane.setBounds(10, 51, 679, 197);
 		Container athletesContainer = athletesTrainingPanel;
 		athletesContainer.add(athletesTrainingScrollPane);
 		
 		JButton takeByeButton = new JButton("Done");
 		takeByeButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		takeByeButton.setBounds(223, 234, 270, 60);
+		takeByeButton.setBounds(214, 260, 270, 60);
 		athletesTrainingPanel.add(takeByeButton);
 		
 		JLabel lblNewLabel = new JLabel("Choose an athlete to significantly improve their stats.");
@@ -128,7 +128,7 @@ public class TrainingScreen {
 					Component newWeekFrame = null;
 					JOptionPane.showMessageDialog(newWeekFrame, 
 							"Stadium and Market have refreshed." + 
-							"\nAthletes' Stamina refreshed." +
+							"\nAll Athletes' Stamina refreshed." +
 							"\n" + targetAthlete.getName() + "'s stats increased.", 
 							"New week", JOptionPane.INFORMATION_MESSAGE);
 				}  		
