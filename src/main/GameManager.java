@@ -38,12 +38,16 @@ public class GameManager {
      */
     private int money;
     /**
-     * The amount of money earned.
+     * The amount of money earned from winning matches.
      */
     private int totalEarned;
-    
+    /**
+     * The amount games played.
+     */
     private int totalGames;
-    
+    /**
+     * The amount games won.
+     */
     private int totalGamesWon;
     /**
      * The club's season points.
@@ -128,14 +132,22 @@ public class GameManager {
 		
 		if (next == "Bye") {
 			takeBye();
-			
 			if (week > totalWeeks || !getCanContinue()){
 				launchEndScreen();
 			} 
+			else {
+				if (getEnoughAthletes() == false) {
+					launchEndScreen();
+				}
+				else {
+					launchTrainingScreen();
+				}
+			}
+		
 		} 
 		
 		if (next == "Quit") {
-
+			mainWindow.closeWindow();
 		}
 	}		
 
@@ -145,8 +157,17 @@ public class GameManager {
 			return false;
 		} else {
 			return true;
+		}			
+	}
+	
+	
+	public boolean getEnoughAthletes() {
+		int totalAthletes = getMainRoster().size() + getReserveRoster().size();
+		if (totalAthletes < 1) {
+			return false;
+		} else {
+			return true;
 		}
-			
 	}
 	/**
 	 * Method to launch the setup screen.

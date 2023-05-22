@@ -173,43 +173,63 @@ public class MainScreen {
 				} else {
 				Component ByeFrame = null;
 				int n = JOptionPane.showConfirmDialog(ByeFrame, 
-						"Ready to move to next week?", 
+						"Ready to move onto next week?" 
+						+ "\n You will lose if you have either:"
+						+ "\n- No Athletes left"
+						+ "\n- Less than $100,000"
+						+ "\n Are you sure you want to continue?",
 						"Take a bye", JOptionPane.YES_NO_OPTION);
 				if (n == 0) {
-					finishedWindow("Bye");
-					manager.launchTrainingScreen();
-					Random random = new Random();
-					int chance = random.nextInt(4);
-					RandomEvent event = RandomEvent.generateRandomEvent(manager, chance);
-					Component eventFrame = null;
-					if (event != null) {
-					switch(event.getType()) {
-						case "Starter Boost":
-							JOptionPane.showMessageDialog(eventFrame,
-								    event.getMessage(),
-								    "Event - Stat boost for a starter",
-								    JOptionPane.INFORMATION_MESSAGE);
-							break;
-						 
-						case "Reserve Boost":
-							JOptionPane.showMessageDialog(eventFrame,
-								    event.getMessage(),
-								    "Event - Stat boost for a reserve",
-								    JOptionPane.INFORMATION_MESSAGE);
-						    break;
-						case "Athlete Quit":
-							JOptionPane.showMessageDialog(eventFrame,
-								    event.getMessage(),
-								    "Event - Athlete retires",
-								    JOptionPane.INFORMATION_MESSAGE);
-						case "Athlete Joins":
-							JOptionPane.showMessageDialog(eventFrame,
-								    event.getMessage(),
-								    "Event - Athlete joins",
-								    JOptionPane.INFORMATION_MESSAGE);
-							
-					}						
+					if(manager.getCanContinue() == false) {
+						JOptionPane.showMessageDialog(ByeFrame, 
+								"You have no athletes or money left. You lost.", 
+								"No athletes or money left", JOptionPane.WARNING_MESSAGE);
+						
+						finishedWindow("Bye");					
 					}
+					else if(manager.getEnoughAthletes() == false) {
+						JOptionPane.showMessageDialog(ByeFrame, 
+								"You have no athletes left. You Lost.",
+								"No athletes left", JOptionPane.WARNING_MESSAGE);
+						finishedWindow("Bye");												
+					}
+					else {
+						finishedWindow("Bye");
+						Random random = new Random();
+						int chance = random.nextInt(4);
+						RandomEvent event = RandomEvent.generateRandomEvent(manager, chance);
+						Component eventFrame = null;
+						if (event != null) {
+						switch(event.getType()) {
+							case "Starter Boost":
+								JOptionPane.showMessageDialog(eventFrame,
+										event.getMessage(),
+										"Event - Stat boost for a starter",
+										JOptionPane.INFORMATION_MESSAGE);
+								break;
+							 
+							case "Reserve Boost":
+								JOptionPane.showMessageDialog(eventFrame,
+										event.getMessage(),
+										"Event - Stat boost for a reserve",
+										JOptionPane.INFORMATION_MESSAGE);
+								break;
+							case "Athlete Quit":
+								JOptionPane.showMessageDialog(eventFrame,
+										event.getMessage(),
+										"Event - Athlete retires",
+										JOptionPane.INFORMATION_MESSAGE);
+							case "Athlete Joins":
+								JOptionPane.showMessageDialog(eventFrame,
+										event.getMessage(),
+										"Event - Athlete joins",
+										JOptionPane.INFORMATION_MESSAGE);
+								
+						}						
+						}
+					}
+
+					
 					}					
 				}
 			}

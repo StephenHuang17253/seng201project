@@ -28,24 +28,33 @@ import javax.swing.JTextArea;
 import java.awt.SystemColor;
 import javax.swing.ListModel;
 
+/**
+ * ClubScreen class.
+ * The screen where the player manages their team and athletes.
+ * Allows players to promote players to and from the main roster.
+ * Designate position roles to athletes.
+ * @author Stephen Huang and Jasmine Ong
+ */
 public class ClubScreen {
 
 	private JFrame frmClubScreen;
 	private GameManager manager;
 	public static JLabel warningLabel;
-	//private ArrayList<Athlete> activeRoster;
-	//private ArrayList<Athlete> reserveRoster;
-	//DefaultListModel<Athlete> reserveRosterModel = new DefaultListModel<Athlete>();
-	//private JList<Athlete> reserveRosterList = new JList<Athlete>();
 
+	/**
+	 * Takes an incoming manager and makes it the manager of the screen.
+	 * Initializes the screen and make ClubScreen visible.
+	 * @param incomingManager is the manager for this screen.
+	 */
 	public ClubScreen(GameManager incomingManager) {
 		manager = incomingManager;
-		//activeRoster = starting;
-		//reserveRoster = reserves;
 		initialize();
 		frmClubScreen.setVisible(true);
 	}
 	
+	/**
+	 * Close ClubScreen Window
+	 */
 	public void closeWindow() {
 		frmClubScreen.dispose();
 	}
