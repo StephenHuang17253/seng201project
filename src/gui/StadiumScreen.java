@@ -57,6 +57,7 @@ public class StadiumScreen {
 		manager = incomingManager;
 		matches = manager.getWeeklyMatches(); 
 		initialize();
+		frmStadium.setLocationRelativeTo(null);
 		frmStadium.setVisible(true);
 	}
 	/**

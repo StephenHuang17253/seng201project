@@ -64,6 +64,7 @@ public class InventoryScreen {
 		inventory = items;
 		manager = incomingManager;
 		initialize();
+		frmInventoryScreen.setLocationRelativeTo(null);
 		frmInventoryScreen.setVisible(true);
 	}
 	/**

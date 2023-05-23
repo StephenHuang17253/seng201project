@@ -68,6 +68,7 @@ public class MatchScreen {
 		//System.out.println(playerTeam);
 		//System.out.println(opponentTeam);
 		initialize();
+		frmMatchScreen.setLocationRelativeTo(null);
 		frmMatchScreen.setVisible(true);
 		
 	}

@@ -58,6 +58,7 @@ public class ClubScreen {
 	public ClubScreen(GameManager incomingManager) {
 		manager = incomingManager;
 		initialize();
+		frmClubScreen.setLocationRelativeTo(null);
 		frmClubScreen.setVisible(true);
 	}
 	

@@ -46,6 +46,7 @@ public class TrainingScreen {
 	public TrainingScreen(GameManager incomingManager) {
 		manager = incomingManager;
 		initialize();
+		frmTrainingScreen.setLocationRelativeTo(null);
 		frmTrainingScreen.setVisible(true);
 	}
 	/**
@@ -144,13 +145,14 @@ public class TrainingScreen {
 				}
 				else {  
 					manager.greatlyIncreaseStats(targetAthlete);
-					finishedWindow();
 					Component newWeekFrame = null;
 					JOptionPane.showMessageDialog(newWeekFrame, 
 							"Stadium and Market have refreshed." + 
 							"\nAll Athletes' Stamina refreshed." +
 							"\n" + targetAthlete.getName() + "'s stats increased.", 
 							"New week", JOptionPane.INFORMATION_MESSAGE);
+					
+					finishedWindow();
 				}  		
 			}
 		

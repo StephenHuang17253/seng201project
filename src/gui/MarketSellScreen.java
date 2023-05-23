@@ -57,6 +57,7 @@ public class MarketSellScreen {
 		manager = incomingManager;
 		inventory = items;
 		initialize();
+		frmMarketSellScreen.setLocationRelativeTo(null);
 		frmMarketSellScreen.setVisible(true);
 	}
 	/**

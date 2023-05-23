@@ -35,6 +35,7 @@ public class EndScreen {
 	public EndScreen(GameManager incomingManager) {
 		manager = incomingManager;
 		initialize();
+		frmEndScreen.setLocationRelativeTo(null);
 		frmEndScreen.setVisible(true);
 	}
 	/**
