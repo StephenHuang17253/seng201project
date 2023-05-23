@@ -196,21 +196,21 @@ public class MainScreen {
 				int n = JOptionPane.showConfirmDialog(ByeFrame, 
 						"Ready to move onto next week?" 
 						+ "\n You will lose if you have either:"
-						+ "\n- No Athletes left"
+						+ "\n- Less than 5 Athletes left"
 						+ "\n- Less than $100,000"
 						+ "\n Are you sure you want to continue?",
 						"Take a bye", JOptionPane.YES_NO_OPTION);
 				if (n == 0) {
 					if(manager.getCanContinue() == false) {
 						JOptionPane.showMessageDialog(ByeFrame, 
-								"You have no athletes or money left. You lost.", 
+								"You do not have enough athletes or money left. You lost.", 
 								"No athletes or money left", JOptionPane.WARNING_MESSAGE);
 						
 						finishedWindow("Bye");					
 					}
 					else if(manager.getEnoughAthletes() == false) {
 						JOptionPane.showMessageDialog(ByeFrame, 
-								"You have no athletes left. You Lost.",
+								"You do not have enough athletes left. You Lost.",
 								"No athletes left", JOptionPane.WARNING_MESSAGE);
 						finishedWindow("Bye");												
 					}

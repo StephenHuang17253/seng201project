@@ -145,7 +145,7 @@ public class EndScreen {
 		Athlete bestAthlete = manager.getBestAthlete();
 		JLabel bestAthleteLabel = new JLabel("");
 		if (bestAthlete != null) {
-			bestAthleteLabel.setText("Best Athlete: " + bestAthlete.getName() + " with (" + bestAthlete.getFaceOffWins() + ") wins");
+			bestAthleteLabel.setText("Best Athlete: " + bestAthlete.getName() + " with (" + bestAthlete.getFaceOffWins() + ") faceoff wins");
 		}
 		bestAthleteLabel.setVerticalAlignment(SwingConstants.TOP);
 		bestAthleteLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));

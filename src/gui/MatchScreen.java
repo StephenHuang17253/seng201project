@@ -330,11 +330,22 @@ public class MatchScreen {
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (match.getOutcome() == "Victory") {
-					Object message = "Congrulations on winning the match against " + manager.getOpponentName()
-									 + "\nPrize winnings: " + match.createPrizeString(match.getPrizeMoney())
-									 + "\nSeason points earned: " + match.getPointGain();
-					Component newWeekFrame = null;
-					JOptionPane.showMessageDialog(newWeekFrame, message, "Match concluded", JOptionPane.INFORMATION_MESSAGE);							
+					if (manager.getDifficulty() == "Normal: start with $7.0M") {
+						Object message = "Congrulations on winning the match against " + manager.getOpponentName()
+						 + "\nPrize winnings: " + match.createPrizeString(match.getPrizeMoney())
+						 + "\nSeason points earned: " + match.getPointGain();
+						Component newWeekFrame = null;
+						JOptionPane.showMessageDialog(newWeekFrame, message, "Match concluded", JOptionPane.INFORMATION_MESSAGE);
+					}
+					else {
+						Object message = "Congrulations on winning the match against " + manager.getOpponentName()
+						 + "\nPrize winnings: " + match.createPrizeString(match.getPrizeMoney())
+						 + "\nSeason points earned: " + match.getPointGain() + " + 5"
+						 + "\nYou earned an extra 5 points for hard difficulty!";
+						Component newWeekFrame = null;
+						JOptionPane.showMessageDialog(newWeekFrame, message, "Match concluded", JOptionPane.INFORMATION_MESSAGE);
+					}
+							
 				}
 				finishedWindow();
 				manager.launchStadiumScreen();
