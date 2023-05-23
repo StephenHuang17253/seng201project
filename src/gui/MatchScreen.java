@@ -330,7 +330,7 @@ public class MatchScreen {
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (match.getOutcome() == "Victory") {
-					if (manager.getDifficulty() == "Normal") {
+					if (manager.getDifficulty() == "Normal: start with $7.0M") {
 						Object message = "Congrulations on winning the match against " + manager.getOpponentName()
 						 + "\nPrize winnings: " + match.createPrizeString(match.getPrizeMoney())
 						 + "\nSeason points earned: " + match.getPointGain();

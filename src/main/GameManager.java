@@ -570,7 +570,7 @@ public class GameManager {
 	 * @param points int
 	 */
 	public void updateSeasonPoints(int points) {
-		if (difficulty == "Normal") {
+		if (difficulty == "Normal: start with $7.0M") {
 			seasonPoints += points;
 		} else {
 			seasonPoints += (5 + points);
