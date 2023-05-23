@@ -67,7 +67,7 @@ public class Match {
 	 * Sets the name of the opposing team to the specified string.
 	 * @param name
 	 */
-	private void setName(String name) {
+	public void setName(String name) {
 		opponentName = name;
 	}
 	/**
