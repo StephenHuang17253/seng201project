@@ -55,7 +55,7 @@ public class ClubScreen {
 	 * Initializes the screen and make ClubScreen visible.
 	 * @param incomingManager is the manager for this screen.
 	 */
-	public ClubScreen(GameManager incomingManager) {
+	public ClubScreen(GameManager incomingManager) { 
 		manager = incomingManager;
 		initialize();
 		frmClubScreen.setLocationRelativeTo(null);
@@ -131,7 +131,7 @@ public class ClubScreen {
 		// Create a ListModel to store the active athletes in the JList
 		DefaultListModel<Athlete> activeRosterModel = new DefaultListModel<Athlete>();
 		// Add athletes to the ListModel
-		activeRosterModel.addAll(manager.getMainRoster());
+		activeRosterModel.addAll(manager.getTeam().getMainRoster());
 		
 		JLabel activeRosterLabel = new JLabel("Active Roster");
 		activeRosterLabel.setBounds(20, 18, 217, 23);
@@ -150,7 +150,7 @@ public class ClubScreen {
 		backButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (manager.getReserveRoster().size() > 5) {
+				if (manager.getTeam().getReserveRoster().size() > 5) {
 	                Component fullReservesWarning = null;
 	                JOptionPane.showMessageDialog(fullReservesWarning, "You have too many players in reserves. Please add some players to your starting lineup before leaving.", 
 	                        "Reserves full", JOptionPane.WARNING_MESSAGE);
@@ -165,7 +165,7 @@ public class ClubScreen {
 		
 		// Create a ListModel to store the reserve athletes in the JList
 		DefaultListModel<Athlete> reserveRosterModel = new DefaultListModel<Athlete>();
-		reserveRosterModel.addAll(manager.getReserveRoster());
+		reserveRosterModel.addAll(manager.getTeam().getReserveRoster());
 		
 		// Create the JList for reserve roster
 		// Needed to be declared early to allow demote button to work.
@@ -240,7 +240,7 @@ public class ClubScreen {
 		Athlete teamDefender = null;
 		Athlete teamKeeper = null;
 		// Find Athlete positions.
-		for (Athlete athlete : manager.getMainRoster()) {
+		for (Athlete athlete : manager.getTeam().getMainRoster()) {
 			
 			switch(athlete.getPosition()) {
 			 	case "Striker":
@@ -333,7 +333,7 @@ public class ClubScreen {
 			public void actionPerformed(ActionEvent e) {
 				Athlete targetAthlete = reserveRosterList.getSelectedValue();
 				//targetAthlete.setPosition("Striker");
-				manager.promoteAthlete(targetAthlete, "Striker");
+				manager.getTeam().promoteAthlete(targetAthlete, "Striker");
 		        // Check if there is already an athlete in the strikerList
 		        if (strikerModel.getSize() > 0) {
 		            // Get the existing athlete in the strikerList
@@ -341,7 +341,7 @@ public class ClubScreen {
 		            // Remove the existing athlete from the strikerList
 		            strikerModel.removeElement(existingAthlete);
 		            // Demote the existing athlete using GameManager
-		            manager.demoteAthlete(existingAthlete);
+		            manager.getTeam().demoteAthlete(existingAthlete);
 		            // Add the targetAthlete to the strikerList
 		            strikerModel.addElement(targetAthlete);
 		            // Update the strikerList model
@@ -375,7 +375,7 @@ public class ClubScreen {
 		    public void actionPerformed(ActionEvent e) {
 		        Athlete targetAthlete = reserveRosterList.getSelectedValue();
 		       // targetAthlete.setPosition("Left Wing");
-		        manager.promoteAthlete(targetAthlete, "Left Wing");
+		        manager.getTeam().promoteAthlete(targetAthlete, "Left Wing");
 		        // Check if there is already an athlete in the leftWingList
 		        if (leftWingModel.getSize() > 0) {
 		            // Get the existing athlete in the leftWingList
@@ -383,7 +383,7 @@ public class ClubScreen {
 		            // Remove the existing athlete from the leftWingList
 		            leftWingModel.removeElement(existingAthlete);
 		            // Demote the existing athlete using GameManager
-		            manager.demoteAthlete(existingAthlete);
+		            manager.getTeam().demoteAthlete(existingAthlete);
 		            // Add the targetAthlete to the leftWingList
 		            leftWingModel.addElement(targetAthlete);
 		            // Update the leftWingList model
@@ -416,7 +416,7 @@ public class ClubScreen {
 		    public void actionPerformed(ActionEvent e) {
 		        Athlete targetAthlete = reserveRosterList.getSelectedValue();
 		        //targetAthlete.setPosition("Right Wing");
-		        manager.promoteAthlete(targetAthlete, "Right Wing");
+		        manager.getTeam().promoteAthlete(targetAthlete, "Right Wing");
 		        // Check if there is already an athlete in the rightWingList
 		        if (rightWingModel.getSize() > 0) {
 		            // Get the existing athlete in the rightWingList
@@ -424,7 +424,7 @@ public class ClubScreen {
 		            // Remove the existing athlete from the rightWingList
 		            rightWingModel.removeElement(existingAthlete);
 		            // Demote the existing athlete using GameManager
-		            manager.demoteAthlete(existingAthlete);
+		            manager.getTeam().demoteAthlete(existingAthlete);
 		            // Add the targetAthlete to the rightWingList
 		            rightWingModel.addElement(targetAthlete);
 		            // Update the rightWingList model
@@ -458,7 +458,7 @@ public class ClubScreen {
 		    public void actionPerformed(ActionEvent e) {
 		        Athlete targetAthlete = reserveRosterList.getSelectedValue();
 		        //targetAthlete.setPosition("Defender");
-		        manager.promoteAthlete(targetAthlete, "Defender");
+		        manager.getTeam().promoteAthlete(targetAthlete, "Defender");
 		        // Check if there is already an athlete in the defenderList
 		        if (defenderModel.getSize() > 0) {
 		            // Get the existing athlete in the defenderList
@@ -466,7 +466,7 @@ public class ClubScreen {
 		            // Remove the existing athlete from the defenderList
 		            defenderModel.removeElement(existingAthlete);
 		            // Demote the existing athlete using GameManager
-		            manager.demoteAthlete(existingAthlete);
+		            manager.getTeam().demoteAthlete(existingAthlete);
 		            // Add the targetAthlete to the defenderList
 		            defenderModel.addElement(targetAthlete);
 		            // Update the defenderList model
@@ -499,7 +499,7 @@ public class ClubScreen {
 		    public void actionPerformed(ActionEvent e) {
 		        Athlete targetAthlete = reserveRosterList.getSelectedValue();
 		        //targetAthlete.setPosition("Keeper");
-		        manager.promoteAthlete(targetAthlete, "Keeper");
+		        manager.getTeam().promoteAthlete(targetAthlete, "Keeper");
 		        // Check if there is already an athlete in the keeperList
 		        if (keeperModel.getSize() > 0) {
 		            // Get the existing athlete in the keeperList
@@ -507,7 +507,7 @@ public class ClubScreen {
 		            // Remove the existing athlete from the keeperList
 		            keeperModel.removeElement(existingAthlete);
 		            // Demote the existing athlete using GameManager
-		            manager.demoteAthlete(existingAthlete);
+		            manager.getTeam().demoteAthlete(existingAthlete);
 		            // Add the targetAthlete to the keeperList
 		            keeperModel.addElement(targetAthlete);
 		            // Update the keeperList model

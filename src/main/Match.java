@@ -162,8 +162,8 @@ public class Match {
 	 */
 	public void runMatch(GameManager incomingManager, Match match) {
 		manager = incomingManager;
-		manager.checkAthletePositions();
-		ArrayList<Athlete> playerTeam = manager.getMainRoster();
+		manager.getTeam().checkAthletePositions();
+		ArrayList<Athlete> playerTeam = manager.getTeam().getMainRoster();
 		ArrayList<Athlete> opponentTeam = AthleteGenerator.generateTeam();
 		manager.setOpponentRoster(opponentTeam);
 		manager.setOpponentName(match.getName());
@@ -173,7 +173,7 @@ public class Match {
 			// compare athletes
 			String[] positions = {"Striker", "Left Wing", "Right Wing", "Defender", "Keeper"};
 			
-			Athlete playerAthlete = manager.getPlayerInPosition(positions[i]); // Find correct player for matchup
+			Athlete playerAthlete = manager.getTeam().getPlayerInPosition(positions[i]); // Find correct player for matchup
 			Athlete opposingAthlete = opponentTeam.get(i);
 			System.out.println(playerAthlete.getName() + " (" + playerAthlete.getProficiency() + ") vs (" + opposingAthlete.getProficiency() + ") " + opposingAthlete.getName()); 
 			if (playerAthlete.getProficiency() >= opposingAthlete.getProficiency()) {		

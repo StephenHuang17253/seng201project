@@ -35,7 +35,7 @@ public class EndScreen {
 	public EndScreen(GameManager incomingManager) {
 		manager = incomingManager;
 		initialize();
-		frmEndScreen.setLocationRelativeTo(null);
+		frmEndScreen.setLocationRelativeTo(null); 
 		frmEndScreen.setVisible(true);
 	}
 	/**
@@ -143,7 +143,7 @@ public class EndScreen {
 		seasonPointsLabel.setBounds(10, 256, 421, 23);
 		summaryPanel.add(seasonPointsLabel); 
 		
-		Athlete bestAthlete = manager.getBestAthlete();
+		Athlete bestAthlete = manager.getTeam().getBestAthlete();
 		JLabel bestAthleteLabel = new JLabel("");
 		if (bestAthlete != null) {
 			bestAthleteLabel.setText("Best Athlete: " + bestAthlete.getName() + " with (" + bestAthlete.getFaceOffWins() + ") faceoff wins");

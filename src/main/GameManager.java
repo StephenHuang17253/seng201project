@@ -63,38 +63,10 @@ public class GameManager {
      */
 	private SetupScreen setupWindow;
 	/**
-	 * The player's main roster (starting lineup) of athletes.
+	 * Stores the player's athletes
+	 * Contains the main and reserve rosters.
 	 */
-	private ArrayList<Athlete> mainRoster = new ArrayList<>();
-	/**
-	 * The player's reserve athletes.
-	 */
-	private ArrayList<Athlete> reserveRoster = new ArrayList<>();
-	/**
-	 * Stores the Athlete playing the Striker position.
-	 */
-	private Athlete teamStriker;
-	/**
-	 * Stores the Athlete playing the Left Wing position.
-	 */
-	private Athlete teamLeftWing;
-	/**
-	 * Stores the Athlete playing the Right Wing position.
-	 */
-	private Athlete teamRightWing;
-	/**
-	 * Stores the Athlete playing the Defender position.
-	 */
-	private Athlete teamDefender;
-	/**
-	 * Stores the Athlete playing the Keeper position.
-	 */
-	private Athlete teamKeeper;
-	/**
-	 * Stores the Athlete with the most matchup wins.
-	 * matchup or faceoff wins refer to beating their assigned opponent in matches.
-	 */
-	private Athlete bestAthlete;
+	private Team team;	
 	/**
 	 * Holds the roster of the current opponent of a match.
 	 */
@@ -123,6 +95,7 @@ public class GameManager {
 	 * Stores this week's generated matches.
 	 */
 	private ArrayList<Match> weeklyMatches = new ArrayList<>();
+	
 	
 	
 
@@ -198,7 +171,7 @@ public class GameManager {
 	 * @return boolean
 	 */
 	public boolean getCanContinue() {
-		int totalAthletes = getMainRoster().size() + getReserveRoster().size();
+		int totalAthletes = getTeam().getMainRoster().size() + getTeam().getReserveRoster().size();
 		if (totalAthletes < 5 && getMoney() < 100000) {
 			return false;
 		} else {
@@ -211,7 +184,7 @@ public class GameManager {
 	 * @return boolean
 	 */
 	public boolean getEnoughAthletes() {
-		int totalAthletes = getMainRoster().size() + getReserveRoster().size();
+		int totalAthletes = getTeam().getMainRoster().size() + getTeam().getReserveRoster().size();
 		if (totalAthletes < 5) {
 			return false;
 		} else {
@@ -422,7 +395,8 @@ public class GameManager {
 		if ((validTeam && validName && validMoney)) {
 			teamName = name;
 			money -= teamCost;
-			this.reserveRoster.addAll(startAthletes);
+			team = new Team(name);
+			getTeam().getReserveRoster().addAll(startAthletes);
 			for (Athlete athlete : startAthletes) {
 				AthleteGenerator.takenNames.add(athlete.getName());
 			}
@@ -440,10 +414,10 @@ public class GameManager {
 		incrementWeek();
 		AthleteGenerator.incrementMinMaxStats(); // Opponent teams get stronger each weak.
 		refreshWeek();	
-		determineBestAthlete();
+		getTeam().determineBestAthlete();
 		ArrayList<Athlete> allAthletes = new ArrayList<>();
-		allAthletes.addAll(getMainRoster());
-		allAthletes.addAll(getReserveRoster());
+		allAthletes.addAll(getTeam().getMainRoster());
+		allAthletes.addAll(getTeam().getReserveRoster());
 		allAthletes.addAll(getOpponentRoster());
 		for (Athlete athlete : allAthletes) {
 			athlete.setStamina(athlete.getMaxStamina());		
@@ -469,6 +443,18 @@ public class GameManager {
 		return teamName;
 	}
 	
+	/**
+	 * @return the team
+	 */
+	public Team getTeam() {
+		return team;
+	}
+	/**
+	 * @param team the team to set
+	 */
+	public void setTeam(Team team) {
+		this.team = team;
+	}
 	/**
 	 * Returns the player's money for use in calculations.
 	 * @return int for money
@@ -576,23 +562,7 @@ public class GameManager {
 			seasonPoints += (5 + points);
 		}
 	}
-	/**
-	 * Returns the starting lineup of Athletes,
-	 * the 5 players that have positions assigned.
-	 * These are the players who will compete in matches.
-	 * @return ArrayList of Athlete objects, representing main roster of players
-	 */
-	public ArrayList<Athlete> getMainRoster() {
-		return mainRoster;
-		
-	}
-	/**
-	 * Returns the reserve roster of players.
-	 * @return reserveRoster the reserves
-	 */
-	public ArrayList<Athlete> getReserveRoster() {
-		return reserveRoster;
-	}
+
 	/**
 	 * Returns the list of athletes that the main roster will compete against.
 	 * @return opponentRoster ArrayList of opposing athletes
@@ -674,8 +644,8 @@ public class GameManager {
 	 */
 	public boolean canCompete() {
 
-		if (mainRoster.size() == 5) {
-		    for (Athlete athlete : mainRoster) {
+		if (getTeam().getMainRoster().size() == 5) {
+		    for (Athlete athlete : getTeam().getMainRoster()) {
 		        if (athlete.getStamina() < 1) {
 		            return false;
 		        }
@@ -686,91 +656,6 @@ public class GameManager {
 	}
 	
 	/**
-	 * This method goes through the active roster and
-	 * finds the athlete playing each position.
-	 */
-	public void checkAthletePositions() {
-		teamStriker = null;
-		teamLeftWing = null;
-		teamRightWing = null;
-		teamDefender = null;
-		teamKeeper = null;
-		// Find Athlete positions.
-		for (Athlete athlete : getMainRoster()) {
-			
-			switch(athlete.getPosition()) {
-			 	case "Striker":
-			 		teamStriker = athlete;
-			 		break;
-			 	case "Left Wing":
-			 		teamLeftWing = athlete;
-			 		break;
-			 	case "Right Wing":
-			 		teamRightWing = athlete;
-			 		break;
-			    case "Defender":
-			    	teamDefender = athlete;
-			    	break;
-			    case "Keeper":
-			    	teamKeeper = athlete;
-			    	break;
-			}
-		}	
-	}
-	
-	/**
-	 * Returns the athlete playing a particular position.
-	 * @param position String
-	 * @return athlete Athlete
-	 */
-	public Athlete getPlayerInPosition(String position) {
-		
-		Athlete athlete = null;
-		
-		switch(position) {
-	 	case "Striker":
-	 		athlete = teamStriker;
-	 		break;
-	 	case "Left Wing":
-	 		athlete = teamLeftWing;
-	 		break;
-	 	case "Right Wing":
-	 		athlete = teamRightWing;
-	 		break;
-	    case "Defender":
-	    	athlete = teamDefender;
-	    	break;
-	    case "Keeper":
-	    	athlete = teamKeeper;
-	    	break;
-		}		
-		return athlete;
-		
-	}
-	
-	/**
-	 * This method removes a particular athlete from reserves and adds them to the main roster.
-	 * @param athlete the player being promoted
-	 * @param position the position they're being assigned to play
-	 */
-	public void promoteAthlete(Athlete athlete, String position) {
-		System.out.println(athlete.getName() + " has been moved to main roster");
-		athlete.setPosition(position);
-	    mainRoster.add(athlete);
-	    reserveRoster.remove(athlete);
-	}	
-	/**
-	 * This method removes the specified athlete from the main roster and changes their position
-	 * to "Unassigned". They are then added to the reserve roster.
-	 * @param athlete the Athlete being demoted
-	 */
-	public void demoteAthlete(Athlete athlete) {
-		System.out.println(athlete.getName() + " has been moved to reserves");
-		mainRoster.remove(athlete);
-		athlete.setPosition("Unassigned");
-	    reserveRoster.add(athlete);
-	}
-	/**
 	 * This method is used for purchasing athletes from the market and adding them to the starting lineup directly.
 	 * It assigns a position, adds athlete to main roster, changes money and then removes this athlete from the list of athletes on the market.
 	 * @param athlete the Athlete purchased
@@ -779,7 +664,7 @@ public class GameManager {
 	public void draftMainAthlete(Athlete athlete, String position) {
 		
 		athlete.setPosition(position);
-		mainRoster.add(athlete);
+		getTeam().getMainRoster().add(athlete);
 		changeMoney(-athlete.getContractPrice());
 		marketAthletes.remove(athlete);
 	}
@@ -789,7 +674,7 @@ public class GameManager {
 	 * @param athlete Athlete
 	 */
 	public void draftReserveAthlete(Athlete athlete) {
-		reserveRoster.add(athlete);
+		getTeam().getReserveRoster().add(athlete);
 		changeMoney(-athlete.getContractPrice());
 		marketAthletes.remove(athlete);
 	}
@@ -811,10 +696,10 @@ public class GameManager {
 	 */
 	public void sellAthlete(Athlete targetAthlete) {
 		changeMoney(targetAthlete.getSellbackPrice());
-		if (reserveRoster.contains(targetAthlete)) {
-			reserveRoster.remove(targetAthlete);
-		} else if (mainRoster.contains(targetAthlete) ) {
-			mainRoster.remove(targetAthlete); 
+		if (getTeam().getReserveRoster().contains(targetAthlete)) {
+			getTeam().getReserveRoster().remove(targetAthlete);
+		} else if (getTeam().getMainRoster().contains(targetAthlete) ) { 
+			getTeam().getMainRoster().remove(targetAthlete); 
 		}
 		
 	}
@@ -904,8 +789,8 @@ public class GameManager {
 	 */
     public void refreshTakenNames() {
     	ArrayList<Athlete> allAthletes = new ArrayList<>();
-    	allAthletes.addAll(getMainRoster());
-    	allAthletes.addAll(getReserveRoster());
+    	allAthletes.addAll(getTeam().getMainRoster());
+    	allAthletes.addAll(getTeam().getReserveRoster());
     	for (Athlete athlete : allAthletes) {
     		String name = athlete.getName();
     		if (!AthleteGenerator.takenNames.contains(name)) {
@@ -957,8 +842,8 @@ public class GameManager {
 	 * This method exists to prevent make changing the label more convenient.
 	 */
 	public void rosterWarnings() {
-		if (getMainRoster().size() < 5) {
-			if ((getMainRoster().size() + getReserveRoster().size() < 5)){
+		if (getTeam().getMainRoster().size() < 5) {
+			if ((getTeam().getMainRoster().size() + getTeam().getReserveRoster().size() < 5)){
 				ClubScreen.warningLabel.setText("You do not have enough players to compete! Go buy more Athletes in the market.");
 			}
 			else {
@@ -969,36 +854,7 @@ public class GameManager {
 			ClubScreen.warningLabel.setText("");
 		}
 	}
-	/**
-	 * The Athlete with the highest number of matchup wins will be the player's best Athlete.
-	 * Matchups refer to the comparison between two athletes in the same position during a match between teams.
-	 * This method determines which athlete in the player's club has won the most of these.
-	 * They will be displayed in the end game summary.
-	 */
-	public void determineBestAthlete() {
-		
-		ArrayList<Athlete> athletes = new ArrayList<>();
-		athletes.addAll(getMainRoster());
-		athletes.addAll(getReserveRoster());
-		int highestWins = 0;
-		for (Athlete athlete : athletes) {
-			int wins = athlete.getFaceOffWins();
-			if (wins > highestWins) {
-				highestWins = wins;
-				bestAthlete = athlete;
-			}
-			
-		}
 
-	}
-	/**
-	 * Used in the EndScreen to get and display the best Athlete.
-	 * @return bestAthlete the athlete with the most highest matchup wins
-	 */
-	public Athlete getBestAthlete( ) {
-		return bestAthlete;
-	}
-	
 	/**
 	 * Main method.
 	 * Begins the game by calling launchStartScreen();  

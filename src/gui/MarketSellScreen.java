@@ -53,7 +53,7 @@ public class MarketSellScreen {
 	 * @param incomingManager the GameManager
 	 * @param items the inventory from GameManager
 	 */
-	public MarketSellScreen(GameManager incomingManager, ArrayList<Item> items) {
+	public MarketSellScreen(GameManager incomingManager, ArrayList<Item> items) { 
 		manager = incomingManager;
 		inventory = items;
 		initialize();
@@ -150,8 +150,8 @@ public class MarketSellScreen {
 	
 		//Create Athlete JList
 		DefaultListModel<Athlete> inventoryAthleteModel = new DefaultListModel<Athlete>();
-		inventoryAthleteModel.addAll(manager.getMainRoster());
-		inventoryAthleteModel.addAll(manager.getReserveRoster());
+		inventoryAthleteModel.addAll(manager.getTeam().getMainRoster());
+		inventoryAthleteModel.addAll(manager.getTeam().getReserveRoster());
 		
 		JList<Athlete> athletesList = new JList<Athlete>(inventoryAthleteModel);
 		athletesList.setBorder(new LineBorder(new Color(186, 207, 248), 2));

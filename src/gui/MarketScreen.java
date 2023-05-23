@@ -52,7 +52,7 @@ public class MarketScreen {
 	/**
 	 * Initialise an ArrayList to hold this week's generated Athlete objects
 	 */
-	private ArrayList<Athlete> athletesForSale = new ArrayList<>();
+	private ArrayList<Athlete> athletesForSale = new ArrayList<>(); 
 	/**
 	 * Initialise an ArrayList to hold this week's Item objects
 	 */
@@ -199,7 +199,7 @@ public class MarketScreen {
 			public void actionPerformed(ActionEvent e) {
 				
 				Athlete targetAthlete = athleteList.getSelectedValue();
-				int athleteSum = manager.getMainRoster().size() + manager.getReserveRoster().size();
+				int athleteSum = manager.getTeam().getMainRoster().size() + manager.getTeam().getReserveRoster().size();
 				
 			
 				if (targetAthlete == null) {
@@ -249,10 +249,10 @@ public class MarketScreen {
 				            System.out.println("Assigned position: " + position);
 				            Object draftMessage = null;
 				            // Update Game
-				    		manager.checkAthletePositions();
-				    		Athlete previousPlayer = manager.getPlayerInPosition(position);
+				    		manager.getTeam().checkAthletePositions();
+				    		Athlete previousPlayer = manager.getTeam().getPlayerInPosition(position);
 				    		if (previousPlayer != null) {
-				    			manager.demoteAthlete(previousPlayer);
+				    			manager.getTeam().demoteAthlete(previousPlayer);
 				    			draftMessage = targetAthlete.getName() + " assigned as " + position + 
 				    					"\n" + previousPlayer.getName() + " benched.";
 				    		} else {
@@ -290,7 +290,7 @@ public class MarketScreen {
 			public void actionPerformed(ActionEvent e) {
 				
 				Athlete targetAthlete = athleteList.getSelectedValue();
-				int totalAthletes = manager.getMainRoster().size() + manager.getReserveRoster().size();
+				int totalAthletes = manager.getTeam().getMainRoster().size() + manager.getTeam().getReserveRoster().size();
 				
 				if (targetAthlete == null) {
 					// Inform player that they have not selected an athlete.
@@ -314,7 +314,7 @@ public class MarketScreen {
 								"You can't afford this.", 
 								"Insufficent funds", JOptionPane.WARNING_MESSAGE);
 					  
-					} else if (manager.getReserveRoster().size() >= 5) {
+					} else if (manager.getTeam().getReserveRoster().size() >= 5) {
 						// Warn player that reserves are full.
 						Component fullRosterWarning = null;
 						JOptionPane.showMessageDialog(fullRosterWarning,

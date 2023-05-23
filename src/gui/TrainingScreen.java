@@ -46,7 +46,7 @@ public class TrainingScreen {
 	public TrainingScreen(GameManager incomingManager) {
 		manager = incomingManager;
 		initialize();
-		frmTrainingScreen.setLocationRelativeTo(null);
+		frmTrainingScreen.setLocationRelativeTo(null); 
 		frmTrainingScreen.setVisible(true);
 	}
 	/**
@@ -109,8 +109,8 @@ public class TrainingScreen {
 		athletesTrainingPanel.add(trainingCenterLabel);
 		
 		DefaultListModel<Athlete> inventoryAthleteModel = new DefaultListModel<Athlete>();
-		inventoryAthleteModel.addAll(manager.getMainRoster());
-		inventoryAthleteModel.addAll(manager.getReserveRoster());
+		inventoryAthleteModel.addAll(manager.getTeam().getMainRoster());
+		inventoryAthleteModel.addAll(manager.getTeam().getReserveRoster());
 		
 		JList<Athlete> athletesTrainingList = new JList<Athlete>(inventoryAthleteModel);
 		athletesTrainingList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

@@ -64,7 +64,7 @@ public class InventoryScreen {
 		inventory = items;
 		manager = incomingManager;
 		initialize();
-		frmInventoryScreen.setLocationRelativeTo(null);
+		frmInventoryScreen.setLocationRelativeTo(null); 
 		frmInventoryScreen.setVisible(true);
 	}
 	/**
@@ -130,8 +130,8 @@ public class InventoryScreen {
 		inventoryAthletePanel.setLayout(null);
 		
 		DefaultListModel<Athlete> inventoryAthleteModel = new DefaultListModel<Athlete>();
-		inventoryAthleteModel.addAll(manager.getMainRoster());
-		inventoryAthleteModel.addAll(manager.getReserveRoster());
+		inventoryAthleteModel.addAll(manager.getTeam().getMainRoster());
+		inventoryAthleteModel.addAll(manager.getTeam().getReserveRoster());
 		
 		JList<Athlete> inventoryAthleteList = new JList<Athlete>(inventoryAthleteModel);
 		inventoryAthleteList.setFont(new Font("Tahoma", Font.PLAIN, 14));

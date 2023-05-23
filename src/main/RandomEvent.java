@@ -49,8 +49,8 @@ public class RandomEvent {
 		String eventType = null;
 		Random random = new Random();
 		
-		ArrayList<Athlete> reserves = manager.getReserveRoster();
-		ArrayList<Athlete> mainRoster = manager.getMainRoster();
+		ArrayList<Athlete> reserves = manager.getTeam().getReserveRoster(); 
+		ArrayList<Athlete> mainRoster = manager.getTeam().getMainRoster();
 		ArrayList<Athlete> allAthletes = new ArrayList<>();
 		allAthletes.addAll(mainRoster);
 		allAthletes.addAll(reserves);
@@ -93,7 +93,7 @@ public class RandomEvent {
 			// Athlete quits
 			for (Athlete athlete : reserves) {
 				if (random.nextInt(100) + (athlete.getFaceOffLosses() / 2) >= 125) {
-					manager.getReserveRoster().remove(athlete);
+					manager.getTeam().getReserveRoster().remove(athlete);
 					System.out.println(athlete.getName() + " has decided to retire after repeated poor performances.");
 					String message = athlete.getName() + " has decided to retire after repeated poor performances.";
 					eventType = "Athlete Quit";
@@ -108,7 +108,7 @@ public class RandomEvent {
 			int randomJoinChance = random.nextInt(100);
 			if (reserves.size() < 5 && randomJoinChance < 8) {
 				Athlete newAthlete = AthleteGenerator.generateRandomAthlete(15, 30);
-				manager.getReserveRoster().add(newAthlete);
+				manager.getTeam().getReserveRoster().add(newAthlete);
 				System.out.println("An up and coming talent has joined your team!");
 				String message = "An up and coming talent has joined your team!\n" + newAthlete.getName() + " has been added to reserves.";
 				eventType = "Athlete Joins";

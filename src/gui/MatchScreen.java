@@ -62,8 +62,8 @@ public class MatchScreen {
 	 */
 	public MatchScreen(GameManager incomingManager, Match incomingMatch) {
 		manager = incomingManager;
-		playerTeam = manager.getMainRoster();
-		opponentTeam = manager.getOpponentRoster();
+		playerTeam = manager.getTeam().getMainRoster();
+		opponentTeam = manager.getOpponentRoster(); 
 		match = incomingMatch;
 		//System.out.println(playerTeam);
 		//System.out.println(opponentTeam);
@@ -136,7 +136,7 @@ public class MatchScreen {
 		Athlete teamDefender = null;
 		Athlete teamKeeper = null;
 		
-		for (Athlete athlete : manager.getMainRoster()) {
+		for (Athlete athlete : manager.getTeam().getMainRoster()) {
 			
 			switch(athlete.getPosition()) {
 			 	case "Striker":
