@@ -542,6 +542,14 @@ public class GameManager {
 	}
 	
 	/**
+	 * The chosen difficulty.
+	 * @return difficulty the game difficulty.
+	 */
+	public String getDifficulty() {
+		return difficulty;
+	}
+	
+	/**
 	 * Simple getter for the total number of weeks.
 	 * @return totalWeeks the total number of weeks.
 	 */
