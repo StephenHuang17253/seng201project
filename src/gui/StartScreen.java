@@ -38,6 +38,7 @@ public class StartScreen {
 	public StartScreen(GameManager incomingManager) {
 		manager = incomingManager;
 		initialize();
+		frmStartScreen.setLocationRelativeTo(null);
 		frmStartScreen.setVisible(true);
 	}
 	/**

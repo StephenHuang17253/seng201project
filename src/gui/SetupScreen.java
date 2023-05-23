@@ -88,6 +88,7 @@ public class SetupScreen {
 		manager = incomingManager;
 		startAthletes.addAll(AthleteGenerator.generateMarketAthletes(10));
 		initialize();
+		frmSetupScreen.setLocationRelativeTo(null);
 		frmSetupScreen.setVisible(true);
 	}
 	

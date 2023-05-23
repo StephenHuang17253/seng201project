@@ -45,6 +45,7 @@ public class MainScreen {
 	public MainScreen(GameManager incomingManager) {
 		manager = incomingManager;
 		initialize();
+		frmMainScreen.setLocationRelativeTo(null);
 		frmMainScreen.setVisible(true);
 	}	
 	/**

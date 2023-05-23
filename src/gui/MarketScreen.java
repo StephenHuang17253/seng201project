@@ -70,6 +70,7 @@ public class MarketScreen {
 		athletesForSale = manager.getMarketAthletes();
 		itemsForSale = manager.getMarketItems();
 		initialize();
+		frmMarketScreen.setLocationRelativeTo(null);
 		frmMarketScreen.setVisible(true);
 	}	 
 	/**
