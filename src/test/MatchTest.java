@@ -12,20 +12,20 @@ public class MatchTest {
 
     @BeforeEach
     public void setUp() {
-        match = new Match("Opponent Team", 1000, 10);
+        match = new Match("Karasuno", 1000, 10);
     }
 
     @Test
     public void testGetName() {
         String name = match.getName();
-        Assertions.assertEquals("Opponent Team", name);
+        Assertions.assertEquals("Karasuno", name);
     }
 
     @Test
     public void testSetName() {
-        match.setName("New Opponent Team");
+        match.setName("Shiratorizawa Academy");
         String name = match.getName();
-        Assertions.assertEquals("New Opponent Team", name);
+        Assertions.assertEquals("Shiratorizawa Academy", name);
     }
 
     @Test
