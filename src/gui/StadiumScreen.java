@@ -138,7 +138,7 @@ public class StadiumScreen {
 		frmStadium.getContentPane().add(explanationText);
 		
 		JPanel titlePanel = new JPanel();
-		titlePanel.setBorder(new LineBorder(new Color(0, 0, 0)));
+		titlePanel.setBorder(new LineBorder(new Color(0, 0, 0))); 
 		titlePanel.setBounds(-18, 0, 712, 99);
 		frmStadium.getContentPane().add(titlePanel);
 		titlePanel.setLayout(null);
@@ -177,7 +177,6 @@ public class StadiumScreen {
 							"At least one of your main players is injured.\nGo make a substitution to play.", 
 							"Can't compete!", JOptionPane.INFORMATION_MESSAGE);			 				
 				} else {
-					System.out.println(targetMatch);
 					matches.remove(targetMatch);
 					manager.launchMatchScreen(targetMatch);
 					matchListModel.removeElement(targetMatch);

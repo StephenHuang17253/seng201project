@@ -320,7 +320,7 @@ public class GameManager {
 		match.runMatch(this, match);
 		MatchScreen matchWindow = new MatchScreen(this, match);
 		matchOutcome = match.getOutcome();
-		System.out.println(match.getOutcome());
+
 	}
 	/**
 	 * Closes the match screen when the go back button is pressed.	
@@ -444,12 +444,14 @@ public class GameManager {
 	}
 	
 	/**
+	 * Getter for team
 	 * @return the team
 	 */
 	public Team getTeam() {
 		return team;
 	}
 	/**
+	 * Setter for team
 	 * @param team the team to set
 	 */
 	public void setTeam(Team team) {
@@ -687,7 +689,7 @@ public class GameManager {
 		inventory.add(item);
 		changeMoney(-item.getContractPrice());
 		marketItems.remove(item);
-		System.out.println(item.getName() + " was added to club inventory.");
+
 	}
 	/**
 	 * This method sells athletes by increasing the player money by the athletes sellback price.

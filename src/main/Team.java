@@ -2,6 +2,12 @@ package main;
 
 import java.util.ArrayList;
 
+/**
+ * The Team class stores the player's athletes and handles logic related 
+ * to the team, its rosters, and its athletes.
+ * @author Stephen Huang
+ *
+ */
 public class Team {
 	/**
 	 * The player's team's name.
@@ -83,7 +89,6 @@ public class Team {
 	 * @param position the position they're being assigned to play
 	 */
 	public void promoteAthlete(Athlete athlete, String position) {
-		System.out.println(athlete.getName() + " has been moved to main roster");
 		athlete.setPosition(position);
 	    mainRoster.add(athlete);
 	    reserveRoster.remove(athlete);
@@ -94,7 +99,6 @@ public class Team {
 	 * @param athlete the Athlete being demoted
 	 */
 	public void demoteAthlete(Athlete athlete) {
-		System.out.println(athlete.getName() + " has been moved to reserves");
 		mainRoster.remove(athlete);
 		athlete.setPosition("Unassigned");
 	    reserveRoster.add(athlete);

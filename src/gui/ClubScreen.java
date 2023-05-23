@@ -55,7 +55,7 @@ public class ClubScreen {
 	 * Initializes the screen and make ClubScreen visible.
 	 * @param incomingManager is the manager for this screen.
 	 */
-	public ClubScreen(GameManager incomingManager) { 
+	public ClubScreen(GameManager incomingManager) {  
 		manager = incomingManager;
 		initialize();
 		frmClubScreen.setLocationRelativeTo(null);

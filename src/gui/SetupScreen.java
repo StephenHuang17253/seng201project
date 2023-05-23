@@ -291,7 +291,7 @@ public class SetupScreen {
 		frmSetupScreen.getContentPane().add(panel);
 		panel.setLayout(null);
 		
-		JLabel listHeaderLabel = new JLabel("Name, Position (Level), Offence, Defence, Health, Stamina, Price");
+		JLabel listHeaderLabel = new JLabel("Name, Position (Level), Offence, Defence, Health, Stamina, Price"); 
 		listHeaderLabel.setBounds(10, 6, 397, 14);
 		panel.add(listHeaderLabel);
 		listHeaderLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -329,7 +329,6 @@ public class SetupScreen {
 	 * @param difficulty the difficulty chosen by player
 	 */
 	public void getTeamCost(List<Athlete> list, JLabel teamPriceLabel, String difficulty) {
-		System.out.println(list);
 		teamCost = 0;
 		for (Athlete athlete: list) {
 			teamCost += athlete.getContractPrice();
