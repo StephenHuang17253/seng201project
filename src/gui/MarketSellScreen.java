@@ -50,7 +50,7 @@ public class MarketSellScreen {
 	 * Create the application
 	 * Takes an incoming manager and makes it the manager of the screen.
 	 * Assign inventory to the list of items from GameManager.
-	 * @param incomingManager
+	 * @param incomingManager the GameManager
 	 * @param items the inventory from GameManager
 	 */
 	public MarketSellScreen(GameManager incomingManager, ArrayList<Item> items) {
@@ -59,17 +59,22 @@ public class MarketSellScreen {
 		initialize();
 		frmMarketSellScreen.setVisible(true);
 	}
-
+	/**
+	 * Closes the market sell window
+	 */
 	public void closeWindow() {
 		frmMarketSellScreen.dispose();
 	}
-	
+	/**
+	 * Closes this instance of MarketSellScreen using GameManager
+	 */
 	public void finishedWindow() {
 		manager.closeMarketSellScreen(this);
 	}
 	
 	/**
 	 * Launch the application.
+	 * @param args an array of command-line arguments for the application
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

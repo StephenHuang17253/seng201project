@@ -208,7 +208,7 @@ public class GameManager {
 	
 	/**
 	 * Adds up the sizes of the starting lineup and reserves.
-	 * @return
+	 * @return boolean
 	 */
 	public boolean getEnoughAthletes() {
 		int totalAthletes = getMainRoster().size() + getReserveRoster().size();
@@ -244,7 +244,7 @@ public class GameManager {
 	}
 	/**
 	 * Closes the stadium screen when it is no longer needed.
-	 * @param stadiumWindow
+	 * @param stadiumWindow StadiumScreen
 	 */
 	public void closeStadiumScreen(StadiumScreen stadiumWindow) {
 		stadiumWindow.closeWindow();
@@ -259,7 +259,7 @@ public class GameManager {
 	}
 	/**
 	 * Closes the Club screen
-	 * @param clubWindow
+	 * @param clubWindow ClubScreen
 	 */
 	public void closeClubScreen(ClubScreen clubWindow) {
 		clubWindow.closeWindow();
@@ -274,7 +274,7 @@ public class GameManager {
 	}
 	/**
 	 * Closes the Market screen and returns to the main menu.
-	 * @param marketWindow
+	 * @param marketWindow MarketScreen
 	 */
 	public void closeMarketScreen(MarketScreen marketWindow) {
 		marketWindow.closeWindow();
@@ -289,7 +289,7 @@ public class GameManager {
 	}
 	/**
 	 * Closes the Training Screen.
-	 * @param trainingWindow
+	 * @param trainingWindow TrainingScreen
 	 */
 	public void closeTrainingScreen(TrainingScreen trainingWindow) {
 		trainingWindow.closeWindow();
@@ -303,7 +303,7 @@ public class GameManager {
 	}
 	/**
 	 * Closes the market and returns to the main menu.
-	 * @param marketSellWindow
+	 * @param marketSellWindow MarketSellScreen
 	 */
 	public void closeMarketSellScreen(MarketSellScreen marketSellWindow) {
 		marketSellWindow.closeWindow();
@@ -366,7 +366,7 @@ public class GameManager {
 	
 	/**
 	 * Closes the final screen of the game
-	 * @param endWindow
+	 * @param endWindow EndScreen
 	 */
 	public void closeEndScreen(EndScreen endWindow) {
 		endWindow.closeWindow();
@@ -454,7 +454,7 @@ public class GameManager {
 	/**
 	 * Method that can be used to check for (lack of) special characters. 
 	 * If team name matches regex [a-zA-Z], then it will not have special characters.
-	 * @param teamName
+	 * @param teamName String
 	 * @return boolean for match
 	 */
 	public boolean noSpecialChar(String teamName)
@@ -486,7 +486,7 @@ public class GameManager {
 	
 	/**
 	 * Changes the player's money by the incoming amount.
-	 * @param int amount that money will be changed by.
+	 * @param amount int that money will be changed by.
 	 */
 	public void changeMoney(int amount) {
 		money += amount;
@@ -502,7 +502,7 @@ public class GameManager {
 	/**
 	 * Returns the total amount of money earned from matches.
 	 * This will be called in the end summary
-	 * @return
+	 * @return totalEarned int
 	 */
 	public int getMoneyEarned() {
 		return totalEarned;
@@ -519,6 +519,8 @@ public class GameManager {
 	/**
 	 * Same as above but instead of the team money, it takes an amount as a parameter.
 	 * Allowing it to be used in other cases.
+	 * @param amount int
+	 * @return String for money format
 	 */
 	public String getMoneyFormat(int amount) {
 		DecimalFormat formatter = new DecimalFormat("#,###"); 
@@ -526,7 +528,7 @@ public class GameManager {
 	}
 	/**
 	 * The current week number.
-	 * @return int for the current week number.
+	 * @return week the current week number.
 	 */
 	public int getWeek() {
 		return week;
@@ -541,14 +543,14 @@ public class GameManager {
 	
 	/**
 	 * Simple getter for the total number of weeks.
-	 * @return int for the total number of weeks.
+	 * @return totalWeeks the total number of weeks.
 	 */
 	public int getTotalWeeks() {
 		return totalWeeks;
 	}
 	/**
 	 * Season points are earned from matches and displayed in the stadium and the end of the game.
-	 * @return int seasonPoints
+	 * @return seasonPoints int
 	 */
 	public int getSeasonPoints() {
 		return seasonPoints;
@@ -557,7 +559,7 @@ public class GameManager {
 	/**
 	 * Updates the season point count by the param points
 	 * Receive extra 5 points per win on Hard difficulty!
-	 * @param points
+	 * @param points int
 	 */
 	public void updateSeasonPoints(int points) {
 		if (difficulty == "Normal") {
@@ -570,7 +572,7 @@ public class GameManager {
 	 * Returns the starting lineup of Athletes,
 	 * the 5 players that have positions assigned.
 	 * These are the players who will compete in matches.
-	 * @return ArrayList<Athlete> mainRoster the starting lineup of players
+	 * @return ArrayList of Athlete objects, representing main roster of players
 	 */
 	public ArrayList<Athlete> getMainRoster() {
 		return mainRoster;
@@ -624,7 +626,7 @@ public class GameManager {
 	}
 	/**
 	 * Set the outcome to be equal to the incoming string
-	 * @param string outcome
+	 * @param outcome string
 	 */
 	public void setMatchOutcome(String outcome) {
 		matchOutcome = outcome;
@@ -710,8 +712,8 @@ public class GameManager {
 	
 	/**
 	 * Returns the athlete playing a particular position.
-	 * @param position
-	 * @return athlete
+	 * @param position String
+	 * @return athlete Athlete
 	 */
 	public Athlete getPlayerInPosition(String position) {
 		
@@ -752,7 +754,7 @@ public class GameManager {
 	/**
 	 * This method removes the specified athlete from the main roster and changes their position
 	 * to "Unassigned". They are then added to the reserve roster.
-	 * @param athlete
+	 * @param athlete the Athlete being demoted
 	 */
 	public void demoteAthlete(Athlete athlete) {
 		System.out.println(athlete.getName() + " has been moved to reserves");
@@ -763,8 +765,8 @@ public class GameManager {
 	/**
 	 * This method is used for purchasing athletes from the market and adding them to the starting lineup directly.
 	 * It assigns a position, adds athlete to main roster, changes money and then removes this athlete from the list of athletes on the market.
-	 * @param athlete
-	 * @param position
+	 * @param athlete the Athlete purchased
+	 * @param position the Athlete's purchased
 	 */
 	public void draftMainAthlete(Athlete athlete, String position) {
 		
@@ -776,7 +778,7 @@ public class GameManager {
 	/**
 	 * This method adds an athlete from the market to the reserves. Then the player's money is deducted by the athlete's contract price.
 	 * Next this athlete is removed from the list of athletes for sale on the market.
-	 * @param athlete
+	 * @param athlete Athlete
 	 */
 	public void draftReserveAthlete(Athlete athlete) {
 		reserveRoster.add(athlete);
@@ -786,7 +788,7 @@ public class GameManager {
 	/**
 	 * This method adds an item to the player's inventory and deducts the price from their money.
 	 * After the purchase the item is removed from the list of purchasable items.
-	 * @param item
+	 * @param item the Item being purchased
 	 */
 	public void purchaseItem(Item item) {
 		inventory.add(item);
@@ -810,7 +812,7 @@ public class GameManager {
 	}
 	/**
 	 * Increases the player's money by the item's sell price and then removes it from inventory. 	
-	 * @param item
+	 * @param item the Item being sold
 	 */
 	public void sellItem(Item item) {
 		changeMoney(item.getSellbackPrice()); 
@@ -818,7 +820,7 @@ public class GameManager {
 	}
 	/**
 	 * Return the list of Athletes available on the market.	
-	 * @return
+	 * @return marketAthletes ArrayList of the Athletes for sale
 	 */
 	public ArrayList<Athlete> getMarketAthletes() {
 		return marketAthletes;
@@ -907,7 +909,7 @@ public class GameManager {
 	/**
 	 * When the player takes a bye they get the option to train one of their athletes.
 	 * This method increases each of their stats by 2.	
-	 * @param athlete
+	 * @param athlete the Athlete to increase the stats of
 	 */
 	public void greatlyIncreaseStats(Athlete athlete) {
 		athlete.changeOffence(2);
@@ -919,8 +921,8 @@ public class GameManager {
 	 * The player can use Items on their Athletes in the Inventory screen.
 	 * Each Item can increase a specific stat. When this method is called the 
 	 * items are removed and a partiucular stat of the Athlete will be increased.
-	 * @param athlete
-	 * @param item
+	 * @param athlete the Athlete to increase the stats of
+	 * @param item the Item to use on the Athlete
 	 */
 	public void useItem(Athlete athlete, Item item) {
 		String stat = item.getStatToChange();
@@ -992,7 +994,7 @@ public class GameManager {
 	/**
 	 * Main method.
 	 * Begins the game by calling launchStartScreen();  
-	 * @param args
+	 * @param args array of command-line arguments for the application
 	 */
 	public static void main(String[] args) {
 		GameManager manager = new GameManager();

@@ -31,7 +31,7 @@ public interface Purchasable {
 	/**
 	 * An object that implements Purchasable must hae a price so that it
 	 * can be represented in the MarketScreen 
-	 * @return
+	 * @return string represention of Purchasable
 	 */
 	String toString();
 	

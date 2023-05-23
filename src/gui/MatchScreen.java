@@ -57,8 +57,8 @@ public class MatchScreen {
 	 * Takes an incoming manager and makes it the manager of the screen.
 	 * Takes an incoming Match to display.
 	 * Set teams using manager.
-	 * @param incomingManager
-	 * @param incomingMatch
+	 * @param incomingManager the GameManager
+	 * @param incomingMatch the Match
 	 */
 	public MatchScreen(GameManager incomingManager, Match incomingMatch) {
 		manager = incomingManager;
@@ -86,6 +86,7 @@ public class MatchScreen {
 	
 	/**
 	 * Launch the application.
+	 * @param args an array of command-line arguments for the application
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

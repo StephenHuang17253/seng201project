@@ -30,7 +30,7 @@ public class EndScreen {
 	/**
 	 * Create the application.
 	 * Takes an incoming maanger and makes it the manager of the screen
-	 * @param incomingManager
+	 * @param incomingManager GameManager
 	 */
 	public EndScreen(GameManager incomingManager) {
 		manager = incomingManager;
@@ -52,6 +52,7 @@ public class EndScreen {
 	
 	/**
 	 * Launch the application.
+	 * @param args array of command-line arguments for the application
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

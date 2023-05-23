@@ -125,7 +125,7 @@ public class AthleteGenerator {
     
     /**
      * Generates an ArrayList of 5 Athletes, representing an opponent team
-     * @return
+     * @return team
      */
     public static ArrayList<Athlete> generateTeam() {
         ArrayList<Athlete> team = new ArrayList<>();
@@ -186,7 +186,7 @@ public class AthleteGenerator {
     /**
      * Changes minStat to the specified amount
      * Not used at the moment but here for future proofing.    
-     * @param amount
+     * @param amount the number minStat will be set to
      */
     public static void setMinStat (int amount) {
     	minStat = amount;
@@ -194,7 +194,7 @@ public class AthleteGenerator {
     /**
      * Changes maxStat to the specified amount
      * Not used at the moment but here for future proofing.
-     * @param amount
+     * @param amount setMaxStat to the amount
      */
     public static void setMaxStat (int amount) {
     	maxStat = amount;
@@ -209,10 +209,7 @@ public class AthleteGenerator {
     	maxStat += 1;
     }
     
-    public static void main(String[] args) {
-            
-        
-    }
+
 }
 
 

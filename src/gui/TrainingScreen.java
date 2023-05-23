@@ -63,6 +63,7 @@ public class TrainingScreen {
 	
 	/**
 	 * Launch the application.
+	 * @args array of command-line arguments for application
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

@@ -113,6 +113,7 @@ public class SetupScreen {
 	
 	/** 
 	 * Launch the application.
+	 * @param args an array of command-line arguments for the application
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -298,20 +299,34 @@ public class SetupScreen {
 
 		
 	}
-	
+	/**
+	 * Updates the NameWarningLabel
+	 * @param warningText the string to update the label to
+	 */
 	public void setNameWarningLabel(String warningText) {
 		nameWarningLabel.setText(warningText);
 	}
 
-	
+	/**
+	 * Updates the listCostWarningLabel
+	 * @param warningText the String to update the label to
+	 */
 	public void setListCostWarningLabel(String warningText) {
 		listCostWarningLabel.setText(warningText);
 	}
-	
+	/**
+	 * Updates the ListWarningLabel
+	 * @param warningText the String to update the label to
+	 */
 	public void setListWarningLabel(String warningText) {
 		listWarningLabel.setText(warningText);
 	}
-
+	/**
+	 * Gets the cost of selected athletes in setup screen
+	 * @param list the Athletes in the Jlist
+	 * @param teamPriceLabel the label to update
+	 * @param difficulty the difficulty chosen by player
+	 */
 	public void getTeamCost(List<Athlete> list, JLabel teamPriceLabel, String difficulty) {
 		System.out.println(list);
 		teamCost = 0;

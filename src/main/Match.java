@@ -79,7 +79,7 @@ public class Match {
 	}
 	/**
 	 * Set the player's score equal to the specified amount.
-	 * @param playerScore
+	 * @param playerScore the player's score
 	 */
 	public void setPlayerScore(int playerScore) {
 		this.playerScore = playerScore;
@@ -93,7 +93,7 @@ public class Match {
 	}
 	/**
 	 * Set the score of the opponent to the specified amount.
-	 * @param opponentScore
+	 * @param opponentScore the opponent's score
 	 */
 	public void setOpponentScore(int opponentScore) {
 		this.opponentScore = opponentScore;
@@ -107,7 +107,7 @@ public class Match {
 	}
 	/**
 	 * Set prizeMoney equal to the int amount.
-	 * @param prizeMoney int
+	 * @param amount int the number to set prizeMoney to
 	 */
 	public void setPrizeMoney(int amount) {
 		this.prizeMoney = amount;
@@ -157,8 +157,8 @@ public class Match {
 	 * Then each Athlete from the teams will face off against their respective position on the opposing team,
 	 * for example Striker vs Striker.
 	 * 
-	 * @param incomingManager
-	 * @param match
+	 * @param incomingManager the GameManager
+	 * @param match the Match
 	 */
 	public void runMatch(GameManager incomingManager, Match match) {
 		manager = incomingManager;

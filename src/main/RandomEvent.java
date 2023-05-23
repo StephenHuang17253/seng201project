@@ -41,7 +41,7 @@ public class RandomEvent {
 	 * and a probability.
 	 * @param manager the GameManager
 	 * @param chance a probabiltiy to use
-	 * @return
+	 * @return eventGenerated a RandomEvent
 	 */
 	public static RandomEvent generateRandomEvent(GameManager manager, int chance) {
 		

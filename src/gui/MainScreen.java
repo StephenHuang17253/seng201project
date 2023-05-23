@@ -40,7 +40,7 @@ public class MainScreen {
 	/**
 	 * Create the application
 	 * Takes an incoming manager and makes it the manager of this screen.
-	 * @param incomingManager
+	 * @param incomingManager the GameManager
 	 */
 	public MainScreen(GameManager incomingManager) {
 		manager = incomingManager;
@@ -64,6 +64,7 @@ public class MainScreen {
 	
 	/**
 	 * Launch the application.
+	 * @param args an array of command-line arguments for the application
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

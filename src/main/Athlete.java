@@ -87,8 +87,12 @@ public class Athlete implements Purchasable{
 	
 
 	/**
-	 * Constructor for Athlete
-	 */		
+	 * Constructor for Athlete	
+	 * @param name string the athlete's name
+	 * @param offence int the athlete's offence stat
+	 * @param defence int the athlete's defence stat
+	 * @param contractPrice int the athlete's price
+	 */
 	public Athlete(String name, int offence, int defence, int contractPrice) {
 		setName(name);
 		setHealth(10); // Default health = 10
@@ -108,13 +112,14 @@ public class Athlete implements Purchasable{
 
 	/**
 	 * Returns the Athlete's name.
-	 * @return a string of the Athlete's name
+	 * @return name of Athlete
 	 */		
 	public String getName() {
 		return name;
 	}
 	/**
 	 * Simple setter for Athlete's name.
+	 * @param name string
 	 */		
 	public void setName(String name) {
 		this.name = name;
@@ -123,7 +128,7 @@ public class Athlete implements Purchasable{
 	 * Returns Athlete proficiency. Since Athlete stats can change often throughout the game.
 	 * this method calculates it each time to ensure it is accurate. This is important because this stat
 	 * will be used in match determination.
-	 * @return proficiency
+	 * @return proficiency in
 	 */
 	public int getProficiency() {
 		int offence = getOffence();
@@ -134,7 +139,7 @@ public class Athlete implements Purchasable{
 		
 	/**
 	 * Simple getter for Athlete's position.
-	 * @return string position
+	 * @return position string
 	 */		
 	public String getPosition() {
 		return position;
@@ -142,6 +147,7 @@ public class Athlete implements Purchasable{
 
 	/**
 	 * Simple setter for Athlete's position.
+	 * @param position string
 	 */	
 	public void setPosition(String position) {
 		this.position = position;
@@ -150,32 +156,35 @@ public class Athlete implements Purchasable{
 
 	/**
 	 * Simple getter for Athlete's health.
-	 * @return int health
+	 * @return health int
 	 */		
 	public int getHealth() {
 		return health;
 	}
 	/**
 	 * Simple setter for Athlete's health.
+	 * @param health int
 	 */		
 	public void setHealth(int health) {
 		this.health = health;
 	}
 	/**
 	 * Changes an Athlete's health by the given amount.
+	 * @param amount int
 	 */
 	public void changeHealth(int amount) {
 		this.health += amount;
 	}
 	/**
 	 * Simple getter for Athlete's current stamina.
-	 * @return int stamina
+	 * @return stamina int
 	 */			
 	public int getStamina() {
 		return stamina;
 	}
 	/**
 	 * Simple setter for Athlete's current stamina.
+	 * @param amount int
 	 */
 	public void setStamina(int amount) {
 		stamina = amount;
@@ -183,6 +192,7 @@ public class Athlete implements Purchasable{
 	/**
 	 * Changes current stamina by a given amount.
 	 * If stamina goes lower than zero, set to zero.
+	 * @param amount int
 	 */		
 	public void changeStamina(int amount) {
 		this.stamina += amount;
@@ -192,41 +202,42 @@ public class Athlete implements Purchasable{
 	}
 	/**
 	 * Simple getter for Athlete's maximum stamina.
-	 * @return int MaxStamina.
+	 * @return maxStamina. int
 	 */
 	public int getMaxStamina() {
 		return maxStamina;
 	}
 	/**
 	 * Simple setter for Athlete's maximum stamina
-	 * @param int i
+	 * @param i int
 	 */
 	public void setMaxStamina(int i) {
 		maxStamina = i;
 	}
 	/**
 	 * Updates Athlete's maximum stamina by amount
-	 * @param int amount
+	 * @param amount int
 	 */
 	public void changeMaxStamina(int amount) {
 		maxStamina += amount;
 	}
 	/**
 	 * Simple getter for Athlete's offence.
-	 * @return int offence
+	 * @return offence int
 	 */			
 	public int getOffence() {
 		return offence;
 	}
 	/**
 	 * Simple setter for Athlete's offence.
+	 * @param offence int
 	 */		
 	public void setOffence(int offence) {
 		this.offence = offence;
 	}
 	/**
 	 * Changes offence by a given amount.
-	 * @param int amount 
+	 * @param amount int
 	 */
 	public void changeOffence(int amount) {
 		this.offence += amount;
@@ -234,20 +245,21 @@ public class Athlete implements Purchasable{
 	
 	/**
 	 * Simple getter for Athlete's defence.
-	 * @return int defence
+	 * @return defence int
 	 */	
 	public int getDefence() {
 		return defence;
 	}
 	/**
 	 * Simple setter for Athlete's defence.
+	 * @param defence int
 	 */	
 	public void setDefence(int defence) {
 		this.defence = defence;
 	} 
 	/**
 	 * Changes defence by a given amount.
-	 * @param int amount 
+	 * @param amount int
 	 */
 	public void changeDefence(int amount) {
 		this.defence += amount;
@@ -266,13 +278,14 @@ public class Athlete implements Purchasable{
 	
 	/**
 	 * Simple getter for Athlete's contract price.
-	 * @return int contractPrice
+	 * @return contractPrice int
 	 */		
 	public int getContractPrice() {
 		return contractPrice;
 	}
 	/**
 	 * Simple setter for Athlete's contract price.
+	 * @param contractPrice int
 	 */		
 	public void setContractPrice(int contractPrice) {
 		this.contractPrice = contractPrice;
@@ -280,26 +293,28 @@ public class Athlete implements Purchasable{
 	/**
 	 * Simple getter for Athlete's sell price.
 	 * The sellback price is half of the purchase price.
-	 * @return int sellbackPrice
+	 * @return sellbackPrice int
 	 */		
 	public int getSellbackPrice() {
 		return sellbackPrice;
 	}
 	/**
 	 * Simple setter for Athlete's contract price.
+	 * @param sellbackPrice int
 	 */		
 	public void setSellbackPrice(int sellbackPrice) {
 		this.sellbackPrice = sellbackPrice;
 	}
 	/**
 	 * Simple getter for Athlete's description.
-	 * @return string description
+	 * @return description string
 	 */		
 	public String getDescription() {
 		return description;
 	}
 	/**
 	 * Simple setter for Athlete's description.
+	 * @param description string
 	 */		
 	public void setDescription(String description) {
 		this.description = description;
@@ -328,7 +343,7 @@ public class Athlete implements Purchasable{
 	}
 	/**
 	 * Sets an Athlete's total number of faceoff wins equal to the specified amount.
-	 * @param faceOffWins
+	 * @param faceOffWins int
 	 */
 	public void setFaceOffWins(int faceOffWins) {
 		this.faceOffWins = faceOffWins;
@@ -345,14 +360,14 @@ public class Athlete implements Purchasable{
 	 * Return the number of faceoff losses.
 	 * Called in a RandomEvent calculation to influence the chance an athlete retires.
 	 * An Athlete who loses a lot has a chance of retiring.
-	 * @return 
+	 * @return faceOffLosses int
 	 */
 	public int getFaceOffLosses() {
 		return faceOffLosses;
 	}
 	/**
 	 * Set the Athlete's number of faceoff losses
-	 * @param faceOffLosses
+	 * @param faceOffLosses int
 	 */
 	public void setFaceOffLosses(int faceOffLosses) {
 		this.faceOffLosses = faceOffLosses;
@@ -366,13 +381,6 @@ public class Athlete implements Purchasable{
 		faceOffLosses += 1;
 	}	
 	
-	public static void main(String[] args) {
-	}
-
-
-
-
-
 
 
 

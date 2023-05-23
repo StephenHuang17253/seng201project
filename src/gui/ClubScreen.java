@@ -76,6 +76,7 @@ public class ClubScreen {
 	
 	/**
 	 * Launch the application.
+	 * @param args array of command-line arguments for the application
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

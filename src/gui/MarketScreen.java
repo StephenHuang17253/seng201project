@@ -63,7 +63,7 @@ public class MarketScreen {
 	 * Takes an incoming manager and makes it the manager of the screen
 	 * Set the athletesForSale equal to this week's list of generated Athletes
 	 * Set the ItemsForSale equal to a restock of Items
-	 * @param incomingManager
+	 * @param incomingManager the GameManager
 	 */
 	public MarketScreen(GameManager incomingManager) {
 		manager = incomingManager;
@@ -72,11 +72,15 @@ public class MarketScreen {
 		initialize();
 		frmMarketScreen.setVisible(true);
 	}	 
-	
+	/**
+	 * Closes the market window
+	 */
 	public void closeWindow() {
 		frmMarketScreen.dispose();
 	}
-	
+	/**
+	 * Closes this instance of MarketScreen using GameManager
+	 */
 	public void finishedWindow() {
 		manager.closeMarketScreen(this);
 	}
@@ -84,6 +88,7 @@ public class MarketScreen {
 	
 	/**
 	 * Launch the application.
+	 * @param args an array of command-line arguments for the application
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

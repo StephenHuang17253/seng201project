@@ -74,7 +74,7 @@ public class InventoryScreen {
 	}
 	/**
 	 * Close this instance of InventoryScreen using GameManager
-	 * @param origin
+	 * @param origin the previous screen
 	 */
 	public void finishedWindow(String origin) {
 		manager.closeInventoryScreen(this, origin);
@@ -82,6 +82,8 @@ public class InventoryScreen {
 	
 	/**
 	 * Launch the application.
+	 * @param args array of command-line arguments for the application
+
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
