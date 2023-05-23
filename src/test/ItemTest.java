@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import main.Item;
 
-public class ItemTest {
+class ItemTest {
 	
     private Item item;
 
@@ -58,7 +58,7 @@ public class ItemTest {
     @Test
     public void testGetDescription() {
         String description = item.getDescription();
-        assertEquals("Increases strength by 10", description);
+        assertEquals("Increases offence by 10", description);
     }
 
     @Test
@@ -97,6 +97,6 @@ public class ItemTest {
     @Test
     public void testToString() {
         String itemString = item.toString();
-        assertEquals("Offence Test, Price: $500, Description: Increases Offence by 10", itemString);
+        assertEquals("Offence Test, Price: $500, Description: Increases offence by 10", itemString);
     }
 }

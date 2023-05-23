@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import main.Athlete;
 import main.AthleteGenerator;
 
-public class AthleteGeneratorTest {
+class AthleteGeneratorTest {
 
     @Test
     public void testGenerateRandomAthlete() {
